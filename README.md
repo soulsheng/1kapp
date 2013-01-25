@@ -8,8 +8,10 @@
 
 
 			主题				媒体				插件	
+
 			                                
 总站			2012			0				C1 E1 O4 + V1 E2 P3 P7 I2
+
 
 demo		Themolio		0				C1 E1 O4 + A1 I1 V1 A2 P1 V2 A3 P2 O1 E2 P3 O2 P4 O3 I2
 
