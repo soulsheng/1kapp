@@ -1,0 +1,1 @@
+here we imitate remote network resource by local file

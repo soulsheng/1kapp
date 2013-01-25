@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+<head> 
+<script language="JavaScript"> 
+  var prePage="end";
+  var nextPage="01.htm";
+  var testPage="end";
+  var labPage="end";
+  var libraryPage="end";
+  var studyPage="end";
+  var homePage="end";
+	function showwin(url,winname,properties){
+		window.open(url,winname,properties)
+	}
+</script> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+
+<title>7.3抛出异常与自定义异常</title> 
+<link href="images/css.css" rel="stylesheet" type="text/css"> 
+</head> 
+
+<body topmargin="0">
+<p align="center" class="t1"><br>
+  抛出异常</p>
+　　<img src="images/STAR.GIF" width="18" height="20">如果一个方法没有捕获可能引发的异常，调用该方法的其他方法应该捕获并处理异常。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">为了明确指出一个方法不捕获某类异常，而让调用该方法的其他方法捕获该异常，可以在定义方法的时候，使用throws可选项，用以抛出该类异常。<br>
+语法格式：<br>
+MethodName（formalArgumentList）throws Exception{<br>
+　　//方法的代码块<br>
+}<br>
+　　<img src="images/STAR.GIF" width="18" height="20">在此，系统将强制方法的用户（调用者）在try_catch代码块中捕获这些可能的异常。<br>
+<a href="ch7/ch7ex6.java" target="_blank">【例7-6】设计一个堆栈类</a>。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">除此之外，用户也能自己通过throws语句抛出异常。<br>
+语法格式：<br>
+throw new Exception（message）；//message是一个指出异常原因的字符串<br>
+<a href="ch7/ch7ex7.java" target="_blank">【例7-7】设计一个简单通信录类，类中仅包含姓名、手机号码</a>。<br>
+（加上链接打开另一窗口/文本编辑器/集成开发工具，显示ch7ex7）<br>
+<p align="center" class="t1">应用举例</p>
+　　一个模拟的银行帐户管理程序，每一个帐户应具备的属性包括：16位帐号、客户姓名、当前余额、可透支额度。系统具有的功能包括：创建一个新帐户、根据帐号存款、取款（不可以透支），消费（可以透支）、删除帐户、查询帐户余额、查询帐户明细（单个、全部）、查询帐户透支次数、查询透支的帐户、统计存款余额。<br>
+（<a href="ch7/ch7ex8.java" target="_blank">ch7ex8.java</a>）<br>
+1. 帐户类（Account）属性：<br>
+　　每个帐户所需要的属性包括：16位帐户（字符串，标识符ID）、客户姓名（字符串，标识符name）、当前余额（浮点数，标识符balance）、可透支额（浮点数，标识符overdraftLimit），除此之外，为了保存客户每次操作（取款、消费以及存款）的历史记录，定义数组withdrawAndSave用于保存一笔业务发生的金额（正数表示存款、负数表示取款或消费）、其他还定义两个辅助属性，index记录withdrawAndSave数组目前存放的业务笔数，同时也作为新业务发生时，发生金额保存到数组中的下标，overdraftNum则用于记录客户透支的次数。<br>
+2. 帐户类（Account）方法：<br>
+　　　　1) 构造方法Account：形式参数包括16位帐户、客户姓名、可透支额度。功能判断16位帐户是否为16位且全是数字，如是初始化16位帐户、客户姓名、可透支额度（如果形参小于等于0，透支额度为0），balance、overdraftNum、withdrawAndSave数组以及index初始化为0。同时方法中使用抛出异常将异常转到catch代码块进行集中处理，以利于优化程序结构，增加易读性。<br>
+　　　　2) 比较方法compareID：返回类型int，形式参数为Account类对象。功能根据ID排序，比较两个Account对象的大小，大于返回值正数，小于返回值负数，等于返回值为0。<br>
+　　　　3) 比较方法equalsID：返回类型boolean，表示相同与否，形式参数为Account类对象。功能与比较方法compareID相同，如果考虑程序的效率和代码行，可以将其与compareID合二为一，这里仅为了演示不同的方法的使用。<br>
+　　　　4) 存款方法saveMoney：返回类型double，形式参数存款额。功能将存款额存储到withdrawAndSave的当前位置，重新计算余额，调整index。返回当前余额。<br>
+　　　　5) 取款方法getMoney：返回类型double，形式参数取款额。功能判断余额是否足够取款，如是将取款额（以负数形式存放）存储到withdrawAndSave的当前位置，重新计算余额，调整index，返回当前余额。如果没有足够余额完成取款，利用抛出异常将异常转到catch代码块。<br>
+　　　　6) 消费方法cunsumed：其代码与取款方法相似，只不过增加了是否超过透支额度的判断。<br>
+　　　　7) 获取余额、帐号以及透支次数方法：这三个方法比较简单，其实现见代码。<br>
+　　　　8) 显示帐户信息方法display：此类方法我们在前面章节已经看到许多，一般每个类的定义总会包含显示信息的方法。在下列代码中，temp用于在循环输出帐户明细时，计算某笔明细发生时的余额。<br>
+　　3. 银行所有帐户类（Bank）属性：<br>
+银行对于每个客户建立一个帐户对象，并且客户的数量是不确定的，这里利用对象向量存放客户的帐户。<br>
+　　4. 银行所有帐户类（Bank）方法：<br>
+根据需求定义的操作，帐户中应包含的方法：<br>
+　　　　1) 构造方法Bank：无形式参数，建立一个向量数组。<br>
+　　　　2) 创建一个新帐户方法addAccount：形式参数帐户类对象。功能判断相同的帐号是否存在，如果不存在，按照帐号排序，将新帐号的类对象插入相应的位置，反之抛出异常，创建工作失败。<br>
+　　　　3) 检查帐号方法checkID：形式参数帐户类对象。功能判断向量数组中是否存在相同的帐号，如不存在，返回true，反之返回false。<br>
+　　　　4) 搜索帐户方法searchAccount：形式参数帐号。功能搜索向量数组，如果找到形参帐号所对应的对象，返回找到的对象，反之返回空（null）。null是Java语言的关键字，表示空。正如前面所介绍的，数组名和对象名实际是指向内存数组或对象空间的地址，地址为空，表示没有指向任何对象。<br>
+　　　　5) 存款方法save：形式参数存款额和帐号。功能利用searchAccount搜索向量数组，根据返回的结果进行处理。如果返回对象，利用帐户类向量的saveMoney方法进行存款操作，并返回余额，反之抛出异常，本次操作不成功。<br>
+　　　　6) 取款方法get和消费方法consume：其功能与存款方法相似。<br>
+　　　　7) 删除帐户方法deleteAccount：形式参数帐号。功能利用searchAccount方法搜索该帐号的对象，找到则再判断其余额是否为0，如两个条件都满足（存在且余额为0），进行删除操作。反之抛出异常，本次操作不成功。<br>
+　　　　8) 查询帐户余额方法checkBalance：形式参数帐号，功能利用searchAccount方法搜索该帐号的对象，如找到利用帐户类对象的getBalance返回余额，反之抛出异常，本次操作不成功。<br>
+　　　　9) 查询个人帐户名细方法showIndividualAccount：形式参数帐号。功能利用searchAccount搜索该帐号的对象，找到利用帐户类对象的display方法显示其明细。反之抛出异常。<br>
+　　　　10) 查询帐户名细方法showAccount：利用循环语句依次显示向量数组中每个对象的帐户明细。<br>
+　　　　11) 查询帐户透支次数方法showIndividualOverdraftTime：形式参数帐号，功能同查询帐户余额。<br>
+　　　　12) 查询透支的帐户方法checkOverdraftAccount：功能在搜索过程中，判断余额是否小于0。<br>
+　　　　13) 统计存款余额：通过循环语句，将每个对象的余额进行累加。<br>
+　　5. 主程序所在类（ch7ex8）属性：<br>
+定义银行所有帐户类对象以及其他辅助属性。程序中定义一个静态方法menu，它输出菜单提示，接收用户输入并返回选择的序号值。另外一个静态方法getDetails用于输入帐号、客户姓名以及可透支额度。而主程序利用开关语句结构，按照选择的序号值分别执行相应的代码块。<br>
+　　　　1) 选择1：创建一个新帐户，它利用getDetails方法获得有关信息，然后调用addAccount方法。<br>
+　　　　2) 选择2：存款，输入帐号和存款额，然后调用save方法。<br>
+　　　　3) 选择3：取款，输入帐号和存款额，然后调用get方法。<br>
+　　　　4) 选择4：消费，输入帐号和存款额，然后调用consume方法。<br>
+　　　　5) 选择5：删除帐户，输入帐号，然后调用deleteAccount方法。<br>
+　　　　6) 选择6：查询帐户余额，输入帐号，然后调用checkBalance方法。<br>
+　　　　7) 选择7：查询个人帐户名细，输入帐号，然后调用showIndividualAccount方法。<br>
+　　　　8) 选择8：查询帐户名细，直接调用showAccount方法。<br>
+　　　　9) 选择9：查询帐户透支次数，输入帐号，然后调用showIndividualOverdraftTime。<br>
+　　　　10) 选择10：查询透支的帐户，直接调用checkOverdraftAccount方法。<br>
+　　　　11) 选择11：统计存款余额，直接调用statTotalBalance方法。<br>
+　　6. 主程序中利用try_catch结构，使得所有抛出的异常转入catch代码块，它利用getMessage()方法输出异常类型和有关信息，然后进入菜单程序，以便进行其他操作或正确输入有关信息。<br>
+　　7. 最后，请注意程序中对于字符串的长度和数组长度使用上的区别，一个需要在length后加上括号，另一个则不需要。 
+</body> 
+</html> 

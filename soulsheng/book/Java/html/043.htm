@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+<head> 
+<script language="JavaScript"> 
+  var prePage="end";
+  var nextPage="01.htm";
+  var testPage="end";
+  var labPage="end";
+  var libraryPage="end";
+  var studyPage="end";
+  var homePage="end";
+	function showwin(url,winname,properties){
+		window.open(url,winname,properties)
+	}
+</script> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+
+<title>4.3字符串处理</title> 
+<link href="images/css.css" rel="stylesheet" type="text/css"> 
+</head> 
+
+<body topmargin="0">
+<p align="center" class="t1"><br>
+  字符串</p>
+　　　　字符串是字符组成的序列，在Java中，可以使用两种方法来定义字符串，<br>
+　　<img src="images/STAR.GIF" width="18" height="20">利用字符数组，既数组的每个元素是字符类型的数据，字符串中所包含的字符个数为字符串的长度。<br>
+　　例5：char city[]={‘S’，‘h’，‘a’，‘n’，‘g’，‘h’，‘a’，‘i’}；<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">可以先定义字符数组，然后在程序执行过程中通过赋值语句或输入语句逐个字符地进行输入或赋值。<br>
+　　例6：char name[]=new char[20]；<br>
+　　<img src="images/STAR.GIF" width="18" height="20">利用Java提供的String类。<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">字符串常量和变量：字符串常量是由双引号括起的一个字符序列：<br>
+　　例7：“String is a sequence of character”<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">字符串变量可以使用关键字String进行定义。<br>
+　　例8：String s1；<br>
+s1=“String is a sequence of character”；<br>
+String s2=“Hello”；//定义字符串变量s2并赋初值“Hello”<br>
+System.out.println(s2)；//输出Hello<br>
+　　<img src="images/STAR.GIF" width="18" height="20">字符串的联接：“+”在数据操作中表示加法的意思，在字符串操作中，用于联接两个字符串。<br>
+　　例9：String s1；<br>
+String s2=“Hi，”；<br>
+s1=s2+“how are you”；<br>
+System.Out.println（s1）；<br>
+　　<img src="images/STAR.GIF" width="18" height="20">转义字符“\”：Java允许使用一种特殊形式的字符常量，“\”开头的字符序列。<br>
+　　例10：假如需要输出字符串The word “Apple” means a computer company，not just a fruit。<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">产生语法错误的写法：<br>
+System.out.println（“The word“Apple” means a computer company，not just a fruit”）；<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">正确的写法：<br>
+System.out.println（”The word \”Apple\” means a computer company，not just a fruit”）；<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">输出：<br>
+The word ”Apple” means a computer company，not just a fruit<br>
+<a href="ch4/ch4ex9.java" target="_blank">【例4-9】字符串输出程序</a>。<br>
+<p align="center" class="t1">字符串处理方法</p>
+<table width="79%" height="450" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td width="45%"><div align="center">方法</div></td>
+    <td width="55%"><div align="center">描述</div></td>
+  </tr>
+  <tr> 
+    <td>s1.equals(s2)</td>
+    <td>如果s1等于s2，返回true，反之false</td>
+  </tr>
+  <tr> 
+    <td>s1.equalsIgnoreCase(s2) </td>
+    <td>与s1.equals(s2)区别在于比较过程中忽略大小写（大写字符与小写字符认为是相同的）</td>
+  </tr>
+  <tr> 
+    <td>s1.compareTo(s2)</td>
+    <td>如果s1等于s2，返回0，如果s1小于s2，返回负数，如果s1大于s2，返回正数。字符串比较是逐个字符比较，直到不相等字符，然后比较这两个字符的前后关系（大小）</td>
+  </tr>
+  <tr> 
+    <td>s1.length()</td>
+    <td>返回字符串s1长度</td>
+  </tr>
+  <tr> 
+    <td>s1.charAt(j)</td>
+    <td>返回字符串s1中位置j的字符，位置计数是0，1，2…s1.length()-1</td>
+  </tr>
+  <tr> 
+    <td>s1.replace(ch1,ch2)</td>
+    <td>将字符串s1中所有的ch1字符用ch2替换之</td>
+  </tr>
+  <tr> 
+    <td>s1.trim()</td>
+    <td>删除字符串s1中的前导空格和尾上空格</td>
+  </tr>
+  <tr> 
+    <td>s1.indexOf(ch)</td>
+    <td>返回字符串s1中最早（左）与字符ch相等的位置（从字符串第一个位置开始，即下标为0开始），如果没有找到，返回-1</td>
+  </tr>
+  <tr> 
+    <td>s1.indexOf(ch,index)</td>
+    <td>与s1.indexOf(ch)相似，其区别在于从index位置开始比较</td>
+  </tr>
+  <tr> 
+    <td>s1.indexOf(str)</td>
+    <td>在字符串s1中寻找与字符串str匹配的子串，并返回该子串第一个字符的位置。如果没有找到返回-1</td>
+  </tr>
+  <tr> 
+    <td>s1.indexOf(str,index)</td>
+    <td>与s1.indexOf(str)相似，其区别在于从index位置开始比较</td>
+  </tr>
+  <tr> 
+    <td>s1.substring(index)</td>
+    <td>返回字符串s1的子串，其位置从index开始，直至s1的结尾。如果index是负数或大于等于s1的长度，程序出错</td>
+  </tr>
+  <tr> 
+    <td>s1.substring(startindex,endindex)</td>
+    <td>返回字符串s1的子串，其位置从startindex开始，直至endindex-1。如果startindex或endindex超出0～s1.length()-1范围，程序出错</td>
+  </tr>
+  <tr> 
+    <td>s1.startsWith(str)</td>
+    <td>如果str是s1的前缀，返回true，反之false</td>
+  </tr>
+  <tr> 
+    <td>s1.endsWith(str)</td>
+    <td>如果str是s1的后缀，返回true，反之false</td>
+  </tr>
+  <tr> 
+    <td>s1.toLowerCase()</td>
+    <td>将字符串s1中的所有字符转换成小写并返回</td>
+  </tr>
+  <tr> 
+    <td>s1.toUpperCase()</td>
+    <td>将字符串s1中的所有字符转换成大写并返回</td>
+  </tr>
+</table>
+<p align="center" class="t1">字符串处理方法举例</p>
+<a href="ch4/ch4ex10.java" target="_blank">【例4-10】输入3个字符串，按递减顺序进行输出</a>。<br>
+<a href="ch4/ch4ex11.java" target="_blank">【例4-11】有关字符串方法的示范</a>。<br>
+<a href="ch4/ch4ex12.java" target="_blank">【例4-12】利用标点符号，抽取字符串中的所有单词</a>。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">程序中使用j记忆当前位置，然后s1.indexOf('标点符号 
+',j)方法的寻找下一个标点符号的位置t，最后利用s1.substring(j,t)获取从位置j到t的单词。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">分割单词的标点符号可能有多种，在s1.indexOf('标点符号 
+',j)方法时应涉及所有标点符号，同时确定最前的一个标点符号位置，为此程序中利用数组存放每个标点符号的位置，然后使用冒泡排序算法进行递增排序以获取最前标点符号位置。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">数组的长度定义为最大可能的标点符号数，但实际情况可能s1.indexOf('标点符号 
+',j)获得的位置少于此长度，程序中以count表示数组中实际的长度。<br>
+<p align="center" class="t1">字符串数组</p>
+　　语法格式：<br>
+String name[]=new String[]；或String[] name=new String[]；<br>
+　　例10：<br>
+String studentName[]=new String[4]；<br>
+StudentName[0]=“Grant”；<br>
+StudentName[1]=“Power”；<br>
+StudentName[2]=“Emma”；<br>
+StudentName[3]=“Tony”；<br>
+<a href="ch4/ch4ex13.java" target="_blank">【例4-13】一个班级有30个同学，需要把每位学生的资料输入计算机并保存，然后使用某一个关键字查找某位学生的有关资料</a>。<br>
+　　本例要求首先输入学生的姓名、Java程序设计和高等数学的考试成绩，然后通过姓名关键字查找指定同学的成绩。<br>
+程序中首先应定义三个数组：<br>
+String studentName[]=new String[30]；<br>
+double math[]=new double[30]；<br>
+double javaProgramming[]=new double[30]；
+</body> 
+</html> 

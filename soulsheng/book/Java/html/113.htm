@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+<head> 
+<script language="JavaScript"> 
+  var prePage="end";
+  var nextPage="01.htm";
+  var testPage="end";
+  var labPage="end";
+  var libraryPage="end";
+  var studyPage="end";
+  var homePage="end";
+	function showwin(url,winname,properties){
+		window.open(url,winname,properties)
+	}
+</script> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+
+<title>11.3 多线程程序</title> 
+<link href="images/css.css" rel="stylesheet" type="text/css"> 
+</head> 
+
+<body topmargin="0">
+<p align="center" class="t1"><br>
+  资源监控器</p>
+　　<img src="images/STAR.GIF" width="18" height="20">大多数应用程序要求线程互相通信来同步它们的动作。在 
+Java 程序中最简单实现同步的方法就是使用资源监控器。资源监控器本质上是一把锁，它与多个线程共享的资源相联系。在任一时刻，这些资源只能由一个线程使用，这个线程在使用资源以前给该资源上锁和使用结束后开锁。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">Java中，每个对象都与一个监控器相连，但是，如果不使用同步方法，监控器并不会真正被分配，这时，监控器只是用来规范对一个类或对象进行操作的权限。为了实现同步，必须通过关键字synchronized指定某个方法为同步方法。<br>
+<p align="center" class="t1">资源监控器举例</p>
+　　例1：实现DiscussionSynthesizer类，其中定义一个speak()，规定一次只能有一个人发言，否则将什么也听不清。<br>
+public class DisussionSynthesizer {<br>
+　　synchronized void speak(String words){<br>
+　　　　…//speak<br>
+　　}<br>
+}<br>
+　　speak()方法被定义为对象方法，因此任何线程只有获取了DiscussionSythesizer对象的监控器后，才能执行方法speak()。当该线程执行完毕，将释放监控器，允许另一个正在等待的线程得到对象的监控器并调用该对象的speak()方法。<br>
+　　例2：有时需要对同一个类中的几个方法进行同步，使得在任一时刻，只能有一个方法访问类中的共享资源。例如，在下面的类Account类中，有一个变量deposit，有两个同步方法setDeposit()和getDeposit()方法对它进行操作。<br>
+public class Account{<br>
+　　static int deposit;<br>
+　　static synchronized void setDeposit(int value){<br>
+　　　　deposit=deposit+value;<br>
+　　}<br>
+　　static synchronized int getDeposit( ){<br>
+　　　　return deposit;<br>
+　　}<br>
+　　…<br>
+}<br>
+　　两个方法setDeposit()和getDeposit()都声明为synchronized，表示在同一时刻只能有一个线程对变量deposit进行操作。如果一个线程正在执行setDeposit（）而另一个线程调用了getDeposit（），则后者只有等待前者执行完毕后才能开始执行。<br>
+<p align="center" class="t1">代码块同步</p>
+　　可以对一个代码块进行同步，这时，需要一个明确的参数以给出获监控器的对象。<br>
+…<br>
+void yourMethod{<br>
+　　…<br>
+　　synchronized (yourObject){<br>
+　　　　…//block of codes<br>
+　　}<br>
+}<br>
+　　这段代码可以出现任何方法中，线程在继续执行之前需得到对象yourObject的监控器。通过这种方法，可以实现在不同类或对象的方法间实现同步。下面的两段代码是等价的：<br>
+synchronized void yourMethod( ){<br>
+　　…<br>
+}<br>
+和<br>
+void yourMethod(){<br>
+　　Synchronized (this) {<br>
+　　　　…<br>
+　　}<br>
+}<br>
+<p align="center" class="t1">线程的同步控制</p>
+　　<img src="images/STAR.GIF" width="18" height="20">临界资源：指的是那些不能被多个线程并发访问的数据区域；而不允许多个线程并发执行的代码段，称为临界区。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">同步和临界区两个概念用于协调多个线程对某些方法或某些代码块的执行。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">wait()方法：线程在执行时需要等待程序中其他线程的执行结果时，它可以在一个同步代码块内执行wait()，放弃对监控器的控制，转而进行睡眠状态。过一段时间，当另一个线程提供了该线程所需要的数据后，这个线程调用notify()通知正在等待的线程，前一个线程被唤醒并试图取回监控器的控制权。当线程重新获得控制权后，从原来进入睡眠状态时的地方开始继续执行。如果线程在调用方法wait()时指定等待时间，则线程睡眠这段时间后会从等待状态中自动醒来，即使其他线程没有调用notify()。<br>
+wait();//需要有notify()方法唤醒它<br>
+wait (int tlength);//睡眠tlength时间后自动醒来<br>
+　　<img src="images/STAR.GIF" width="18" height="20">线程唤醒只是从睡眠状态转为等待状态，并不意味着它将继续拥有监控器。这时监控器仍然被其他线程拥有，直到该线程释放监控器后，才由线程队列中的线程争夺监控器。重新拥有监控器后，唤醒后的线程将从临界区中它退出的位置开始继续执行。<br>
+例3：本例只是个框架。假定有三个线程boss、waiter和guest，分别等待执行类Dinner中的一个方法：<br>
+class Dinner {<br>
+　　synchronized void MethodBoss(){<br>
+　　　　…<br>
+　　　　wait( );//进行睡眠状态，等待waiter完成指定任务唤醒<br>
+　　　　…<br>
+　　　　//唤醒后重新获取监控器，继续执行<br>
+　　}<br>
+　　synchronized void MethodWaiter( ){<br>
+　　　　…<br>
+　　　　notify();//唤醒处于睡眠状态的waiter<br>
+　　　　…<br>
+　　}<br>
+　　synchronized void MethodGuest(){<br>
+　　　　…<br>
+　　}<br>
+}<br>
+　　<img src="images/STAR.GIF" width="18" height="20">假定首先由线程boss得到监控器的控制权，开始执行方法MethodBoss()，这时另两个线程便处于阻塞状态，它们都试图获得Dinner对象监控器的控制权，直到boss执行方法wait()后释放对监控器的控制权转而处于睡眠状态。于是线程waiter和guest均有机会获得监控器，至于是谁会得到控制权将取决于诸多因素，包括时机和线程的优先级等。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">假设是线程waiter获得了监控器开始执行。这时线程boss处于睡眠状态，而guest仍处于等待监控器状态。当线程waiter执行了notify()后，线程boss被唤醒，它和guest一起等待获得Dinner对象的监控器的控制权。此时，waiter仍然拥有监控器，并继续拥有它直到退出同步方法。这时线程boss和guest开始争夺监控器的控制权，boss想从它释放监控器的位置开始继续执行，而guest想要得到开始运行的机会。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">notify()方法：将处于睡眠状态的某个等待当前对象监控器的线程唤醒。如果有多个线程等待唤醒，就按队列方式，也就是先进先出的原则唤醒第一个线程。还可以调用Object类的另一种方法，notifyAll()，用于唤醒所有因调用wait()方法而处于睡眠状态的线程。 
+</body> 
+</html> 

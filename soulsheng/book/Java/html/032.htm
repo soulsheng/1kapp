@@ -1,0 +1,161 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+<head> 
+<script language="JavaScript"> 
+  var prePage="end";
+  var nextPage="01.htm";
+  var testPage="end";
+  var labPage="end";
+  var libraryPage="end";
+  var studyPage="end";
+  var homePage="end";
+	function showwin(url,winname,properties){
+		window.open(url,winname,properties)
+	}
+</script> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+
+<title>3.2循环语句</title> 
+<link href="images/css.css" rel="stylesheet" type="text/css"> 
+</head> 
+
+<body topmargin="0">
+<p align="center" class="t1"><br>
+  for循环</p>
+　　for循环语句是用得比较频繁的一种语句，它提供了一个在某个值域间重复操作的方法。<br>
+语法格式：<br>
+for（表达式1；表达式2；表达式3）{<br>
+　　执行的语句或代码块<br>
+}<br>
+　　<img src="images/STAR.GIF" width="18" height="20">表达式1是为循环变量赋初值；<br>
+　　<img src="images/STAR.GIF" width="18" height="20">表达式2是一个布尔表达式，用于判断循环是否继续执行；<br>
+　　<img src="images/STAR.GIF" width="18" height="20">表达式3是对循环变量进行的操作，以改变循环变量的值。<br>
+<p align="center" class="t1">for循环语义</p>
+<div align="center"><img src="images/03/031-10.jpg" width="214" height="457">
+</div>
+<p align="center" class="t1">for循环举例</p>
+例2：循环变量初始值为0，循环一次循环变量加1，直到j==50，判断条件为false，循环终止。<br>
+设定初始值：j=0<br>
+条件判断 j&lt;50<br>
+设置增减值 j=j+1（或使用简化形式j++）<br>
+语义如图3-2。这样我们可以将上面的描述写成如下的语句：<br>
+for(int j=0；j&lt;50；j=j+1){<br>
+　　System.out.println(“for loop is easy to work”)；<br>
+}<br>
+　　<img src="images/STAR.GIF" width="18" height="20">j循环变量是局部变量，它从属于for循环代码块（也可以将循环变量放在for循环语句前面定义，这样，循环变量就不是for循环的局部变量）　<br>
+例3：<br>
+int j；<br>
+for（j=0;j&lt;50;j++）<br>
+　　<img src="images/STAR.GIF" width="18" height="20">必须初始化循环变量，否则由于循环变量的不确定，判断条件会产生不可预计的结果<br>
+　　<img src="images/STAR.GIF" width="18" height="20">必须定义条件判断且条件最终能达到true，否则程序会出现无限循环<br>
+例4：无限循环<br>
+for（int j=0；true；j=j+1）{<br>
+　　System.out.println(“for loop is easy to work”)；<br>
+}<br>
+或<br>
+for（int j=0；；j=j+1）{<br>
+　　System.out.println(“for loop is easy to work”)；<br>
+}<br>
+　　<img src="images/STAR.GIF" width="18" height="20">for语句可以使用“；”缺省某个表达式，但需要注意避免循环变量没有定义、循环变量没有赋初值以及无限循环的情况发生。<br>
+例5：可以使用如下格式<br>
+int j=0;<br>
+for(;j&lt;50;j++)<br>
+　　<img src="images/STAR.GIF" width="18" height="20">如果for语句一开始，判断条件就为false，则for循环一次也不执行，即for循环是一种先测试循环<br>
+例6：不执行for循环的情况<br>
+for（int j=0；j&gt;50；j=j+1）{<br>
+　　System.out.println(“for loop is easy to work”)；<br>
+}<br>
+　　<a href="ch3/ch3ex10.java" target="_blank">【例3-10】计算1+2+3+…+100</a>。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">程序中int 
+j放在for循环语句外面定义，所以它是属于main代码块<br>
+　　<img src="images/STAR.GIF" width="18" height="20">注意sum需要初始化，否则结果不可预计。<br>
+　　<a href="ch3/ch3ex11.java" target="_blank">【例3-11】利用随机数函数取值，假设掷骰子10000次，计算掷到点数为3的次数及概率</a>。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">程序中 Math.random()*1000000%6的作用是取随机数除以6后取余数，所得的余数值会在0～5之间，所以加上1，表示掷出的骰子在1～6点之间。<br>
+　　<a href="ch3/ch3ex12.java" target="_blank">【例3-12】输入一个正整数，判断其是否是质数</a>？<br>
+　　<img src="images/STAR.GIF" width="18" height="20">表达式1：初始赋值j=2，表示最小的质数<br>
+　　<img src="images/STAR.GIF" width="18" height="20">表达式2：循环终止条件为j&gt;=n或已经找到能整除的数（即不是质数），如果使用一个布尔类型prime，其初始为true（表示是质数），则for循环的终止条件为j==n 
+|| ！prime，所以进行循环的条件是！（j==n || ！prime），即j&lt;n &amp;&amp; prime（De Morgan定律）<br>
+　　<img src="images/STAR.GIF" width="18" height="20">表达式3：j=j+1<br>
+　　<img src="images/STAR.GIF" width="18" height="20">循环语句：判断n是否能被j整除，如果是prime为false。 
+<br>
+<p align="center" class="t1">while循环</p>
+语法格式：<br>
+初始化状态<br>
+while（表达式1）{<br>
+　　　语句或代码块<br>
+　　　表达式2<br>
+}<br>
+　　<img src="images/STAR.GIF" width="18" height="20">表达式1是一个布尔表达式，用于判断循环是否继续执行；<br>
+　　<img src="images/STAR.GIF" width="18" height="20">表达式2是对表达式1中的有关状态变量进行的操作(有时表达式2可以隐含在语句或代码块中)，以改变表达式1的条件。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">初始化状态一般用于赋值进入循环的条件。<br>
+<p align="center" class="t1">while循环语义</p>
+<div align="center"><img src="images/03/031-11.jpg" width="204" height="371"><br>
+</div>
+<p align="center" class="t1">while循环语义</p>
+　　<a href="ch3/ch3ex13.java" target="_blank">【例3-13】编程输入一个大于0的正整数n，计算其阶乘n！</a>。<br>
+当n&gt;0时，n！=n*（n-1）*（n-2）*…*2*1。如果n=0，则0！=1。<br>
+　　<a href="ch3/ch3ex14.java" target="_blank">【例3-14】编程求小于100的菲波那契数（fibonacci numbers）</a>。<br>
+菲波那契数的序列为1，1，2，3，5，8，13，21，34，…，即F0=1，F1=1，Fn+2=Fn+1+Fn，n&gt;=0。<br>
+<p align="center" class="t1">do while语句</p>
+<p>语法格式：<br>
+  do{<br>
+  　　语句或代码块<br>
+  　　表达式1 <br>
+  }while（表达式2）；<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">表达式2是一个布尔表达式，用于判断循环是否继续执行；<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">表达式1是对表达式2中的有关状态变量进行的操作，以改变表达式2的条件。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">执行do 
+    while语句时，首先执行语句或代码块，然后与while结构一样，执行表达式1以修改循环条件(有时表达式1可以隐含在语句或代码块中)，最后判断循环条件，如果是真，则继续执行循环，反之循环结束。<br>
+语义：</p>
+<p align="center">
+  <img src="images/03/031-12.jpg" width="173" height="364"><br>
+</p>
+<p align="center" class="t1">do while语句举例</p>
+　　<a href="ch3/ch3ex15.java" target="_blank">【例3-15】使用do while计算1+2+3+…+100</a>。<br>
+<br>
+　　<a href="ch3/ch3ex16.java" target="_blank">【例3-16】编程从键盘读取20个正整数，输出其中的偶数</a>。<br>
+<p align="center" class="t1">同类循环的嵌套</p>
+<img src="images/03/031-13.jpg" width="330" height="416"><br>
+<p align="center" class="t1">异类循环结构嵌套</p>
+<img src="images/03/031-14.jpg" width="306" height="416"><br>
+　　这里仅给出了三种异类循环结构的嵌套，实际上任意的循环结构组合都是合法的。<br>
+<p align="center" class="t1">break语句和continue语句</p>
+　　循环结构为某一功能块的重复执行提供了实现的方法，但是现实问题求解中，有些问题可能会根据具体情况，不按照原来循环条件退出循环，即可以根据需要改变循环结构的执行顺序。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">break语句：用于循环结构中，其作用是终止循环结构。其语法格式有两种：<br>
+格式1：<br>
+break；<br>
+格式2：<br>
+break label；<br>
+　　break语句功能是退出当前循环，如果遇到多重循环嵌套，又希望退出到所希望的循环体，则可以使用break label语句。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">continue语句：作用是不再执行跟在continue后面的语句，结实本次循环，继续执行下一次循环语句或循环判断。<br>
+格式：<br>
+continue；<br>
+<p align="center" class="t1">break语句举例</p>
+　　<a href="ch3/ch3ex17.java" target="_blank">【例3-17】编程1+2+3+4+…+，直到所累加的和大于65535为止</a>。<br>
+例6：break label举例<br>
+loop1：<br>
+　　while（表达式）{<br>
+　　　　…<br>
+　　　　do{<br>
+　　　　　　…<br>
+　　　　　　break loop1；<br>
+　　　　}while（表达式）；<br>
+　　}<br>
+<br>
+　　<img src="images/STAR.GIF" width="18" height="20">break 
+loop1表示退出外面的while循环，如果仅使用break语句，则表示退出内循环do while，进入外循环while继续执行。<br>
+<p align="center" class="t1">continue语句举例</p>
+　　<a href="ch3/ch3ex18.java" target="_blank">【例3-18】输出2～50之间的所有质数</a>。<br>
+在【例3-12】中，我们已经实现了针对某一个数，判断其是否为质数的程序，这里需要判断一组数，为此可采用两重循环，内循环用于判断质数，外循环则用于从2循环至50。<br>
+内循环的算法描述如下：<br>
+<img src="images/STAR.GIF" width="18" height="20">表达式1：初始赋值k=2，表示最小的质数<br>
+<img src="images/STAR.GIF" width="18" height="20">表达式2：循环终止条件为k&gt;=j，表示被判断的数j被2，3…j-1除，如果找到能整除的数，prime为false，表示不是质数，同时break语句退出内循环完成判断，否则continue语句继续内循环。<br>
+<img src="images/STAR.GIF" width="18" height="20">表达式3：j=j+1<br>
+<p align="center" class="t1">循环结构程序</p>
+　　<a href="ch3/ch3ex19.java" target="_blank">【例3-19】编程，读取20个数，计算它们的和以及平均值</a>。<br>
+<img src="images/STAR.GIF" width="18" height="20">平均值一般需要浮点数表示，所以average=(double)sum/20语句中使用了强制类型转换。<br>
+　　<a href="ch3/ch3ex20.java" target="_blank">【例3-20】编程，读取一系列非负整数，以-1表示结束，寻找并输出最大的数</a>。<br>
+　　<a href="ch3/ch3ex21.java" target="_blank">【例3-21】使用级数求ex的近似值，ex=1+x/1！+x2/2！+…+xn/n！+…，x=0.2</a>。<br>
+假设这里的计算精度是0.000001, 即xi/i！计算到0.000001为止。
+</body> 
+</html> 

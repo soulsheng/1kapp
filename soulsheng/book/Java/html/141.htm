@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+
+<title>14.1 声音播放</title> 
+<link href="images/css.css" rel="stylesheet" type="text/css"> 
+</head> 
+
+<body topmargin="0">
+<p align="center" class="t1"><br>
+　　
+
+
+<strong>声音播放</strong>　　　</p>
+<p>　　<img src="images/star.gif" width="18" height="20"> 声音的播放通过类Applet及其接口AudioClip实现。 <br>
+  　　<img src="images/star.gif" width="18" height="20"> 支持的声音文件格式有.au、.mid、.wav等。 <br>
+　　<img src="images/star.gif" width="18" height="20"> 在Applet类中通过getAudioClip()方法获取声音片段，然后通过AudioClip接口的相关方法实现声音的播放。GetAudioClip()有两个重载方法：<br>
+AudioClip getAudioClip(URL url);<br>
+AudioClip getAudioClip(URL url, String name);
+<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20"> 前者要求给出声音文件的URL（包括基地址和文件名）； <br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20"> 后者第一个参数要求给出声音文件的基地址，第二个参数要求给出声音文件的文件名。 <br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20"> 如果声音文件和播放该文件的Applet（.class）文件/嵌有Applet的HTML文件在同一个目录下，可以用Applet的getCodeBase()/getDocumentBase()方法来获取声音文件的基地址。 <br>
+例1：与.class在同一个目录下<br>
+AudioClip au=getAudioClip(getCodeBase(), ＂bird.au＂); <br>
+例2：与html文件在同一目录下<br>
+AudioClip au=getAudioClip(getDocumentBase(),＂bird.au＂);
+<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20"> 不论指定的声音文件是否存在，它们都立即返回，并启动后台线程完成对声音文件的下载，这样Applet可以去执行其他任务。 <br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">通过调用AudioClip接口的下列方法来控制Applet中下载的声音片段的播放：<br>
+void loop()//循环播放声音<br>
+void play()//开始播放声音（只播放一次）<br>
+void stop()//停止播放声音片
+<br>
+  　　<img src="images/star.gif" width="18" height="20"> 直接通过调用Applet类的play()方法来实现，通过play()方法，可以播放指定URL地址的声音文件。<br>
+  void play(URL url)；<br>
+  void play(RUL url,String name)；<br>
+  例3：播放与Applet的.class相同基地址下的声音文件“bird.au”。<br>
+  play(getCodeBase(),＂bird.au＂);<br>
+  【例14-1】AudioApplet类实现对指定声音文件的播放。界面上布置了四个按钮：装载(load)、播放（play）、循环（loop）及停止（stop）。它们调用AudioClip接口的相应方法实现了上述功能。同时，我们也通过Applet类的play()方法实现了指定URL的声音文件的播放。<br>
+  <a href="ch14/AudioApplet.java" target="_blank">AudioApplet.java</a><br>
+  <a href="ch14/AudioApplet.html" target="_blank">AudioApplet.html</a></p>
+<p align="center"><img src="images/g13-1.gif" width="262" height="188"></p>
+</body> 
+</html> 

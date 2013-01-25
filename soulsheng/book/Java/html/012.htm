@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+<head> 
+<script language="JavaScript"> 
+  var prePage="end";
+  var nextPage="01.htm";
+  var testPage="end";
+  var labPage="end";
+  var libraryPage="end";
+  var studyPage="end";
+  var homePage="end";
+	function showwin(url,winname,properties){
+		window.open(url,winname,properties)
+	}
+</script> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+
+<title>1.2程序设计</title> 
+<link href="images/css.css" rel="stylesheet" type="text/css"> 
+</head> 
+
+<body topmargin="0">
+<p align="center" class="t1"><br>
+  程序设计方法-算法</p>
+<p> 　　程序设计以算法设计和数据结构为基础，涉及编码、调试和测试等方面的知识与方法。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20"><span class="t2">算法</span><br>
+  　　算法体现了人类解决某一类问题时的思维方法和过程，描述了人类解决某一类问题所依据的规则和操作顺序。算法具有确定性、通用性、有限性等特征。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20"><span class="t2">传统的算法描述工具</span><br>
+  　　　　自然语言、流程图、算法描述语言（又可称为伪码）。<br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20">自然语言可以使用中文或英文等来描述解决某一类问题的算法。<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">流程图是一种历史悠久的描述算法和程序结构的图形工具，它使用标准的图形符号表示算法或程序中的各个元素。</p>
+<p align="center">
+<img src="images/011/011-2.jpg" width="445" height="248"></p>
+<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">算法描述语言是一种把自然语言与程序设计结构相结合起来的算法描述工具。<br>
+　　　　　举例：<br>
+【例】问题：若给定两个正整数m和n，试写出求它们的最大公因子（能同时整除m和n的最大整数）的算法。（欧几里得算法）<br>
+自然语言描述：<br>
+第1步：读入两个正整数m和n（设m大于n）<br>
+第2步：求m和n的余数r=mod（m，n）<br>
+第3步：用n的值取代m，用r的值取代n<br>
+第4步：判断r的值是否为零，如果r=0，则m为最大公因子；否则返回到第2步<br>
+第5步：输出m的值，即为最大公因子<br>
+流程图描述：　　
+<p align="center">
+<img src="images/011/011-3.jpg" width="415" height="344">　　</p>
+<p>
+  算法描述语言：<br>
+  PROCEDURE Euclid<br>
+  　　BEGIN<br>
+  　　　　READ(m,n)<br>
+  　　　　REPEAT<br>
+  　　　　　　r:=MOD(m,n)<br>
+  　　　　　　m:=n<br>
+  　　　　　　n:=r<br>
+  　　　　UNTIL r=0<br>
+  　　　　WRITE(m)<br>
+　　END</p>
+<p align="center" class="t1">程序设计方法-结构化程序设计　</p>
+<p>结构化程序设计一般是指这样的一种程序设计技术，它采用自顶向下、逐步求精的设计方法，即将一个大的、复杂的问题分解成一系列子问题，针对每个子问题模块，仿佛又是一个新的问题，采用同样方法继续分解，直至不需要继续分解就可解决的子问题。这种方法就是著名的自顶向下的程序设计方法。<br>
+　　在结构化程序设计中，任何程序段的编写都基于3中结构：顺序结构、分支结构以及循环结构。　</p>
+<p align="center">
+<img src="images/011/011-4.jpg" width="502" height="350">　</p>
+<p align="center" class="t1">程序设计方法-模块化程序设计</p>
+　　模块化开发是指把一个待开发的软件分解成若干较为简单的部分，称为模块（modules），每个模块分别独立地开发、测试，最后再组装出整个软件。这种开发方法应遵循以下原则：<br>
+　　<img src="images/STAR.GIF" width="18" height="20">尽可能使得模块成为可重用的软件组件（Reusable 
+software components ） </span><br>
+　　<img src="images/STAR.GIF" width="18" height="20">模块的接口清晰、定义完善，以便比较容易地装入到不同的系统<br>
+　　<img src="images/STAR.GIF" width="18" height="20">模块应包含一些数据以及与其相关的操作子程序，这种格式用于保护模块的数据<br>
+　　<img src="images/STAR.GIF" width="18" height="20">关于数据所表达的信息必须隐藏 
+<br>
+<p align="center" class="t1">程序设计方法-面向对象程序设计</p>
+　　面向对象程序设计中心是围绕几个主要概念：对象和类、类的层次结构（子类）和继承性、封装与信息隐藏以及消息驱动等。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">对象作为计算机模拟思维、表示真实世界的抽象体。一个对象像一个软件构造块，它包含了属性（数据或数据结构）和方法（相关的操作）。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">类是一种抽象的数据类型，它是一个模型，此模型描述了具有相似性的一组对象，任何一个对象只是相应类所代表的一类实体中的一个具体实例。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">面向对象方法通过子类和继承性提供类的等级层次，一个子类定义一个对象集合的行为，并且该对象继承父类的各种特征，子类反过来又将它自己的或继承来的特征传递到它的子类中。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">对象是一个相当独立的实体，具有各自的运行规律和内部状态。即对象是一个由其全部行为（方法或操作）和属性封装在一起形成的相对独立的整体（封装）。而信息隐藏指的是对象的行为规律及属性是属于对象的内部细节，只有对象提供了允许外部访问其内部细节的具体操作的前提下，外界才能通过这些操作得到相应的内部细节信息。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">对象之间的相互作用是通过消息的传递来进行的，消息由某个对象发出，由某个（或多个）对象接收。 
+<p align="center" class="t1">软件质量</p>
+　　<img src="images/STAR.GIF" width="18" height="20">正确性：一个程序满足它的需求规约和实现用户任务目标的程度。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">健壮性：一个程序对于异常情况的适应能力。 
+<br>
+　　<img src="images/STAR.GIF" width="18" height="20">可扩展性：结构、数据或过程设计可被扩展的程度。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">可重用性：一个程序元素（模块）可以在另外一个应用程序中复用的程度，这和程序完成的功能的包装和范围相关。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">兼容性：兼容性指的是程序的元素能比较容易地与其他程序进行组合。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">有效性：一个程序完成其功能所需的计算资源和代码的数量，例如处理器时间、内存或外存空间，通信带宽等。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">轻巧性：把一个程序从一个硬件和/或软件系统环境移植到另一个环境所需的工作量。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">易使用：学习、操作、准备输入、解释程序输出、安装和监视所需的工作量。 
+<br>
+　　<img src="images/STAR.GIF" width="18" height="20">功能性：由一个系统所提供的可能的范围。 
+<br>
+　　<img src="images/STAR.GIF" width="18" height="20">其他：其他还包括可验证性、完整性以及经济性等。 
+</body> 
+</html> 

@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+<head> 
+<script language="JavaScript"> 
+  var prePage="end";
+  var nextPage="01.htm";
+  var testPage="end";
+  var labPage="end";
+  var libraryPage="end";
+  var studyPage="end";
+  var homePage="end";
+	function showwin(url,winname,properties){
+		window.open(url,winname,properties)
+	}
+</script> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+
+<title>2.3产生输入数据的程序</title> 
+<link href="images/css.css" rel="stylesheet" type="text/css"> 
+</head> 
+
+<body topmargin="0">
+<p align="center" class="t1"><br>
+  从键盘输入数据</p>
+　　在Java语言中，如果需要使用一些简单的输入功能，必须使用一些自己定义的类，这里我们利用配套光盘中提供的<a href="../程序/第2章程序/Keyboard.java" target="_blank">Keyboard.java</a>源程序（将该程序复制到当前存放程序的目录），使用Keyboard类进行从键盘输入的操作。<br>
+　　<a href="ch2/ch2ex12.java" target="_blank">【例2-12】编写一个程序，从键盘读取一个整型数，输出它的立方</a>。<br>
+　　<a href="ch2/ch2ex13.java" target="_blank">【例2-13】编写一个程序，从键盘读取圆柱体的高和半径，输出它的体积</a>。<br>
+<p align="center" class="t1">数学函数</p>
+　　<div align="center">Java语言有一个Math类，它提供了许多数学方法用于常用的数学公式的计算。<br>
+</div>
+　　<table width="53%" height="175" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr valign="middle"> 
+    <td> 
+      <div align="center">函数</div></td>
+    <td> 
+      <div align="center">函数</div></td>
+  </tr>
+  <tr valign="middle"> 
+    <td> 
+      <div align="center">int abs（x）；double abs（x）</div></td>
+    <td> 
+      <div align="center">double pow（x，y）</div></td>
+  </tr>
+  <tr valign="middle"> 
+    <td> 
+      <div align="center">double cos（x）</div></td>
+    <td> 
+      <div align="center">double random（）</div></td>
+  </tr>
+  <tr valign="middle"> 
+    <td> 
+      <div align="center">double exp（x）</div></td>
+    <td> 
+      <div align="center">double round（x）</div></td>
+  </tr>
+  <tr valign="middle"> 
+    <td> 
+      <div align="center">double log（x）</div></td>
+    <td> 
+      <div align="center">double sin（x）</div></td>
+  </tr>
+  <tr valign="middle"> 
+    <td> 
+      <div align="center">int max（x，y）；double max（x，y）</div></td>
+    <td> 
+      <div align="center">double sqrt（x）</div></td>
+  </tr>
+  <tr valign="middle"> 
+    <td> 
+      <div align="center">int min（x，y）；double min（x，y）</div></td>
+    <td> 
+      <div align="center">double tan（x）</div></td>
+  </tr>
+</table>
+　　<a href="ch2/ch2ex14.java" target="_blank">【例2-14】数学函数示例</a>。<br>
+说明：x=(int)(Math.round(3.55))语句中(int)称为强制类型转换。Java语言中强制类型转换主要有两种形式：<br>
+　　<img src="images/STAR.GIF" width="18" height="20">保证计算的精度，如两个整数数据类型进行除法运算，所得的结果应该不是整型量存放才能保证计算的精度，所以需要对数据类型进行强制转换。例如float 
+x=（float）5/2。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">对于运算的结果，用户希望按照所需的类型进行转换，例如程序中round函数返回的double类型，而我们希望输出的整数类型。<br>
+Math.random()函数用于产生大于等于0.0，小于1.0之间的随机数，我们可以使用它产生0…n-1之间的任意数，这里n是10的倍数。<br>
+　　<a href="ch2/ch2ex15.java" target="_blank">【例2-15】使用Math.random()函数产生一个0…999之间的任意整数</a>。<br>
+我们也可以使用（（int）（Math.random（）*1000000））%n公式计算0…n-1之间的任意数，这里n可以是任意正的整数数据。<br>
+　　<a href="ch2/ch2ex16.java" target="_blank">【例2-16】使用Math.random()函数产生一个0…49之间的任意整数</a>。 
+</body> 
+</html> 

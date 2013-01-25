@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+
+<title>14.3 图像操作</title> 
+<link href="images/css.css" rel="stylesheet" type="text/css"> 
+</head> 
+
+<body topmargin="0">
+<p align="center" class="t1"><br>
+　　
+
+
+
+
+
+
+
+
+<strong>载入图像</strong>　　　</p>
+<p> 　　　java.awt.image类封装了载入图像的信息（图像格式：GIF和JPEG）。有两种方式可以实现图像的载入： <br>　　  <img src="images/star.gif" width="18" height="20">在Applet中载入图像：在Applet类中提供getImage()方法载入指定的图像，如果图像文件和播放该文件的Applet（.class）文件/嵌有Applet的HTML文件在同一个目录下，可以用Applet的getCodeBase()/getDocumentBase()方法获取图像文件的基地址。<br>
+Image getImage(URL url);<br>
+Image getImage(URL url, String name);
+<br>
+　　 <img src="images/star.gif" width="18" height="20">在Application中载入图像：通过Toolkit类的getImage()方法载入图像。<br>
+Image getImage(URL url);<br>
+Image getImage(String filename);
+<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">两种方法得到Toolkit类的对象，一种是通过调用类Toolkit的静态方法getDefaultToolkit()，另一种是调用组件的实现方法getToolkit()。<br>
+例5：调用类Toolkit的静态方法getDefaultToolkit()<br>
+　　Image myimg=Toolkit.getDefaultToolkit().getImage(“com.gif”);<br>
+例6：调用组件的实现方法getToolkit()<br>
+　　Image myimg=getToolkit().getImage(“com.gif”);
+<br>
+　　 <img src="images/star.gif" width="18" height="20"> 载入图像时（Applet和Application），方法getImage()都是立即返回，由AWT生成一个新的线程实现在后台异步完成载入图像的任务，使得程序可以执行其他任务。 <br>
+　　 <img src="images/star.gif" width="18" height="20"> 载入图像后，有时还需要对图像进行跟踪，在java.awt中提供了类MediaTracker及接口ImageObserver。 <br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">MediaTracker类：在使用类MediaTracker时先要生成一个类对象，然后通过方法addImage()确定它所要跟踪的图像。<br>
+MediaTracker(Component cmp);<br>
+void addImage(Image img,int id);<br>
+void addImage(Image img, int id, int w, int h);
+<br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20">img要跟踪的对象，id标识图像载入的优先级，id值较小的先装入，cmp是要显示图像的组件，w、h给出了图像剪裁后的宽度和高度。<br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20"> MediaTracker定义了几个标志分别表示不同的图像载入状态，例如：ABORTED表示失败退出、COMPLETE表示成功载入、ERRORED表示出错和LOADING表示正在载入。 <br>
+  　　 <img src="images/star.gif" width="18" height="20">ImageObserver接口：在调用Graphics类的drawImage()方法、Image类的getWithd()和getHeight()等异步方法时，要给出ImageObserver型的参数，用以监视图像的载入情况。ImageObserver是一个接口，它定义了一些常量用以判断图像的载入情况，如ABORT、ERROR、ALLBITS、HEIGHT、WIDTH等，它定义的方法只有imageUpdate()。<br>
+  boolean imageUpdate(Image img, int infoflags, int x, int y, int width, int height);<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20"> img监视的图像,infoflags的各位分别对应于载入情况的常量标志,(x,y)为图像左上角位置，而width、height分别表示图像的宽度和高度。方法返回值为true表示需要对图像进行跟踪，返回值为false表示不需要对图像进行跟踪。 </p>
+<p align="center"> MediaTracker类中的常用方法 </p>
+<table border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="185" valign="top"><p align="center">名称</p></td>
+    <td width="60" valign="top"><p align="center">返回值类型</p></td>
+    <td width="319" valign="top"><p align="center">功能</p></td>
+  </tr>
+  <tr>
+    <td width="185" valign="top"><p>checkAll()</p></td>
+    <td width="60" valign="top"><p>boolean</p></td>
+    <td width="319" valign="top"><p>检查所有图像是否全部载入完成</p></td>
+  </tr>
+  <tr>
+    <td width="185" valign="top"><p>checkAll(boolean&nbsp;load)</p></td>
+    <td width="60" valign="top"><p>boolean</p></td>
+    <td width="319" valign="top"><p>检查所有图像是否全部载入完成，load为true时开始载入所有没有被载入的图像。</p></td>
+  </tr>
+  <tr>
+    <td width="185" valign="top"><p>checkID(int&nbsp;id)</p></td>
+    <td width="60" valign="top"><p>boolean</p></td>
+    <td width="319" valign="top"><p>检查具有指定id的图像是否载入完成</p></td>
+  </tr>
+  <tr>
+    <td width="185" valign="top"><p>statusAll(boolean&nbsp;load)</p></td>
+    <td width="60" valign="top"><p>int</p></td>
+    <td width="319" valign="top"><p>返回所有图像载入状态的位或（OR）值load为true时表示开始载入所有没有被载入的图像</p></td>
+  </tr>
+  <tr>
+    <td width="185" valign="top"><p>StatusID(int id，boolean load)</p></td>
+    <td width="60" valign="top"><p>int</p></td>
+    <td width="319" valign="top"><p>返回具有相同id的图像载入状态的位或(OR)值，load为true时表示开始载入所有没有被载入的图像</p></td>
+  </tr>
+</table>
+<p align="center"><br>
+  <strong class="t1">显示图像</strong></p>
+<p>
+  　　<img src="images/star.gif" width="18" height="20"> 调用类Graphics的方法drawImage()进行显示：<br>
+  boolean drawImage(Image img, int x, int y, ImageObserver);<br>
+  boolean drawImage(Image img, int x, int y, Color bgcolor, ImageObserver observer);<br>
+  boolean drawImage(Image&nbsp;img,int&nbsp;x, int&nbsp;y,int&nbsp;width,int&nbsp;height, ImageObserver&nbsp;observer);<br>
+  boolean drawImage(Image&nbsp;img, int&nbsp;x, int&nbsp;y, int&nbsp;width, int&nbsp;height,Color&nbsp;bgcolor,ImageObserver&nbsp;observer);
+  <br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20">img所要显示的图像，x,y给出图像的左上角坐标，width和height为图像的宽度和高度，bgcolor为背景色，observser接收有关图像的信息，当显示图像时要调用它的方法imageUpdate()来判断图像的载入情况并进行相应的处理。<br>
+  【例14-4】编写一个应用程序实现图像的载入和显示。<br>
+  <a href="ch14/ShowImage.java" target="_blank">ShowImage.java</a></p>
+<p align="center">
+  <img src="images/g13-6.gif" width="264" height="264"></p>
+<p><br>
+  【例14-5】编写一个小应用程序实现图像的载入和显示。<br>
+  <a href="ch14/ShowImageApplet.java" target="_blank">ShowImageApplet.java</a></p>
+<p align="center">
+  <img src="images/g13-7.gif" width="226" height="210"></p>
+<p align="center" class="t1"> <strong>生成图像</strong></p>
+<p>
+  　　<img src="images/star.gif" width="18" height="20"> java.awt.image.ImageProducer接口中定义了生成图像的一些方法，通过实现该接口的类来创建图像。<br>
+　　<img src="images/star.gif" width="18" height="20"> java.awt.image.MemoryImageSource类实现了该接口，它使用一个数组来得到图像中每个像素点的值：<br>
+MemoryImageSource(int&nbsp;w, int&nbsp;h, int[]&nbsp;pix, int&nbsp;off, int&nbsp;scan)；
+<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20"> w、h表示图像的宽度和高度，pix表示各个像素点的值，off是第一个像素点在pix中的索引值，scan给出图像中每行的像素数。 <br>
+　　<img src="images/star.gif" width="18" height="20"> FilteredImageSource类是java.awt.image中实现ImageProducer接口的另一个类，它是通过一个已经载入的图像和图像过滤器来生成一幅新的图像：<br>
+FilteredImageSource(ImageProducer org, ImageFilter img);
+<br>
+　　<img src="images/star.gif" width="18" height="20"> 当生成了ImageProducer的对象之后，便可以调用组件的方法createImage()来生成图像：<br>
+Image CreateImage(ImageProducer prod);<br>
+【例14-6】通过MemoryImageSource类来创建一幅图像并进行显示。<br>
+<a href="ch14/CreateImage.java" target="_blank">CreateImage.java</a></p>
+<p align="center">
+  <img src="images/g13-8.gif" width="208" height="208"></p>
+<p align="center" class="t1"> <strong>图像处理</strong> </p>
+<p>　　<img src="images/star.gif" width="18" height="20"> java.awt中提供了图像过滤器类ImageFilter。一幅图像的数据提交给图像过滤器，经处理之后可以得到新的图像。<br>
+  　　<img src="images/star.gif" width="18" height="20"> ImageFilter是所有图像过滤器的父类，有两个常用子类CropImageFilter和RGBImageFilter。前者用于提取图像中指定区域图像；后者是一个抽象类，它用于对图像色彩进行处理。<br>
+  　　<img src="images/star.gif" width="18" height="20"> 如果需要对图像进行一些特殊处理，可以通过定义ImageFilter类的子类，来实现自己的图像处理器，定义自己的图像处理方法。 <br>
+  　　<img src="images/star.gif" width="18" height="20"> 如果要处理图像的色彩，通常是通过定义RGBImageFilter类的子类方式实现。 <br>
+  　　<img src="images/star.gif" width="18" height="20"> 使用图像过滤器处理图像的基本步骤：<br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20"> 得到原始图像以及原始图像的数据源ImageProducer； <br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20"> 生成图像过滤器； <br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20"> 通过FilteredImageSource类创建新的图像所需的数据，并通过createImage()方法生成新的图像。 <br>
+ImageFilter fil=new CropImageFilter(x,y,w,h);//得到原始图像数据源<br>
+ImageProducer prod=new FilterImageSource(img.getSource(), fil);//新的图像所需数据<br>
+Image img=createImage(prod);//创建新图像<br>
+【例14-7】制作一个窗体，首先显示一幅完整图像，然后单击图像剪切按钮，新成一幅新的图像，图像大小是原图像的一半。<br>
+<a href="ch14/ProImage.java" target="_blank">ProImage.java</a></p>
+<p align="center"><img src="images/g13-9a.gif" width="200" height="200">　　　　 <img src="images/g13-9b.gif" width="196" height="196"></p>
+</body> 
+</html> 

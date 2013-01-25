@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+
+<title>第11章练习</title> 
+<link href="images/css.css" rel="stylesheet" type="text/css"> 
+<style type="text/css">
+<!--
+a:link {
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+a:active {
+	text-decoration: none;
+}
+.style7 {font-size: 10px}
+.style8 {font-size: 9px}
+-->
+</style>
+</head> 
+
+<body topmargin="0">
+<p align="center" class="t1"><br>
+第11章练习</p>
+<ol>
+  <li>什么是线程？它和进程有何区别？</li>
+  <li>什么是多线程？为什么需要多线程？</li>
+  <li>Java中线程状态分为几种？每种状态有什么作用？</li>
+  <li>什么是线程优先级？它有什么作用？</li>
+  <li>在多线程中为什么要同步机制？它又是如何实现的？</li>
+  <li>分析下列程序的运行结果。<br>
+  (1)<br>
+  public class myRun implements Runnable{<br>　　
+  public static void main(String[] args){<br>　　　　
+  myRun r=new myRun();<br>　　　　
+  Thread t=new Thread(r);<br>　　　　
+  t.start();<br>　　
+  }<br>　　
+  public void run( ){<br>　　　　
+  for(int i=0;i&lt;100;i++)<br>　　　　　　
+  System.out.println(i);<br>　　
+  }<br>
+  }<br>
+  (2)<br>
+  class T1{<br>　　
+  static public void main(String[] arg){<br>　　　　
+  Thread Ta=new Thread( new T2(),&quot;Thread A&quot;);<br>　　　　
+  Thread Tb=new Thread( new T2(),&quot;Thread B&quot;);<br>　　　　
+  Ta.start();<br>　　　　
+  Tb.start();<br>　　　　
+  try{<br>　　　　　　
+  Thread.currentThread().sleep(1000);<br>　　　　
+  }catch(InterruptedException e){<br>　　　　　　
+  System.out.println(e.getMessage());<br>　　　　
+  }<br>　　　　
+  System.out.println(Thread.currentThread());<br>　　
+  }<br>
+  }<br>
+  class T2 extends Thread{<br>　　
+  public void run(){<br>　　　　
+  for(int count=0;count&lt;5;count++){<br>　　　　　　
+  System.out.println(Thread.currentThread()+&quot;是第 &quot;+count+&quot;次运行.&quot;);<br>　　
+  　　　　try{<br>　　　　　　　　
+  Thread.currentThread().sleep((int)(Math.random()*100));<br>　　　　　　
+  }catch(InterruptedException e) {}<br>
+  　　　　
+  }<br>　　
+  }<br>
+  }<br>
+  (3)<br>
+  class SendMsg{<br>　　
+  synchronized void callme(String msg){<br>　　　
+  　System.out.print(&quot;[&quot;+msg);<br>　　　　
+  try{<br>　　　　　　
+  Thread.sleep(1000);<br>
+　　　　  }catch(Exception e){<br>　　　　　　
+System.out.println(e.getMessage());<br>　　　　
+}<br>　　　　
+System.out.println(&quot;]&quot;);<br>
+　　　}<br>
+}<br>
+class Sender implements Runnable{<br>　　
+String msg;<br>　　
+SendMsg dest;<br>　　
+public Sender(SendMsg s, String str){<br>　　　　
+dest=s;<br>　　　　
+msg=str;<br>　　　　
+new Thread(this).start();<br>　　
+}<br>　　
+public void run(){<br>　　　　
+dest.callme(msg);<br>　　
+}<br>
+}<br>
+class mySynch{<br>　　
+public static void main(String[] args){<br>　　　　
+SendMsg dest=new SendMsg();<br>　　　　
+new Sender(dest,&quot;Hi,&quot;);<br>　　　　
+new Sender(dest,&quot;Synchronized&quot;);<br>　　　　
+new Sender(dest,&quot;John!&quot;);<br>　　
+}<br>
+}</li>
+  <li>编写一个程序实现运行3分钟后显示当前时间。</li>
+  <li>编写一个程序用两种方法来说明线程是如何创建的。</li>
+  <li>编写一个程序说明如何实现线程优先级的设置和读取。</li>
+  <li>请用一个具体例子来说明多线程中同步的使用原理和编程方法。</li>
+  <li>试通过程序说明如何进行线程组的创建和控制 。 </li>
+</ol>
+</body> 
+</html> 

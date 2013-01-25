@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+<head> 
+<script language="JavaScript"> 
+  var prePage="end";
+  var nextPage="01.htm";
+  var testPage="end";
+  var labPage="end";
+  var libraryPage="end";
+  var studyPage="end";
+  var homePage="end";
+	function showwin(url,winname,properties){
+		window.open(url,winname,properties)
+	}
+</script> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+
+<title>9.2接口和包</title> 
+<link href="images/css.css" rel="stylesheet" type="text/css"> 
+</head> 
+
+<body topmargin="0">
+<p align="center" class="t1"><br>
+抽象类</p>
+
+　　抽象类表示所修饰的类的功能不完全在于提供实际的程序代码，而只是先定义一些方法名（没有方法体），然后让继承此类的子类重载此方法的方法体。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">只要类中有一个方法被定义为抽象方法，此类必为抽象类。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">抽象类不能直接生成对象（实例化），即不能被new生成一个对象。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">若一个子类继承一个抽象类，则子类需要重载所有父类中的抽象方法，如果没有完全重载所有的抽象方法，则子类仍必须定义为抽象类。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">抽象方法可与public、protected组合使用，但不能与final、private以及static组合使用。<br>
+抽象类定义格式：<br>
+abstract class ClassName{<br>
+　　attributes；//属性定义<br>
+　　methods()；//方法定义<br>
+　　abstract methods();//抽象方法定义<br>
+}<br>
+　　<a href="ch9/ch9ex7.java" target="_blank">【例9-7】抽象类举例</a>。<br>
+<p align="center" class="t1">接口与多重继承</p>
+　　接口用于解决多重继承的问题，在一个接口里，可以定义一些属性和声明一些方法，但并不实现这些方法。定义一个接口，就有点像定义一个抽象类一样，但所声明的方法不必加上abstract关键字。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">接口的定义格式为：<br>
+interface Name [extends interfaceName1，interfaceName2…]{<br>
+　　//declarations（声明）<br>
+}<br>
+　　<img src="images/STAR.GIF" width="18" height="20">接口的实现格式为：<br>
+class Name implements interfaceName1，interfaceName2…<br>
+　　<a href="ch9/ch9ex8.java" target="_blank">【例9-8】重新设计例9-4，对于全职教师、行政人员、兼职教师需要支付税款、社会保险。其中全职教师、行政人员支付税款、社会保险百分比高于兼职教师</a>。<br>
+<p align="center" class="t1">接口特点</p>
+　　<img src="images/STAR.GIF" width="18" height="20">接口与类比较，有其特殊性。接口可以定义多重继承。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">接口不是类，所以接口中不允许定义构造方法。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">接口中的方法只能被声明为public 
+abstract，如果缺省，则默认为public abstract。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">接口中的属性只能用public、static和final来定义，如果缺省任何一个修饰符，则默认为public 
+static final。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">接口中的方法都是抽象方法，在接口中只给出方法名，返回值和形参，而不能定义方法体（实现）。<br>
+<p align="center" class="t1">包</p>
+　　<img src="images/STAR.GIF" width="18" height="20">包是一组相关类和接口的集合。Java语言的系统类都包含在相应的包中，如AWT包、swing包等等。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">一个包是使用import 
+关键字引入。例如：import java.util.*;该语句引入的是java.util 下的全部类包。例如类ArrayList、Date等在java.util 
+中。如果在程序的开始使用了import java.util.*引入语句，则在程序中可直接使用Date或ArrayList，如果没有使用该引入语句，在程序中必须使用完整名java.util.ArrayList或java.util.Date，如果希望引入一个简单类，则可如下定义：import 
+java.util.ArrayList;<br>
+　　【例9-9】包中类的引入与使用方式<br>
+（<a href="ch9/ch9ex91.java" target="_blank">ch9ex91.java</a>、<a href="ch9/ch9ex92.java" target="_blank">ch9ex92.java</a>、<a href="ch9/ch9ex93.java" target="_blank">ch9ex93.java</a>）<br>
+　　例4：例9-8中源程序文件为ch9ex8.java，文件中只有一个public类，那就是public class ch9ex8。当ch9ex8.java编译以后，在同一文件夹（目录）中生成了11个“.class”文件，文件名与ch9ex8.java文件中的每个类名相同。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">工作程序是一组“.class” 
+文件，例9-8的11个“.class”构成了一个工作程序。该组文件也能被打包并且压缩到一个归档文件（jar archiver，简记为JAR或zip文件）文件中，Java 
+解释器则负责查找、装入和解释这些文件。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">包也是由一组类文件组成，每个文件有一个public 
+类，即每个文件存在一个组件（component），如果希望这些组件(分别存放于不同的.java文件和.class文件)属于一起的，则在文件的开始位置使用package 
+关键字。<br>
+package mypackage;//声明该编译单元是名字为mypackage包的一部分<br>
+　　<img src="images/STAR.GIF" width="18" height="20">Java的package名一律使用小写字母。<br>
+<p align="center" class="t1">包举例</p>
+　　例5：假设文件MyClass.java，意味该文件必须且只能有一个public 类，类名为MyClass <br>
+package mypackage;<br>
+public class MyClass{<br>
+//…<br>
+}<br>
+　　此时，如果其他程序或mypackage包中的其他public类使用MyClass ，则必须使用import关键字引入。或使用如下完整名字：<br>
+mypackage.MyClass m=new mypackage.MyClass();<br>
+而import 关键字使用如下：<br>
+import mypackage.*;<br>
+//…<br>
+MyClass m = new MyClass();<br>
+<p align="center" class="t1">包命名空间的机制</p>
+　　<img src="images/STAR.GIF" width="18" height="20">属性和方法属于某个类，这样就可使得类成员的属性名和方法名通过类对象名隔离例如，类A中的一个方法f()和类B中f()不会冲突。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">将每个类定义作为package的一部分，通过package名将类名隔离。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">由于全世界的Java程序设计师很多，况且Java具有Internet特性（可以很方便从Internet下载并由本地JVM解释执行），所以可能会发生使用同样的package名，一个好的解决方案就是使用package名的习惯用法。即，利用翻转的网站域名建立创建类的惟一全局名。<br>
+　　例6：假设某网站域名为dingyuewei.usst.edu.cn，则定义包的位置可以为cn.edu.usst.dingyuewei.package名。<br>
+　　例7：在当前目录E:\ 丁岳伟\JAVA教材编写\第9章\第9章程序\的cn.edu.usst.dingyuewei目录下创建一个simple包，内含Vector和List类。<br>
+（<a href="ch9/Vector.java" target="_blank">Vector.java</a>、<a href="ch9/List.java" target="_blank">List.java</a>）<br>
+　　<a href="ch9/ch9ex10.java" target="_blank">【例9-10】cn.edu.usst.dingyuewei.simple 
+包中Vector和List类的引入</a>。<br>
+　　编译时，首先寻找环境变量CLASSPATH，CLASSPATH包含一个或多个用作为搜索“.class”文件的根目录，从这个根目录开始，解析器获取package包名，将符号“.”添换为符号“\”，产生从CLASSPATH设置的根开始的路径名，例如cn.edu.usst.dingyuewei.simple添换为cn\edu\usst\dingyuewei\simple，然后将此目录与CLASSPATH中设置的根目录连接，寻找相应的“.class”文件。 
+<br>
+　　<img src="images/STAR.GIF" width="18" height="20">DOS下设置 
+CLASSPATH：可用 set 命令修改 CLASSPATH 环境变量。其格式为： <br>
+set CLASSPATH=path1;path2 ...<br>
+例如：set classpath=“.;d:\myprogram”设置了两个类路径：当前目录（符号“.”）以及d:\java_class目录。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">当类存储在归档文件（.zip 
+或 .jar 文件）中时，类路径项则是该 .zip 或 .jar 文件的路径。<br>
+</body> 
+</html> 

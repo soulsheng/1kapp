@@ -1,0 +1,474 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>Java程序设计试卷样品</title>
+<link href="images/css.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+-->
+</style>
+</head>
+<body bgcolor="#FFFFFF" topmargin="0">
+<p align="center" class="t1"><br>
+  <strong>Java程序设计试卷样品</strong> </p>
+<p><strong>第一部分：对于下列</strong><strong>1～33</strong><strong>问题，选择正确的回答或填空（每题</strong><strong>2</strong><strong>分，总</strong><strong>66</strong><strong>分）</strong><strong></strong></p>
+
+  <ol>
+    <li>下列哪个修饰符是错误的？<br>
+      A．private<br>
+      B．public<br>
+      C．protected<br>
+    D．friendly</li>
+    <li>如果一个类的成员变量只能被同一个包所访问，使用下列哪个修饰符？<br>
+    A．private<br>
+    B．public<br>
+    C．protected<br>
+    D．no modifier
+      <li>下列哪个陈述是正确的？<br>
+      A．在Java 中，单一继承是允许的，它使得代码更可靠。<br>
+      B．一个子类继承父类的所有方法（包括构造方法）。<br>
+      C．一个类仅能实现一个所需的接口。<br>
+      D．当一个类实现一个接口时，它能定义所需的与接口一样多的方法。      
+        <li>在Test.java 源文件中，哪个是正确的类定义？<br>
+        A．public class test {<br>　　　
+        public int x = 0;<br>　　　
+        public int test(int x) {<br>　　　　　
+        this.x = x;<br>　　　
+        }<br>　
+        }<br>
+        B．public class Test{<br>　　　
+        public int x=0;<br>　　　
+        public Test(int x) {<br>　　　　　
+        this.x = x;<br>　　　
+        }<br>　
+        }<br>
+        C．public class Test extends T1, T2 {<br>　　　
+        public int x = 0;<br>　　　
+        public void Test (int x) {<br>　　　　　
+        this.x = x;<br>　　　
+        }<br>　
+        }<br>
+        D．protected class Test extends T2{<br>　　　
+        public int x=0;<br>　　　
+        public Test(int x){<br>　　　　　
+        this.x=x;<br>　　　
+        }<br>　
+        } </li>
+        <li> 给出下列代码<br>
+        public class Test{<br>　　
+        public static void main(String args[]){<br>　　　　
+        String str=new String(&quot;World&quot;);<br>　　　　
+        char ch[]={'H','e','l','l','o'};<br>　　　　
+        change(str,ch);<br>　　　　
+        System.out.println(str + &quot;and&quot; + ch);<br>　　
+        }<br>
+        　　
+        public static void change(String str, char ch[]){<br>
+        　　
+        　　str=&quot;Changed&quot;; ch[0]='C';<br>　　
+        }<br>
+        }<br>
+        程序运行的结果是下列哪个？<br>
+        A．World and Hello<br>
+        B．World and Cello<br>
+        C．Changed and Hello<br>
+        D．Changed and Cello</li>
+        <li>分析下列两条语句：<br>
+        int i = f;<br>
+        float f = 3.2;<br>
+        选择不正确的回答<br>
+        A．这个代码不能编译。<br>
+        B．这个代码能编译并且变量i 设置为3。<br>
+        C．如果第一行改为int i = (byte)f;，则第二行能编译。<br>
+        D．如果第二行改为float f = 3.2F;，则第二行能编译。</li>
+        <li>下列语句执行后，temp 的最终植是什么？<br>
+        long temp = (int)3.9;<br>
+        temp %= 3;<br>
+        结果是：</li>
+        <li>分析下列两个类：<br>
+        final class First {<br>　　
+        static int a = 3;<br>
+        }<br>
+        <br>
+        class Second extends First {<br>
+        　　void method() {<br>　　　
+        System.out.println(a);<br>
+        　　} <br>
+        }<br>
+        选择一个正确的回答<br>
+        A．类First 编译，但类Second 不编译。<br>
+        B．类Second 编译，但类First不编译。<br>
+        C．两个类都不编译。<br>
+        D．两个类都编译，并且如果method()被调用，写3到标准的输出。</li>
+        <li>分析下列代码：<br>
+        void looper() {<br>　　
+        int x = 0;<br>　　
+        one:<br>　　
+        while (x &lt; 10) {<br>　　　　
+        two:<br>　　　　
+        System.out.println(++x);<br>　　　　
+        if (x &gt; 3)<br>　　　　　　
+        break ;<br>　　
+        }<br>
+        }<br>
+        选择不正确的回答<br>
+        A．这个代码不编译。<br>
+        B．数字1到9送到标准的输出。<br>
+        C．数字5到9送到标准的输出。<br>
+        D．x的最终值是5。</li>
+        <li>当方法testing 被调用时，呈现在标准的输出是什么？<br>
+        void testing() {<br>
+        one:<br>
+        two:<br>
+        for (int i = 0; i &lt; 3; i++) {<br>　　
+        three:<br>　　　　
+        for (int j = 10; j &lt; 30; j+=10) {<br>　　　　　　
+        System.out.println(i + j);<br>　　　　　　
+        if (i &gt; 2)<br>　　　　　　　　
+        continue one;<br>　　　　
+        }<br>
+        　　
+        }<br>
+        }<br>
+        结果是：</li>
+        <li>如果试图编译和执行B中的main（）方法，将出现什么情况？<br>
+        class A {<br>　　
+        int i;<br>　　
+        A(int i) {<br>　　　　
+        this.i = i * 2;<br>　　
+        }<br>
+        }<br>
+        <br>
+        class B extends A {<br>　　
+        public static void main(String[] args) {<br>　　　　
+        B b = new B(2);<br>　　
+        }<br>　　
+        B(int i) {<br>　　　　
+        super(i);<br>　　　　
+        System.out.println(i);<br>　　
+        }<br>
+        }<br>
+        选择下列正确的回答<br>
+        A．实例变量i设置为4。<br>
+        B．实例变量i设置为2。<br>
+        C．实例变量i设置为0。<br>
+        D．代码不能编译。</li>
+        <li>执行下列语句，送到标准的输出是什么？<br>
+        Boolean b1 = new Boolean(true);<br>
+        Boolean b2 = new Boolean(true);<br>
+        if (b1 == b2)<br>　　
+        if (b1.equals(b2))<br>　　　　
+        System.out.println(&quot;a&quot;);<br>　　
+        else<br>　　　　
+        System.out.println(&quot;b&quot;);<br>　　
+        else<br>　　　　
+        if (b1.equals(b2))<br>　　　　　　
+        System.out.println(&quot;c&quot;);<br>　　　　
+        else<br>　　　　　　
+        System.out.println(&quot;d&quot;);<br>
+        结果是：</li>
+        <li>针对下列代码行，什么表达式是真的？<br>
+        int[] arr = {1, 2, 3,4};<br>
+        for (int i=0; i &lt; 3; i++)<br>
+        arr[i] = 0;<br>
+        选择正确的回答<br>
+        A．arr[0] == 1<br>
+        B．arr[1] == 2<br>
+        C．arr[2] == 3<br>
+        D．arr[3] == 4</li>
+        <li>哪个是不正确的Java关键字？<br>
+        A．super<br>
+        B．false<br>
+        C．final<br>
+        B．TRUE</li>
+        <li>给出下列表达式：int m[] = {0, 1, 2, 3, 4, 5, 6 }，下列哪个表达式的结果等于数组元素的个数？<br>
+        A．m.length()<br>
+        B．m.length<br>
+        C．m.length()-1<br>
+        D．m.length+1</li>
+        <li>如果以命令java MyTest a b c 正确运行一个类，下面那条语句是真的？<br>
+        A．args[0] = &quot;MyTest a b c&quot;<br>
+        B．args[0] = &quot;MyTest&quot;<br>
+        C．args[0] = &quot;a&quot;<br>
+        D．args[1]= 'c' </li>
+        <li>给出下列代码段：<br>
+        boolean m = true;<br>
+        if ( m = =false )<br>　　
+        System.out.println(&quot;False&quot;);<br>
+        else<br>　　
+        System.out.println(&quot;True&quot;);<br>
+        执行的结果是什么？<br>
+        A．False<br>
+        B．True<br>
+        C．None<br>
+        D．运行时出现错误</li>
+        <li>给出下列代码：<br>
+        switch (m){<br>　　
+        case 0: System.out.println(&quot;Condition 0&quot;);<br>　　
+        case 1: System.out.println(&quot;Condition 1&quot;); <br>　　
+        case 2: System.out.println(&quot;Condition 2&quot;);<br>　　
+        case 3: System.out.println(&quot;Condition 3&quot;);break;<br>　　
+        default: System.out.println(&quot;Other Condition&quot;);<br>
+        }<br>
+        下列哪个m值不引起条件3的输出？<br>
+        A．0<br>
+        B．1<br>
+        C．2<br>
+        D．None </li>
+        <li>给出下列代码段：<br>
+        Integer I1 = new Integer(1);<br>
+        Integer I2 = new Integer(1);<br>
+        Long L= new Long(1);<br>
+        下列哪个表达式结果是true？<br>
+        A．I1 = = I2<br>
+        B．I1.equals(I2)<br>
+        C．I1 = L1<br>
+        D．L.equals(I1) </li>
+        <li>检查下列switch代码块：<br>
+        char mychar = 'c';<br>
+        switch (mychar) {<br>　　
+        default:<br>　　
+        case 'a': System.out.println(&quot;a&quot;); break;<br>　　
+        case 'b': System.out.println(&quot;b&quot;); break;<br>
+        }<br>
+        下列哪个陈述是true？<br>
+        A．因为仅有整型量可用在switch 语句中，所以这个switch代码块是错误的。<br>
+        B．当代码运行时，没有内容写到标准的输出。<br>
+        C．当代码运行时，字母“a”被写到标准的输出。<br>
+        D．当代码运行时，字母“a”和字母“b”被写到标准的输出。</li>
+        <li>给出下列代码：<br>
+        public void fun (){<br>　　
+        int i;<br>　　
+        try{<br>　　　　
+        i=System.in.read ();<br>　　　　
+        System.out.println(&quot;Location 1&quot;);<br>　　
+        } catch (IOException e) {<br>　　　　
+        System.out.println(&quot;Location 2&quot;);<br>　　
+        } finally {<br>　　　　
+        System.out.println(&quot;Location 3&quot;);<br>　　
+        }<br>　　
+        System.out.println(&quot;Location 4&quot;);<br>
+        }<br>
+        如果一个IOException出现，什么不被输出？<br>
+        A．Location 1<br>
+        B．Location 2<br>
+        C．Location 3<br>
+        D．Location 4</li>
+        <li>如果方法func()允许抛出所有异常，可以使用这个方法的哪个声明？<br>
+        A．public int func(int i)<br>
+        B．public int func(int i) throw IOException<br>
+        C．public int func(int i) throws IOException<br>
+        D．public int func(int i) throws Exception </li>
+        <li>下列哪个不能作为Java 源文件Calculation1.java一部分？<br>
+        A．public class Calculation1{//...}<br>
+        B．import java.io.*;<br>
+        C．package myPackage;<br>
+        D．public class Calculation2{//...} </li>
+        <li>给出下列语句，什么被写到标准的输出？<br>
+        System.out.println(4 &amp; 7);<br>
+        选择一个正确的回答：<br>
+        A．4<br>
+        B．5<br>
+        C．6<br>
+        D．7</li>
+        <li>如果试图编译和运行下列类，将会发生什么情况？<br>
+        class Test {<br>　　
+        static int myArg = 1;<br>　　
+        public static void main(String[] args) {<br>　　　　
+        int myArg;<br>
+        　　　　
+        System.out.println(myArg);<br>　　
+        }<br>
+        }<br>
+        选择一个正确的回答：<br>
+        A．这个类编译通过，执行时在标准输出显示0。<br>
+        B．这个类编译通过，执行时在标准输出显示1。<br>
+        C．这个类编译出错，因为不允许定义一个局部变量，其变量名与一个静态变量名相同。<br>
+        D．这个类编译出错，因为局部变量在初始化以前被使用。</li>
+        <li>在单个程序中，下列哪些main()方法的声明是正确的？选择所有正确的回答：<br>
+        A．public static void main()<br>
+        B．public static void main(String[] string)<br>
+        C．public static void main(String args)<br>
+        D．static public int main(String[] args)</li>
+        <li>当执行下列代码块时，写到标准的输出是什么？<br>
+        int i = 3;<br>
+        int j = 3;<br>
+        double k = 3.2;<br>
+        if (i &lt; k)<br>　
+        if (i == j)<br>　　　
+        System.out.println(i);<br>　
+        else<br>　　　
+        System.out.println(j);<br>
+        else<br>　
+        System.out.println(k);<br>
+        输出：</li>
+        <li>当试图编译和执行下列程序时，将发生什么情况？<br>
+        class Mystery {<br>　　
+        String s;<br>　　
+        public static void main(String[] args) {<br>　　　　
+        Mystery m = new Mystery();<br>　　　　
+        m.go();<br>　　
+        }<br>　　
+        public Mystery() {<br>　　　　
+        s = &quot;constructor&quot;;<br>　　
+        }<br>　　
+        void go() {<br>　　　　
+        System.out.println(s);<br>　　
+        }<br>
+        }<br>
+        选择一个正确的回答：<br>
+        A．这个代码编译出错。<br>
+        B．这个代码能执行，但没有任何输出。<br>
+        C．这个代码能执行，并且输出“constructor”。<br>
+        D．这个代码能执行，并且输出“null”。</li>
+        <li>给出下列代码：<br>
+        class Test{<br>
+        　　
+        private int m;<br>　　
+        public static void fun() {<br>　　　　
+        // some code...<br>　　
+        }<br>
+        }<br>
+        如何使得成员变量m能被子类Test所访问？<br>
+        A．改变private int m 为protected int m<br>
+        B．改变private int m 为final int m<br>
+        C．改变private int m 为static int m<br>
+        D．改变private int m 为int m </li>
+        <li>哪个方法是正确地重载下列方法：<br>
+        public int example(int x){...}<br>
+        A．public int example( int m){...}<br>
+        B．public int example(){...}<br>
+        C．public void example2(){...}<br>
+        D．public int example2 ( int m, float f){...} </li>
+        <li>给出下列代码段：<br>
+        public class Base{<br>　　
+        int w, x, y ,z;<br>　　
+        public Base(int a,int B){<br>　　　　
+        x=a; y=B;<br>　　
+        }<br>　　
+        public Base(int a, int b, int c, int D){<br>　　　　
+        // assignment x=a, y=b<br>　　　　
+        w=d;z=c;<br>
+        　　}<br>
+        }<br>
+        哪个表达方式能被用在 // assignment x=a, y=b处？<br>
+        A．Base(a,B);<br>
+        B．x=a, y=b;<br>
+        C．this.Base(a,b);<br>
+        D．this(a,b);</li>
+        <li>给出下列定义：<br>
+        String s = &quot;Hello&quot;;<br>
+        下列哪个表达式是错误的？<br>
+        A．s += &quot;World!&quot;;<br>
+        B．char c = s[3];<br>
+        C．int len = s.length();<br>
+        D．String t = s.toLowerCase(); </li>
+        <li>在Java中main()方法返回是什么类型？<br>
+        A．String<br>
+        B．int<br>
+        C．char<br>
+        D．void<br>
+        <p><strong>第二部分：阅读34～37题代码，给出程序的输出（每题3分，总12分）</strong></p>
+        </li>
+        <li>
+            <p><br>
+            import java.io.*;<br>
+            public class abc{<br>
+　　            publicstaticvoidmain(String args[ ]){<br>　　　　
+AB s = new AB(&quot;OK!&quot;,&quot;Just a Test!&quot;);<br>　　　　
+System.out.println(s.toString( ));<br>　　
+}<br>
+}<br>
+class AB{<br>　　
+String s1;<br>　　
+String s2;<br>　　
+AB(String str1 , String str2 ){<br>　　　　
+s1 = str1; s2 = str2;<br>　　
+}<br>　　
+public String toString( ){<br>　　　　
+return s1+s2;<br>　　
+}<br>
+}<br>
+输出：</p>
+        </li>
+        <li>
+            <p><br>
+            import java.io.* ;<br>
+            public class abc{<br>　　
+            public static void main(Stringargs[ ]){<br>　　　　
+            int i , s = 0 ;<br>　　　　
+            int a[ ] = { 10 , 20 , 30 , 40 , 50 , 60 , 70 , 80 , 90 };<br>　　　　
+            for( i = 0 ; i &lt; a.length ; i ++ )<br>　　　　　　
+            if ( a[i]%6 = = 2 )　s += a[i] ; <br>　　　　
+            System.out.println(&quot;s=&quot;+s);<br>
+            　　　}<br>
+            }<br>
+            输出：</p>
+        </li>
+        <li>
+          <p><br>
+            public class Q1{<br>
+            　　
+                public static void main（String args[ ]）{<br>
+            　　　　
+                int I=5;<br>
+            　　　　
+                Dec dec=new Dec( );<br>
+            　　　　
+                dec.decrement(I);<br>
+            　　　　
+                System.out.println(I);<br>
+            　　
+                }<br>
+            }<br>
+            class Dec{<br>
+            　　　public void decrement(double decMe){<br>
+            　　　　　decMe = decMe-1;<br>
+            　　
+                }<br>
+            }<br>
+            输出：</p>
+        </li>
+        <li>
+            <p><br>
+            class Parent{<br>　　
+            void printMe(){<br>　　　　
+            System.out.println(“parent”);<br>　　
+            }<br>
+            }<br>
+            class Child extends Parent{<br>　　
+            void printMe(String str){<br>　　　　
+            System.out.println(“child”);<br>　　
+            }<br>　　
+            void printAll(){<br>　　
+            　　super.printMe();<br>　　
+            　　this.printMe();<br>　　　　
+            printMe();<br>
+            　　}<br>
+            }<br>
+            public class Test_this{<br>　　
+            public static void main(String args[ ]){<br>　　　　
+            Child myC=new Child();<br>　　　　
+            myC.printAll();<br>　　
+            }<br>
+            }<br>
+            输出：<br>
+            <strong>第三部分：编程（总</strong><strong>22</strong><strong>分）</strong></p>
+        </li>
+        <li>输入10整型量，写一个方法，方法名为MaxMin，输出最大和最小元素<strong>(10分)</strong>。        </li>
+        <li>写一个程序，计算两个复数相乘结果。例如a+bi和c+di相乘是(a*c-b*d)+(b*c+a*d)i.。复数类必须满足下列条件<strong>(12分)</strong>：<br>
+          (1)
+        包括两个属性：<br>
+        <strong>RealPart</strong><strong>：</strong>int，复数的实数部分；<br>
+        <strong>ImagePart</strong><strong>：</strong>int，复数的虚数部分；<br>
+        (2)
+        具有下列方法：<br>
+        <strong>Complex()</strong><strong>：</strong>构造方法，赋值RealPart和ImagePart为0；<br>
+        <strong>Complex(int real,int imaginary)</strong><strong>：</strong>构造方法，初始化RealPart和ImagePart为指定参数所指定的实数和虚数；<br>
+        <strong>Complex complexMultiply(Complex a)</strong><strong>：</strong>计算当前复数和复数a相乘，并且返回一个复数，其实数部分是(a*c-b*d) <br>
+        虚数部分是(b*c+a*d)；<br>
+        <strong>toString( )：</strong>将当前复数转换为一个字符串，例如“a+bi”，a和b是复数的实数和虚数部分。 </li>
+</ol>
+</body>
+</html>

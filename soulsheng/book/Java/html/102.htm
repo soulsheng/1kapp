@@ -1,0 +1,403 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+<head> 
+<script language="JavaScript"> 
+  var prePage="end";
+  var nextPage="01.htm";
+  var testPage="end";
+  var labPage="end";
+  var libraryPage="end";
+  var studyPage="end";
+  var homePage="end";
+	function showwin(url,winname,properties){
+		window.open(url,winname,properties)
+	}
+</script> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+
+<title>10.2 Swing的窗口、标签以及文本框组件</title> 
+<link href="images/css.css" rel="stylesheet" type="text/css"> 
+</head> 
+
+<body topmargin="0">
+<p align="center" class="t1"><br>
+一个简单的图形用户界面程序　　</p>
+
+<p>　　窗口（Window）是用户屏幕的一部分，它一般具有标题、边框、菜单、大小等等。程序员可以在窗口里边放置许多组件，Swing中JFrame类（窗口）的主要方法如表：</p>
+　　
+<table width="75%" height="300" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td><div align="center">方法 </div></td>
+    <td><div align="center">说明</div></td>
+  </tr>
+  <tr> 
+    <td>JFrame() </td>
+    <td>构造方法，创建一个窗口对象</td>
+  </tr>
+  <tr> 
+    <td>JFrame(String title) </td>
+    <td>构造方法，创建一个窗口对象并设置窗口标题</td>
+  </tr>
+  <tr> 
+    <td>addWindowListener(WindowListener monitor) </td>
+    <td>注册一个监听对象monitor，用于处理JFrame产生的事件</td>
+  </tr>
+  <tr> 
+    <td>Container getContentPane() </td>
+    <td>返回JFrame的一个内容面板对象，其类型为Container</td>
+  </tr>
+  <tr> 
+    <td>setBackground(Color c) </td>
+    <td>设置窗口的背景色</td>
+  </tr>
+  <tr> 
+    <td>setForeground(Color c) </td>
+    <td>设置窗口的前景色</td>
+  </tr>
+  <tr> 
+    <td>setTitle(String title) </td>
+    <td>设置窗口标题</td>
+  </tr>
+  <tr> 
+    <td>setSize(int height,int width) </td>
+    <td>设置窗口的大小（高度和宽度）</td>
+  </tr>
+  <tr> 
+    <td>setLocation(int x,int y) </td>
+    <td>设置窗口的位置（x,y定义窗口左上角的坐标）</td>
+  </tr>
+  <tr> 
+    <td>setResizable(boolean s) </td>
+    <td>如果s为true，窗口大小可变，反之不能改变。窗口的缺省值为true。</td>
+  </tr>
+  <tr> 
+    <td>setVisible(boolean v) </td>
+    <td>如果v为true，设置窗口为可见（一般等窗口的所有属性设置以后，使用本方法）</td>
+  </tr>
+</table>
+
+<p><a href="ch10/ch10ex1.java" target="_blank">【例10-1】一个简单窗口程序</a>。<br>
+程序运行后：</p>
+<p align="center">
+<img src="images/10/102-1.jpg" width="300" height="200"></p>
+<p><br>
+  　　典型的Windows风格的窗口，具有窗口边框、标题，窗口右上角的最小化、最大化以及关闭按钮，窗口左上角系统菜单图标。<br>
+  　　说明：<br>
+  　　1. 窗口大小和窗口左上角的设置：Windows的各种设备（如屏幕、打印机等）所使用的坐标称为设备坐标，它们使用笛卡儿坐标系。在这些设备坐标系中，单位都以像素的个数表示。x轴上的值自左向右增加，y轴上的值自顶向下增加。例如对于分辨率为1024×768的显示器，左上顶角的坐标是（0，0），屏幕中心位置的坐标是（512，384）。<br>
+  　　2. 内容面板：每个JFrame窗口都有一个内容面板，如果程序希望在窗口中增加其他内容，例如标签，则应该通过JFrame的内容面板，而不是直接加到JFrame上。<br>
+  　　3. 标签：标签类JLable是一种可以加入JFrame内容面板的特殊文本，标签中的字符串是标签类JLable构造方法的参数。<br>
+</p>
+<table width="75%" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td><div align="center">方法 </div></td>
+    <td><div align="center">说明</div></td>
+  </tr>
+  <tr> 
+    <td>JLable(String st) </td>
+    <td>构造方法创建一个新的标签，初始化字符串st</td>
+  </tr>
+  <tr> 
+    <td>setText(String st)</td>
+    <td> 设置标签的文本属性值为字符串st</td>
+  </tr>
+  <tr> 
+    <td>String getText() </td>
+    <td>返回标签的文本属性值</td>
+  </tr>
+  <tr> 
+    <td>repaint() </td>
+    <td>清除并重新绘制标签</td>
+  </tr>
+</table>
+　　
+<p>　　4. 关于程序的运行结束：在包含图形用户界面的程序中main方法程序代码的结束并不表示程序的结束，对于本程序，程序运行后，窗口一直显示在屏幕上，直到用户点击关闭窗口按钮。当点击关闭窗口按钮时，窗口win1就产生一个事件，并送到预先设定的监听对象，例如程序中的win1.addWindowListener(myListener)语句就是表示将win1窗口的事件送到myListener对象。<br>
+  　　5. WindowAdapter抽象类：Java语言的AWT已经定义了一个窗口监听抽象类WindowAdapter，程序中可以通过继承来定义窗口事件的处理类，WindowAdapter抽象类已定义许多方法。为了实现窗口事件所希望做的工作，需要重载该抽象类中的相关方法。例如程序中我们重载了windowClosing方法。<br>
+</p>
+<table width="100%" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td><div align="center">方法 </div></td>
+    <td><div align="center">说明</div></td>
+  </tr>
+  <tr> 
+    <td>windowOpened(WindowEvent e) </td>
+    <td>当事件e是已经打开窗口时调用</td>
+  </tr>
+  <tr> 
+    <td>windowClosing(WindowEvent e) </td>
+    <td>当事件e是点击关闭窗口按钮时调用(表示窗口在关闭过程中)</td>
+  </tr>
+  <tr> 
+    <td>windowClosed(WindowEvent e) </td>
+    <td>当事件e是已经关闭窗口时调用</td>
+  </tr>
+  <tr> 
+    <td>windowIconified(WindowEvent e) </td>
+    <td>当事件e是窗口被最小化时调用</td>
+  </tr>
+  <tr> 
+    <td>windowDeiconified(WindowEvent e) </td>
+    <td>当事件e是窗口被不是最小化时调用（例如还原）</td>
+  </tr>
+  <tr> 
+    <td>windowActivated(WindowEvent e) </td>
+    <td>当事件e是窗口被激活时调用</td>
+  </tr>
+  <tr> 
+    <td>windowDeactivated(WindowEvent e) </td>
+    <td>当事件e是窗口失去活动窗口时调用</td>
+  </tr>
+</table>
+　　6. 程序中，定义了一个继承WindowAdapter的类WindowDestroyer，创建一个WindowDestroyer对象myListener并加入win1窗口。<br>
+　　7. 程序结束语句：一个GUI程序通常是一个无限循环程序，只有当用户对GUI进行某种操作时，例如点击关闭按钮，产生一个事件，这样就能在监听对象中通过System.exit(0)语句结束Java程序。<br>
+<p align="center" class="t1">GUI程序的程序结构　</p>
+<p>　　<a href="ch10/ch10ex2.java" target="_blank">【例10-2】编制GUI程序的另一种常见程序结构</a>。<br>
+程序中用到的内容面板方法和颜色常数如表：</p>
+<p align="center">
+  内容面板的主要方法
+</p>
+<table width="67%" height="125" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td width="29%"><div align="center">方法 </div></td>
+    <td width="71%"><div align="center">说明</div></td>
+  </tr>
+  <tr> 
+    <td>add(JComponent k)</td>
+    <td> 将组件加入容器中（容器和组件见后续章节）</td>
+  </tr>
+  <tr> 
+    <td>setBackground(Color c) </td>
+    <td>设置背景色</td>
+  </tr>
+  <tr> 
+    <td>setForeground(Color c) </td>
+    <td>设置前景色</td>
+  </tr>
+  <tr> 
+    <td>setLayout(layoutManger) </td>
+    <td>为窗口中的组件设置特定的布局管理器</td>
+  </tr>
+</table>
+　　　　　　　　
+<div align="center">颜色常数（类Color属于AWT类库）<br>
+</div>
+<table width="56%" height="125" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td width="29%"><div align="left">Color.black</div></td>
+    <td width="35%"><div align="left">Color.blue </div></td>
+    <td width="36%"><div align="left">Color.cyan</div></td>
+    <td width="71%"> <div align="left">Color.darkGray</div></td>
+  </tr>
+  <tr> 
+    <td><div align="left">Color.gray</div></td>
+    <td><div align="left">Color.green</div></td>
+    <td><div align="left">Color.lightGray</div></td>
+    <td> <div align="left">Color.magenta</div></td>
+  </tr>
+  <tr> 
+    <td><div align="left">Color.orange</div></td>
+    <td><div align="left">Color.pink</div></td>
+    <td><div align="left">Color.red</div></td>
+    <td><div align="left"> Color.white</div></td>
+  </tr>
+  <tr> 
+    <td><div align="left">Color.yellow </div></td>
+    <td><div align="left"></div></td>
+    <td><div align="left"></div></td>
+    <td><div align="left"></div></td>
+  </tr>
+</table>
+<br>
+<p align="center" class="t1"> <strong>Swing类的层次结构</strong>　　</p>
+<p>在Swing和AWT中，组件、容器以及布局管理器（LayoutManager）之间的关系，是整个图形用户界面中最基础的关系。<br>
+  　　1. 组件：组件是一个以图形化方式显示在屏幕上并能与用户进行交互的对象，它不能独立地显示出来，必须将组件放在一定的容器中才可以显示出来。类java.awt.Component是许多组件类的父类，Component类中封装了组件通用的属性和方法，如图形的组件对象、大小、显示位置、前景色、边框、可见性等。由于Swing的组件类（JComponent）也继承AWT的容器类，所以它还具有容器类的特性。<br>
+  　　2. 容器：容器是Component的子类，因此容器本身也是一个组件，具有组件的所有性质，但是它的主要功能是容纳其他位于层次结构下面的组件或容器。例如前面提到的JFrame，位于容器类的下面，因此任何JFrame类下面的类都能作为容器类包含标签、按钮或其他组件。<br>
+  　　3. 布局管理器：每个容器都有一个布局管理器，当容器需要对某个组件进行定位或判断其大小时，就会调用其相应的布局管理器。
+</p>
+<p align="center"><img src="images/10/102-2.jpg" width="300" height="300"><br>
+</p>
+<p align="center" class="t1">布局管理器</p>
+　　布局管理器可以设定放置组件的规则，以便程序按照设计加入各种组件。常见的布局管理器如表（LayoutManager，即内容面板中setLayout方法的参数）。<br>
+<table width="100%" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td width="22%"><div align="center">布局管理器 </div></td>
+    <td width="33%"><div align="center">方法 </div></td>
+    <td width="45%"><div align="center">说明</div></td>
+  </tr>
+  <tr> 
+    <td>FlowLayout</td>
+    <td>FlowLayout()<br>
+      FlowLayout(int align)<br>
+      FlowLayout(int align,int hgap,int vgap)<br></td>
+    <td>按照常规书写的流程或文本处理器的方法显示组件，常用于RadioButton和CheckBox等组件。其中align对齐方式、hgap和vgap分别表示组件之间的间隔</td>
+  </tr>
+  <tr> 
+    <td>BorderLayout</td>
+    <td>BorderLayout()<br>
+      BorderLayout(int hgap,int vgap)<br></td>
+    <td>将版面划分为北、南、东、西、中5个区域，可用add方法将组件加入所指定区域</td>
+  </tr>
+  <tr> 
+    <td>GridLayout</td>
+    <td>GridLayout()<br>
+      GridLayout(int rows,int cols)<br>
+      GridLayout(int rows,int cols,int hgap,int vgap)<br></td>
+    <td>将版面划分为行数（rows）×列数（columns）的网格状，然后组件按照从左到右、由上而下的次序排列，其中rows和cols分别表示分隔的行数和列数</td>
+  </tr>
+</table>
+　　<a href="ch10/ch10ex3.java" target="_blank">【例10-3】在窗口中创建东、南、西、北、中五个区域的标签</a>。<br>
+　　JFrame类的内容面板中，缺省的布局管理器就是BorderLayout。<br>
+<p align="center" class="t1">文本框和回车事件监听　　</p>
+<p>　　<img src="images/STAR.GIF" width="18" height="20">文本框用来在窗口中显示文字的矩形框，这些文字可以被用户编辑，文本框也可用作输入文章、编辑文字、读取用户输入的文字等操作。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">窗口中同时存在多个文本框，文本框被加入到容器中的顺序决定了Tab键在各文本框之间切换的顺序，这又称作焦点（focus）的切换，如果希望根据自己需要来定位焦点，则可以使用鼠标定位需要处理的文本框。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">Swing中针对文本框有两个类，JTextField类和JTextArea类，其中JTextField定义一个输入单行文字的矩形区域，JTextArea定义一个可以输入多行文字内容的矩形区域。主要方法如表。</p>
+<p align="center">
+JTextField类主要方法</p>
+<table width="100%" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td><div align="center">方法 </div></td>
+    <td><div align="center">说明</div></td>
+  </tr>
+  <tr> 
+    <td>JTextField() </td>
+    <td>构造方法，创建一个文本框对象</td>
+  </tr>
+  <tr> 
+    <td>JTextField(int columns) </td>
+    <td>构造方法，创建一个文本框对象，初始化列数</td>
+  </tr>
+  <tr> 
+    <td>JTextField(String text) </td>
+    <td>构造方法，创建一个文本框对象，初始化字符串</td>
+  </tr>
+  <tr> 
+    <td>JTextField(String text,int columns) </td>
+    <td>构造方法，创建一个文本框对象，初始化列数和字符串</td>
+  </tr>
+  <tr> 
+    <td>String getText() </td>
+    <td>返回文本框中的文本</td>
+  </tr>
+  <tr> 
+    <td>int getColumns() </td>
+    <td>返回文本框的列数</td>
+  </tr>
+  <tr> 
+    <td>selectAll() </td>
+    <td>选中文本框中所有文本（高亮度）</td>
+  </tr>
+  <tr> 
+    <td>setText(String s) </td>
+    <td>设置文本框中的字符串</td>
+  </tr>
+  <tr> 
+    <td>setEnable(Boolean e) </td>
+    <td>e为true则文本框可以操作，为false文本框不可操作</td>
+  </tr>
+  <tr> 
+    <td>setColumns(int columns) </td>
+    <td>设置文本框列数</td>
+  </tr>
+  <tr> 
+    <td>setEditable(boolean c) </td>
+    <td>如果布尔值为false，用户不能改变文本框中的内容（程序可以改变），反之，用户和程序都能改变其文本（缺省值）</td>
+  </tr>
+  <tr> 
+    <td>requestFocus() </td>
+    <td>请求焦点停留在给组件</td>
+  </tr>
+  <tr> 
+    <td>transferFocus() </td>
+    <td>将当前操作的文本框转移至下一个文本框</td>
+  </tr>
+</table>
+　　　　　　　　　　　　　
+<div align="center">JTextArea类主要方法<br>
+</div>
+<table width="100%" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td><div align="center">方法 </div></td>
+    <td><div align="center">说明</div></td>
+  </tr>
+  <tr> 
+    <td>JTextArea() </td>
+    <td>构造方法，创建一个文本框对象</td>
+  </tr>
+  <tr> 
+    <td>JTextArea(int row,int column) </td>
+    <td>构造方法，创建一个文本框对象，初始化行数和列数</td>
+  </tr>
+  <tr> 
+    <td>JTextArea(String st) </td>
+    <td>构造方法，创建一个文本框对象，初始化字符串</td>
+  </tr>
+  <tr> 
+    <td>JTextArea(String st,int row,int column) </td>
+    <td>构造方法，创建一个文本框对象，初始化字符串、行数、列数</td>
+  </tr>
+  <tr> 
+    <td>insert(String st,int position) </td>
+    <td>在指定位置插入字符串</td>
+  </tr>
+  <tr> 
+    <td>append(String st)</td>
+    <td> 在末尾附加字符串</td>
+  </tr>
+  <tr> 
+    <td>replaceRange(String st,int start,int end)</td>
+    <td> 将指定范围的字符串用st替换</td>
+  </tr>
+  <tr> 
+    <td>int getLineCount() </td>
+    <td>返回文本框的行数</td>
+  </tr>
+  <tr> 
+    <td>setText(String s) </td>
+    <td>设置文本框中的字符串（原来内容全部清除）</td>
+  </tr>
+  <tr> 
+    <td>String getText() </td>
+    <td>返回文本框中所有文本</td>
+  </tr>
+  <tr> 
+    <td>setLineWrap(boolean c) </td>
+    <td>如果布尔值为true，文本输入自动换行，反之超过文本不可见（缺省值）</td>
+  </tr>
+</table>
+<p align="center" class="t1">举例　　</p>
+<p>　　<a href="ch10/ch10ex4.java" target="_blank">【例10-4】在窗口中创建三个文本框</a>。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">程序运行后，焦点初始位置在顶上的第一个文本框（t1），用户输入的任何内容将显示在这个区域，用户可以通过鼠标和Tab键在三个文本框之间转换。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">当按下回车键时，程序没有任何反映，因为回车键将产生一个行动事件（Action 
+  Event），为了使得回车键也起作用，需要定义行动事件监听者。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">行动事件监听是JTextField类的一个对象实例，当用户按下一个回车键时，产生一个行动事件。通过对象.addActionListener(ActionListener 
+  e)语句将监听者注册给它的事件源对象。当源对象产生事件时，就会引发ActionEvent事件，要响应事件就要通过监听者的类实现ActionListener接口（注意接口需要使用implements来继承且需要重写所有方法）。在事件响应的方法中可以通过actionPerformed（ActionEvent 
+  e）方法来响应。 <br>
+  　　<a href="ch10/ch10ex5.java" target="_blank">【例10-5】在窗口中创建三个文本框</a>。<br>
+　　<a href="ch10/ch10ex6.java" target="_blank">【例10-6】在窗口中分别创建JTextField和JTextArea文本框以及一个JLabel标签</a>。　　</p>
+<p align="center"><br>
+<img src="images/10/102-2.jpg" width="300" height="300"></p>
+　　<br>
+　　<a href="ch10/ch10ex7.java" target="_blank">【例10-7】窗口中输入内容的验证方法</a>。<br>
+　　当用户希望通过用户图形界面输入输出数据时，程序必须能判断和实现字符串（文本）和数据之间的转换，即可以通过第6章中介绍的包装类的静态方法实现判断和转换。<br>
+　　例如：Integer.parseInt(String str);Integer.toString(int num);
+<p align="center">
+<img src="images/10/102-3.jpg" width="300" height="150"></p>
+<p align="center" class="t1">键盘事件监听和焦点事件监听</p>
+　　<p>　　<img src="images/STAR.GIF" width="18" height="20">键盘事件监听用于监听用户按下的键盘事件，每次敲击键盘就产生一个KeyEvent事件。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">键盘事件能被键盘事件监听者捕获，然后调用监听者的相应方法处理有关任务。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">键盘敲击事件监听者的定义继承类库中的KeyListener接口，这个接口具有三个不同的方法：keyPressed、keyReleased以及keyTyped。用户在定义键盘处理类的时候，必须实现每个方法。<br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20">char getKeyChar()：返回敲击键盘所对应的字符<br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20">setKeyChar(char c)：设置与敲击键盘相关的字符<br>
+　　<a href="ch10/ch10ex8.java" target="_blank">【例10-8】登录窗口的设计（需要输入姓名和口令）</a>。</p>
+<p align="center"><br>
+<img src="images/10/102-4.jpg" width="200" height="100"></p>
+<p><br>
+  　　本程序没有定义回车事件监听，所以不能使用回车键实现文本框之间焦点的转换（可利用鼠标或Tab键）。<br>
+  　　<a href="ch10/ch10ex9.java" target="_blank">【例10-9】修改例10-8程序，将键盘监听改为焦点监听</a>。<br>
+  　　窗口中存在多个组件时，用户可以通过Tab键、鼠标切换焦点。与键盘事件监听一样，一个组件获得或丢失焦点就产生一个事件。焦点事件能被焦点事件监听者捕获，然后调用监听者的相应方法处理有关任务。<br>
+　　焦点事件监听者的定义继承类库中的FocusListener接口，这个接口具有两个不同的方法：focusLost和focusGained，它们分别表示焦点丢失和焦点获得。　
+</p>
+<p align="center">
+  <img src="images/10/102-5.jpg" width="200" height="100"><br>
+</p>
+</body> 
+</html> 

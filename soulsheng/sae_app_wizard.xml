@@ -1,0 +1,30 @@
+﻿<appwizard> 
+	<introduction> 
+		<name>Wordpress for sae</name> 
+		<author>Wordpress ＆＆ ElmerZhang</author> 
+		<icon>/static/image/app_icons/wordpress.jpg</icon> 
+		<homepage>http://wp4sae.sinaapp.com/</homepage> 
+		<description> 
+		<![CDATA[
+<p>WordPress 是一个注重美学、易用性和网络标准的个人信息发布平台。WordPress 虽为免费的开源软件，但其价值无法用金钱来衡量。</p>
+<p>使用 WordPress 可以搭建功能强大的网络信息发布平台，但更多的是应用于个性化的博客。针对博客的应用，WordPress 能让您省却对后台技术的担心，集中精力做好网站的内容。</p>
+		]]>
+		</description> 
+	</introduction> 
+	<platform> 
+		<services>
+			<service>Mysql</service> 
+		</services> 
+		<appconfig> 
+			<tpl> 
+            <![CDATA[
+name: <<appname>>
+version: <<version>>
+            ]]>
+			</tpl> 
+		</appconfig> 
+	</platform> 
+	<code> 
+	<initScript>index.php</initScript> 
+	</code> 
+</appwizard> 

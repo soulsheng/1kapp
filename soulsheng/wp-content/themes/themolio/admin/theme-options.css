@@ -1,0 +1,10 @@
+.clear { clear: both; height: 0; line-height: 1; visibility: hidden; margin: 0; padding: 0; }
+.nav-tab-wrapper { margin-top: 20px !important; }
+.settings-section { display: none; padding: 30px; }
+.current-section { display: block; }
+.settings-error { margin-top: 20px !important; margin-bottom: 0 !important; padding-left: 10px !important; }
+.settings-form label { font-family: Georgia, serif; font-style: italic; font-size: 16px; padding-bottom: 10px; margin-bottom: 20px; display: block; border-bottom: 1px #ccc solid; }
+.settings-section p { margin-top: 20px; }
+.settings-section p:first-child { margin-top: 0; }
+.field-meta { margin-left: 15px; }
+.settings-radio-img { vertical-align: middle; margin-left: 15px; margin-right: 15px; }

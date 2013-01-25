@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+<head> 
+<script language="JavaScript"> 
+  var prePage="end";
+  var nextPage="01.htm";
+  var testPage="end";
+  var labPage="end";
+  var libraryPage="end";
+  var studyPage="end";
+  var homePage="end";
+	function showwin(url,winname,properties){
+		window.open(url,winname,properties)
+	}
+</script> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+
+<title>6.3对类的进一步考查</title> 
+<link href="images/css.css" rel="stylesheet" type="text/css"> 
+</head> 
+
+<body topmargin="0">
+<p align="center" class="t1"><br>
+  <strong>类的封装</strong></p>
+<p> 　　封装可以被定义为：<br>
+  　　<img src="images/STAR.GIF" width="18" height="20"> 所有对象内部的属性、方法的范围具有清晰的边界 。 <br>
+  　　<img src="images/STAR.GIF" width="18" height="20"> 描述一个对象与其他对象相互作用、协同工作的接口。<br>
+　　<img src="images/STAR.GIF" width="18" height="20"> 受保护的内部属性、内部实现。 <br>
+　　所谓封装就是类的设计者只是为使用者提供类对象可以访问的部分（接口），而对于类中其他的属性和方法隐藏起来，用户不能访问，这种隐藏和封装机制为程序的编制和系统的维护提供了方便，即不需要知道程序实现的细节，而只要知道类对象可以访问的部分（接口）。<br>
+　　<img src="images/STAR.GIF" width="18" height="20"> public：顾名思义是公共的，说明定义的属性能被任何其他的类和程序所访问并修改，定义的方法能被任意其他的类和程序所访问或调用。 <br>
+　　<img src="images/STAR.GIF" width="18" height="20"> private：表示是私有的，说明定义的属性除了类中自己的方法可以直接访问和修改、定义的方法能被类中自己定义的方法访问外，其他的类和程序不能直接进行访问。 </p>
+<p align="center" class="t1"> <strong>类的封装举例</strong> </p>
+<p><a href="ch6/ch6ex9.java" target="_blank">【例6-9】封装概念示例</a>。<br>
+　　程序编译时，输出的出错信息如程序中的注释。<br>
+原因在于：</p>
+<ol>
+  <li>temp是方法inc()内的局部变量，不能被方法以外所访问。</li>
+  <li>inc()是私有方法，不能被类外部的其他类或程序所访问，即该方法是隐藏的。</li>
+  <li>name是私有属性，不能被类外部的其他类或程序所访问或修改，即属性是隐藏的。</li>
+</ol>    
+　　请读者思考：为什么e1.age++没有出错？
+
+<p align="center" class="t1"> <strong>方法重载与构造方法重载</strong> </p>
+<p>　　两个或两个以上方法可以重名而只需方法的参数说明不同（参数的多少和参数类型的不同）。共享同名的方法称之为重载，而这一过程则称为方法重载。<br>
+  <a href="ch6/ch6ex10.java" target="_blank">【例6-10】使用Math数学类中的max方法</a>。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">程序中使用了Math类中的三个含义近似但又有所不同的三个方法max，每一个方法均返回其参数的最大值，实际上，在Math类中定义了三个max方法，它们是根据参数类型的不同，编译器分别选取具体哪一个方法。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">重载方法的意义在于能使用同一个名字访问一组相关的方法。从某种意义上讲，方法重载使用户能对某种操作取一个通用的名字，而有编译器来选取具体哪个方法来执行操作。
+</p>
+<p align="center" class="t1"> <strong>方法重载与构造方法重载举例</strong> </p>
+<p><a href="ch6/ch6ex11.java" target="_blank">【例6-11】编制一个计数器类，要求能实现加1、加n的操作。</a><br>
+  　　<img src="images/STAR.GIF" width="18" height="20">类Counter中，定义了两个同名的方法incCounter，它们通过参数的不同来进行区分。
+  <br>
+  <a href="ch6/ch6ex12.java" target="_blank">【例6-12】编制一个时间类，要求能使用秒；分、秒；小时、分、秒创建对象，即编制三个构造方法（构造方法重载）</a>。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">程序中定义了三个构造方法，在创建对象时，根据实参的不同，分别采用不同的构造方法来生成对象。<br>
+<a href="ch6/ch6ex13.java" target="_blank">【例6-13】缺省构造方法的使用</a>。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">Java编译器具有一个缺省的构造方法。当用户在设计类时，没有定义构造方法且需要创建一个对象时，Java编译器自动调用缺省的构造方法，分配对象的空间。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">程序中首先使用缺省构造方法创建一个pta对象，此时x和y的值不确定，然后通过init()方法初始化x和y属性。
+</p>
+<p align="center" class="t1"> <strong>传递对象给方法</strong>  </p>
+<p>　　传递对象参数如同数组参数，当调用方法后，形参和实参指向同一个位置，方法中对形参的任何修改直接影响到实参。<br>
+  <a href="ch6/ch6ex14.java" target="_blank">【例6-14】编程：示范简单数据类型、数组以及对象赋值语句的效果</a>。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">简单数据类型变量赋值x1=x2，其结果是将x2中的内容移动到x1单元中，输出x1=x2=2。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">数组名赋值b=a，其结果是使得b和a指向同一个存储区域，即指向a原来所指的单元区域，所以输出b和a是完全一样的。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">对象名赋值o1=o2，其结果是使得o1和o2指向同一个存储区域，即o1和o2指向o2原来所指向的存储区域。<br>
+<a href="ch6/ch6ex15.java" target="_blank"> 【例6-15】编制一个简单数据类型类，类中包含简单数据类型和一个比较方法</a>。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">类Primitive的equals方法中，使用了对象参数，而在main方法中的if (p1.equals(p2))语句中将p2对象传递给p1的equals方法，这样p1的equals方法中对p（形参）的任何操作就是对p2的操作。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">如果在程序中直接对p1和p2进行比较，则意义完全不同，它是判断p1和p2是否指向同一个对象存储区域。
+</p>
+<p align="center" class="t1"> <strong>类中类</strong>  </p>
+<p>　　在类定义中，可以使用两种类中类的方法：<br>
+　　<img src="images/STAR.GIF" width="18" height="20">使用一个类对象作为另一类中的属性；<br>
+　　<img src="images/STAR.GIF" width="18" height="20">在类内部定义另外一个类，即所谓的类的嵌套。<br>
+<a href="ch6/ch6ex16.java" target="_blank">【例6-16】编制一个雇员类，类中有两个属性：姓名和出生日期，而出生日期使用另一个日期类的对象</a>。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">构造方法具有四个参数，其中字符串用于初始化Employee本身的属性，而其他三个参数通过new创建并初始化Date对象born。
+</p>
+<p align="center" class="t1"> <strong>类中类举例</strong></p>
+<p><a href="ch6/ch6ex17.java" target="_blank">【例6-17】编制一个教师类，教师具有的属性有：姓名、年龄、部门和职称，同时定义一个教师类的内部嵌套课程类，它具有的属性有课程名称、课时</a>。<br>
+　　程序中给出了两个重要的特征：</p>
+<ol>
+  <li>如果使用一个类对象作为另一类中的属性，如例6-16，则Employee不能直接访问date类对象中的私有属性。这是因为它们是两个并行的类，为此符合面向对象程序设计中的封装概念。</li>
+  <li>对于嵌套类，由于是它们是一种包含关系，所以可以直接访问，即外部类的可以直接访问内部类的私有属性，例如，Teacher类可以直接访问Course类中的私有属性。</li>
+</ol>
+<p>　　在编制嵌套类时，许多人经常会犯如下错误，即使用一条语句在外部类的构造方法中创建内部类的对象。即将程序中外部类的构造方法修改如下。<br>
+public Teacher(String n,int a,String d,String t,String c[],int h[]){<br>　　
+name=n;age=a;<br>　　
+department=d;<br>　　
+title=t;<br>　　
+Course co=new Course(c,h);<br>
+}<br>　　
+这样由于co对象变量的作用域属于Teacher方法，所以Teacher方法外的任何方法都不能访问这个局部变量。
+</p>
+<p align="center" class="t1"> <strong>关键字this</strong></p>
+<p>　　当调用类对象的方法时，系统自动地使用关键字this表示该对象名，同时，它作为隐含参数传递给调用的方法，这样在类对象方法内就可使用this. methodName(actualArgumentList)或this. AttributeName形式进行访问，其效果与缺省“varName.”一样。<br>
+  <a href="ch6/ch6ex18.java" target="_blank">【例6-18】修改例6-2介绍的队列程序，使用this关键字</a>。</p>
+<p align="center" class="t1"> <strong>StringBuffer类</strong> </p>
+<table border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="235" valign="top"><p>方法</p></td>
+    <td width="333" valign="top"><p>说明</p></td>
+  </tr>
+  <tr>
+    <td width="235" valign="top"><p>StringBuffer()</p></td>
+    <td width="333" valign="top"><p>构造方法，创建一个空的字符串缓冲区，初始缓冲区容量16</p></td>
+  </tr>
+  <tr>
+    <td width="235" valign="top"><p>StringBuffer(int s)</p></td>
+    <td width="333" valign="top"><p>构造方法，创建一个空的字符串缓冲区，初始缓冲区容量s</p></td>
+  </tr>
+  <tr>
+    <td width="235" valign="top"><p>StringBuffer(String str)</p></td>
+    <td width="333" valign="top"><p>构造方法，创建一个空的字符串缓冲区，初始化字符串str，其缓冲区容量大于16 </p></td>
+  </tr>
+  <tr>
+    <td width="235" valign="top"><p>append(String s)</p></td>
+    <td width="333" valign="top"><p>附加字符串s到字符串缓冲区，这个方法有许多重载方法以便于附加不同类型的数据类型，例如append（int x），首先将整型量转换成字符，然后附加到缓冲区，当然也可使用append（char c）附加字符。</p></td>
+  </tr>
+  <tr>
+    <td width="235" valign="top"><p>int capacity()</p></td>
+    <td width="333" valign="top"><p>返回当前字符缓冲区的容量</p></td>
+  </tr>
+  <tr>
+    <td width="235" valign="top"><p>char charAt(int index)</p></td>
+    <td width="333" valign="top"><p>返回index位置的字符</p></td>
+  </tr>
+  <tr>
+    <td width="235" valign="top"><p>deleteCharAt(int index)</p></td>
+    <td width="333" valign="top"><p>删除index位置的字符</p></td>
+  </tr>
+  <tr>
+    <td width="235" valign="top"><p>delete(int startIndex,int endindex)</p></td>
+    <td width="333" valign="top"><p>删除startIndex到endIndex位置的所有字符</p></td>
+  </tr>
+  <tr>
+    <td width="235" valign="top"><p>insert(int index,String st)</p></td>
+    <td width="333" valign="top"><p>将字符串st插入index位置, 这个方法有许多重载方法以便于附加不同类型的数据类型，例如insert(int index,int x)，首先将整型量转换成字符串，然后插入到缓冲区指定位置</p></td>
+  </tr>
+  <tr>
+    <td width="235" valign="top"><p>int length()</p></td>
+    <td width="333" valign="top"><p>返回缓冲区中字符串的长度（注意与capacity的差异在于一个是缓冲区容量，一个是缓冲区中实际字符串的长度）</p></td>
+  </tr>
+  <tr>
+    <td width="235" valign="top"><p>setCharAt(int index,char ch)</p></td>
+    <td width="333" valign="top"><p>用ch字符替换index位置的字符</p></td>
+  </tr>
+  <tr>
+    <td width="235" valign="top"><p>setLength(int len)</p></td>
+    <td width="333" valign="top"><p>设置缓冲区中字符串的长度为len</p></td>
+  </tr>
+  <tr>
+    <td width="235" valign="top"><p>String toString()</p></td>
+    <td width="333" valign="top"><p>将缓冲区中的字符串以String对象形式返回</p></td>
+  </tr>
+</table>
+<p> <a href="ch6/ch6ex19.java" target="_blank">【例6-19】StringBuffer类方法的示范</a>。</p>
+<p align="center">
+  <span class="t1">StringBuffer类举例</span></p>
+<a href="ch6/ch6ex20.java" target="_blank">【例6-20】StringTokenizer类的使用</a>。<br> 　　<img src="images/STAR.GIF" width="18" height="20">StringTokenizer类包含在Java语言的java.util包中，所以首先必须使用import 
+java.util.*语句将其引入<br>
+　　<img src="images/STAR.GIF" width="18" height="20">StringTokenizer类具有许多方法，其中，构造方法以字符串作为参数，即StringTokenizer（String 
+s）；nextToken方法用于抽取下一个单词或标记；asMoreTokens方法用于判断是否还有更多的单词或标记<br>
+　　<img src="images/STAR.GIF" width="18" height="20">缺省的标记分隔符是空格，当然也可以定义自己的分隔符，其语句格式如下：<br>
+StringTokenizer（String s，String delimiter）；<br>
+<a href="ch6/ch6ex21.java" target="_blank">【例6-21】修改例6-20，使用“/”分隔符</a>。
+</body> 
+</html> 

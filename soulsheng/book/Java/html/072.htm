@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+<head> 
+<script language="JavaScript"> 
+  var prePage="end";
+  var nextPage="01.htm";
+  var testPage="end";
+  var labPage="end";
+  var libraryPage="end";
+  var studyPage="end";
+  var homePage="end";
+	function showwin(url,winname,properties){
+		window.open(url,winname,properties)
+	}
+</script> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+
+<title>7.2Java异常处理机制</title> 
+<link href="images/css.css" rel="stylesheet" type="text/css"> 
+</head> 
+
+<body topmargin="0">
+<p align="center" class="t1"><br>
+  Java异常处理机制</p>
+　　Java语言的异常处理机制，在程序中监视可能发生的异常的程序代码，并将所有异常处理代码集中放置在程序某处，使完成正常功能的程序代码与进行异常处理的程序代码分开，这里处理异常的代码称为处理机（Exception 
+handler）。主要的的异常处理类包括：<br>
+<img src="images/STAR.GIF" width="18" height="20">RuntimeException：表示程序执行期间，JVM内所出现的异常情况，它们包含了进一步定义的类，例如ArithmeticException、ArrayIndexOutOfBoundsException以及NumberFormatException。<br>
+<img src="images/STAR.GIF" width="18" height="20">IOException。涉及处理输入和输出异常。<br>
+<p align="center" class="t1">处理异常</p>
+　　“捕获”异常基本结构的语法：<br>
+try{<br>
+　　//可能引起异常的代码段<br>
+}catch（Exception e）{<br>
+　　//处理异常e<br>
+}<br>
+语义：<br>
+　　<img src="images/STAR.GIF" width="18" height="20">当try代码块中出现一个异常时，这个代码块的剩余部分将终止执行，程序转入catch代码块中，执行catch代码块的内容。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">catch代码块相似于方法（过程或函数），接收某一类型的参数，这里e并不是专用的，可以使用任何标识符。（通常异常类型已经给出了足够的异常信息，有时可以在catch代码块中不使用此标识符。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">对于catch代码块，重要的是使用两个主要的公共方法：<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">getMessgae()：用于获得与异常有关的任何特定信息<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">printStackTrace()：用于输出程序运行时堆栈的轨迹（也可理解为程序运行的轨迹），它罗列了所涉及方法的方法名、异常名与原因、程序文件名与行号。<br>
+<p align="center" class="t1">处理异常举例1</p>
+　　<a href="ch7/ch7ex21.java" target="_blank">【例7-2】try_catch结构</a>。<br>
+　　说明：程序中，当x除以y时出现异常，语句System.out.println(&quot;you won't see this!&quot;)始终不会执行，即异常出现时，try的剩余代码终止执行，程序将转入catch代码块。程序的输出为：<br>
+java.lang.ArithmeticException:/by zero<br>
+　　at ch7ex2.main(ch7ex2.java:5)<br>
+　　如果将程序修改成下列代码：<br>
+（<a href="ch7/ch7ex22.java" target="_blank">ch7ex22.java</a>）<br>
+　　程序的输出：<br>
+java.lang.ArithmeticException:/by zero<br>
+at ch7ex2.third(ch7ex2.java:14)<br>
+at ch7ex2.second(ch7ex2.java:9)<br>
+at ch7ex2.first(ch7ex2.java:6)<br>
+at ch7ex2.main(ch7ex2.java:3)<br>
+　　说明：<br>
+　　读者可能会产生这样的疑问，如果程序中没有try_catch异常处理结构，程序的输出不是同样如此，其中的奥妙在于，当程序中没有try_catch异常处理代码或者不能捕获某一特殊异常时，系统将会传递这个异常到Java运行环境，有Java运行环境输出出错信息。　　但是对于Java运行环境输出出错信息的场合，程序将会终止执行，返回到操作系统。而对于由用户通过try_catch异常处理代码捕获异常的场合，程序可以继续执行其后续的代码。<br>
+　　如下所修改的程序：<br>
+（<a href="ch7/ch7ex23.java" target="_blank">ch7ex23.java</a>）<br>
+　　程序的输出：<br>
+java.lang.ArithmeticException:/by zero<br>
+　　at ch7ex2.main(ch7ex2.java:5)<br>
+program continuing to run<br>
+　　如果，用户能预先知道可能发生的错误，如上述例子中的算术操作，则可以使用特定的异常处理。<br>
+<a href="ch7/ch7ex31.java" target="_blank">【例7-3】ArithmeticException</a><br>
+　　程序的输出：<br>
+　　/by zero<br>
+　　有时，用户也可以在catch代码块中定义自己希望输出的信息或想处理的代码。例如可以将上述程序修改如下：<br>
+（<a href="ch7/ch7ex32.java" target="_blank">ch7ex32.java</a>）<br>
+　　程序的输出：<br>
+Arithmetic error:division by zero<br>
+<a href="ch7/ch7ex4.java" target="_blank">【例7-4】ArrayIndexOutOfBounds</a><br>
+　　程序输出：<br>
+java.lang.ArrayIndexOutOfBoundsException<br>
+　　at ch7ex4.main(ch7ex4.java:8)<br>
+<p align="center" class="t1">捕获多个异常</p>
+<p>　　Java语言允许使用单一的catch代码块和标准的异常类型Exception，也可以使用多个catch代码块，每一个表示一种异常类型。Exception异常具有许多具体的异常子类型，用户可以使用总的，也可以明确定义某一类型的异常。</p>
+<p align="center">
+  <img src="images/07/071-4.jpg" width="625" height="498">
+</p>
+<p align="center" class="t1">捕获多个异常语法</p>
+　　捕获多种可能出现的异常try_catch结构的语法：<br>
+try{<br>
+　　//可能引起异常的代码段<br>
+}catch（Exception1 e1）{<br>
+　　//处理异常e1<br>
+}catch（Exception2 e2）{<br>
+　　//处理异常2<br>
+} catch（Exception3 e3）{<br>
+　　//处理异常3<br>
+} catch（Exception4 e4）{<br>
+　　//处理异常4<br>
+}<br>
+…<br>
+<p align="center" class="t1">捕获多个异常举例</p>
+　　<a href="ch7/ch7ex5.java" target="_blank">【例7-5】多个catch结构</a>。<br>
+　　程序读入5个以字符串形式输入并以空格分隔的浮点数，通过StringTokenizer分离出每个浮点数字符串，当字符串不是由0～9和小数点组成时，出现一个NumberFormatException异常，程序输出该信息并忽略，继续后续操作。如果输入字符串中浮点数的个数超出数组的范围，则出现一个IndexOutOfBoundsException异常，程序显示There 
+are more than 5 string on the list。<br>
+<p align="center" class="t1">finally代码块</p>
+　　在try_catch结构中，还可以加入final代码块，它是一个可选项。<br>
+语法结构：<br>
+try{<br>
+　　//可能引起异常的代码段<br>
+}catch（Exception1 e1）{<br>
+　　//处理异常e1<br>
+}catch（Exception2 e2）{<br>
+　　//处理异常2<br>
+} catch（Exception3 e3）{<br>
+　　//处理异常3<br>
+} catch（Exception4 e4）{<br>
+　　//处理异常4<br>
+}<br>
+…<br>
+finally{<br>
+　　//必须执行的代码块<br>
+}<br>
+<img src="images/STAR.GIF" width="18" height="20">final代码块表示无论异常是否发生，其代码块必须执行。即如果有异常情况，执行完对应的catch代码块后，将执行finally代码块，如果没有异常出现，当执行完try代码块后，将执行finally代码块。<br>
+<img src="images/STAR.GIF" width="18" height="20">一般finally代码块是try_catch_finally结构的统一出口，可用于进行“善后处理”，例如释放资源、关闭使用完毕的文件等等。 
+<p class="t1">&nbsp;</p>
+</body> 
+</html> 

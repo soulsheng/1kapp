@@ -1,0 +1,351 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+<head> 
+<script language="JavaScript"> 
+  var prePage="end";
+  var nextPage="01.htm";
+  var testPage="end";
+  var labPage="end";
+  var libraryPage="end";
+  var studyPage="end";
+  var homePage="end";
+	function showwin(url,winname,properties){
+		window.open(url,winname,properties)
+	}
+</script> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+
+<title>13.5 数据库访问技术(JDBC)</title> 
+<link href="images/css.css" rel="stylesheet" type="text/css"> 
+</head> 
+
+<body topmargin="0">
+<p align="center" class="t1"><br>
+  数据库访问技术(JDBC)</p>
+　　<img src="images/STAR.GIF" width="18" height="20">JDBC是Java语言用来访问关系数据库的一组 
+API,它由一组用 Java 编程语言编写的类和接口组成.<br>
+　　<img src="images/STAR.GIF" width="18" height="20">通过JDBC不必为某种数据库编写专门的程序,只需用 
+JDBC API 写一个程序，它可向相应数据库发送 SQL 语句。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">JDBC扩展了 
+Java 的功能,例如，用 Java 和 JDBC API 可以发布含有 Applet 的网页，而该 Applet 使用的信息可能来自远程数据库。企业也可以用 
+JDBC 通过 Intranet 将所有职员(可以使用不同平台)连到一个或多个内部数据库中。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">常见的JDBC驱动程序可分为四个种类：<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">JDBC-ODBC桥加ODBC驱动程序：JavaSoft桥产品利用ODBC驱动程序提供JDBC访问。<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">本地API：这种类型的驱动程序把客户机API上的JDBC调用转换为DBMS的调用。<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">JDBC网络纯Java驱动程序：这种驱动程序将JDBC转换为与DBMS无关的网络协议，之后这种协议又被某个服务器转换为一种DBMS协议。这种网络服务器中间件能够将它的纯Java客户机连接到多种不同的数据库上。所用的具体协议取决于提供者。<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">本地协议纯Java驱动程序：这种类型的驱动程序将JDBC调用直接转换为DBMS所使用的网络协议。这将允许从客户机机器上直接调用DBMS服务器，是Intranet访问的一个很实用的解决方法(本书采用的方法)。<br>
+<p align="center" class="t1">JDBC API中主要接口</p>
+　　<img src="images/STAR.GIF" width="18" height="20">DBC API 
+可以表示为一系列Java接口，应用程序设计人员能够利用这些接口访问特定数据库。最重要的接口包括：<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">处理驱动程序加载并为创建新数据库连接提供支持的 
+java.sql.DriverManager<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">代表到特定数据库的连接的 java.sql.Connection<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">在给定连接上执行 SQL 语句的 java.sql.Statement<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">控制对给定的 Statement 行结果访问的 
+java.sql.ResultSet<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">java.sql.Statement 接口有两个重要的子类型：执行预编译的 
+SQL 语句java.sql. PreparedStatement 和调用数据库中存储过程的 java.sql.CallableStatement。 <br>
+<p align="center" class="t1">示例数据库表结构　　</p>
+<p>　　<img src="images/STAR.GIF" width="18" height="20">示例是一个小型零售商店销售管理数据库（retail_db），它有三张表，分别存放进货、库存和销售信息。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">实例中，后台数据库采用的是SQL 
+Server 2000，并用第四类JDBC访问数据库。　</p>
+<p align="center">
+  进货表(stocking_table)
+</p>
+<table width="59%" height="175" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td><div align="center">字段名称 </div></td>
+    <td><div align="center">中文名称 </div></td>
+    <td><div align="center">类型 </div></td>
+    <td><div align="center">长度</div></td>
+  </tr>
+  <tr> 
+    <td>Wares_ID</td>
+    <td> 商品编号 </td>
+    <td>vchar </td>
+    <td>10</td>
+  </tr>
+  <tr> 
+    <td>Wares_name </td>
+    <td>商品名称 </td>
+    <td>vchar </td>
+    <td>50</td>
+  </tr>
+  <tr> 
+    <td>I_amount </td>
+    <td>进货数量 </td>
+    <td>Int</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td>I_price </td>
+    <td>进货单价 </td>
+    <td>float</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td>Units </td>
+    <td>计量单位 </td>
+    <td>vchar </td>
+    <td>10</td>
+  </tr>
+  <tr> 
+    <td>I_Date </td>
+    <td>进货时间 </td>
+    <td>date</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+　　　　　　　　　　　
+<div align="center">库存表(storage_table)<br>
+</div>
+<table width="58%" height="154" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td><div align="center">字段名称 </div></td>
+    <td><div align="center">中文名称 </div></td>
+    <td><div align="center">类型 </div></td>
+    <td><div align="center">长度</div></td>
+  </tr>
+  <tr> 
+    <td>Wares_ID </td>
+    <td>商品编号</td>
+    <td> vchar </td>
+    <td>10</td>
+  </tr>
+  <tr> 
+    <td>Wares_name </td>
+    <td>商品名称 </td>
+    <td>vchar </td>
+    <td>50</td>
+  </tr>
+  <tr> 
+    <td>S_amount </td>
+    <td>库存数量 </td>
+    <td>int </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td>Units </td>
+    <td>计量单位 </td>
+    <td>vchar </td>
+    <td>10</td>
+  </tr>
+  <tr> 
+    <td>S_Date </td>
+    <td>时间 </td>
+    <td>date </td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+　　　　　　　　　　　　
+<div align="center">销售表(sales_table)<br>
+</div>
+<table width="58%" height="154" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td><div align="center">字段名称 </div></td>
+    <td><div align="center">中文名称 </div></td>
+    <td><div align="center">类型 </div></td>
+    <td><div align="center">长度</div></td>
+  </tr>
+  <tr> 
+    <td>Wares_ID </td>
+    <td>商品编号</td>
+    <td> vchar </td>
+    <td>10</td>
+  </tr>
+  <tr> 
+    <td>Wares_name </td>
+    <td>商品名称 </td>
+    <td>vchar </td>
+    <td>50</td>
+  </tr>
+  <tr> 
+    <td>O_amount </td>
+    <td>销售数量 </td>
+    <td>int </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td>O_price</td>
+    <td>销售单价</td>
+    <td>float </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td>Units </td>
+    <td>计量单位 </td>
+    <td>vchar </td>
+    <td>10</td>
+  </tr>
+  <tr> 
+    <td>S_Date </td>
+    <td>时间 </td>
+    <td>date </td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p align="center" class="t1">JDBC访问数据库过程</p>
+　　<img src="images/STAR.GIF" width="18" height="20">指定要连接的源数据库:JDBC用类似URL的句法描述源数据库。源数据库的URL由三部分组成，各部分间用冒号分隔：<br>
+jdbc:&lt;子协议&gt;:&lt;子名称&gt;<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">JDBC URL中的协议总是jdbc。<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">&lt;子协议&gt;是驱动程序名或数据库连接机制（这种机制可由一个或多个驱动程序支持）的名称,如网络命名服务。<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">&lt;子名称&gt;是一种标识数据库的方法，它可以依不同的子协议而变化，它还可以有子名称（含有驱动程序编程员所选的任何内部语法）。使用子名称的目的是为定位数据库提供足够的信息。<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">如果数据库是通过 Internet 来访问的，则在 
+JDBC URL 中应将网络地址作为子名称的一部份括进去，且必须遵循如下所示的标准 URL 命名约定： <br>
+//主机名:端口/子协议<br>
+　　例11：下面的源数据库URL表示通过Microsoft的SQLserver子协议，访问是本地端口号为1433上的Student数据库：<br>
+　　jdbc:Microsoft:SQLserver://localhost:1433;databaseName=retail<br>
+<p align="center" class="t1">建立数据库连接</p>
+　　<img src="images/STAR.GIF" width="18" height="20">DriverManager类负责选择数据库驱动程序和建立数据库连接。但是，JDBC驱动程序管理器只能激活已注册的JDBC驱动程序，因此，必须先注册JDBC驱动程序。可以通过装入一个JDBＣ驱动程序类来注册一个JDBC驱动程序。<br>
+例12：<br>
+Class.forName(&quot;com.microsoft.jdbc.sqlserver.SQLServerDriver&quot;)；<br>
+　　<img src="images/STAR.GIF" width="18" height="20">成功地注册一个JDBC驱动后，可用类似下面语句打开一个数据库连接：<br>
+String url= ＂jdbc:Microsoft:SQLserver://localhost:1433;databaseName= retail＂；<br>
+String user=＂sa＂；<br>
+String ps=＂java2004＂<br>
+Connection conn=DriverManager.getConnection(url,user,ps)；<br>
+　　<img src="images/STAR.GIF" width="18" height="20">驱动程序管理器依次访问目前注册过的JDBC驱动程序，直到找到能使用数据库URL指定的协议的驱动程序。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">getConnection（）方法返回一个Connection对象，可以利用这个对象执行对所连接的数据库所进行的数据操作。<br>
+<p align="center" class="t1">执行SQL语句　</p>
+<p>　　<img src="images/STAR.GIF" width="18" height="20">查询语句：JDBC查询需要创建一个Statement对象。接着调用Statement对象类的executeQuery（）方法，并把本次查询的SQL命令语句串做为参数传递给它，这样就可执行查询工作。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">可以使用一个Statement对象执行多次互不相关的查询。executeQuery()方法返回一个ResultSet类对象，可以通过ResutlSet类的有关方法依次访问ResultSet对象中的查询结果。<br>
+  　　例13：查询商品代码“0001x”的库存数量：<br>
+  …<br>
+  private Statement comm;<br>
+  private ResultSet rst;<br>
+  private String sql_query=＂Select S_amount from Storage_table where wareID=＇0001x＇＂;<br>
+  …<br>
+  comm=conn.createStatement();<br>
+  rst=comm.executeQuery(sql_query);<br>
+  …<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">处理查询结果：查询执行结果都存放在一个ResultSet类的rst对象中。该对象有一个游标指向其当前行。最初，游标的位置是在结果集第一行之前，通过调用next()方法来移动游标。如果游标已经指向最后一条记录时，再调用next()方法，就会返回false。<br>
+  　　例14：下例代码可将rst中所有数据按行打印出来：<br>
+  while (rst.next()){<br>
+  　　String wareID=rst.getString(“Wares_ID”);<br>
+  　　String wareName=rst.getString(“Wares_name”);<br>
+  　　String sAmount=rst.getInt(“S_amount”);<br>
+  　　System.out.println(“Wares_ID=”+wareID+“ware name=”+warename<br>
+  　　　　　　　　　　　　　　　　　+“storing amount=”+sAmount);<br>
+  　　…<br>
+  }<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">ResultSet类为每种数据类型都提供了访问方法，每种方法提供两种形式：<br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20">以整数为参数；表示读取与这个整数相应的列值，如rst.getString(1)就是获取第一列的值。<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">以字符串为参数：表示获取以这个字符串为名称的字段值，如rst.getString(＂Wares_ID＂)就是获取字段Wares_ID的值。</p>
+<p align="center">
+  SQL数据类型及其相应的java编程语言类型
+</p>
+<table width="61%" height="400" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td><div align="center">SQL数据类型 </div></td>
+    <td><div align="center">Java数据类型</div></td>
+  </tr>
+  <tr> 
+    <td>INTEGER或INT </td>
+    <td>int</td>
+  </tr>
+  <tr> 
+    <td>SMALLINT </td>
+    <td>short</td>
+  </tr>
+  <tr> 
+    <td>NUMBER(m,n)，DECIMAL(m,n)或DEC(m,n) </td>
+    <td>java.sql.Numeric</td>
+  </tr>
+  <tr> 
+    <td>FLOAT(n) </td>
+    <td>double</td>
+  </tr>
+  <tr> 
+    <td>REAL </td>
+    <td>float</td>
+  </tr>
+  <tr> 
+    <td>DOUBLE </td>
+    <td>double</td>
+  </tr>
+  <tr> 
+    <td>CHARACTER(n)或CHAR(n) </td>
+    <td>String</td>
+  </tr>
+  <tr> 
+    <td>VARCHAR(n) </td>
+    <td>String</td>
+  </tr>
+  <tr> 
+    <td>BOOLEAN </td>
+    <td>Boolean</td>
+  </tr>
+  <tr> 
+    <td>DATE </td>
+    <td>java.sql.Date</td>
+  </tr>
+  <tr> 
+    <td>TIME </td>
+    <td>java.sql.Time</td>
+  </tr>
+  <tr> 
+    <td>TIMESTAMP </td>
+    <td>java.sql.Timestamp</td>
+  </tr>
+  <tr> 
+    <td>BLOB </td>
+    <td>java.sql.Blob</td>
+  </tr>
+  <tr> 
+    <td>CLOB </td>
+    <td>java.sql.Clob</td>
+  </tr>
+  <tr> 
+    <td>ARRAY </td>
+    <td>java.sql.Array</td>
+  </tr>
+</table>
+<p>　　<img src="images/STAR.GIF" width="18" height="20">更新操作：Statement类的executeUpdate( 
+  )方法，以表示更新及删除的SQL命令语句串做为参数。<br>
+  　　例15：下列代码是将商品代码“002A”的库存数量改为20，另外，删除进货表中商品代码为“001A”的记录<br>
+  private Statement comm;<br>
+  private ResultSet rst;<br>
+  private String sql_update=＂Update storage_table Set s_amount<br>
+  　　　　　　　　　　　　　　　　　　　=20 Where wares_ID=’002A’＂;<br>
+  pvivate String sql_del=＂Delete stocking_table <br>
+  　　　　　　　　　　　　　　　　　　　Where wares_ID=’001A’ ＂;<br>
+  …<br>
+  comm=conn.createStatement();<br>
+  comm.executeUpdate(sql_update);<br>
+  comm..executeUpdate(sql_del);<br>
+  …<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">两个与执行数据操作有关的接口PreparedStatement和CallableStatement：<br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20">PreparedStatement继承了Statement接口，并与之在两方面有所不同：PreparedStatement 
+  实例包含已编译的 SQL 语句。这就是使语句“准备好”。包含于 PreparedStatement 对象中的 SQL 语句可具有一个或多个 IN 参数。IN参数的值在 
+  SQL 语句创建时未被指定。相反的，该语句为每个 IN 参数保留一个问号（“？”）作为占位符。每个问号的值必须在该语句执行之前，通过适当的setXXX 方法来提供。由于 
+  PreparedStatement 对象已预编译过，所以其执行速度要快于 Statement 对象。另外它还添加了一整套方法，用于设置发送给数据库以取代 IN 
+  参数占位符的值。同时，三种方法 execute、 executeQuery 和 executeUpdate 已被更改以使之不再需要参数。<br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20">CallableStatement又继承了PreparedStatement接口，CallableStatement 
+  对象为所有的 DBMS 提供了一种以标准形式调用已储存过程的方法。已储存过程储存在数据库中。对已储存过程的调用是 CallableStatement对象所含的内容。 
+  <br>
+  　　<img src="images/STAR.GIF" width="18" height="20">断开数据连接：断开连接之前，应该关闭Statement(CallableStatemen及PreparedStatement)对象，然后再断开数据库连接。方法是调用Statement或Connetion的close()，<br>
+  　　例16：<br>
+  …<br>
+  private static Statement comm;<br>
+  private static Connection conn;<br>
+  …<br>
+  comm.close();<br>
+  conn.close();<br>
+  …<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">在调用JDBC 
+中类对象的方法时，都会有异常抛出，如Statement接口中的方法都会抛出SQLException，因此，在编写程序时应该注意对这些异常的处理。</p>
+<p align="center" class="t1">JDBC应用举例　　</p>
+<p>【例13-5】本节例子，实现了上述的小型零售商店管理数据库管理。例子中，已将JDBC的访问数据库的过程全部封装在类SqlDB中，要使用该类，只需修改类变量url和driver的值。其他三个类Stocking、Storing和Sales分别用以进货、库存和销售管理。它们实现了各个关系中数据的增加、查询、修改和删除操作。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">后台数据库管理系统为SQL 
+  Server2000，采用第四类JDBC，即微软公司提供的JDBC，它的三个.jar文件（msbase.jar、mssqlserver.jar和msutil.jar）必须放在环境变量classpath中。<br>
+  （<a href="ch13/SqlDB.java" target="_blank">SqlDB.java</a>）<br>
+  （<a href="ch13/Retail.java" target="_blank">Retail.java</a>）<br>
+　　<img src="images/STAR.GIF" width="18" height="20">程序运行结果</p>
+<p align="center">
+  <img src="images/13/g14-5a.gif" width="400" height="150"><br>
+  <img src="images/13/g14-5b.gif" width="400" height="150"><br>
+  <img src="images/13/g14-5c.gif" width="400" height="150"></p>
+　　<img src="images/STAR.GIF" width="18" height="20">在主窗体中，单击不同子菜单，可以进行相应的关系管理界面，然后通过单击不同按钮完成对数据库的不同操作。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">如在进货管理界面中，我们输出一个商品代码，单击查询。如果在Stocking_table中有该商品代码的商品将被检索出来，然后，可通过单击“下一条”按钮来浏览数据。库存管理和销售管理的应用程序界面在操作上也与进货管理界面操作相同。
+</body> 
+</html> 

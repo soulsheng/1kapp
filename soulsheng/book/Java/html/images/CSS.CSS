@@ -1,0 +1,46 @@
+a:hover {
+	color: #0000FF
+}
+a:link {
+	color: #0000FF
+}
+a:visited {
+	color: #990099}
+body {
+	background: #ffffff; font-size: 10pt;line-height: 180%
+}
+td {
+	font-family: ??; font-size: 10pt; line-height: 180%
+}
+
+.t1 {
+	font-size: 12pt;
+	line-height: 20px;
+	color: #FF9900;
+	text-decoration: none;
+	font-weight: bold;
+}
+.t2 {
+	font-size: 10pt;
+	font-weight: bold;
+	color: #000000;
+	text-decoration: none;
+	line-height: 25px;
+}
+.b1 {
+	font-size: 9pt;
+	color: #000000;
+	text-decoration: none;
+	line-height: 15px;
+}
+.b2 {
+	font-size: 10pt;
+	color: #FF0000;
+	text-decoration: none;
+}
+.b3 {
+	font-size: 10pt;
+	color: #FF6600;
+	text-decoration: none;
+	line-height: 20px;
+}

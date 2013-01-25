@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+<head> 
+<script language="JavaScript"> 
+  var prePage="end";
+  var nextPage="01.htm";
+  var testPage="end";
+  var labPage="end";
+  var libraryPage="end";
+  var studyPage="end";
+  var homePage="end";
+	function showwin(url,winname,properties){
+		window.open(url,winname,properties)
+	}
+</script> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+
+<title>12.3 常用算法</title> 
+<link href="images/css.css" rel="stylesheet" type="text/css"> 
+</head> 
+
+<body topmargin="0">
+<p align="center" class="t1"><br>
+  排序</p>
+　　<img src="images/STAR.GIF" width="18" height="20">Java标准库中，已提供了排序算法的类，如Collections类（注意，前面我们介绍的是Collection接口，它是不提供排序算法的）提供了对列表（List）中元素进行排序的方法sort()。代码如下：<br>
+…<br>
+List faculties=new LinkdList（）;//充填数据结构<br>
+Collections.sort（faculities）;//按成绩升序排列<br>
+…<br>
+　　<img src="images/STAR.GIF" width="18" height="20">要对List对象中的元素进行排序，前提是列表(faculities)中的元素已经实现了Comparable接口。如果要想按照其他方法给这个列表排序，可以使用sort(List 
+list,Comparator c)方法：将一个Comparator对象作为参数传递给该方法。下面是这种排序方法的实现：<br>
+…<br>
+List faculties=new LinkdList（）;//充填数据结构<br>
+Collections.sort（sutdents,<br>
+　　new Comparator （）｛<br>
+　　　　public compare(Object a, Object b){<br>
+　　　　double diffSalary=(Faculty)a.getSalary()-(Faculty)b.getSalary();<br>
+　　　　if (diffSalary&gt;0) return 1;<br>
+　　　　if (diffSalary&lt;0)return -1;<br>
+　　　　else return 0;<br>
+　　}<br>
+});<br>
+…<br>
+　　<img src="images/STAR.GIF" width="18" height="20">Collections类中还提供了使列表元素按关键字递减的顺序进行排序的成员方法。这个方法的返回值是一个比较器，它要求元素实现必须实现Comparable接口，因为这个返回的比较器是b.compareTo(a)：<br>
+Collections.sort (faculties, Collections.reverseOrder());<br>
+　　<img src="images/STAR.GIF" width="18" height="20">通过这个种方法可以按照faculties的元素类型的compareTo()方法定义的排序方向相反的方法进行排序。<br>
+　　【例12-6】编一个程序，用链表来存放教工信息。我们先按工号排序，工号相同，再按薪水排序。（加上链接打开/显示DemoSort）<br>
+运行结果：<br>
+Faculties befor sorting:<br>
+　fid　 fname 　Salary<br>
+08361　 Tom 　　1890.98<br>
+07651　 Jike　　3995.75<br>
+08233 　Lucy 　 2070.62<br>
+06163 　Anny 　 2070.62<br>
+Faculties sorted by fid:<br>
+fid 　　fname　 Salary<br>
+06163 　Anny 　2070.62<br>
+07651 　Jike 　3995.75<br>
+08233 　Lucy 　2070.62<br>
+08361 　Tom 　1890.98<br>
+Faculties sorted by salary:<br>
+fid 　　fname 　salary<br>
+08361 　Tom 　　f1890.98<br>
+06163 　Anny 　 f2070.62<br>
+08233　 Lucy 　 f2070.62<br>
+07651 　Jike 　 f3995.75<br>
+Faculties sorted by salary:<br>
+fid 　　fname 　salary<br>
+08361 　Tom 　　f1890.98<br>
+08233 　Lucy 　 f2070.62<br>
+07651 　Jike 　 f3995.75<br>
+06163 　Anny 　 f2070.62<br>
+<p align="center" class="t1">查找</p>
+　　<img src="images/STAR.GIF" width="18" height="20">Java标准库中的Collections类的方法binarySearch方法实现查找算法。注意，这个方法的作用对象（数据结构）必须是有序的，否则它将返回错误结果。为了保证查找结果的正确性，必须给出相应的实现了List接口的数据结构和待查元素。这个数据结构要么实现了Comparable接口，或提供了自己的排序方法。binarySearch()方法有两种形式：<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">第一种形式：dest=Collections. 
+binarySearch(list, key);<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">第二种形式：dest=binarySearch( 
+list, key, c);<br>
+　　<img src="images/STAR.GIF" width="18" height="20">第一种形式要求List对象已经实现了Comparable接口，而第二种形式可以指定定义比较器c，如果没有指定就采用与第一种形式相同方式，表示采用List中实现的比较方法。如果返回值dest≥0，则这个值就是匹配元素的索引，这时可以通过list.get(dest)得到与key相同的元素；如果返回值dest＜0，表示没有查找到匹配的元素。<br>
+　　【例12-7】分两种情况对一个链表中的元素进行查找：一种是元素没经过排序，另一元素经过排序。看看两种情况下，查找结果是否相同。（<a href="ch12/HalfLookup.java" target="_blank">HalfLookup.java</a>）<br>
+运行结果：<br>
+The position of Key is -1<br>
+The position of Key is 0<br>
+</body> 
+</html> 

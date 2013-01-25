@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+
+<title>5.5 tomcat 配置</title> 
+<link href="images/css.css" rel="stylesheet" type="text/css"> 
+</head> 
+
+<body topmargin="0">
+<p align="center" class="t1"><br>
+Tomcat环境配置</p>
+<p>　　
+
+
+TOMCAT软件由两种格式，一种是执行文件(.exe文件)，它需要安装；另一种是WinRAR压缩文件(.tar文件)或者是WinRAR ZIP压缩文件，只需压缩软件(例如WinRAR)解压缩到指定目录就可。<br>
+　　<img src="images/star.gif" width="18" height="20">安装Tomcat v4.1.27：它是.tar压缩文件，只需将其解压缩到指定的目录 。 <br>
+  　　<img src="images/star.gif" width="18" height="20"> 安装Tomcat v5.0.30：它是.exe可执行文件，运行jakarta-tomcat-5.0.30.exe 按照提示进行安装，如果安装成功，程序会提示启动Tomcat并查看readme文档。Tomcat正常启动后会在系统栏加载图标<img src="images/15icon1.jpg" width="23" height="19">。<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">在图标上右键鼠标可以看到一些设置项目。</p>
+<p align="center"><img src="images/tomcat-1.jpg" width="111" height="97"></p>
+<p> <br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20">点击Configure，选择Startup type为automatic自动启动，这样每次开机后就会自动运行Tomcat。</p>
+<p align="center"><img src="images/tomcat-2.jpg" width="248" height="234"></p>
+<p><br>
+  　　<img src="images/star.gif" width="18" height="20">配置Tomcat：在“我的电脑”\“属性”\“高级”\“环境变量”\“系统变量”中添加以下环境变量(假定你的tomcat安装在d:\tomcat-4.1.27或者d:\tomcat-5.0.30)。<br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20">变量名：CATALINA_HOME，变量值：d:\tomcat-4.1.27（或者d:\tomcat-5.0.30） <br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20">变量名：CATALINA_BASE，变量值：d:\tomcat-4.1.27（或者d:\tomcat-5.0.30） <br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20">修改环境变量中的classpath，把Tomat安装目录下的common\lib下的servlet.jar追加到classpath中去，修改后的classpath为：<br>
+classpath=.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;%CATALINA_HOME%\common\lib\servlet.jar;<br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20"> 在IE中访问http://localhost:8080。 </p>
+<p align="center"><img src="images/tomcat-3.jpg" width="410" height="297"></p>
+<p align="center">  <br>
+  <strong class="t1">运行JSP文件</strong>  </p>
+<p>　　<img src="images/star.gif" width="18" height="20">进入Tomcat-4.1.27\webapps目录，在webapps目录下新建一个javabook目录(jsp的app目录，目录名可由用户任意选择)。 <br>
+  　　<img src="images/star.gif" width="18" height="20">javabook目录下新建一个WEB-INF目录（目录名称是区分大小写）。 <br>
+  　　<img src="images/star.gif" width="18" height="20">WEB-INF下新建一个文件<a href="ch15/javabooktomcat/WEB-INF/web.xml" target="_top">web.xml</a>。<br>
+　　<img src="images/star.gif" width="18" height="20">在javabook目录下新建一个测试的jsp页面，文件名为index.jsp，文件内容如下：<br>
+&lt;html&gt;<br>
+&lt;body&gt;<br>
+&lt;center&gt; Now time is: &lt;%=new java.util.Date()%&gt; &lt;/center&gt;<br>
+&lt;/body&gt;<br>
+&lt;/html&gt;
+  <br>
+  　　<img src="images/star.gif" width="18" height="20">重新启动Tomcat。 <br>
+　　<img src="images/star.gif" width="18" height="20">打开浏览器，输入http://localhost:8080/javabook/index.jsp。 </p>
+<p align="center"><img src="images/tomcatjsp1.jpg" width="315" height="201"></p>
+<p>&nbsp;</p>
+<p align="center"><span class="t1"> <strong>运行servlet文件</strong></span></p>
+<p>
+  　　<img src="images/STAR.GIF" width="18" height="20">创建如下的一个servlet程序：<br>
+  <a href="ch15/javabooktomcat/WEB-INF/classes/Test.java" target="_blank">Test.java</a>  <br>
+　　<img src="images/STAR.GIF" width="18" height="20">编译：将Test.java放在c:\test下，使用如下命令编译：<br>
+C:\Test&gt;javac Test.java <br>
+如果编译成功，在c:\Test下会产生一个编译后的servlet文件：Test.class。
+<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">将结构test\Test.class剪切到d:\tomcat-4.1.27\webapps\javabook\WEB-INF \classes下，也就是剪切那个test目录到classes目录下，如果classes目录不存在，就新建一个。 现在webapps\javabook\WEB-INF\classes下有test\Test.class的文件目录结构。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">修改webapps\myapp\WEB-INF\web.xml，添加servlet和servlet-mapping。<br>
+  <a href="ch15/webmodify.xml" target="_blank">webmodify.xml</a>  <br>
+  　　<img src="images/STAR.GIF" width="18" height="20">重新启动Tomcat。 <br>
+  　　<img src="images/STAR.GIF" width="18" height="20">打开浏览器，输入http://localhost:8080/javabook/Test </p>
+<p align="center"><img src="images/tomcatservlet1.jpg" width="315" height="201"></p>
+
+<p align="center"><span class="t1"><strong>建立自己的Bean</strong></span></p>
+<p>　　<img src="images/STAR.GIF" width="18" height="20"> 创建一个java程序：<br>
+  package test; <br>
+  public class TestBean{ <br>
+　　private String name = null; <br>
+　　public TestBean(String strName_p){<br>
+　　　　this.name=strName_p;<br>
+　　} <br>
+　　public void setName(String strName_p){ <br>
+　　　　this.name=strName_p; <br>
+　　} <br>
+　　public String getName(){<br>
+　　　　return this.name; <br>
+　　} <br>
+}  <br> 
+　　<img src="images/STAR.GIF" width="18" height="20">编译：将TestBean.java放在c:\test下，使用如下命令编译：<br>
+C:\Test&gt;javac TestBean.java <br>
+如果编译通过，则在c:\Test下会产生一个编译后的bean文件：TestBean.class
+<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">将TestBean.class文件剪切到<br>
+  d:\tomcat-4.1.27\webapps\myapp\WEB-INF\classes\test下。
+  <br>
+  　　<img src="images/STAR.GIF" width="18" height="20">新建一个<a href="ch15/javabooktomcat/TestBean.jsp" target="_blank">TestBean.jsp</a>文件。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">重新启动Tomcat。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">打开浏览器，输入http://localhost:8080/javabook/TestBean.jsp </p>
+<p align="center"><img src="images/tomcatbean1.jpg" width="315" height="201"></p>
+</body> 
+</html> 

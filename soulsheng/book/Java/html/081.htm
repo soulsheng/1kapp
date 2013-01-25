@@ -1,0 +1,541 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+<head> 
+<script language="JavaScript"> 
+  var prePage="end";
+  var nextPage="01.htm";
+  var testPage="end";
+  var labPage="end";
+  var libraryPage="end";
+  var studyPage="end";
+  var homePage="end";
+	function showwin(url,winname,properties){
+		window.open(url,winname,properties)
+	}
+</script> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+
+<title>8.1文件操作</title> 
+<link href="images/css.css" rel="stylesheet" type="text/css"> 
+</head> 
+
+<body topmargin="0">
+<p align="center" class="t1"><br>
+  输入与输出概述</p>
+　　<img src="images/STAR.GIF" width="18" height="20">计算机的文件系统，用户可以创建目录结构（文件夹）、拷贝或移动文件、删除文件、重命名文件等操作。也可以访问和设置磁盘上每个文件或目录的属性，而属性用于描述文件的路径名、文件类型、隐藏或可见、只读或存档。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">需要经常利用常见的输入和输出设备来接收需要处理的数据以及输出处理后的信息，例如利用键盘等输入设备接收输入的数据，利用屏幕、打印机等输出设备输出信息。也需要利用磁盘文件系统来存储输入的内容和输出的结果。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">Java语言提供了专用于文件操作和输入/输出功能的包java.io。其中包含许多类和相关的方法用于访问文件系统、创建新文件、读取文件信息、处理文件信息以及存储信息到文件中等等磁盘文件系统的操作和维护工作，以及利用输入/输出设备进行输入输出的操作。
+<p align="center" class="t1">文件操作</p>
+<p>　　<img src="images/STAR.GIF" width="18" height="20">流的概念：指的是传递数据到目的地或从源接收数据的对象，它是由一系列字节组成的，这些字节是按进入“流”的顺序排列的。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">流实际上是一个数据的流动，数据可以是字符、数字或二进制数字组成的字节，如果数据流向程序，则称为输入流，反之，如果数据从程序流出，则称为输出流。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">文件类：File文件类提供了许多方法用于检查文件属性，包括判断文件是否存在、文件大小、最后修改时间、访问时间、创建时间等等。File类属于包java.io，但不是流类，它不负责数据的输入与输出，而专门用于磁盘文件或目录的管理。</p>
+　　
+<table width="96%" height="575" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td width="42%"><div align="center">方法 </div></td>
+    <td width="58%"><div align="center">说明</div></td>
+  </tr>
+  <tr> 
+    <td>File(String pathname) </td>
+    <td>构造方法，形式参数为路径名和目录名或文件名</td>
+  </tr>
+  <tr> 
+    <td>File(String name) </td>
+    <td>构造方法，形式参数为文件名或目录名，默认路径为当前目录</td>
+  </tr>
+  <tr> 
+    <td>boolean canRead() </td>
+    <td>如果文件或目录可读，返回true，反之false</td>
+  </tr>
+  <tr> 
+    <td>boolean canWrite() </td>
+    <td>如果文件或目录可写，返回true，反之false</td>
+  </tr>
+  <tr> 
+    <td>boolean createNewFile() </td>
+    <td>创建一个新文件，初始0字节</td>
+  </tr>
+  <tr> 
+    <td>File createTempFile(String pfx，String sfx) </td>
+    <td>在暂时目录中创建一个暂时文件，文件名的前缀和后缀有形式参数定义</td>
+  </tr>
+  <tr> 
+    <td>boolean delete() </td>
+    <td>删除一个文件，如果成功返回true，反之false</td>
+  </tr>
+  <tr> 
+    <td>boolean deleteOnExit() </td>
+    <td>当Java运行时，系统存在的文件将被删除</td>
+  </tr>
+  <tr> 
+    <td>boolean exists() </td>
+    <td>如果文件或目录存在，如果成功返回true，反之false</td>
+  </tr>
+  <tr> 
+    <td>String getAbsolutePath() </td>
+    <td>返回文件或目录的绝对路径</td>
+  </tr>
+  <tr> 
+    <td>String getName() </td>
+    <td>返回文件或目录名</td>
+  </tr>
+  <tr> 
+    <td>String getParent() </td>
+    <td>返回上一层目录名</td>
+  </tr>
+  <tr> 
+    <td>String getPath() </td>
+    <td>返回相对文件或路径名</td>
+  </tr>
+  <tr> 
+    <td>boolean isDirectory() </td>
+    <td>如果对象是一个目录，返回true，反之false</td>
+  </tr>
+  <tr> 
+    <td>boolean isFile() </td>
+    <td>如果对象是一个文件，返回true，反之false</td>
+  </tr>
+  <tr> 
+    <td>boolean isHidden() </td>
+    <td>如果对象是一个隐藏文件或隐藏目录，返回true，反之false</td>
+  </tr>
+  <tr> 
+    <td>long lastModified() </td>
+    <td>返回文件或目录最后修改的时间</td>
+  </tr>
+  <tr> 
+    <td>long length() </td>
+    <td>返回文件的长度，单位字节</td>
+  </tr>
+  <tr> 
+    <td>String[] list() </td>
+    <td>返回当前目录中的文件字符串数组（所有文件名列表）</td>
+  </tr>
+  <tr> 
+    <td>boolean renameTo(File f)</td>
+    <td> 重命名文件或目录</td>
+  </tr>
+  <tr> 
+    <td>boolean setReadOnly() </td>
+    <td>设置文件为只读</td>
+  </tr>
+  <tr> 
+    <td>boolean setLastModified() </td>
+    <td>设置文件最后修改时间</td>
+  </tr>
+</table>
+<p align="center" class="t1">File类的使用</p>
+　　<img src="images/STAR.GIF" width="18" height="20">首先为文件或目录建立File类对象，建立File类对象需要提供文件或目录的名称和路径名（path），路径名（path）可以采用绝对路径或相对路径。<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">构造方法File(String pathname)：参数pathname指定所建对象对应的目录名及其路径名，pathname可以使用绝对路径，也可以使用相对路径。<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">构造方法File(String name)：参数name指定文件或目录名。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">程序中，可以使用两种形式创建File类对象：<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">首先定义File类变量，然后创建File类对象。<br>
+　　　　File fileObject；（或File fileObject=null；即定义File类变量且初始化为空）<br>
+　　　　FileObject=new File（name或pathname）；<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">也可以将上述两条语句结合在一起定义并创建File类对象。<br>
+　　　　File fileObject= new File（name或pathname）；<br>
+<p align="center" class="t1">File类的使用举例　</p>
+<p><a href="ch8/ch8ex1.java" target="_blank">【例8-1】编程，测试文件类方法。假设文件夹（目录）情况如图所示，程序存放在E:\丁岳伟\JAVA教材编写\第8章\第8章程序（其具体路径根据系统环境而有所不同）</a>。</p>
+<p align="center"><img src="images/08/8-1.jpg" width="600" height="450"></p>
+<p><br>
+  　　程序第1次执行输出：<br>
+  　　test directory can read<br>
+  　　test directory can write<br>
+  　　E:\丁岳伟\JAVA教材编写\第8章\第8章程序\test<br>
+  　　test<br>
+  　　test<br>
+  　　Test Directory File List（程序中使用println语句，所以每行输出一个文件名，这里为了节省篇幅，一行排列多个文件名）<br>
+  　　ch4ex1.java ch4ex2.java ch4ex3.java ch4ex4.java ch4ex5.java<br>
+  　　ch4ex6.java ch4ex7.java ch4ex8.java ch4ex9.java ch4ex10.java<br>
+  　　ch4ex11.java ch4ex12.java ch4ex13.java Keyboard.java<br>
+  　　true<br>
+  　　程序第2次执行输出：<br>
+  　　由于ch4ex1.java已被删除，显示的结果有所变化：一是ch4ex1.java不会显示，二是最后显示false。<br>
+　　<a href="ch8/ch8ex1.java" target="_blank">【例8-2】编程，测试文件类方法。假设文件的属性如图所示，程序存放在E:\丁岳伟\JAVA教材编写\第8章\第8章程序</a>。</p>
+<p align="center"><img src="images/08/8-2.jpg" width="367" height="473"></p>
+<p><br>
+  　　<img src="images/STAR.GIF" width="18" height="20">程序中lastModified方法返回的long类型，它是一个很大的一个数值，即从1970年1月1日开始计算，用秒表示实际时间的年、月、日、小时、分、秒。Java语言提供了一个Date类（import 
+      java.util包），其构造方法的形式参数是long的秒数，功能是将其转换为合法的日期。<br>
+  long mo=f1.lastModified();//返回long类型的时间值<br>
+  Date d=new Date(mo);//转换为标准的日期格式<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">java.text包中包含了许多格式化的类，其中的DateFormat类可用于格式化日期，DateFormat类有许多方法格式化日期和时间。<br>
+  getDateTimeInstance方法使用缺省设置格式化日期和时间如下：<br>
+  dd-mon-yy hh:mm:ss<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">程序输出：<br>
+  The location is ：E:\丁岳伟\JAVA教材编写\第8章\第8章程序\ch8ex1.class<br>
+  Size is : 1129<br>
+  Last Modified : 2004-12-5 14:46:00<br>
+  The attributes: can read can write<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">程序第2次运行时，由于已将文件设置为只读，并且修改了修改时间，输出变为：<br>
+  The location is ：E:\丁岳伟\JAVA教材编写\第8章\第8章程序\ch8ex1.class<br>
+  Size is : 1129<br>
+  Last Modified : 2004-12-5 14:46:02<br>
+The attributes: can read</p>
+<p align="center" class="t1">文本文件与二进制文件的区别</p>
+　　<img src="images/STAR.GIF" width="18" height="20">文本文件：又称ASCII码文件，它指的是，通过编辑软件，将用户输入的字符、数字等以ASCII码的形式进行存放。文件中的文本通过换行符（回车、换行）进行分隔，当用户打开并处理文件时，逐行逐行的读取字符序列并进行处理。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">二进制文件：文件所包含的内容以一系列二进制字节的形式存放，文件中的每一个数据项，例如一个整型量，按照一系列字节存放，程序中读取这些字节的方法相似于读取内存中的一个数据项，二进制文件具有两种不同的访问形式：<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">顺序访问：顺序访问的二进制文件意味着对文件中数据的操作按照其存放的顺序依次从开始到结束。<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">随机访问：随机访问文件则允许文件中的数据被随机的访问和改变。<br>
+例1：int类型432的文本文件和二进制文件中的存放形式<br>
+　　<img src="images/STAR.GIF" width="18" height="20">二进制文件存储：00000000 
+00000000 00000001 10110000<br>
+　　<img src="images/STAR.GIF" width="18" height="20">文本文件存储： 
+00000100 00000011 00000010<br>
+<p align="center" class="t1">磁盘文件输入输出流程</p>
+<p>　　<img src="images/STAR.GIF" width="18" height="20">磁盘文件的输入与输出操作可以通过流的形式进行操作<br>
+　　<img src="images/STAR.GIF" width="18" height="20">其中为磁盘文件建立输入与输出流对象操作时，由于文件名或路径名错误，或文件的属性为只读等问题，可能导致系统抛出一个IOException异常，所以必须对IOException异常进行捕获和处理，即必须使用try-catch结构。</p>
+　　
+<p align="center"><br>
+  <img src="images/08/081-1.jpg" width="514" height="152"><br>
+</p>
+<p align="center" class="t1">文本文件的输出　</p>
+<p>　　<img src="images/STAR.GIF" width="18" height="20">java.io包中的FileWriter类和PrintWriter类：首先通过FileWriter类打开指定文件，其参数有三种形式：文件名name、文件名加append标志以及文件类对象。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">后使用PrintWriter类产生实际输出数据流到文件的对象。<br>
+</p>
+　　
+<table width="72%" height="200" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td><div align="center">方法 </div></td>
+    <td><div align="center">说明</div></td>
+  </tr>
+  <tr> 
+    <td>FileWriter(String name) </td>
+    <td>以写方式打开name新文件，返回FileWriter对象，如文件存在。则覆盖。</td>
+  </tr>
+  <tr> 
+    <td>FileWriter(File file) </td>
+    <td>以写方式打开一个新文件，返回FileWriter对象，如文件存在，则覆盖。</td>
+  </tr>
+  <tr> 
+    <td>FileWriter(String name,boolean append) </td>
+    <td>如果append为true，以添加的方式打开name文件，返回FileWriter对象。</td>
+  </tr>
+  <tr> 
+    <td>PrintWriter(Filewriter对象) </td>
+    <td>创建一个PrintWriter对象</td>
+  </tr>
+  <tr> 
+    <td>close() </td>
+    <td>关闭文件</td>
+  </tr>
+  <tr> 
+    <td>print(formalParameter) </td>
+    <td>输出形式参数到文件，形式参数可以是整型量、浮点数、字符、字符串等</td>
+  </tr>
+  <tr> 
+    <td>println(formalParameter) </td>
+    <td>输出形式参数到文件且加上回车换行符，形式参数可以是整型量、浮点数、字符、字符串等</td>
+  </tr>
+</table>
+<br>
+　　<img src="images/STAR.GIF" width="18" height="20">使用方法：可以使用两种形式创建PrintWriter类对象：<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">首先定义FileWriter类对象，然后创建PrintWriter类对象。<br>
+FileWriter fileWriterObject=new FileWriter（name或file对象或name加上true标志）； <br>
+PrintWriter printWriterObject=new PrintWriter（fileWriterObject）；<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">也可以将上述两条语句结合在一起定义并创建PrintWriter类对象。<br>
+PrintWriter printWriterObject=new PrintWriter（new FileWriter（name或file对象或name加上true标志）；<br>
+<p align="center" class="t1">文本文件的输出举例</p>
+　　<a href="ch8/ch8ex3.java" target="_blank">【例8-3】从键盘读入字符串，然后输出到一个文件</a>。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">程序中\r\n是回车换行符，其作用等同于println的回车换行效果。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">程序执行后，可以在程序的同一目录下发现textdata.txt，并可以文本方式打开。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">如果需要在已有的文件中添加新的内容，则需要使用Filewriter(String 
+name,boolean append)形式打开文件。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">FileWriter会抛出异常，所以在程序中可以使的try_catch结构仅包含FileWriter语句或PrintWriter与FileWriter组合的语句，而具体的输出语句和关闭文件语句可放在try_catch结构外。<br>
+　　<a href="ch8/ch8ex4.java" target="_blank">【例8-4】修改例8-3的程序结构</a>。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">由于try_catch结构中的花括号同样具有代码块的局部作用，所以PrintWriter 
+类对象df必须放在try_catch结构的外部，如果放置内部，则结构外使用df，在编译时产生不能解析df变量的错误。<br>
+<p align="center" class="t1">文本文件的输入　</p>
+<p>　　<img src="images/STAR.GIF" width="18" height="20">FileReader类以读的形式打开指定文件，FileReader类的构造方法会抛出一个IO异常，为此必须使用try-catch结构。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">BufferedReader类产生实际的数据输入流，其结果是创建一个输入缓冲区，以便于输入流的处理。BufferedReader类中close和readLine方法均定义为抛出异常，所以它们都需要放在try-catch结构内部。<br>
+</p>
+　　
+<table width="77%" height="219" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td width="40%"><div align="center">方法 </div></td>
+    <td width="60%"><div align="center">说明</div></td>
+  </tr>
+  <tr> 
+    <td>FileReader(String name) </td>
+    <td>以读方式打开name文件，返回FileReader对象，如文件不存在。则抛出异常。</td>
+  </tr>
+  <tr> 
+    <td>FileReader(File file) </td>
+    <td>以读方式打开一个文件，返回FileWriter对象，如文件不存在，则抛出异常。</td>
+  </tr>
+  <tr> 
+    <td>BufferedReader (FileReader对象) </td>
+    <td>创建一个BufferedReader对象。</td>
+  </tr>
+  <tr> 
+    <td>close() </td>
+    <td>关闭文件，如出现错误，抛出异常。</td>
+  </tr>
+  <tr> 
+    <td>String readLine() </td>
+    <td>从文件当前位置读取一行（回车换行）字符串，如出现错误，抛出异常。</td>
+  </tr>
+</table>
+　　<img src="images/STAR.GIF" width="18" height="20">使用方法： 
+<br>
+　　FileReader fileReaderObject=new FileReader（name或file对象）； <br>
+　　BufferedReader inputStream=new BufferedReader（fileReaderObject）；<br>
+　　或者<br>
+　　BufferedReader inputStream=new BufferedReader（new FileReader（name或file对象））；<br>
+<p align="center" class="t1">文本文件的输入举例</p>
+　　<a href="ch8/ch8ex5.java" target="_blank">【例8-5】编程读取本程序原代码</a>。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">程序中利用循环结构逐行读取文件中的文本，直到文件结束，这里t!=null表示文件没有到达末尾。<br>
+　　<a href="ch8/ch8ex6.java" target="_blank">【例8-6】重新设计第7章中的模拟银行管理系统，实现在程序终止以前通过文件保存信息，在程序再次执行时重新装入</a>。<br>
+　　1) 在程序中由于使用到文件操作，首先必须在头部增加引入Java语言java.io包的语句。<br>
+　　2) 在menu方法中，增加两个菜单选项：保存和装入。<br>
+　　3) 在main方法中，增加定义一个文件类型对象，然后在switch开关语句相应的case语句中增加保存和装入的语句。<br>
+　　4) 在Bank类中，增加定义saveAccountBank方法，形式参数为文件类对象，并使用抛出异常语句进行控制。方法首先利用FileWriter fw=new 
+FileWriter(f)语句以写的方式打开BankAccount.txt文件（通过实际参数传递），然后创建一个输出对象PrintWriter fd=new 
+PrintWriter(fw)。方法中依次读取对象向量中的个人帐户并利用Account中的putAccount方法进行保存操作。<br>
+　　5) 在Bank类中，增加定义loadBankAccount方法，形式参数为文件类对象，并使用抛出异常语句进行控制。方法首先利用FileReader fr=new 
+FileReader(f)语句以读的方式打开BankAccount.txt文件（通过实际参数传递），然后创建一个输入对象BufferedReader fd=new 
+BufferedReader(fr)。然后以字符串形式每次读取一行（一个帐户信息，见putAccount方法描述），直至文件结束。并利用Account中的getDetails方法将字符串进行分离并分别存储到帐户的各个属性中。<br>
+　　6) 在Account方法中，增加三个方法：<br>
+　　<img src="images/STAR.GIF" width="18" height="20">重载构造方法，创建一个空的帐户<br>
+　　<img src="images/STAR.GIF" width="18" height="20">putAccount方法，形式参数为输出对象，在输出时，首先将帐户属性合并成字符串（每个帐户输出一行信息），每个属性用“/”进行逻辑分隔。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">getDetails方法，形式参数为字符串，该方法中使用StringTokenizer类分离字符串中的单词（请复习第6章的例子），需要注意的是，我们在前面已经介绍Java语言除了int、double、char、String等基本类型外，还定义了对应的类，类中的方法更方便用户使用。这里我们用到其新的方法Integer.parseInt和Double.parseDouble，功能是将形式参数的字符串分别转换成整型量和浮点数。<br>
+<p align="center" class="t1">文本文件输出的其他类　</p>
+<p>　　<img src="images/STAR.GIF" width="18" height="20">PrintWriter和FileOutputStream类配合实现文本文件的输出。格式：<br>
+  PrintWriter outputStream=new PrintWriter(new FileOutputStream(name))；<br>
+  或<br>
+  PrintWriter outputStream;<br>
+  outputStream=new PrintWriter(new FileOutputStream(name))；<br>
+　　【例8-7】利用文本编辑软件输入学生姓名、各课程的成绩，编程读取文件中的内容，计算每个同学的平均成绩，然后输出并保存包括平均成绩的成绩表。文件student内容：</p>
+<p align="center">
+<img src="images/08/081-2.jpg" width="600" height="404"></p>
+<p><br>
+  　　<img src="images/STAR.GIF" width="18" height="20">文本文件中的学生成绩可以逐行逐行处理<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">可以利用StringTokenizer抽取每行信息中的学号以及各课成绩，对于成绩需要使用Integer类的parseInt方法将字符串转换成整型量。或使用Integer类的intValue方法返回一个整型量。（<a href="ch8/ch8ex7.java" target="_blank">ch8ex7.java）</a><br>
+  　　<img src="images/STAR.GIF" width="18" height="20">使用两个文件进行输入与输出，如果要求将计算平均值后的内容存放到原来文件，一种简单的方法是利用File类删除student文件，然后将student1文件重命名为student文件，最后删除student1文件。<br>
+</p>
+<p align="center" class="t1">顺序二进制文件　　</p>
+<p>　　<img src="images/STAR.GIF" width="18" height="20">FileInputStream类和DataInputStream类进行读操作；<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">FileOutputStream类和DataOutputStream类进行写操作。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">操作流程：首先使用FileInputStream类或FileOutputStream类创建一个输入或输出文件流，然后使用DataInputStream类或DataOutputStream类创建一个新的来自指定输入或输出文件流的数据输入和输出流。</p>
+　　
+<table width="81%" height="675" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td width="42%"><div align="center">方法 </div></td>
+    <td width="58%"><div align="center">说明</div></td>
+  </tr>
+  <tr> 
+    <td>FileOutputStream(File file) </td>
+    <td>构造方法，创建一个输出文件流，形式参数为File对象</td>
+  </tr>
+  <tr> 
+    <td>FileOutputStream(String name) </td>
+    <td>构造方法，创建一个输出文件流，形式参数为字符串文件名</td>
+  </tr>
+  <tr> 
+    <td>FileOutputStream（String name，boolean append） </td>
+    <td>如果append为true，以添加的方式创建一个输出文件流</td>
+  </tr>
+  <tr> 
+    <td>DataOutputStream(FileOutputStream fOutObject) </td>
+    <td>构造方法，创建一个新的输出流，输出数据到指定文件输出流</td>
+  </tr>
+  <tr> 
+    <td>writeInt(int n) </td>
+    <td>输出一个整型量(4个字节)到输出流</td>
+  </tr>
+  <tr> 
+    <td>writeLong(long n)</td>
+    <td> 输出一个长整型量(8个字节)到输出流</td>
+  </tr>
+  <tr> 
+    <td>writeDouble(double n) </td>
+    <td>输出一个双精度浮点数(8个字节)到输出流</td>
+  </tr>
+  <tr> 
+    <td>writeFloat(float n) </td>
+    <td>输出一个单精度浮点数(4个字节)到输出流</td>
+  </tr>
+  <tr> 
+    <td>writeChar(int n) </td>
+    <td>输出一个字符(Unicode，2个字节)到输出流</td>
+  </tr>
+  <tr> 
+    <td>writeBoolean(Boolean b) </td>
+    <td>输出一个布尔量(1个字节)到输出流</td>
+  </tr>
+  <tr> 
+    <td>writeUTF(String st) </td>
+    <td>输出一个字符串到输出流，UTF表示编码该字符串的特殊方法，为了读取该字符串必须使用同样的readUTF方法</td>
+  </tr>
+  <tr> 
+    <td>close() </td>
+    <td>关闭连接文件的输出流，在关闭以前，调用flush方法将输出流中的缓冲数据（还没有实际写到文件中）写到文件中。</td>
+  </tr>
+  <tr> 
+    <td>flush() </td>
+    <td>将输出流中的缓冲数据(还没有实际写到文件中)写到文件中。</td>
+  </tr>
+  <tr> 
+    <td>int size()</td>
+    <td> 返回写到数据输出流中的字节数</td>
+  </tr>
+  <tr> 
+    <td>FileInputStream(File file)</td>
+    <td> 构造方法，创建一个输入文件流，形式参数为File对象</td>
+  </tr>
+  <tr> 
+    <td>FileInputStream(String name) </td>
+    <td>构造方法，创建一个输入文件流，形式参数为字符串文件名</td>
+  </tr>
+  <tr> 
+    <td>DataInputStream(FileInputStream fInObject) </td>
+    <td>构造方法，创建一个新的输入流，读取指定文件输入流的数据</td>
+  </tr>
+  <tr> 
+    <td>int available() </td>
+    <td>返回文件中当前还剩余的字节数</td>
+  </tr>
+  <tr> 
+    <td>readInt(int n) </td>
+    <td>从输入流读取一个整型量（4个字节）</td>
+  </tr>
+  <tr> 
+    <td>readLong(long n) </td>
+    <td>从输入流读取一个长整型量（8个字节）</td>
+  </tr>
+  <tr> 
+    <td>readDouble(double n) </td>
+    <td>从输入流读取一个双精度浮点数（8个字节）</td>
+  </tr>
+  <tr> 
+    <td>readFloat(float n) </td>
+    <td>从输入流读取一个单精度浮点数（4个字节）</td>
+  </tr>
+  <tr> 
+    <td>readChar(int n) </td>
+    <td>从输入流读取一个字符（Unicode，2个字节）</td>
+  </tr>
+  <tr> 
+    <td>readBoolean(Boolean b) </td>
+    <td>从输入流读取一个布尔量（1个字节）</td>
+  </tr>
+  <tr> 
+    <td>readUTF(String st) </td>
+    <td>从输入流读取一个字符串，UTF表示编码该字符串的特殊方法，只能读取用writeUTF写入的字符串</td>
+  </tr>
+  <tr> 
+    <td>close() </td>
+    <td>关闭连接文件的输入流</td>
+  </tr>
+</table>
+<p align="center" class="t1">顺序二进制文件类的使用方法</p>
+　　<img src="images/STAR.GIF" width="18" height="20">定义FileOutputStream类对象，然后创建DataOutputStream类对象。<br>
+FileOutputStream output=<br>
+new FileOutputStream（name或file对象或name加上true标志）； <br>
+DataOutputStream outputStream=new DataOutputStream（output）；<br>
+　　<img src="images/STAR.GIF" width="18" height="20">将上述两条语句结合在一起定义并创建PrintWriter类对象。<br>
+DataOutputStream outputStream=new DataOutputStream<br>
+` （new FileOutputStream（name或file对象或name加上true标志）；<br>
+　　<img src="images/STAR.GIF" width="18" height="20">创建完成DataOutputStream类对象outputStream后，利用其方法输出任何Java语言基本数据类型的内容，甚至可以是字符串。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">writeChar方法比较特殊，它输出一个字符，但接收的形式参数为整型量（int），如果程序中处理的是字符并使用该方法输出到二进制文件时。可以使用强制类型转换或自动转换方式。<br>
+例2：<br>
+outputStream.writeChar((int)‘Ａ’)；<br>
+或<br>
+outputStream.writeChar(‘Ａ’)；<br>
+　　<img src="images/STAR.GIF" width="18" height="20">对于基本数据类型的输出，所占用的字节数是固定的，当需要输出不同类型的内容到二进制文件时，只需注意输出的顺序必须与输入的顺序保持一致，就可以正确地操作二进制文件的输入与输出。<br>
+　　例3：输出与输入操作顺序问题<br>
+　　假设如下顺序的输出语句：按照每种基本数据类型所占字节数，第一条语句输出占2个字节，第二条语句占4个字节，第三条语句占4个字节。<br>
+outputStream.writeChar(‘Ａ’)；<br>
+outputStream.writeFloat(54.12)；<br>
+outputStream.writeInt(123)；<br>
+　　如果以下列方式读取（注意，这里仅强调输入输出顺序，所以下列语句并不真正代表输入操作）：<br>
+outputStream.writeInt(123)；<br>
+outputStream.writeChar(‘Ａ’)；<br>
+outputStream.writeFloat(54.12)；<br>
+　　由于第一条语句输入4个字节，导致其读取的内容是字符‘A’的2个字节和浮点数54.12的前2个字节，这就导致本次读取的内容以及后续的操作结果不可预测。<br>
+　　<img src="images/STAR.GIF" width="18" height="20"> WriteUTF：它针对字符串所包含的字符数，每个字符输出一个字节到指定文件。同时还增加额外的信息指明字符串的字节数，所以readUTF能知道读取多少个字节。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">Flush：涉及文件操作系统的输入与输出问题，在文件操作系统中，当程序通过语句输出信息时，首先是通过输出缓冲区存放信息，当缓冲区中的信息达到预先设定的量时或文件关闭以前，缓冲区中的信息才真正写入文件中。如果程序需要将缓冲区中的部分信息在没有达到预先设定的量并且不执行关闭文件操作前，将信息直接写入文件中，则可以在输出方法后，使用flush方法将输出到缓冲区中的内容以及目前还存储在缓冲区的内容写入文件。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">可以使用两种方式创建一个二进制文件输出流：创建一个空的二进制文件和以添加方法创建一个二进制文件的输出流。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">关键点：<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">输入操作方法的使用必须与输出操作方法的使用顺序相对应。<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">在创建输入文件流以前，可以使用File类判断指定文件是否存在。<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">二进制文件的输入与输出操作所有的方法在定义时都会抛出IOException异常，所以这些方法必须使用try_catch来捕获这些异常。<br>
+<p align="center" class="t1">顺序二进制文件类的应用举例</p>
+　　<a href="ch8/ch8ex81.java" target="_blank">【例8-8】读与写整型、单精度型、布尔型、字符型以及字符串数据</a>。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">程序首先创建DataOutputStream流对象，然后依次输出整型、字符、双精度浮点数、布尔型以及字符串并且重复写入10次，其中(char)(j+65)根据ASCII码表可以知道分别写入A、B、C、…。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">程序首先创建DataInputStream流对象，然后根据输出的顺序依次输入整型、字符、双精度浮点数、布尔型以及字符串并且重复输入10次。<br>
+（<a href="ch8/ch8ex82.java" target="_blank">ch8ex82.java</a>）<br>
+【例8-9】利用随机数产生一系列0…100之间的模拟考试分数并存入grades.dat顺序二进制文件，然后读取这些分数，统计大于等于90分、大于等于80分小于90分、大于等于70分小于80分、大于等于60分小于70分以及小于60分的人数。<br>
+<img src="images/STAR.GIF" width="18" height="20">首先创建DataOutputStream流对象，然后利用随机数产生150个0…100之间的模拟考试分数并存入grades.dat。<br>
+（<a href="ch8/ch8ex91.java" target="_blank">ch8ex91.java</a>）<br>
+<img src="images/STAR.GIF" width="18" height="20">首先创建DataInputStream流对象，然后依次读取分数并判断成绩。<br>
+（<a href="ch8/ch8ex92.java" target="_blank">ch8ex92.java</a>）<br>
+　　<a href="ch8/ch8ex10.java" target="_blank">【例8-10】在例8-9基础上，以添加的方式再增加200个分数，并重新统计各成绩段的人数并输出，然后将不及格的分数存储到fails.dat并删除原文件中不及格的分数</a>。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">Java中没有方法可以直接删除二进制文件中的一个数据项，但可以使用间接方法删除二进制文件中的数据项（复制不删除的数据项到一个暂时文件以便过滤需要删除的数据项，然后删除旧文件以及重命名暂时文件为原文件即可）。<br>
+　　<a href="ch8/ch8ex11.java" target="_blank">【例8-11】类属性值的输入与输出</a>。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">类对象由描述其特性的属性和描述其行为的方法组成，如果希望将类的对象写入文件，我们只能将类对象的属性值写入文件，而不可能将描述其行为的方法一起写入。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">假设Book类描述如下：<br>
+　　<img src="images/STAR.GIF" width="18" height="20">属性：书名（String）、作者（String）、出版社（String）、印数（int）、字数（long）<br>
+　　<img src="images/STAR.GIF" width="18" height="20">方法：构造方法初始化属性、输出方法输出属性到二进制文件、输入方法从二进制文件读取属性值、显示方式在屏幕上输出属性值。<br>
+<p align="center" class="t1">随机二进制文件</p>
+<p>　　<img src="images/STAR.GIF" width="18" height="20">随机方式可以在指定的位置随机地进行数据项的读写。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">RandomAccessFile类支持随机访问的特性。<br>
+</p>
+　　
+<table width="85%" height="125" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td><div align="center">方法 </div></td>
+    <td><div align="center">说明</div></td>
+  </tr>
+  <tr> 
+    <td>RandomAccessFile(name,flag)</td>
+    <td> 构造方法，创建一个随机二进制文件访问对象，形式参数有两个：文件名和标志，其中标志有两种，“rw”表示以读写方式打开文件，如果文件存在删除并创建一个新的文件，如不存在，创建一个新的文件。“r”表示以读的方式打开文件，如果文件不存在，则抛出IO异常。</td>
+  </tr>
+  <tr> 
+    <td>long length() </td>
+    <td>返回文件当前具有的字节数。</td>
+  </tr>
+  <tr> 
+    <td>seek(long pos) </td>
+    <td>设置文件指针到pos位置（从文件起始），它用于确定下一个文件读写操作的位置，即体现随机操作的特性。</td>
+  </tr>
+  <tr> 
+    <td>其他读写方法 <br></td>
+    <td>其他的读写方法与顺序二进制文件的读写方法一样。</td>
+  </tr>
+</table>
+<p align="center" class="t1">随机二进制文件类的使用</p>
+　　
+<img src="images/STAR.GIF" width="18" height="20">使用方法：以读写方式打开和以读方式打开：<br>
+RandomAccessFile fRead=new RandomAccessFile(name,”r”);<br>
+或<br>
+RandomAccessFile fReadWrite=new RandomAccessFile(name,”rw”);<br>
+　　<img src="images/STAR.GIF" width="18" height="20">构造方法会抛出异常，必须使用try-catch结构，而读写方法以及关闭文件方法与顺序二进制文件完全相同。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">seek(long 
+pos)体现了随机访问的特性。参数pos以字节为单位，为了有效地定位搜索的位置。<br>
+　　例4：设文件中存储了12（int）、1234（long）、true（boolean）、12.2（float）、1345.45（double）。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">fReadWrite.seek(12)表示定位到布尔量true的开始位置，这是因为12（int）占4个字节、1234（long）占8个字节，总共12个字节并且从0位置开始。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">定位到1345.45（double）位置，计算4+8+1+4=17，即fread.seek(17)。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">添加到文件的末尾，使用语句fReadWrite.seek(fReadWrite.length())定位。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">定位到某个位置后，可使用write方法在该位置上输出新的数据项（覆盖）。<br>
+fReadWrite.seek(12);<br>
+fReadWrite.writeBoolean(false);//用false替换原来的true<br>
+<p align="center" class="t1">随机二进制文件类应用举例</p>
+　　<a href="ch8/ch8ex12.java" target="_blank">【例8-12】编程对超市进行信息化管理，程序应具有一个菜单供用户进行日常的超市运营管理工作并且支持商品的销售、库存的更新、库存的检查等等</a>。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">在例8-6的模拟银行管理系统中，程序通过文本文件存储当前银行的帐户信息，当程序运行时，先将文本文件的内容读入内存，然后所有的用户操作均是对内存的信息进行处理，当程序终止前，可将内存的信息重新写入文本文件，其结果是覆盖原来的信息。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">本例采用随机二进制文件的形式进行数据的更新，程序运行过程中，所有信息存储在文件中而不需要读入内存，所有的更新直接对随机二进制文件进行操作。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">定义系统的基本类对象“商品”。<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">商品的属性包括：商品编码、名称、库存量、库存阈值。<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">商品的基本方法包括：构造方法（带参数和不带参数）、销售、增加库存、输出一个商品记录、输入一个商品记录、获取商品编码、获取商品名称、获取库存量、获取库存阈值、比较商品ID以及显示商品记录。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">writeChars（String 
+s）方法：将字符串中每个字符以2个字节形式进行输出，同时二进制文件又没有提供readChars方法，它只提供了readChar方法，即每次读取一个字符（2个字节），为此可以采用定长字符串的方法解决这一问题，如果实际字符串的长度小于预先设定的长度，字符串的后边补充空字符\0，如果字符串的长度大于预先设定的长度，拒绝接收。<br>
+　　例5：假设现有一个字符串存放与str<br>
+StringBuffer st=new StringBuffer（str）；<br>
+st.setLength(预先设定的长度值);<br>
+str=st.toString();//此时str中保存的是预先设定长度的字符串<br>
+　　<img src="images/STAR.GIF" width="18" height="20">商品类（Product）的定义如程序：<br>
+　　<img src="images/STAR.GIF" width="18" height="20">商品文件类用于维护一个商店中的商品，它提供一系列方法进行基于随机二进制文件的操作。商品文件类（ProductFile）如程序：<br>
+　　<img src="images/STAR.GIF" width="18" height="20">菜单类（ProductsMenu）假设模拟商店的程序可进行的操作有：增加新商品、显示所有商品、搜索指定商品、销售某一商品、查询库存不足商品以及商品进货6个功能。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">主程序调用菜单类，根据用户输入，分别调用相应方法来完成对应功能，注意init()方法，它判断存放商品的随机二进制文件是否存在，如果不存在，创建一个空文件。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">程序中除了演示了随机二进制文件类的操作方法，还根据类方法的要求，加上了必须的异常处理语句或结构。<br>
+</body> 
+</html> 

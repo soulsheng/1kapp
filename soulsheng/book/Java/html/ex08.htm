@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+
+<title>第8章练习</title> 
+<link href="images/css.css" rel="stylesheet" type="text/css"> 
+<style type="text/css">
+<!--
+a:link {
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+a:active {
+	text-decoration: none;
+}
+.style7 {font-size: 10px}
+.style8 {font-size: 9px}
+-->
+</style>
+</head> 
+
+<body topmargin="0">
+<p align="center" class="t1"><br>
+第8章练习　　</p>
+
+<ol>
+  <li>什么是流？根据流的方向，流可分为哪几种？</li>
+  <li>输入输出类中，哪些方法会抛出异常？</li>
+  <li>下列哪个语句可以正确地创建一个RandomAccessFile的对象？<br>
+  A．RandomAccessFile(&quot;data&quot;, &quot;r&quot;);<br>
+  B．RandomAccessFile(&quot;r&quot;, &quot;data&quot;);<br>
+  C．RandomAccessFile(&quot;data&quot;, &quot;read&quot;);<br>
+  D．RandomAccessFile(&quot;read&quot;, &quot;data&quot;);</li>
+  <li>如果需要使用输入输出类，在程序起始位置应加入哪条语句，程序才能通过编译并正常运行？<br>
+  A．import java.io.*;<br>
+  B．include java.util.*;<br>
+  C．import java.util.*;<br>
+  D．include java.io.*;</li>
+  <li>编译和执行下列程序段将会出现什么情况？<br>
+  import java.io.*;<br>
+  class IO{<br>　
+  String s = new String(&quot;Hello&quot;);<br>　
+  public void f(){<br>　　　
+  FileOutputStream fOut=new FileOutputStream(&quot;Data.txt&quot;);<br>　　　
+  fOut.write(10);<br>　
+  }<br>
+  }<br>
+  public class test{<br>　
+  public static void main(String args[]){<br>　　
+  IO obj=new IO();<br>　　
+  obj.f();<br>
+  　
+  }<br>
+  }<br>
+  A．编译出错。<br>
+  B．运行出错。<br>
+  C．创建一个Data.txt文件并输出10。<br>
+  D．打开一个Data.txt文件并添加10。</li>
+  <li>请判断下列哪些陈述是正确的？<br>
+  A．FileInputStream的seek方法将用于设置文件的位置。<br>
+  B．FileInputStream的read方法用于从一个FileInputStream中读取字节。<br>
+  C．FileInputStream的get方法用于从一个FileInputStream中读取字节。<br>
+  D．一个FileInputStream能使用close()方法关闭。</li>
+  <li>编程：将任意两个Java语言源程序文件合并到一个文件中。</li>
+  <li>编程：利用随机数产生10000个0～100之间的考试分数，将其存入一个文本文件中，然后读取这10000个分数，统计各分数段的人数、所占百分比，平均分数。程序调试通过后，利用文本编辑软件打开该文件，观察文件中的内容。</li>
+  <li>编程：利用文本编辑软件输入教师的姓名、基本工资、奖金，它们之间用空格分隔，每个教师占一行，然后编制程序读取每个教师的信息，统计所有教师基本工工资总额，奖金总额以及基本工资加上奖金的总额。</li>
+  <li>编程：创建一个文件，设置其属性为只读，然后输出该文件的创建日期和路径名。</li>
+  <li>编程：对计算机系统中任意文件进行重命名操作。</li>
+  <li>编程：利用编辑软件输入一系列英文姓名，每个姓名占一行，然后编程，依次读取所有姓名，在内存中对这些姓名进行排序并重新输出到该文件。</li>
+  <li>编程：修改题12，在排序以后，另外创建一个文件，按照排序的次数依次存放对应名字在原文件中的位置。例如：<br>
+  原文件内容：<br>
+  Grant<br>
+  Brain<br>
+  Yaoming<br>
+  生成的文件中存放内容为（排序以后，Brain在第一，所以第一行内容为Brain在原文件中的位置2，其他依次类推）<br>
+  2<br>
+  1<br>
+  3</li>
+  <li>修改第7章习题13，增加文件系统存放处理的信息。</li>
+  <li>编程：利用随机数产生10000个0～9999之间的整型量，其中5000个存放到Data1.txt文件，另外5000个存放到Data2.txt文件。然后完成如下工作：<br>
+    (1)
+  将Data2.txt文件中的5000个数据添加到Data1.txt文件末尾。<br>
+  (2)
+  对Data1.txt文件中的10000个数据进行排序并存放到Data2.txt文件中。</li>
+  <li>编程：从键盘读取10个学生的成绩，并完成如下工作：<br>
+    (1)
+  把它们存放到文件中。<br>
+  (2)
+  将文件中的单数学生的成绩读取并显示。<br>
+  (3)
+  将第9个学生的成绩修改以后存放到原来位置。  </li>
+  <li> 编程：将一批数据以二进制形式存放到一个二进制文件中，然后读取这些数据并显示。</li>
+  <li>编程：从键盘读取一个字符串，按字符方式依次存放到一个文件中，然后读取文件中的字符，将小写字符转换为大小字符，将大写字符转换为小写字符并存放到另一个文件中。 </li>
+</ol>
+</body> 
+</html> 

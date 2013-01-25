@@ -1,0 +1,57 @@
+# Translation of the WordPress plugin WP-PageNavi 2.70 by Lester 'GaMerZ' Chan.
+# Copyright (C) 2010 Lester 'GaMerZ' Chan
+# This file is distributed under the same license as the WP-PageNavi package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: WP-PageNavi 2.70\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/wp-pagenavi\n"
+"POT-Creation-Date: 2010-04-11 15:18+0000\n"
+"PO-Revision-Date: 2010-04-16 15:27+0100\n"
+"Last-Translator: Lionel Chollet <lionel.chollet@gmail.com>\n"
+"Language-Team: Lionel Chollet <lionel.chollet@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: French\n"
+"X-Poedit-Country: FRANCE\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#: admin.php:9
+msgid "PageNavi Settings"
+msgstr "Réglages WP-PageNavi"
+
+#: admin.php:10
+msgid "PageNavi"
+msgstr "WP-PageNavi"
+
+#: admin.php:27
+msgid "Text For Number Of Pages"
+msgstr "Texte pour le nombre de pages"
+
+#: admin.php:32
+msgid "The current page number."
+msgstr "Le numéro de la page active."
+
+#: admin.php:33
+#: admin.php:57
+#: admin.php:65
+msgid "The total number of pages."
+msgstr "Le nombre total de pages."
+
+#: admin.php:37
+msgid "Text For Current Page"
+msgstr "Texte pour la page affichée"
+
+#: admin.php:41
+#: admin.php:49
+msgid "The page number."
+msgstr "Le numéro de page."
+
+#: admin.php:45
+msgid "Text For Page"
+msgstr "Texte pour les pages"
+
+#: admin.php:53
+msgid 

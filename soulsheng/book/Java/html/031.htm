@@ -1,0 +1,306 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+<head> 
+<script language="JavaScript"> 
+  var prePage="end";
+  var nextPage="01.htm";
+  var testPage="end";
+  var labPage="end";
+  var libraryPage="end";
+  var studyPage="end";
+  var homePage="end";
+	function showwin(url,winname,properties){
+		window.open(url,winname,properties)
+	}
+</script> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+
+<title>3.1条件语句</title> 
+<link href="images/css.css" rel="stylesheet" type="text/css"> 
+</head> 
+
+<body topmargin="0">
+<p align="center" class="t1"><br>
+  关系运算符</p>
+　　关系指的是将两个操作数通过某种关系关联在一起，表达式中表达关系的运算符就是关系运算符。<br>
+<table width="34%" height="175" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr valign="middle"> 
+    <td width="49%"> 
+      <div align="center">关系运算符号</div></td>
+    <td width="51%"> 
+      <div align="center">说明</div></td>
+  </tr>
+  <tr valign="middle"> 
+    <td> 
+      <div align="center">&gt;</div></td>
+    <td> 
+      <div align="center">大于</div></td>
+  </tr>
+  <tr valign="middle"> 
+    <td> 
+      <div align="center">&gt;=</div></td>
+    <td> 
+      <div align="center">大于等于</div></td>
+  </tr>
+  <tr valign="middle"> 
+    <td> 
+      <div align="center">&lt;</div></td>
+    <td> 
+      <div align="center">小于</div></td>
+  </tr>
+  <tr valign="middle"> 
+    <td> 
+      <div align="center">&lt;=</div></td>
+    <td> 
+      <div align="center">小于等于</div></td>
+  </tr>
+  <tr valign="middle"> 
+    <td> 
+      <div align="center">==</div></td>
+    <td> 
+      <div align="center">等于</div></td>
+  </tr>
+  <tr valign="middle"> 
+    <td> 
+      <div align="center">!=</div></td>
+    <td> 
+      <div align="center">不等于</div></td>
+  </tr>
+</table>
+　　<img src="images/STAR.GIF" width="18" height="20">“==”运算符与“=”运算符是不同的，前者是关系运算符，后者是赋值运算符<br>
+　　<img src="images/STAR.GIF" width="18" height="20">六个关系运算符正好构成三对，每一对是关系的逻辑反。即大于和小于等于；小于和大于等于；等于和不等于<br>
+<p align="center" class="t1">布尔表达式</p>
+　　<div align="center">一个布尔表达式是一种计算结果只有true和false两种的表达式。<br>
+</div>
+　　<table width="34%" height="150" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr valign="middle"> 
+    <td> <div align="center">布尔表达式</div></td>
+    <td> <div align="center">计算结果</div></td>
+  </tr>
+  <tr valign="middle"> 
+    <td> <div align="center">7&gt;4</div></td>
+    <td> <div align="center">true</div></td>
+  </tr>
+  <tr valign="middle"> 
+    <td> <div align="center">10&lt;7</div></td>
+    <td> <div align="center">false</div></td>
+  </tr>
+  <tr valign="middle"> 
+    <td> <div align="center">12==4</div></td>
+    <td> <div align="center">false</div></td>
+  </tr>
+  <tr valign="middle"> 
+    <td> <div align="center">4!=-9</div>
+      <div align="center"></div>
+      <div align="center"></div>
+      <div align="center"></div></td>
+    <td><div align="center">true</div></td>
+  </tr>
+</table>
+　　<img src="images/STAR.GIF" width="18" height="20">算术运算符在表达式中根据其优先顺序依次从高到低依次进行，如果需要改变运算次序，则可以通过加括弧来改变。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">同样关系运算符本身也有一个优先顺序，同时整体上关系运算符的优先顺序低于算术运算符，高于赋值符号。关系运算符的优先顺序为：<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">&gt;、&lt;、&gt;=、&lt;=<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20"> ==、！=<br>
+<p align="center" class="t1">布尔类型变量</p>
+　　<img src="images/STAR.GIF" width="18" height="20">布尔类型变量的取值只有true和false两种，它表示逻辑的两种状态，即true表示逻辑的真，false表示逻辑的假。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">一个布尔类型的变量只能赋值一个布尔常数或一个计算结果为布尔类型值的表达式，布尔类型名为boolean。<br>
+<a href="ch3/ch3ex1.java" target="_blank">【例3-1】布尔类型举例</a>。<br>
+<br>
+<p align="center" class="t1">程序结构</p>
+　　<img src="images/STAR.GIF" width="18" height="20">顺序结构：编程语句的书写顺序通常就是程序的执行顺序。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">选择结构：通过判断逻辑表达式，决定程序要执行的语句。Java语言提供了二种选择结构：if结构和switch结构<br>
+　　<img src="images/STAR.GIF" width="18" height="20">循环结构：根据条件判断的成立与否决定程序语句或代码块的执行次数，这个程序语句或代码块就称为循环主体。Java语言提供了三种循环结构：for循环、while循环以及do 
+while循环。<br>
+<p align="center" class="t1">条件语句（if语句）</p>
+条件语句if用于构成程序的选择结构，它通过判断if语句中的逻辑表达式，决定程序要执行的语句。<br>
+语法格式：<br>
+　　if（条件1）<br>
+　　　　语句1；<br>
+　　　　else if（条件2）<br>
+　　　　　　语句2；<br>
+　　　　　　else if（条件3）<br>
+　　　　　　　　语句3；<br>
+　　　　　　　　…<br>
+　　　　　　　　else<br>
+　　　　　　　　　　语句n；<br>
+<br>
+　　<img src="images/STAR.GIF" width="18" height="20">这里条件是运算结果为true或false布尔表达式，而语句可以是单条语句，也可以是多条语句组成的代码块（必须使用括弧“{”和“}”括起代码块）。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">if结构的简单的语法形式：<br>
+if （条件）<br>
+　　语句；<br>
+或：<br>
+if（条件）<br>
+　　语句1<br>
+else<br>
+　　语句<br>
+<p align="center" class="t1">if语句的语义</p>
+<div align="center">
+  <p><img src="images/03/031-2.jpg" width="666" height="617"><br>
+  if结构的语义 </p>
+  <p align="left">
+    <a href="ch3/ch3ex2.java" target="_blank">【例3-2】从键盘输入一个考试成绩，根据判断输出是否通过</a>。<br>
+    <br>
+    <a href="ch3/ch3ex3.java" target="_blank">【例3-3】从键盘输入一个考试成绩，根据判断输出通过或失败</a>。<br>
+    
+  </p>
+</div>
+<p align="center" class="t1">if语句的其他情况</p>
+　　<img src="images/STAR.GIF" width="18" height="20">if语句中的分支可以不执行任何语句，这时可以使用“；”表示跳过。<br>
+<a href="ch3/ch3ex4.java" target="_blank">【例3-4】编程实现输入两个整型量，然后按递增次序输出</a>。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">当然也可以将判断的条件进行逻辑反，以便简化程序代码：<br>
+if(x&gt;y)<br>
+　　int temp;<br>
+　　temp=x;<br>
+　　x=y;<br>
+　　y=temp;<br>
+}<br>
+<p align="center" class="t1">举例</p>
+　　<a href="ch3/ch3ex5.java" target="_blank">【例3-5】编程实现输入三个整型量x、y、z，然后按递增次序输出</a>。<br>
+分析：用变量x、y、z分别存放3个整型数，比较后，x中存放最小数，y中存放中间值，z中存放最大值。<br>
+if (x&gt;y) 将x和y对调（x是x和y中的小者）<br>
+if (x&gt;z) 将x和z对调（x是x和z中的小者，x也是x、y、z中的最小者）<br>
+if (y&gt;z) 将y和z对调（y是y和z中的小者，也是三者中的中间者）<br>
+<br>
+　　<a href="ch3/ch3ex6.java" target="_blank">【例3-6】编程，从键盘读取一个二次方程ax2+bx+c=0的系数，判断且输出：不是二次方程、两个相等实数根、两个不相等实数根、没有实数根</a>。<br>
+分析：如果二次方程式中ａ为０，则输出不是二次方程式。而二次方程式的根的情况可由<img src="images/3-1.jpg" width="78" height="18" align="absmiddle">的值来判定。<br>
+<img src="images/3-1.jpg" width="78" height="18" align="absmiddle">＞０，有两个不相等的实数根；<br>
+<img src="images/3-1.jpg" width="78" height="18" align="absmiddle">＝０，有两个相等的实数根；<br>
+<img src="images/3-1.jpg" width="78" height="18" align="absmiddle">＜０，没有实数根（有虚数根）；<br>
+<p align="center" class="t1">布尔运算符　</p>
+<p>　　<img src="images/STAR.GIF" width="18" height="20">布尔运算符用于将复合表达式中的布尔值关联在一起，包括逻辑与、逻辑或以及逻辑非。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">非!是一个单目运算符，其优先顺序与算术运算符的单目递增、递减相同。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">逻辑与&amp;&amp;的优先顺序高于逻辑或||，但低于关系运算符。</p>
+<p align="center">
+表3-3 布尔运算符</p>
+<table width="89%" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr valign="middle"> 
+    <td width="16%"><div align="center">布尔运算符</div></td>
+    <td width="15%"><div align="center">运算</div></td>
+    <td width="17%"><div align="center">举例</div></td>
+    <td width="52%"><div align="center">说明</div></td>
+  </tr>
+  <tr valign="middle"> 
+    <td><div align="center">&amp;&amp; </div></td>
+    <td><div align="center">与</div></td>
+    <td><div align="center">x&gt;=4&amp;&amp; x&lt;8</div></td>
+    <td><div align="center">设x=5，x&gt;=4为true，x&lt;8为true，所以结果为true</div></td>
+  </tr>
+  <tr valign="middle"> 
+    <td><div align="center">||</div></td>
+    <td><div align="center">或</div></td>
+    <td><div align="center">x&lt;0 || x&gt;=100</div></td>
+    <td><div align="center">设x=5，X&lt;0为false，x&gt;=100为false，所以结果为false</div></td>
+  </tr>
+  <tr valign="middle"> 
+    <td><div align="center">! </div></td>
+    <td><div align="center">非</div></td>
+    <td><div align="center">!false true</div></td>
+    <td><div align="center"></div></td>
+  </tr>
+</table>
+<div align="center"><br>
+  　　表3-4 真值表<br>
+</div>
+<table width="54%" height="125" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td colspan="3"><div align="center">&amp;&amp;</div></td>
+    <td colspan="3"><div align="center">||</div></td>
+    <td colspan="2"><div align="center">!</div></td>
+  </tr>
+  <tr> 
+    <td width="9%"><div align="center">A</div></td>
+    <td width="10%"><div align="center">B</div></td>
+    <td width="13%"><div align="center">A &amp;&amp; B</div></td>
+    <td width="9%"><div align="center">A</div></td>
+    <td width="9%"><div align="center">B</div></td>
+    <td width="13%"><div align="center">A || B</div></td>
+    <td width="13%"><div align="center">A</div></td>
+    <td width="24%"><div align="center">!A</div></td>
+  </tr>
+  <tr> 
+    <td><div align="center">true</div></td>
+    <td><div align="center">true</div></td>
+    <td><div align="center">true</div></td>
+    <td><div align="center">true</div></td>
+    <td><div align="center">true</div></td>
+    <td><div align="center">true</div></td>
+    <td><div align="center">true</div></td>
+    <td><div align="center">false</div></td>
+  </tr>
+  <tr> 
+    <td><div align="center">true</div></td>
+    <td><div align="center">false</div></td>
+    <td><div align="center">false</div></td>
+    <td><div align="center">true</div></td>
+    <td><div align="center">false</div></td>
+    <td><div align="center">true</div></td>
+    <td><div align="center">false</div></td>
+    <td><div align="center">true</div></td>
+  </tr>
+  <tr> 
+    <td><div align="center">false</div></td>
+    <td><div align="center">true</div></td>
+    <td><div align="center">false</div></td>
+    <td><div align="center">false</div></td>
+    <td><div align="center">true</div></td>
+    <td><div align="center">true</div></td>
+    <td><div align="center">-</div></td>
+    <td><div align="center">-</div></td>
+  </tr>
+  <tr> 
+    <td>false</td>
+    <td>false</td>
+    <td><div align="center">false</div></td>
+    <td><div align="center">false</div></td>
+    <td><div align="center">false</div></td>
+    <td><div align="center">true</div></td>
+    <td><div align="center">-</div></td>
+    <td><div align="center">-</div></td>
+  </tr>
+</table>
+<p align="center" class="t1">举例</p>
+　　　　<a href="ch3/ch3ex7.java" target="_blank">【例3-7】编程，从键盘读取一个整数year，判断是否为闰年</a>？<br>
+　　<img src="images/STAR.GIF" width="18" height="20">分析：闰年的条件是：year%4==0 
+&amp;&amp; (year%100!=0 || year%400==0) <br>
+　　<img src="images/STAR.GIF" width="18" height="20">程序中leap的运算顺序为：year%4、year%4==0、year%100、year%100!=0、year%400、year%400==0、year%100!=0 
+|| year%400==0、year%4==0 &amp;&amp; (year%100!=0 || year%400==0)。<br>
+<p align="center" class="t1">De Morgan定律</p>
+　　De Morgan定律可用于表达复合布尔表达式的逻辑非，其公式如下：<br>
+公式1:!(A &amp;&amp; B)=!A || !B<br>
+公式2:!(A || B)=!A &amp;&amp; !B<br>
+　　例1：利用De Morgan定律定义x&lt;0 || x&gt;100的逻辑非<br>
+！(x&lt;0 || x&gt;100)<br>
+=!(x&lt;0) &amp;&amp; !(x&gt;100)<br>
+=x&gt;=0 &amp;&amp; x&lt;=100<br>
+　　<a href="ch3/ch3ex8.java" target="_blank">【例3-8】编程，从键盘输入年、月、日，计算其后一天的年、月、日</a>。<br>
+分析：本程序要求计算后一天，这样首先对日加1，然后必须考虑某月所具有的天数，对于2月还得考虑是否为闰年？<br>
+if(month==4 || month==6 || month==9 || month==11)<br>
+　　ndays=30;<br>
+else if(month==2){<br>
+　　if(year%4==0 &amp;&amp;(year%100!=0 || year%400==0)<br>
+　　　　ndays=29;<br>
+　　else<br>
+　　　　ndays=28;<br>
+}<br>
+else<br>
+　　ndays=31;<br>
+<p align="center" class="t1">开关语句</p>
+　　<img src="images/STAR.GIF" width="18" height="20">if语句可以利用嵌套方式实现多分支语句结构，但是当程序嵌套太多时，会导致程序的易读性变差<br>
+　　<img src="images/STAR.GIF" width="18" height="20">多分支语句，即switch语句，也叫开关语句<br>
+语法格式：<br>
+switch （表达式）{<br>
+　　case 值1：语句或语句代码块1；break；<br>
+　　case 值2：语句或语句代码块2；break；<br>
+　　case 值3：语句或语句代码块3；break；<br>
+　　…<br>
+　　case 值n：语句或语句代码块n；break；<br>
+　　default：语句或语句代码块n+1；<br>
+}<br>
+　　<img src="images/STAR.GIF" width="18" height="20">switch中的表达式，其允许的数据类型为char、byte、short以及int。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">switch语句判断表达式的值是否与case语句的值相同，如果相同执行该case后的语句或语句代码块。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">break的作用是当程序执行到该分支时，表示该分支的执行结束并跳出switch语句体，如果没有break语句，则程序除了执行当前case语句中代码块以外，还执行后面一个case中的代码块。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">default语句表示当所有case都不满足条件时执行的部分，这个语句也可以省略，如果在switch既没有与表达式值相同的case语句，又没有default语句，那么在switch中没有任何语句被执行。<br>
+<p align="center" class="t1">举例</p>
+　　　　<a href="ch3/ch3ex9.java" target="_blank">【例3-9】通过输入月份，输出相应月份的季节</a>。<br>
+</body> 
+</html> 

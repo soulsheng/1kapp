@@ -1,0 +1,3 @@
+运行以前，需要将所有java文件和test目录及其目录中的文件
+全部移到d:\jswdk-1.0.1\examples\WEB-INF\servlets目录下。
+将HTML文件移到d:\jswdk-1.0.1\examples\javabook目录下。

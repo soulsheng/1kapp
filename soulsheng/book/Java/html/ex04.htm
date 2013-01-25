@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+
+<title>第4章练习</title> 
+<link href="images/css.css" rel="stylesheet" type="text/css"> 
+<style type="text/css">
+<!--
+a:link {
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+a:active {
+	text-decoration: none;
+}
+.style7 {font-size: 10px}
+.style8 {font-size: 9px}
+-->
+</style>
+</head> 
+
+<body topmargin="0">
+<p align="center" class="t1"><br>
+第4章练习　　</p>
+<ol>
+  <li>Java中的字符串有两种表示方法，这两种表示方法有什么不同？</li>
+  <li>如何访问字符串？如何修改字符串？如何对两个字符串进行比较？</li>
+  <li>如果了解C/C++ and Visual Basic，则分析Java语言和这两种语言比较，其数组定义与使用有什么不同？</li>
+  <li>是否可以利用一条语句在保持数组原有内容的同时，改变数组的大小？</li>
+  <li>请说明下列程序在编译和执行时将发生什么情况？<br>
+    public class TestArray{<br>
+    　
+public static void main(String args[]){　<br>　　　
+int i[]= new int[5];<br>　　　
+System.out.println(i[5]);<br>　
+}<br>
+}</li>
+  <li>为了利用数组长度控制循环退出条件，下面哪个是正确的格式？<br>
+    A. 
+  myarray.length()<br>
+  B.
+  myarray.length<br>
+  C.
+  myarray.size<br>
+  D.
+  myarray.size()</li>
+  <li>下列哪几个语句格式是正确的？<br>
+    A.
+  String s[]={&quot;Zero&quot;,&quot;One&quot;,&quot;Two&quot;,&quot;Three&quot;,&quot;Four&quot;};<br>
+  B.
+  String s[5]=new String[] {&quot;Zero&quot;,&quot;One&quot;,&quot;Two&quot;,&quot;Three&quot;,&quot;Four&quot;};<br>
+  C.
+  String s[]=new String[] {&quot;Zero&quot;,&quot;One&quot;,&quot;Two&quot;,&quot;Three&quot;,&quot;Four&quot;};<br>
+  D.
+  String s[]=new String[]={&quot;Zero&quot;,&quot;One&quot;,&quot;Two&quot;,&quot;Three&quot;,&quot;Four&quot;};</li>
+  <li>假设程序中已经有两个字符串：<br>
+  String str1=&quot;abc&quot;;<br>
+  String str2=&quot;abcd&quot;;<br>
+  如果希望改变str1和str2中的内容，下列哪个是正确的说法？<br>
+  A.
+  str1=&quot;apple&quot;;lname=&quot;coffee&quot;;<br>
+  B.
+  String str1=new String(&quot;apple&quot;); String str2=new String(&quot;coffer&quot;);<br>
+  C.
+  StringBuffer str1=new StringBuffer(str1); StringBuffer str2=new StringBuffer(str2);<br>
+  D.
+  以上一个都不是。</li>
+  <li>以下程序测试String 类的各种构造方法，试选出其运行效果。<br>
+  class testString{<br>　　
+  public static void main(String args[]){<br>　　　　
+  String s1=new String();<br>　　　　
+  String s2=new String(&quot;String 2&quot;);<br>　　　　
+  char chars[]={'a',' ','s','t','r','i','n','g'};<br>　　　　
+  String s3=new String(chars);<br>
+  　　　　
+  String s4=new String(chars,2,6);<br>　　　　
+  byte bytes[]={0,1,2,3,4,5,6,7,8,9}; <br>　　　　
+  StringBuffer sb=new StringBuffer(s3);<br>　　　　
+  String s5=new String(sb);<br>　　　　
+  System.out.println(&quot;The String No.1 is &quot;+s1);<br>　　　　
+  System.out.println(&quot;The String No.2 is &quot;+s2);<br>　　　　
+  System.out.println(&quot;The String No.3 is &quot;+s3);<br>　　　　
+  System.out.println(&quot;The String No.4 is &quot;+s4);<br>　　　　
+  System.out.println(&quot;The String No.5 is &quot;+s5);<br>　　
+  }<br>
+  }<br>
+  A.The String No.1 is <br>
+  　The String No.2 is String 2 <br>
+  　The String No.3 is a string <br>
+  　The String No.4 is string <br>
+  　The String No.5 is a string <br>
+  B.The String No.1 is <br>
+　The String No.2 is String 2 <br>
+　The String No.3 is a string<br>
+　The String No.4 is tring <br>
+　The String No.5 is a string <br>
+C.The String No.1 is <br>
+　The String No.2 is String 2<br>
+　The String No.3 is a string <br>
+　The String No.4 is strin <br>
+　The String No.5 is a string<br>
+D.以上都不对</li>
+  <li>编程：输入20个整数，放入一个数组，对这20个数按递减顺序排序并输出。</li>
+  <li>编程：输入一组整数，以-1表示结束，将这组数以输入顺序的倒序方式输出。</li>
+  <li>编程：输入10个整数，将前5个数与后5个数的位置互换并输出。</li>
+  <li>编程：输入一个正整数，计算并输出小于该数的所有质数。</li>
+  <li>编程：实现如下功能：<br>
+    (1)
+  读取四个字符，按照递减序列排序并输出。<br>
+  (2)
+  判断这四个字符的大小写状态并输出。<br>
+  (3)
+  将读取的字符转换为大写字母输出。<br>
+  (4)
+  将读取的字符转换为小写字母输出。</li>
+  <li>编程：读取一系列字符，以！表示结束，统计小写字母的个数以及频率并输出。</li>
+  <li>编程：读取一系列字符，以#表示结束，忽略非字母字符，然后以字符串形式输出。</li>
+  <li>编程：利用随机函数产生0～25的正整数，然后分别将它们转换为26个英文小写字母和大写字母并输出。</li>
+  <li>编程：定义一个10个浮点数的数组，输入10个浮点数并存放，另外定义一个11个浮点数的数组，计算10个浮点数组元素的累加和并连同10个元素一起复制到11个浮点数的数组中。</li>
+  <li>编程：读取三个字符串，按照字典顺序排序并输出。</li>
+  <li>编程：读取两个字符串s1和s2，然后将s2联接到s1并输出。</li>
+  <li>编程：输入10个字符串，统计computer单词出现的次数。</li>
+  <li>编程：输入一系列字符串，以“end”表示结束，将字符串中的computer替换为computing，并将小写字母c替换为大写字母C。</li>
+  <li>编程：输入一个字符串，将字符串中的字符按照逆序形式输出，例如computing输出为gnitupmoc。</li>
+  <li>编程：输入10个学生的学号、姓名、Java语言成绩、出生地，分别输出成绩优秀学生的学号、姓名、出生地；出生地在Shanghai学生的学号、姓名、Java语言成绩。</li>
+  <li>编程：输入一个加密后的密文（字符串），假设加密方法如下，输出密文和解密后的原文。<br>
+    (1)
+  字符串顺序颠倒（如习题20）。<br>
+  (2)
+  字母互换规律：A→Z、B→Y、C→X…X→C、Y→B、Z→A；a→z、b→y、c→x…x→c、y→b、z→a。<br>
+  (3)
+  非字母字符保持不变。
+</li>
+</ol>
+<p>&nbsp;</p>
+</body> 
+</html> 

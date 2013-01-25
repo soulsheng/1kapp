@@ -1,0 +1,1 @@
+运行时，将javabook整个目录及其目录中文件和文件夹移到d:\tomcat-4.1.27\webapps目录下。

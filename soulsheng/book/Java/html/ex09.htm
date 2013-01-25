@@ -1,0 +1,211 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+
+<title>第9章练习</title> 
+<link href="images/css.css" rel="stylesheet" type="text/css"> 
+<style type="text/css">
+<!--
+a:link {
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+a:active {
+	text-decoration: none;
+}
+.style7 {font-size: 10px}
+.style8 {font-size: 9px}
+-->
+</style>
+</head> 
+
+<body topmargin="0">
+<p align="center" class="t1"><br>
+第9章练习</p>
+<ol>
+  <li>面向对象编程的特性有哪三个？它们各自又有哪些特性？</li>
+  <li>什么是包？它的作用是什么？</li>
+  <li>什么是接口？它的特点是什么？</li>
+  <li>什么是抽象类？它的特点是什么？</li>
+  <li>this和super的作用分别是什么？</li>
+  <li>针对下列类的定义，哪句陈述是正确的？<br>
+  class Base{<br>
+  //定义属性和方法<br>
+  }<br>
+  class Inherit extends Base{ <br>
+　　  private int count;<br>　　
+public Inherit(){<br>　　　　
+System.out.println(&quot;A Inherit object has been created&quot;);<br>　　
+} <br>　　
+public void addOne() {count++;} <br>
+}<br>
+A．当创建一个Inherit类的对象时，count的值为0。<br>
+B．当创建一个Inherit类的对象时，count的值是不确定的。<br>
+C．父类对象中可以包含改变count值的方法。<br>
+D．Inherit 的子类对象可以访问count。</li>
+  <li>当编译和执行下列程序段时，将出现什么情况？<br>
+  class Base{<br>
+  //父类方法和属性定义<br>
+  } <br>
+  class Inherit extends Base{<br>
+  //自己属性和方法定义<br>
+  } <br>
+  public class test{ <br>　　
+  public static void main(String args[]){ <br>　　　　
+  Base obj=new Base(); <br>　　　　
+  Inherit s=(Inherit)obj;<br>　　
+  } <br>
+  }<br>
+  A．编译时出错　B．运行时出错　C．编译和执行均通过　D．父类必须完整定义</li>
+  <li> 当编译和执行下列程序段时，将出现什么情况？<br>
+  abstract class Base{<br>　　
+  abstract void amethod(); <br>　　
+  static int i;<br>
+  } <br>
+  public class test extends Base{<br>　　
+  public static void main(String args[]){<br>　　　　
+  int array[]=new int[5];<br>　　　　
+  for(i=0;i&lt;array.length;i++)<br>　　　　　　
+  System.out.print(array[i]);<br>　　
+  }<br>
+  }<br>
+  A．输出5个0。<br>
+  B．编译出错，数组array必须初始化。<br>
+  C．编译出错，test应声明为abstract。<br>
+  D．出现IndexOutOfBoundes异常。</li>
+  <li>指出下列程序段的两个错误？<br>
+  final class First{<br>
+  private int a=1;<br>
+  public int b=2;<br>
+  }<br>
+  class Second extends First{<br>
+  　　public void f(){<br>
+  　　　
+  System.out.println(a+b);<br>　
+  }<br>
+  }</li>
+  <li>请判断下列程序段的输出结果？<br>
+  class Base {<br>　　
+  int i=99;<br>　　
+  public void f(){<br>　　　
+  System.out.println(&quot;Base.f()&quot;);<br>
+  　　}<br>
+  }<br>
+  public class RType extends Base{<br>　　
+  int i=-1;<br>　　
+  public static void main(String argv[]){<br>　　　　
+  Base b = new RType();//&lt;= Note the type<br>　　　　
+  System.out.println(b.i);<br>　　　　
+  b.f();<br>　　
+  }<br>
+  　　　public void f(){<br>　　　
+  　System.out.println(&quot;RType.f()&quot;);<br>
+  　　　}<br>
+  }</li>
+  <li>当编译和执行下列程序段时，会出现什么情况？<br>
+  import java.io.*;<br>
+  class Base{<br>　　
+  public static void f() throws FileNotFoundException{}<br>
+  }<br>
+  class Demo extends Base{<br>　　
+  public static void f(){}<br>　　
+  public Demo(){<br>　　　　
+  try{<br>　　　　　　
+  DataInputStream dIn = new DataInputStream(System.in);<br>　　　　　　
+  System.out.println(&quot;Pausing&quot;);<br>　　　　　　
+  dIn.readChar();<br>　　　　　　
+  System.out.println(&quot;Continuing&quot;);<br>
+  　　　　　　
+  this.f();<br>　　　　
+  }catch(IOException ioe) {}<br>　　
+  }<br>
+  }<br>
+  public class test{<br>　　
+  public static void main(String args[]){<br>　　　　
+  Demo e = new Demo();<br>　　
+  }<br>
+  }<br>
+  A．编译时报构造方法错。<br>
+  B．编译时报子类中f()方法没有定义抛出异常错。<br>
+  C．运行时报子类中f()方法没有定义抛出异常错。<br>
+  D．运行时输出Pausing，敲击键盘后再输出Continuing。</li>
+  <li>当编译和执行下列程序段时，会出现什么情况？<br>
+  class MyCalc extends Math{<br>　　
+  public int random(){<br>　　　　
+  double iTemp;<br>　　　　
+  iTemp=super();<br>　　　　
+  return super.round(iTemp);<br>　　
+  }<br>
+  }<br>
+  public class test{<br>　　
+  public static void main(String argv[]){<br>　　　　
+  MyCalc m = new MyCalc();<br>
+  　　　　
+  System.out.println(m.random());<br>　　
+  }<br>
+  }<br>
+  A．编译时出错　B．运行时出错　C．输出随机数　D．都不是</li>
+  <li>编程：定义一个雇员类，属性包含：年收入、社会保险号、进公司日期，签约年限，并增加必要的管理方法，例如比较、显示、设置、返回等，雇员类继承如下的父类：<br>
+  class Person{<br>　　
+  private String name;<br>　　
+  private String zip;<br>　　
+  private String city;<br>　　
+  private String country;<br>　　
+  public Person(){<br>　　　　
+  name=null;zip=null;city=null;country=null;<br>　　
+  }<br>　　
+  public Person(String n,String z,String c,String cou){<br>　　　　
+  name=n;zip=z;city=c;country=cou;<br>
+  　　
+  }<br>　　
+  public void setName(String n){<br>　　　　
+  name=n;<br>　　
+  }<br>　　
+  public void setZip(String z){<br>　　　　
+  zip=z;<br>　　
+  }<br>　　
+  public void setCity(String c){<br>　　　　
+  city=c;<br>　　
+  }<br>　　
+  public void setCountry(String c){<br>　　　　
+  country=c;<br>　　
+  }<br>　　
+  public String getName(){<br>　　　　
+  return name;<br>　　
+  }<br>　　
+  public String getZip(){<br>　　　　
+  return zip;<br>　　
+  }<br>　　
+  public String getCity(){<br>　　　　
+  return city;<br>　　
+  }<br>　　
+  public String getCountry(){<br>　　　　
+  return country;<br>　　
+  }<br>　　
+  public void display(){<br>　　　　
+  System.out.println(&quot;Name :&quot;+name);<br>　　　　
+  System.out.println(&quot;Zip :&quot;+zip);<br>　　　　
+  System.out.println(&quot;City :&quot;+city);<br>　　　　
+  System.out.println(&quot;Country :&quot;+country);<br>　　
+  }<br>　　
+  public boolean equals(Person p){<br>　　　　
+  return(name.equalsIgnoreCase(p.name);<br>　　
+  }<br>
+  }</li>
+  <li>编程：一个出版物有名称和出版社。书是出版物，具有作者和ISBN；报纸是出版物，具有出版日期；图书馆中书是书，具有分类号和库存数量；借书是图书馆书，具有借阅者姓名和借出标志。根据它们的层次关系，分别写出类出版物、书、报纸、是、图书馆书借书，每个类具有自己的display()方法。</li>
+  <li>编程：一辆公路车有轮子和乘客数。卡车（truck）是公路车，具有货物重量；小车（automobile）是公路车，具有类型（car、van以及wagon）。定义一个父类vehicle，属性有wheels和passengers，方法有构造方法初始化属性、设置车轮数、设置乘客数、返回车轮数、返回乘客数、显示车轮数和乘客数。卡车除了具有公路车属性和方法外，还有货物重量，方法还应增加设置货物重量、返回货物重量、构造方法和显示方法（这两个方法都需要考虑父类方法和属性）。小车除了具有公路车属性和方法外，还有汽车类型属性（使用标志），方法还应增加设置汽车类型、返回汽车类型、构造方法和显示方法（同样，这两个方法都需要考虑父类方法和属性）。然后编制含有main()方法的类进行测试。</li>
+  <li>编程：定义一个父类Person，属性包含姓名、地址、城市、国家、邮编，方法包括构造方法、分别设置各个属性、分别返回各个属性、显示所有属性。Person的子类有两个学生类和教师类。学生类自己的属性包含主修专业、学号、年级，增加的方法包括设置和返回增加的属性、显示方法以及构造方法。教师类自己的属性包含部门、收入，增加的方法包括设置和返回增加的属性、显示方法以及构造方法。教师类有一个职工子类，其增加的属性为小时工资，增加的方法包括设置和返回增加的属性、显示方法以及构造方法。然后编制测试程序进行测试。</li>
+  <li>编程：定义一个父类Point，包含属性坐标点（x和y），然后定义子类Circle，增加属性半径（r），再以Circle类为父类定义子类Cylinder，增加属性高（h）。然后编制测试程序进行测试。</li>
+  <li>编程：定义抽象类Shape（形状），然后定义子类Circle（圆形）、Square（正方形）、Rectangle（矩形）、Trapezoid（梯形）、Triangle（三角形）。</li>
+  <li>修改题16，利用接口定义父类形状。</li>
+  <li>编程：计算各种交通工具的运输费用，已知每种交通工具的参数都是：元/每公里、距离、过路费、乘客数。现有两种工具：car和bus，其中car的运输费用为“距离*元/公里+过路费+乘客数”，bus的运输费用为“距离*元/公里+过路费+乘客数*0.2”，定义一个接口和三个类car、bus以及ComputeFee。要求如果还要增加其他交通工具的时候，不必修改以前的任何程序，只需要编写新的交通工具的程序。 </li>
+</ol>
+<p align="center" class="t1">&nbsp;</p>
+</body> 
+</html> 

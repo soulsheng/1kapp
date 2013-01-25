@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+<head> 
+<script language="JavaScript"> 
+  var prePage="end";
+  var nextPage="01.htm";
+  var testPage="end";
+  var labPage="end";
+  var libraryPage="end";
+  var studyPage="end";
+  var homePage="end";
+	function showwin(url,winname,properties){
+		window.open(url,winname,properties)
+	}
+</script> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+
+<title>13.3 数据报(UDP)通信技术</title> 
+<link href="images/css.css" rel="stylesheet" type="text/css"> 
+</head> 
+
+<body topmargin="0">
+<p align="center" class="t1"><br>
+  UDP通信</p>
+　　<img src="images/STAR.GIF" width="18" height="20">UDP与TCP通信的区别：<br>
+<table width="95%" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td><div align="center">TCP </div></td>
+    <td><div align="center">UDP</div></td>
+  </tr>
+  <tr> 
+    <td><div align="left">面向连接的，在发送方和接收方之间建立socket连接</div></td>
+    <td><div align="left">给出完整地址信息，无需首先建立发送方和接收方的连接</div></td>
+  </tr>
+  <tr> 
+    <td><div align="left">一旦建立连接，传递的数据大小没有限制</div></td>
+    <td><div align="left">每个数据报必须在64K之内</div></td>
+  </tr>
+  <tr> 
+    <td><div align="left">可靠协议，确保接收方完全正确地获取发送方所发送的全部数据</div></td>
+    <td><div align="left">不可靠协议，发送方所发送的数据报并不一定以相同的次序到达接收方</div></td>
+  </tr>
+</table>
+　　<img src="images/STAR.GIF" width="18" height="20">UDP通信实现：<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">发送数据报：打包数据，形成数据报，然后将包发送到目的地；<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">接收数据报：接收其他计算机发送来的数据报，然后查看数据报中的信息。<br>
+<p align="center" class="t1">发送数据报</p>
+　　<img src="images/STAR.GIF" width="18" height="20">java.net包中提供了两个类DatagramSocket和DatagramPacket用来支持数据报通信，前者用于在程序之间建立传送数据报的通信连接，后者则用来表示一个数据报。DatagramPacket类具有两个构造方法用于生成数据报对象（用于发送）：<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">将buf数组中从索引号从0到length的数据打包成数据报（length≤buf）。该数据报的发送地址是address、端口号是port的主机。<br>
+public DatagramPacket(byte[] buf,int length, InetAddress address) ；<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">将buf数组中的数据从某一指定位置offset开始，长度为length的数据打包成数据报，并发送给目标主机。<br>
+public DatagramPacket(byte[] buf,int offset,int length,<br>
+　　　　　　　　　　　　　　　　　　　　InetAddress address, int port)；<br>
+　　例6：生成数据报的典型代码段<br>
+…<br>
+String str=“问候！”; //将字符串转换成DatagramPacket类所需要的byte类型<br>
+byte[] sdata=str.getBytes();<br>
+InetAddress receiver=InetAddress.getName(“www.sina.com.cn”);<br>
+DatagramPacket spack=new DatagramPacket(sdata,sdata.length,receiver,1100);<br>
+…<br>
+DatagramPacket类对象的其他方法有：<br>
+public int getPort()；//获取该数据报的目标端口号；<br>
+public InetAddress getAddress()；//获取该数据报的目标地址；<br>
+public byte[] getData()；//获取该数据报中的数据；<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">生成一个数据报之后，可以创建DatagramSocket类对象来负责发送数据报。DatagramSocket类是适用于在程序之间建立传递数据报的通信连接，它有两个构造方法：<br>
+　　DatagramSocket();<br>
+　　DatagramSocket(int port);//port给出socket所使用的端口号，如果未给出端口号，则把socket连接到本地主机上一个可用的端口。<br>
+　　例7：代码段<br>
+…<br>
+DatagramSocket send_out=new DatagramSocket();<br>
+send_out.send(spack);<br>
+…<br>
+<p align="center" class="t1">接收数据报</p>
+　　<img src="images/STAR.GIF" width="18" height="20">接收数据报时，用DatagramSocket类的带端口参数的构造方法创建一个对象，这个端口参数与发送数据报的主机端口号要求一致。<br>
+　　例8，发送方发送数据报的端口号是1100，则生成DatagramSocket类对象的端口号也应该是1100：<br>
+…<br>
+DatagramSocket receive_from=new DatagramSocket(1100);<br>
+…<br>
+　　<img src="images/STAR.GIF" width="18" height="20">创建了DatagramSocket类对象之后，可以通过其receive()方法来接收数据报。<br>
+public void receive(DatagramPacket p);<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">receive（）把收到的的数据报传递给数据报参数p。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">可以使用DatagramPacket类的下列构造方法创建一个对象，传递给receive()方法，用于接收数据报：<br>
+DatagramPacket(byte[] buf, int length);<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">在调用了receive()方法后，就等待数据报的到来，直到收到一个数据报为止。<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">可以通过调用p的getPort（）方法获取数据包是从远程主机上的哪个端口发出的；调用InetAddress 
+getAddress（）方法获取这个数据包的发送主机地址。<br>
+　　例9：接收数据报的典型代码<br>
+…<br>
+byte rdata[]=new byte[100];<br>
+int len=90;<br>
+DatagramPacket p=new DatagramPacket(rdata,len);<br>
+receive_from.receive(p);<br>
+…<br>
+<p align="center" class="t1">UDP通信实例　　</p>
+<p>【例13-3】下面的程序在本地构造一个时间服务器（TimeServer），并用客户端(TimeClient)来取得时间。本例演示两程序间如何通过数据报进行通讯。<br>
+  时间服务程序（<a href="ch13/TimeServer.java" target="_blank">TimeServer.java</a>）<br>
+  客户端程序（<a href="ch13/TimeClient.java" target="_blank">TimeClient.java</a>）<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">服务器端的程序执行过程是，先启动程序并等待接收从其他主机发送来的服务请求。在接到服务请求之后，通过获取发送服务请求方的端口号及网络地址，然后获取当前系统时间，并生成数据报，最后发送数据报。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">在客户端，要说明服务程序的地址信息，并通过发送数据报检查服务是否可用，然后等待接收从服务程序发送来的数据报，并提取数据报里的数据并输出，最后结束连接，<br>
+　　<img src="images/STAR.GIF" width="18" height="20">运行结果：　　</p>
+<p align="center">
+  <img src="images/13/ch14-2a.jpg" width="204" height="166"><br>
+  <img src="images/13/ch14-2b.jpg" width="204" height="168"><br>
+</p>
+</body> 
+</html> 

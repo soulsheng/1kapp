@@ -1,0 +1,455 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+<head> 
+<script language="JavaScript"> 
+  var prePage="end";
+  var nextPage="01.htm";
+  var testPage="end";
+  var labPage="end";
+  var libraryPage="end";
+  var studyPage="end";
+  var homePage="end";
+	function showwin(url,winname,properties){
+		window.open(url,winname,properties)
+	}
+</script> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+
+<title>12.2 具体的数据结构</title> 
+<link href="images/css.css" rel="stylesheet" type="text/css"> 
+</head> 
+
+<body topmargin="0">
+<p align="center" class="t1"><br>
+链表　　</p>
+
+<p>　　<img src="images/STAR.GIF" width="18" height="20">链表(Linked 
+  List)是一种常见的数据结构，与数组相比较而言，链表中元素的删除（插入）维护代价是很小的。这是因此数组是用一组连续的存储单元依次存储对象，而链表则是把每个对象储存在一个结点中，每个结点也储存它直接后继结点的地址。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">在Java中，实现的是双向链表，即每个结点同时储存它直接前驱和后继的地址。这样，要删除链表中的某个元素，只需修改被删除元素前后结点的指针即可。　　</p>
+<p align="center"><img src="images/12/g12-3a.jpg" width="553" height="103">　</p>
+<p align="center"><img src="images/12/g12-3b.jpg" width="553" height="127"></p>
+　　<br>
+　　<img src="images/STAR.GIF" width="18" height="20">在Java类库中的链表类LinkedList实现Collection接口。要实现类似链表这种有序的数据结构的插入操作，可以用Iterator的子接口ListIterator来实现。ListIterator除继承了Iterator的三个方法之外还提供了Add()、hasPrevious()等方法。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">Add()可以将对象插入到当前指针位置前面。　　
+<p align="center"><img src="images/12/g12-4.jpg" width="554" height="230">　
+</p>
+<p>
+　　<img src="images/STAR.GIF" width="18" height="20">除Collection接口中的方法之外，LinkedList类还具有其他方法</p>
+<p align="center">
+LinkedList类的其他方法</p>
+<table width="78%" height="350" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td><div align="center">名称 </div></td>
+    <td><div align="center">返回值类型</div></td>
+    <td><div align="center"> 功能</div></td>
+  </tr>
+  <tr> 
+    <td>addFirst(Object o)</td>
+    <td> void </td>
+    <td>在链表的首位插入对象o</td>
+  </tr>
+  <tr> 
+    <td>addLast(Object o) </td>
+    <td>void </td>
+    <td>在链表的尾部加入对象o</td>
+  </tr>
+  <tr> 
+    <td>addAll(int index, Collection c) </td>
+    <td>boolean </td>
+    <td>从index开始加入c中所有对象</td>
+  </tr>
+  <tr> 
+    <td>clone() </td>
+    <td>Object </td>
+    <td>拷贝当前链表</td>
+  </tr>
+  <tr> 
+    <td>get(int index)</td>
+    <td> Object </td>
+    <td>获得指定索引的对象</td>
+  </tr>
+  <tr> 
+    <td>getLast() </td>
+    <td>Object </td>
+    <td>判断当前collection是否为空</td>
+  </tr>
+  <tr> 
+    <td>indexOf(Object o) </td>
+    <td>int </td>
+    <td>生成当前collection的迭代器</td>
+  </tr>
+  <tr> 
+    <td>lastIndexOf(Object o)</td>
+    <td> int </td>
+    <td>删除当前collection中的指定对象o</td>
+  </tr>
+  <tr> 
+    <td>listIterator(　) </td>
+    <td>ListIterator </td>
+    <td>取得当前collection的大小（包含多少个对象）</td>
+  </tr>
+  <tr> 
+    <td>removeFirst() </td>
+    <td>boolean</td>
+    <td> 只保留当前collection与c相同的对象</td>
+  </tr>
+  <tr> 
+    <td>removeLast()</td>
+    <td>boolean</td>
+    <td> 删除当前collection中的所有对象1</td>
+  </tr>
+  <tr> 
+    <td>remove(Object o)</td>
+    <td>boolean</td>
+    <td> 删除链表中索引最小的对象o</td>
+  </tr>
+  <tr> 
+    <td>remove(int index)</td>
+    <td>boolean</td>
+    <td> 删除指定索引对象</td>
+  </tr>
+</table>
+<p align="center" class="t1">链表举例</p>
+　　<img src="images/STAR.GIF" width="18" height="20">【例12-1】分别创建两个链表来保存两个小组同学的名字，然后将两个小组合并为一组，合并结束后删除第二小组中指定的学生名字，最后调用clear()方法删除第二个链表中所有学生的名字。（加上链接打开/显示CombyLinkedList）<br>
+　　<img src="images/STAR.GIF" width="18" height="20">生成两个LinkedList对象s1、s2分别存放学生名字｛“Jime”,“Tom”, 
+“Jonh”, “Cormann”｝和｛“Lucy”,“Patrik”,“Sunny”,“Kity”｝。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">遍历链表，调用了s1.listIterator()和s2.iterator()。listIterator()与iterator()相比,除了具有iterator()提供的方法之外，listIterator()还增加了对元素遍历的方法，如hasNext()、hasPrevious()等方法。while()语句通过iter1.add(liter2.next())实现了将s2中的元素逐个加入s1。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">输出合并后的链表s1。语句s2.remove(sname)删除了s2中与sname相同的元素，在这里是“Sunny”，删除结束，输出s2。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">s2.clear()方法清除s2中的所有元素<br>
+　　<img src="images/STAR.GIF" width="18" height="20">最后，为了验证所有元素已经从链表中清除我们又对s2进行了输出。程序运行结果如下：<br>
+The original linked list s1 is:<br>
+[Jime, Tom, Jonh, Cormann]<br>
+The original linked list s2 is:<br>
+[Lucy, Patrik, Sunny, Kity]<br>
+The linked list after combying s2 with s1 is:<br>
+[Jime, Lucy, Tom, Patrik, Jonh, Sunny, Cormann, Kity]<br>
+The linked list after removing Sunny is:<br>
+[Lucy, Patrik, Kity]<br>
+After removing all the elements, s2 becomes:<br>
+[]<br>
+<p align="center" class="t1">数组列表(ArrayList)类　　</p>
+<p>　　<img src="images/STAR.GIF" width="18" height="20">数组列表类：封装了一个动态分配的对象数组Object[]。ArrayList类中的所有方法都是非同步的，如果不需要同步机制，最好选择ArrayList类，其特点是效率高（如果需要同步，可使用Vector类）。</p>
+<p align="center">
+  ArrayList类的主要方法
+</p>
+<table width="86%" height="420" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td width="46%"><div align="center">名称 </div></td>
+    <td width="13%"><div align="center">返回值类型 </div></td>
+    <td width="41%"><div align="center">功能</div></td>
+  </tr>
+  <tr> 
+    <td>add(int index, Object element) </td>
+    <td>void </td>
+    <td>在数组列表的指定位置插入对象element</td>
+  </tr>
+  <tr> 
+    <td height="33">add(Object o) </td>
+    <td>boolean </td>
+    <td>在数组列表的尾部加入对象o</td>
+  </tr>
+  <tr> 
+    <td>addAll(int index, Collection c)</td>
+    <td>boolean</td>
+    <td> 从数组列表的index开始加入c中所有对象</td>
+  </tr>
+  <tr> 
+    <td>addAll(Collection c)</td>
+    <td>boolean</td>
+    <td> 将c中所有对象全部加入数组列表中</td>
+  </tr>
+  <tr> 
+    <td>clone() </td>
+    <td>Object </td>
+    <td>拷贝当前数组列表</td>
+  </tr>
+  <tr> 
+    <td height="27">clear()</td>
+    <td>void </td>
+    <td>消除当前数组列表中所有元素</td>
+  </tr>
+  <tr> 
+    <td>contains(Object elem) </td>
+    <td>boolean </td>
+    <td>判断当前数组列表中是否包含对象elem</td>
+  </tr>
+  <tr> 
+    <td>get(int index) </td>
+    <td>Object</td>
+    <td> 获得指定索引的对象</td>
+  </tr>
+  <tr> 
+    <td>set(int index, Object element)</td>
+    <td>Object</td>
+    <td> 将数组列表中指定位置的对象替换为element</td>
+  </tr>
+  <tr> 
+    <td>indexOf(Object elem) </td>
+    <td>int</td>
+    <td> 在数组列表中查找指定对象elem</td>
+  </tr>
+  <tr> 
+    <td>isEmpty()</td>
+    <td>boolean</td>
+    <td> 判断当前数组列表是否为空</td>
+  </tr>
+  <tr> 
+    <td>size() </td>
+    <td>int</td>
+    <td> 获得当前数组列表大小</td>
+  </tr>
+  <tr> 
+    <td height="35">remove(int index) </td>
+    <td>Object</td>
+    <td> 删除数组列表中指定位置的对象</td>
+  </tr>
+  <tr> 
+    <td>toArray() </td>
+    <td>Object [ ]</td>
+    <td> 返回一个对象数据包含所数组列表中所有对象</td>
+  </tr>
+</table>
+<p align="center" class="t1">数组列表类举例</p>
+　　【例12-2】创建两个数组列表分别保存两个小组同学的名字，然后将两个小组合并为一组，合并结束后删除第二小组中指定的学生名子，最后调用clear()方法删除第二个数组列表中所有学生的名字。<br>
+（<a href="ch12/CombyArrayList.java" target="_blank">CombyArrayList.java</a>）<br>
+　　<img src="images/STAR.GIF" width="18" height="20">首先生成两个ArrayList对象a1、a2分别存放学生名字｛“Jime”,“Tom”, 
+“Jonh”, “Cormann”｝和｛“Lucy”,“Patrik”,“Sunny”,“Kity”｝。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">与链表不同的是，在ArrayList中不需要生成迭代器就可以访问元素。调用了a2.size()获得a2的大小，然后通过一个for循环对a2中的元素进行逐个访问，并将其取出添加到数组列表a1中。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">输出合并后的数组列表a1。通过a2.indexOf（sname）来得到某个对象在数组列表中出现的位置。语句a2.remove(pos)删除了a2中位置在pos的元素，删除结束后输出a2。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">调用a2.clear()方法，清除了a2中所有的元素。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">输出a2。<br>
+程序运行结果如下：<br>
+The original Array list a1 is:<br>
+[Jime, TomA, Jonh, Cormann]<br>
+The original Array list a2 is:<br>
+[Lucy, Patrik, Sunny, Kity]<br>
+The Array list after combying a2 with a1 is:<br>
+[Jime, TomA, Jonh, Cormann, Lucy, Patrik, Sunny, Kity]<br>
+The Array list after removing Sunny is:<br>
+[Lucy, Patrik, Kity]<br>
+After removing all the elements, a2 becomes:<br>
+[]
+<p align="center" class="t1">哈希集　　</p>
+<p>　　<img src="images/STAR.GIF" width="18" height="20">哈希表(Hash 
+  Table)是一种支持快速查找元素的数据结构。哈希表中的每个元素都通过哈希函数计算出一个哈希码（Hash Code）与之对应。这个哈希码的求取只与当前元素有关，而与其他任何元素无关。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">一个哈希表由一组桶（Bucket）组成，每个元素是一个由零个或多个哈希表项组成的链表 
+。　　</p>
+<p align="center">
+<img src="images/12/g12-5.jpg" width="478" height="146">　　</p>
+<p>
+  　　每个桶存放具有相同哈希码的元素，每个哈希表项由一个（关键字，元素）对组成，这里关键字和元素都不能为空。设桶的总数目为m，在哈希表中查找元素的一个常用方法是先计算该元素的哈希码n，那么包含该元素的桶的索引号i= 
+  mod（n ，m）。注意，由于不同元素的哈希码有可能相同，因此，在一个桶中可能有多个元素。在查找桶的索引后，并不代表已经找到该元素，如果桶中包含多个元素（这种情况也称为哈希冲突），还要将要查找的元素与保存在桶中的所有元素做比较，找到相等的元素。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">为了提高哈希表的性能，可以指定桶的初始数目。如果大约知道哈希表中最终会保存的元素数目，可把桶的初始数目设置为这些待保存元素的1.5倍。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">当哈希表保存的元素过多时，需要重新创建一个桶的数目更大的哈希表，将原哈希表里的元素转移到新表中，并删除原表。在Java语言中使用了装载因子（load 
+    factor）来说明何时创建新表，如装载因子等于0.6表示如果该哈希表的装满程序大于60%，就要重新创建一个新的哈希表，新哈希表的桶数目是原哈希表的两倍。哈希表装载因子的缺省值为0.75。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">可以利用哈希表实现几种重要的数据结构。最常用的，如Set，Map等。一个Set是由不重复元素的数据结构。如果集合中要新增元素，先检查要增加的元素是否在集合中已经存在，如果没有才将元素加入集合。Map接口用来维持很多〈键，值〉对，以便通过键来查找相应的值。
+</p>
+<p align="center" class="t1">HashSet类　　</p>
+<p>　　在JDK1.4中，使用HashSet类的缺省构造器HashSet()生成的哈希集对象，桶的数目缺省值为16个，装载因子为0.75。也可以使用下列构造器格式，自己说明它的装载能力：<br>
+  　　HashSet(int initialCapacity)<br>
+　　HashSet(int initialCapacity, float loadFactor)　
+</p>
+<p align="center">
+  HashSet类的主要方法</p>
+<table width="87%" height="225" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td><div align="center">名称 </div></td>
+    <td><div align="center">返回值类型 </div></td>
+    <td><div align="center">功能</div></td>
+  </tr>
+  <tr> 
+    <td>add(Object o)</td>
+    <td> boolean </td>
+    <td>如果哈希集中还不包含对象o，就加入对象o</td>
+  </tr>
+  <tr> 
+    <td>clone()</td>
+    <td>Object</td>
+    <td> 拷贝当前哈希集</td>
+  </tr>
+  <tr> 
+    <td>clear() </td>
+    <td>void </td>
+    <td>消除当前哈希集中所有元素</td>
+  </tr>
+  <tr> 
+    <td>contains(Object elem) </td>
+    <td>boolean </td>
+    <td>判断当前哈希集中是否包含对象elem</td>
+  </tr>
+  <tr> 
+    <td>isEmpty() </td>
+    <td>boolean </td>
+    <td>判断当前哈希集表是否为空</td>
+  </tr>
+  <tr> 
+    <td>size() </td>
+    <td>int </td>
+    <td>获得当前哈希集的元素数目</td>
+  </tr>
+  <tr> 
+    <td>remove(Object o) </td>
+    <td>boolean </td>
+    <td>删除哈希集中指定的对象</td>
+  </tr>
+  <tr> 
+    <td>iterator() </td>
+    <td>Iterator </td>
+    <td>返回当前哈希集的迭代器</td>
+  </tr>
+</table>
+　　【例12-3】我们先生成一个HashSet对象，然后向该对象中增加元素。程序运行结果显示，在哈希集中不能增加重复元素。例如，在程序中我们试图向哈希集插入两个One，却没有成功，因为集合(Set)不允许有重复元素。<br>
+（<a href="ch12/DemoHashSet.java">DemoHashSet.java</a>）<br>
+　　运行结果：<br>
+　　Three<br>
+　　Two<br>
+　　One<br>
+<p align="center" class="t1">HashMap类　</p>
+<p>　　<img src="images/STAR.GIF" width="18" height="20">HashMap基于哈希表实现的Map与HashSet类似。使用HashMap类的缺省构造器HashMap()生成的Map对象，桶的数目缺省值也为16个，装载因子也为0.75。也可以使用下列构造器自己说明它的装载能力：<br>
+  HashMap(int initialCapacity)<br>
+  HashMap(int initialCapacity, float loadFactor)<br>
+　　<img src="images/STAR.GIF" width="18" height="20">与HashSet不同的是，向HashMap对象中添加元素时以〈键，值〉方式。可以通过键查找值，也可以通过值查找。另外，向HashSet对象中添加元素用Put()方法，而不是add()方法。　　</p>
+<p align="center">
+  HashMap类的主要方法 </p>
+<table width="100%" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td width="38%"><div align="center">名称 </div></td>
+    <td width="12%"><div align="center">返回值类型 </div></td>
+    <td width="50%"><div align="center">功能</div></td>
+  </tr>
+  <tr> 
+    <td>put(Object key, Object value)</td>
+    <td> Object</td>
+    <td>向哈希映射中就加入对象value，键值为key</td>
+  </tr>
+  <tr> 
+    <td>clone()</td>
+    <td> Object </td>
+    <td>拷贝哈希映射中的对象给指定</td>
+  </tr>
+  <tr> 
+    <td>clear() </td>
+    <td>void </td>
+    <td>消除当前哈希映射中所有元素</td>
+  </tr>
+  <tr> 
+    <td height="31">containsKey( Object key) </td>
+    <td>boolean </td>
+    <td>判断键值为key的元素是否包含在哈希映射中</td>
+  </tr>
+  <tr> 
+    <td>containsValues(Object elem) </td>
+    <td>boolean</td>
+    <td>判断当前哈希映射是否包含对象elem</td>
+  </tr>
+  <tr> 
+    <td>isEmpty() </td>
+    <td>boolean </td>
+    <td>判断当前哈希映射是否为空</td>
+  </tr>
+  <tr> 
+    <td>keySet() </td>
+    <td>Set </td>
+    <td>返回当前哈希映射中的所有元素的键值</td>
+  </tr>
+  <tr> 
+    <td>values() </td>
+    <td>Collection</td>
+    <td>返回当前哈希映射中的所有元素值</td>
+  </tr>
+  <tr> 
+    <td>get(Object key)</td>
+    <td> Object</td>
+    <td>检索具有指定健值的元素</td>
+  </tr>
+  <tr> 
+    <td>remove(Object key) </td>
+    <td>boolean</td>
+    <td>删除哈希映射中指定键值的对象</td>
+  </tr>
+</table>
+　　【例12-4】编写一个程序实现公司名称与地址之间映射关系。我们用HashMap类对象来完成这个程序，对象中存放的元素是以公司名称为键、地址为值组成的＜公司名，地址＞对．我们先用put()方法向哈希映射中加入元素，然后输出元素．除此，还调用了get()方法实现了对指定键的元素查找，通过remove()方法删除了指定键的元素．从运行结果可见，删除前后的元素区别。<br>
+（<a href="ch12/DemoHashMap.java" target="_blank">DemoHashMap.java</a>）<br>
+运行结果：<br>
+The original Hash Map:<br>
+{Sun=Mountain View, CA, Adobe=Mountain View, CA, IBM=White Plains, NY}<br>
+They are located in: Mountain View, CA<br>
+The modified Hash Map:<br>
+{Sun=Mountain View, CA, IBM=White Plains, NY}<br>
+<p align="center" class="t1">树集(TreeSet)</p>
+　　<img src="images/STAR.GIF" width="18" height="20">TreeSet类与HashSet类相类似，但两者最大的不同是TreeSet类对象是一种有序的数据结构。可以以任何次序向对象插入元素，但当遍历它时，元素是按顺序出现的。<br>
+　　【例12-5】程序先向树集T中插入按任意次序三个元素：John，Tom，Kite，然后遍历。<br>
+（<a href="ch12/SortTreeSet.java" target="_blank">SortTreeSet.java</a>）<br>
+　　<img src="images/STAR.GIF" width="18" height="20">运行结果是按字母表顺序排序的：John　Kite　Tom。TreeSet的排序是以一种树形结构实现的。每次向树中添加一个元素，就按照排序方法把它放到适当的位置。因而，在遍历这类树中的元素时，它们出现的序列部是有序的。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">TreeSet类的构造方法：<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">缺省的构造方法TreeSet（），通过该构造方法，可以创建一棵空树；<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">TreeSet（Collection c ）创建一棵树，并把c中所有元素插入树中；<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">TreeSet（Comparator c）创建一棵空树，并指定比较器c；<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">TreeSet（SortedSet s）创建一棵树，将s中所有元素插入树，并保持与s相同的顺序。<br>
+<p align="center" class="t1">元素比较</p>
+　　<img src="images/STAR.GIF" width="18" height="20">TreeSet中的对象排序取决于被插入对象对Comparable 
+接口的实现。在JDK1.4中，Comparable接口只定义了一个方法：<br>
+int CompareTo（Object o）；<br>
+　　<img src="images/STAR.GIF" width="18" height="20">用户需要通过实现Comparable接口来定义自己的排序方法，因为Object类没有Comparable的缺省实现。对所有实现了该接口的类对象，通过其返回值确定两个对象的大小，如int 
+r=a.CompareTo(b)。如果r&gt;0表示a&gt;b；r=0表示a=b；r&lt;0表示a&lt;b。在Java的标准类库中的类也实现了Comparable接口，如String类，它的CompareTo（）方法是按字典顺序进行排序。<br>
+　　例4：利用成绩（grade）给Student对象进行排序：<br>
+class Student implement Comparable{<br>
+　　int grade;<br>
+　　…<br>
+　　public int CompareTo（Object o）{<br>
+　　Student s=(Student)o;<br>
+　　return grade-s.grade;<br>
+　　}<br>
+　　…<br>
+}<br>
+　　<img src="images/STAR.GIF" width="18" height="20">如果比较的是两个整数（不全是负数），可直接返回它们的差值。如果是其他类型的对象，用户可自己定义按照某一规则确定返回值大小。只要确定是大于0，等于0还是小于0就可以了，而不关心具体值是多少。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">使用Comparable接口有两个明显的不足之处：<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">这个接口只能实现一次。如果有要求一个数据结构中按成绩给学生排序，另一个数据结构中却要求按学号排序，该怎么办？<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">如果一个类没有实现Comparable接口，TreeSet又怎样排序？<br>
+　　<img src="images/STAR.GIF" width="18" height="20">TreeSet类有一个构造器可指定比较器TreeSet（Comparator 
+c）。可以通过把一个Comparator对象传递给TreeSet构造器，让TreeSet用另一种比较方法。Comparator接口中提供了一个判断两个对象顺序的方法：<br>
+int compare（Object a, Object b）；<br>
+　　<img src="images/STAR.GIF" width="18" height="20">方法的返回值的意义与CompareTo()相同：大于0，表示a&gt;b；等于0，表示a=b；小于0，表示a&lt;b。这样，按学号给学生排序，只需要定义一个实现了接口Comparator接口的类即可：<br>
+　　例5：<br>
+class StudentComparator implements Comparator{<br>
+　　public int compare(Object a, Object b){<br>
+　　　　Student s1=(Student)a;<br>
+　　　　Student s2=(Student)b;<br>
+　　　　String sid1=s1.getSid( );<br>
+　　　　String sid2=s2.getSid( );<br>
+　　　　return sid1.compareTo(sid2);<br>
+　　}<br>
+}<br>
+然后把这个类的一个对象传递给TreeSet的构造方法：<br>
+StudentComparator Sc=new StudentComparator( );<br>
+TreeSet sortBySid=new TreeSet(Sc);<br>
+　　<img src="images/STAR.GIF" width="18" height="20">使用这种方法创建的树，每当两个对象进行比较时，就会调用指定的比较器去比较它们。从SudentComparator实现可以发现，这个比较器不含数据成员，只是一个比较方法的处理器，这种类的对象有时也称为函数对象（function 
+object）。对于这种函数对象一般定义为内部类的实例：<br>
+TreeSet sortBySid=new TreeSet(<br>
+　　new Comparator( )<br>
+　　{ Student s1=(Student)a;<br>
+　　　Student s2=(Student)b;<br>
+　　　String sid1=s1.getSid( );<br>
+　　　String sid2=s2.getSid( );<br>
+　　　return sid1.compareTo(sid2);<br>
+　　}<br>
+);<br>
+<p align="center" class="t1">举例</p>
+　　【例12-5】编写一个程序创建两个Student对象。第一个是缺省排序方法，按成绩（grade）为关键进行排序；第二个是以学号（sid）为关键字，用自定义的比较器进行排序。（<a href="ch12/DemoTreeSet.java" target="_blank">DemoTreeSet.java</a>）<br>
+　　<img src="images/STAR.GIF" width="18" height="20">Student类实现了Comparable接口，并在compareTo()方法中定义了按成绩比较两个学生的先后顺序。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">程序中创建一个TreeSet实例students来存放Student对象。由于在Student类中已经对compareTo()方法进行了实现，所以将该类的对象插入students过程中已经按成绩进行了排序。接头通过传递一个比较器来创建一个新的TreeSet对象，在该比较器中实现了两个学生按学号排序的compare()方法。<br>
+运行结果：<br>
+Sorted by grade:<br>
+Sid Sname Grade<br>
+01007A Lucy 70<br>
+04010A Anny 80<br>
+00001A Tom 89<br>
+00302B Jike 95<br>
+Sorted by Sid:<br>
+Sid Sname Grade<br>
+00001A Tom 89<br>
+00302B Jike 95<br>
+01007A Lucy 70<br>
+04010A Anny 80
+</body> 
+</html> 

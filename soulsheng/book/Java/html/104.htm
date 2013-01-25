@@ -1,0 +1,665 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+<head> 
+<script language="JavaScript"> 
+  var prePage="end";
+  var nextPage="01.htm";
+  var testPage="end";
+  var labPage="end";
+  var libraryPage="end";
+  var studyPage="end";
+  var homePage="end";
+	function showwin(url,winname,properties){
+		window.open(url,winname,properties)
+	}
+</script> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+
+<title>10.4 Swing的其他组件</title> 
+<link href="images/css.css" rel="stylesheet" type="text/css"> 
+</head> 
+
+<body topmargin="0">
+<p align="center" class="t1"><br>
+  面板　</p>
+<p>　　在设计图形用户界面时，为了更合理地安排各种组件在窗口中的位置，可以考虑将所需组件先排列在一个容器中，然后将其作为整体嵌入诸如窗口的内容面板。JPanel类就是这样的一种容器类。</p>
+　　<table width="74%" height="150" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td><div align="center">方法 </div></td>
+    <td><div align="center">说明</div></td>
+  </tr>
+  <tr> 
+    <td>JPanel() </td>
+    <td>构造方法，创建一个JPanel对象</td>
+  </tr>
+  <tr> 
+    <td>JPanel(LayoutManager layout) </td>
+    <td>构造方法，创建一个指定布局的JPanel对象</td>
+  </tr>
+  <tr> 
+    <td> add(JComponent k) </td>
+    <td>在JPanel上加入组件</td>
+  </tr>
+  <tr> 
+    <td>setLayout(LayoutManager layout) </td>
+    <td>设置JPanel的布局</td>
+  </tr>
+  <tr> 
+    <td>setBorder(Border) </td>
+    <td>设置JPanel的边框</td>
+  </tr>
+</table>
+　　
+<div align="center">Swing中的JScrollPane类具备滚动条的功能。在图形用户界面的编程中，经常可以把JScrollPane类和JList、JLabel、JTextArea等组件配合使用。<br>
+</div>
+<table width="100%" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td width="38%"><div align="center">方法 </div></td>
+    <td width="62%"><div align="center">说明</div></td>
+  </tr>
+  <tr> 
+    <td>JScrollPane() </td>
+    <td>构造方法，创建一个JScrollPane对象</td>
+  </tr>
+  <tr> 
+    <td>JScrollPane(JComponent k) </td>
+    <td>构造方法，创建一个JScrollPane对象，并加入一个JComponent组件</td>
+  </tr>
+  <tr> 
+    <td>JScrollPane(int v，int h) </td>
+    <td>创建有水平和垂直滚动条的JScrollPane对象</td>
+  </tr>
+  <tr> 
+    <td>JScrollPane(JComponent k，int v，int h) <br> 
+    </td>
+    <td>创建有水平和垂直滚动条的JScrollPane对象，并加入一个JComponent组件</td>
+  </tr>
+</table>
+　　
+<p>　　JScrollPane类构造方法中，除了给定具体数值设置水平或垂直滚动条外，还提供了一些设置滚动条的参数（Scroll Bar Parameter），它们都是在ScrollPaneConstant接口中定义，为此需要使用如下格式：</p>
+<p align="center">
+  ScrollPaneConstant. ScrollBarParameter
+</p>
+<table width="100%" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td width="45%"><div align="center">参数 </div></td>
+    <td width="55%"><div align="center">说明</div></td>
+  </tr>
+  <tr> 
+    <td>HORIZONTAL_SCROLLBAR_ALWAYS </td>
+    <td>始终都显示出水平滚动条</td>
+  </tr>
+  <tr> 
+    <td>VERTICAL_SCROLLBAR_ALWAYS </td>
+    <td>始终都显示出垂直滚动条</td>
+  </tr>
+  <tr> 
+    <td>HORIZONTAL_SCROLLBAR_NEVER</td>
+    <td> 始终都不显示出水平滚动条</td>
+  </tr>
+  <tr> 
+    <td>VERTICAL_SCROLLBAR_NEVER </td>
+    <td>始终都不显示出垂直滚动条</td>
+  </tr>
+  <tr> 
+    <td>HORIZONTAL_SCROLLBAR_AS_NEEDED </td>
+    <td>当组件中的内容在水平方向上大于显示区域是显示水平滚动条</td>
+  </tr>
+  <tr> 
+    <td>VERTICAL_SCROLLBAR_ AS_NEEDED <br> </td>
+    <td>当组件中的内容在垂直方向上大于显示区域是显示垂直滚动条</td>
+  </tr>
+</table>
+<p align="center" class="t1">按钮　</p>
+<p>　　在Swing中，所以按钮都是由AbstractButton类派生的，它主要派生出两个组件类：JButton和JToggleButton组件类，其中JButton是Swing按钮，而JToggleButton组件类是单选按钮和复选框的父类。这就意味着JButton继承了AbstractButton类的所有方法和属性，单选按钮和复选框继承了AbstractButton类和JToggleButton类的所有方法和属性。</p>
+　　
+<div align="center">
+  AbstractButton类的主要方法<br>
+</div>
+<table width="85%" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td width="41%"><div align="center">方法 </div></td>
+    <td width="59%"><div align="center">说明</div></td>
+  </tr>
+  <tr> 
+    <td>addActionListener(ActionListener l) </td>
+    <td>注册监听者</td>
+  </tr>
+  <tr> 
+    <td>addChangeListener(ActionListener l) </td>
+    <td>改变监听者</td>
+  </tr>
+  <tr> 
+    <td>Icon getIcon() </td>
+    <td>返回按钮的图标</td>
+  </tr>
+  <tr> 
+    <td>setSelectIcon(Icon icon) </td>
+    <td>设置按钮图标</td>
+  </tr>
+  <tr> 
+    <td>String getText() </td>
+    <td>返回按钮的文字</td>
+  </tr>
+  <tr> 
+    <td>setText(String str) </td>
+    <td>设置按钮的文字</td>
+  </tr>
+  <tr> 
+    <td>setEnable(boolean b) </td>
+    <td>设置按钮是否禁用（true允许，false禁用）</td>
+  </tr>
+  <tr> 
+    <td>boolean isSelected() </td>
+    <td>返回按钮的状态（true被选择，false没有被选择）</td>
+  </tr>
+  <tr> 
+    <td>setRolloverIcon(Icon icon) <br> </td>
+    <td>为按钮设置翻滚图标</td>
+  </tr>
+</table>
+<div align="center">JButton类的主要方法<br>
+</div>
+<table width="85%" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td><div align="center">方法 </div></td>
+    <td><div align="center">说明</div></td>
+  </tr>
+  <tr> 
+    <td>JButton() </td>
+    <td>构造方法，创建一个按钮</td>
+  </tr>
+  <tr> 
+    <td>JButton(String str) </td>
+    <td>构造方法，创建一个具有str文本的按钮</td>
+  </tr>
+  <tr> 
+    <td>JButton(Icon icon) </td>
+    <td>构造方法，创建一个具有icon图标的按钮</td>
+  </tr>
+  <tr> 
+    <td>JButton(String str，Icon icon) </td>
+    <td>构造方法，创建一个具有icon图标以及str文本的按钮</td>
+  </tr>
+</table>
+<p align="center" class="t1">按钮举例</p>
+<p><a href="ch10/ch10ex11.java" target="_blank">【例10-11】设计一个简易计算器界面，界面效果如图10-6所示</a>。　</p>
+<p align="center"><br>
+<img src="images/10/104-1.jpg" width="300" height="200"></p>
+　　<br>
+　　<img src="images/STAR.GIF" width="18" height="20">程序中使用到的字体是Java类库中的字体类，其格式为：<br>
+Font fontObj=new Font(String nameOfFont,int style,int size);<br>
+创建字体对象后，可以根据需要，利用setFont(Font fontObj)方法对各种组件设置字体。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">JButton产生的是ActionEvent事件，用户用鼠标左键按下去的时候，便产生该事件，而处理此事件的事件处理者只有一个：actionPerformed（ActionEvent 
+  e）。<br>
+　　<a href="ch10/ch10ex12.java" target="_blank">【例10-12】在例10-11中增加按钮事件及其事件处理者。事件处理者将用户点击的按钮对应的字符显示在文本框1，并在文本框2中显示事件来源按钮</a>。<br>
+为了增加事件与事件处理者，程序中需要增加三处内容：<br>
+　　<img src="images/STAR.GIF" width="18" height="20">在Calculator 
+  类中的for循环中加一条语句b[j].addActionListener(new CalButton())，将16个按钮加入事件监听。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">在Calculator 
+  类中，增加一个定义语句：static String str=&quot;&quot;，用于连接按下按钮的文字（不能放在事件监听者类中定义，这是因为每次按钮事件调用事件监听者，都会重新定义，导致原来信息的丢失）。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">定义事件监听者：按钮事件类具有许多非常有用的方法，这里我们用到其中方法之一String 
+  getActionCommand()，它返回按钮对应的文字。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">Swing中，标签、按钮、菜单等组件可以使用文字、图标或文字与图标来表示，类ImageIcon的作用就是将图片文件（GIF等）转换为一个Swing图标，其语法格式为：ImageIcon 
+  imageIconName=new ImageIcon(String pictureFileName);<br>
+例如：<br>
+ImageIcon catIcon=new ImageIcon(“cat.gif”);<br>
+JLabel catPicture=new JLabel(catIcon);<br>
+JButton catButton=new JButton(catIcon);<br>
+　　<img src="images/STAR.GIF" width="18" height="20">如果使用图标创建按钮，应该使用setActionCommand方法明确地给按钮一个行动命令，这样getActionCommand就能获得该按钮的标识。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">在标签、按钮、菜单等组件中，也可以同时具有文字和图标。<br>
+例如：<br>
+ImageIcon catIcon=new ImageIcon(“cat.gif”);<br>
+JButton button=new JButton(String str);<br>
+JLabel label=new JLabel(String str);<br>
+label.setIcon(catIcon);<br>
+button.setIcon(catIcon);<br>
+这里setIcon方法与setText方法相似，其区别就在于图标和文字。<br>
+　　<a href="ch10/ch10ex13.java" target="_blank">【例10-13】图标按钮、标签的使用</a>。　　
+<p align="center"><br>
+<img src="images/10/104-2.jpg" width="320" height="250"></p>
+<p align="center" class="t1">单选按钮和复选框　　</p>
+<p>　　<img src="images/STAR.GIF" width="18" height="20">单选按钮是由JRadioButton类派生，它是指一组按钮中，用户只能选择其中一个按钮，当用户选种其中一个时，其状态为选中（ON），其余的都是未选中（OFF）；<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">复选框是由JCheckBox类派生，它提供选中/未选中（ON/OFF）两种状态，当用户单击复选框时改变复选框原来的状态。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">JToggleButton组件类则是单选按钮和复选框的父类并且JToggleButton又是AbstractButton类派生的。　</p>
+<div align="center">
+  JRadioButton类的主要方法<br>
+</div>
+<table width="100%" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td width="36%"><div align="center">方法 </div></td>
+    <td width="64%"><div align="center">说明</div></td>
+  </tr>
+  <tr> 
+    <td>JRadioButton() </td>
+    <td>构造方法，创建一个JRadioButton对象</td>
+  </tr>
+  <tr> 
+    <td>JRadioButton(Icon icon) </td>
+    <td>构造方法，创建一个JRadioButton对象，设置图标</td>
+  </tr>
+  <tr> 
+    <td>JRadioButton(Icon icon,boolean sele)</td>
+    <td> 构造方法，创建一个JRadioButton对象，设置图标，设置按钮是否选中（true选中，false未选中）</td>
+  </tr>
+  <tr> 
+    <td>JRadioButton(String str)</td>
+    <td> 构造方法，创建一个JRadioButton对象，设置文字</td>
+  </tr>
+  <tr> 
+    <td>JRadioButton(String str,boolean sele) </td>
+    <td>构造方法，创建一个JRadioButton对象，设置文字，设置按钮是否选中（true选中，false未选中）</td>
+  </tr>
+  <tr> 
+    <td>JRadioButton(String str,Icon icon) </td>
+    <td>构造方法，创建一个JRadioButton对象，设置图标、文字</td>
+  </tr>
+  <tr> 
+    <td>JRadioButton(String str,Icon icon,<br>
+      boolean sele)<br></td>
+    <td>构造方法，创建一个JRadioButton对象，设置图标、文字，设置按钮是否选中（true选中，false未选中）</td>
+  </tr>
+</table>
+　　　　　　　　　　　　　　　　　　　　　
+<div align="center">JCheckBox类的主要方法<br>
+</div>
+<table width="100%" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td width="37%"><div align="center">方法 </div></td>
+    <td width="63%"><div align="center">说明</div></td>
+  </tr>
+  <tr> 
+    <td>JCheckBox() </td>
+    <td>构造方法，创建一个JCheckBox对象</td>
+  </tr>
+  <tr> 
+    <td>JCheckBox(Icon icon) </td>
+    <td>构造方法，创建一个JCheckBox对象，设置图标</td>
+  </tr>
+  <tr> 
+    <td>JCheckBox(Icon icon,boolean sele) </td>
+    <td>构造方法，创建一个JCheckBox对象，设置图标，设置按钮是否选中（true选中，false未选中）</td>
+  </tr>
+  <tr> 
+    <td>JCheckBox(String str) </td>
+    <td>构造方法，创建一个JCheckBox对象，设置文字</td>
+  </tr>
+  <tr> 
+    <td>JCheckBox(String str,boolean sele)</td>
+    <td> 构造方法，创建一个JCheckBox对象，设置文字，设置按钮是否禁用选中（true选中，false未选中）</td>
+  </tr>
+  <tr> 
+    <td>JCheckBox(String str,Icon icon) </td>
+    <td>构造方法，创建一个JCheckBox对象，设置图标、文字</td>
+  </tr>
+  <tr> 
+    <td>JCheckBox(String str,Icon icon,<br>
+      boolean sele) </td>
+    <td>构造方法，创建一个JCheckBox对象，设置图标、文字，设置按钮是否禁用选中（true选中，false未选中）</td>
+  </tr>
+</table>　
+<p>　　<img src="images/STAR.GIF" width="18" height="20">单选按钮和复选框可引发的主要事件有ItemEvent类派生，该事件对应的事件监听者为ItemListener接口，接口的主要方法是itemStateChanged方法。另外ItemEvent类包含一个重要的事件ITEM_STATE_CHANGE，并有方法：<br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20">Object 
+  getItem()方法：通知用户哪个选择项的选中状态发生变化，并返回该选项事件的具体内容<br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20">int 
+  getStateChange()方法：可使用户确认选中的是哪个选项<br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20">Object 
+  getSource（）方法：返回产生事件的组件对象<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">单选按钮（JRadioButton）可配合ButtonGroup，来使一群JRadioButton只能有单一选择，其方法就是将这些JRadioButton加入到ButtonGroup中。<br>
+　　<a href="ch10/ch10ex14.java" target="_blank">【例10-14】JRadioButton类和JCheckBox类的应用，字体变化，其界面如图</a>。</p>
+<p align="center">
+<img src="images/10/104-3.jpg" width="300" height="250"></p>
+<p align="center" class="t1">列表框</p>
+<p>　　一个列表框是可供选择的选择项的集合，用户能一次选择一项或多项。选择多项的方法与复制文件相似，按住Ctrl或Shift键然后移动鼠标进行选择即可。如果将列表放入到JScrollPane容器中，则会出现滚动条，以便浏览所有的选项。　　</p>
+<div align="center">
+  JList类的主要方法
+</div>
+<table width="100%" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td><div align="center">方法 </div></td>
+    <td><div align="center">说明</div></td>
+  </tr>
+  <tr> 
+    <td>JList() </td>
+    <td>构造方法，创建一个空的JList对象</td>
+  </tr>
+  <tr> 
+    <td>JList(ListModel data) </td>
+    <td>构造方法，创建一个数据原型元素的JList对象</td>
+  </tr>
+  <tr> 
+    <td>JList(Object[] data) </td>
+    <td>构造方法，创建一个使用数组的JList对象</td>
+  </tr>
+  <tr> 
+    <td> JList(Vector data) </td>
+    <td>构造方法，创建一个使用向量的JList对象</td>
+  </tr>
+  <tr> 
+    <td>AddListSelectionListener(ListSelectionListener listener) </td>
+    <td>注册事件监听者给JList对象</td>
+  </tr>
+  <tr> 
+    <td>clearSelection() </td>
+    <td>清除当前的选择</td>
+  </tr>
+  <tr> 
+    <td>int getSelectedIndex() </td>
+    <td>返回第一个选择项的下标</td>
+  </tr>
+  <tr> 
+    <td>int[] getSelectedIndices() </td>
+    <td>按照递增次序，返回所有选择项下标数组</td>
+  </tr>
+  <tr> 
+    <td>Object getSelectedValue() </td>
+    <td>返回第一个选择项的值</td>
+  </tr>
+  <tr> 
+    <td>Object[] getSelectedValues() </td>
+    <td>返回所有选择项的数组</td>
+  </tr>
+  <tr> 
+    <td>boolean isSelectionEmpty() </td>
+    <td>如果没有项目被选择，返回true，反之false</td>
+  </tr>
+  <tr> 
+    <td>setFixedCellHeight(int h) </td>
+    <td>设置列表中单元的高度</td>
+  </tr>
+  <tr> 
+    <td>setFixedCellWidth(int h)</td>
+    <td> 设置列表中单元的宽度</td>
+  </tr>
+  <tr> 
+    <td>setSelectionMode() </td>
+    <td>设置选择模式：SINGLE_SELECTION,SINGLE_INTERVAL_SELECTION,<br>
+      MULTIPLE_INTERVAL_SELECTION</td>
+  </tr>
+  <tr> 
+    <td>setVisibleRowCount(int r) </td>
+    <td>设置没有滚动条时的可见列表项的行数</td>
+  </tr>
+  <tr> 
+    <td>setListData(Vector data) <br> </td>
+    <td>创建一个向量,并加入列表</td>
+  </tr>
+</table>
+
+<p align="center" class="t1">列表框　</p>
+<p><a href="ch10/ch10ex15.java" target="_blank">【例10-15】JList类的应用，其界面如图</a>。　</p>
+<p align="center">
+<img src="images/10/104-4.jpg" width="200" height="300"></p>
+　　<a href="ch10/ch10ex16.java" target="_blank">【例10-16】JList类选择项的增加、删除、复制以及清除</a>。<br>
+　　列表框可引发的主要事件由ListSelectionEvent 类派生，该事件对应的事件监听者为ListSelectionListener接口。该接口的主要方法是valueChanged方法。<br>
+　　程序中用到了Java语言中的一个缺省的数据原型。其增加、删除、清除的方法与向量类型（Vector）相似。<br>
+　　缺省数据原型定义：<br>
+DefaultListModel modelName=new DefaultListModel()；<br>
+　　这里定义一个缺省模型对象modelName，初始化为空，程序可以通过该对象的addElement(index)、getElementAt(index)、removeElementAt(index)、removeAllElements()方法分别增加、获得、删除指定下标的元素或者清除所有的元素。　　
+<p align="center"><br>
+<img src="images/10/104-5.jpg" width="300" height="300"></p>
+<p align="center" class="t1">组合框</p>
+　　组合框是由JComboBox类派生，它是一种具有下拉列表特征的特殊文本框，文本框中显示列表中当前选择项，当用户点击文本框边上的下拉箭头时，显示列表的内容。如果需要改变选择项，只需简单点击显示列表中的任意项。<br>
+<table width="100%" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td width="65%"><div align="center">方法 </div></td>
+    <td width="35%"><div align="center">说明</div></td>
+  </tr>
+  <tr> 
+    <td>JComboBox() </td>
+    <td>构造方法，创建一个空的JComboBox对象</td>
+  </tr>
+  <tr> 
+    <td>JComboBox(ComboBoxModel data) </td>
+    <td>构造方法，创建一个数据原型元素的JComboBox对象</td>
+  </tr>
+  <tr> 
+    <td> JComboBox(Object[] data) </td>
+    <td>构造方法，创建一个使用数组的JComboBox对象</td>
+  </tr>
+  <tr> 
+    <td>JComboBox(Vector data) </td>
+    <td>构造方法，创建一个使用向量的JComboBox对象</td>
+  </tr>
+  <tr> 
+    <td>addActionListener(ActionListener listener) </td>
+    <td>注册事件监听者给JComboBox对象</td>
+  </tr>
+  <tr> 
+    <td>addItemListener(ItemListener listener) </td>
+    <td>注册事件监听者给JComboBox对象</td>
+  </tr>
+  <tr> 
+    <td>addItem(Object object) </td>
+    <td>添加选项</td>
+  </tr>
+  <tr> 
+    <td>Object getItemAt(int index) </td>
+    <td>返回指定下标的选项</td>
+  </tr>
+  <tr> 
+    <td>Object getSelectedItem() </td>
+    <td>返回当前选择的选项</td>
+  </tr>
+  <tr> 
+    <td>int getItemCount() </td>
+    <td>返回列表中的选项数</td>
+  </tr>
+  <tr> 
+    <td>setEditable(boolean k) </td>
+    <td>设置选项是否可编辑（true可编辑，false不可编辑</td>
+  </tr>
+</table>　　
+<p><a href="ch10/ch10ex17.java" target="_blank">【例10-17】修改例10-16，将列表框1改为组合框并且组合框选项来自文件并且实现其事件处理</a>。</p>
+<p align="center"><br>
+<img src="images/10/104-6.jpg" width="280" height="365"></p>
+<p align="center" class="t1">对话框　　</p>
+<p>　　对话框分系统模式对话框、模式对话框和非模式对话框，区分它们的标志是用户在响应该对话框之前是否可以切换到其他窗口进行工作。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">系统模式对话框在用户响应对话框之前，不允许用户在系统中的任何窗口之间切换，有些比较严重的系统问题，例如设备故障等需要用户立即作出反应时，使用系统模式对话框。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">模式对话框允许用户在响应对话框之前切换到其他应用程序对象窗口中进行工作，但不可以切换到创建该对话的应用程序对象的其他窗口中，当用户不响应该系统对话框，应用程序就无法继续运行时，可使用模式对话框。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">非模式对话框就是指显示对话框，当应用程序显示这种对话框时，用户可以在任何窗口之间任意切换。<br>
+JOptionPane类提供了多种对话框，用户只要使用该类提供的静态方法，指定该方法中所需的参数，就可以方便地引用JOptionPane类提供的对话框功能。</p>
+<p align="center">
+  JOptionPane类的主要构造方法
+</p>
+<table width="75%" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td width="54%"><div align="center">方法</div></td>
+    <td width="46%"><div align="center">说明</div></td>
+  </tr>
+  <tr> 
+    <td>JOptionPane() </td>
+    <td>构造方法，创建一个JOptionPane对象</td>
+  </tr>
+  <tr> 
+    <td>JOptionPane(Object msg) </td>
+    <td>构造方法，创建一个显示指定信息的JOptionPane</td>
+  </tr>
+  <tr> 
+    <td>WindowEvent </td>
+    <td>构造方法，创建一个显示指定信息和显示类型的JOptionPane对象</td>
+  </tr>
+  <tr> 
+    <td>JOptionPane(Object msg,int msgType,int optionType)</td>
+    <td>构造方法，创建一个显示指定信息、类型和设置选项的JOptionPane对象</td>
+  </tr>
+  <tr> 
+    <td> JOptionPane(Object msg,int msgType,int optionType,Icon icon)</td>
+    <td> 构造方法，创建一个显示指定信息、类型、设置选项和图标的JOptionPane对象</td>
+  </tr>
+  <tr> 
+    <td>JOptionPane(Object msg,int msgType,int optionType,Icon icon,Object[] options)</td>
+    <td>构造方法，创建一个显示指定信息、类型、设置选项、图标，选项值是一个数组，用于更改按钮文字的JOptionPane对象</td>
+  </tr>
+  <tr>
+    <td>JOptionPane(Object msg,int msgType,int optionType,Icon icon,Object[] options,Object 
+      initialValue)</td>
+    <td>构造方法，创建一个显示指定信息、类型、设置选项、图标，选项值是一个数组，用于更改按钮文字并同时设置默认按钮的JOptionPane对象</td>
+  </tr>
+</table>
+　　
+<p>　　JOptionPane类产生的都是模式对话框，表中：<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">msg是指要显示的信息，由于它是一个Object类型，所以可以是字符串（String）、按钮（JButton）、标签（JLabel）等前面已经介绍的组件（也包括后续章节介绍的组件）。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">MsgType是指显示的信息类型，包括：ERROR_MESSAGE、INFORMATION_MESSAGE、WARNING_MESSAGE、QUESTION_MESSAGE、PLAIN_MESSAGE。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">OptionType是指选项类型，包括DEFAULT_OPTION、YES_NO_OPTION、YES_NO_CANCEL 
+  _OPTION、OK_CANCEL_OPTION。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">options是一种数组类型。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">initialValue是默认的初始值。<br>
+　　对于JOptionPane类，一般不建议使用构造方法创建其对象，而是可以直接使用其静态方法（即可以直接使用类名来引用该方法）创建各种类型的对话框对象。根据对话框的用途，可以将其分为4种类型：</p>
+<p align="center">
+  JOptionPane类的主要静态方法
+</p>
+<table width="100%" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td><div align="center">方法</div></td>
+  </tr>
+  <tr> 
+    <td><div align="left">static void showMessageDialog(Component parentComponent,Object 
+        msg)</div></td>
+  </tr>
+  <tr> 
+    <td><div align="left">static void showMessageDialog(Component parentComponent,Object 
+        msg,String title,int msgType)</div></td>
+  </tr>
+  <tr> 
+    <td><div align="left">static void showMessageDialog(Component parentComponent,Object 
+        msg,String title,int msgType,Icon icon)</div></td>
+  </tr>
+  <tr> 
+    <td><div align="left">static int showConfirmDialog(Component parentComponent,Object 
+        msg)</div></td>
+  </tr>
+  <tr> 
+    <td><div align="left">static int showConfirmDialog(Component parentComponent,Object 
+        msg,String title,int optionType)</div></td>
+  </tr>
+  <tr> 
+    <td><div align="left">static int showConfirmDialog(Component parentComponent,Object 
+        msg,String title,int optionType,int msgType)</div></td>
+  </tr>
+  <tr> 
+    <td><div align="left">static int showConfirmDialog(Component parentComponent,Object 
+        msg,String title,int optionType,int msgType,Icon icon)</div></td>
+  </tr>
+  <tr> 
+    <td><div align="left">static String showInputDialog(Object msg)</div></td>
+  </tr>
+  <tr> 
+    <td><div align="left">static String showInputDialog(Component parentComponent,Object 
+        msg)</div></td>
+  </tr>
+  <tr> 
+    <td><div align="left">static String showInputDialog(Component parentComponent,Object 
+        msg,String title,int msgType)</div></td>
+  </tr>
+  <tr> 
+    <td><div align="left">static Object showInputDialog(Component parentComponent,Object 
+        msg,String title,int msgType,Icon icon,Object[] options,Object initialValue)</div></td>
+  </tr>
+  <tr> 
+    <td><div align="left">static int showOptionDialog(Component parentComponent,Object 
+        msg,String title,int optionType,int msgType,Icon icon,Object[] options,Object 
+        initialValue)</div></td>
+  </tr>
+</table>
+<p>　　<img src="images/STAR.GIF" width="18" height="20">static 
+  void showMessageDialog()：向用户显示一些信息。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">static 
+  int showConfirmDialog()：询问一个需要确认的问题并得到yes/ne/canel响应。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">static 
+  String/Object showInputDialog()：提示用户输入，并返回输入的文字或以组件对象形式返回。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">static 
+  int showOptionDialog()：可选择的对话框。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">parentComponent是指产生对话框的组件类型，例如JFrame。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">Title是指对话框标题上显示的文字。<br>
+　　<a href="ch10/ch10ex18.java" target="_blank">【例10-18】各种JOptionPane对话框示例</a>。</p>
+<p align="center">
+  <img src="images/10/t10-12.jpg" width="300" height="300"><img src="images/10/t10-13.jpg" width="270" height="124"><br>
+  <br>
+  <br>
+<img src="images/10/t10-14.jpg" width="270" height="124"><img src="images/10/t10-15.jpg" width="270" height="124"></p>
+<p align="center"><img src="images/10/t10-16.jpg" width="270" height="124"><img src="images/10/t10-17.jpg" width="270" height="211"><br>
+  <br>
+  <br>
+  <img src="images/10/t10-18.jpg" width="295" height="137"><img src="images/10/t10-19.jpg" width="280" height="211"><br>
+  <br>
+  <br>
+<img src="images/10/t10-20.jpg" width="270" height="124"><img src="images/10/t10-21.jpg" width="270" height="211"></p>
+<p align="center"><img src="images/10/t10-22.jpg" width="307" height="124"><img src="images/10/t10-23.jpg" width="278" height="156"><br>
+</p>
+<p align="center" class="t1">JDialog类设计应用所需的对话框</p>
+<div align="center"><img src="images/10/104-7.jpg" width="578" height="394">　</div>
+<p align="center" class="t1">JDialog类设计应用所需的对话框举例　　</p>
+<p><a href="ch10/ch10ex19.java" target="_blank">【例10-19】创建一个对话框,对话框中包含文字标签、图标标签、带图标按钮以及显示运行时间</a>。　　</p>
+<p align="center">
+  <img src="images/10/t10-24.jpg" width="400" height="300"><br>
+<img src="images/10/t10-25.jpg" width="400" height="300">　　</p>
+<p><br>
+  　　1. 计时器：Swing提供了一个Timer类，Timer类对象可以有一个或多个与它相关联的监听者，当一个计时器“振铃”时，意味着它产生了一个动作事件，即每个与计时器相关联的ActionListener激发了它的actionPerformed方法。Timer类的构造方法：Timer（int 
+  delay，ActionListener），其中delay表示延迟（10000等于1秒，依次类推）。<br>
+  　　2. JDialog类构造方法的第一个参数指出，其所创建的对话框必须依附与其他组件。这与JFrame组件不同，JFrame窗口可以单独创建。具体来将，另一个Dialog或Frame作为其拥有者<br>
+  　　3. Java语言中有许多预定义的类和方法，本程序用到了几个返回系统参数的方法：System.getProperty()返回用户名、操作系统、Java语言版本，以及Java程序运行时的方法：Runtime.getRuntime().totalMemory()和Runtime.getRuntime().freeMemory()，它们分别返回内存总量和空闲内存总量<br>
+　　4. dispose()：Swing类中的许多组件具有该方法，其作用是关闭该组件，即它可以关闭窗口，也可以关闭对话框。但它与System.exit(0)系统方法不同，System.exit(0)除了关闭窗口以外还退出该应用程序。</p>
+<p align="center" class="t1">菜单</p>
+　　菜单是一个选择项列表，向用户显示了一个应用程序的各种功能和设置，用户通过选择列表中的某一个选项可以改变程序的设置或向应用程序发布操作命令。<br>
+菜单分为两大类：<br>
+　　<img src="images/STAR.GIF" width="18" height="20"> 一类是系统菜单，又称控制菜单，位于窗口的左上角，以一个图标表示，它提供了应用程序常用的一些操作。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">一类是应用程序自定义的菜单，该菜单一般位于标题栏下面的一个栏内。<br>
+　　菜单栏中所显示的菜单称为应用程序主菜单或顶层菜单。在顶层菜单中的选项被选中之后，总是调出一个下拉式子菜单，在一个下拉式子菜单中显示选项或也可以调出另一个下拉式子菜单，而且这种嵌套层次可以有任意重。<br>
+　　弹出式（popup）菜单是一种独立的菜单栏，当用户点击鼠标右键时，产生一个事件，这样事件监听者中的方法显示弹出式菜单。<br>
+<p align="center" class="t1">构造一个菜单四个步骤</p>
+　　1. 使用JMenuBar类创建一个菜单栏，通过方法 setJMenuBar将菜单栏加入一个窗口<br>
+例如LMenuBar bar=new JMenuBar();//创建一个菜单栏对象<br>
+frame.setJMenuBar(bar);//将菜单栏加入JFrame窗口<br>
+　　2. 使用JMenu类创建一个菜单栏中的菜单对象，通过方法add将菜单对象加入菜单栏<br>
+例如JMenu opt=new JMenu(“options”);//创建菜单对象，标题为options<br>
+bar.add(opt);//将菜单对象加入菜单栏<br>
+　　3. 使用JMenuItem类创建菜单选项，通过方法add将菜单选项加入菜单对象（JMenu）<br>
+例如 JMenuItem it=new JMenuItem(“New”);//创建菜单选项<br>
+opt.add(it);//将菜单选项加入菜单对象<br>
+　　4. 对于每个菜单选项，编写其行动监听者，这些行动监听者执行菜单选项应完成的任务。<br>
+<p align="center" class="t1">JMenuBar、JMenu、JmenuItem类的主要方法</p>
+<p align="center"><img src="images/10/104-8.jpg" width="577" height="292">　　</p>
+<p>
+  　　JMenuItem继承AbstarctButton，所以菜单项JMenuItem（或菜单JMenu，因为JMenu继承JMenuItem）完全可以以按钮的形式进行操作，每个JMenuItem的对象可以配备一个快捷键。快捷键是用于激活一个菜单选项的键盘捷径键。而快捷键由KeyStroke的对象来代表，这个对象允许开发人员指定要激活一个菜单选项的组合键。<br>
+　　快捷键的指定方法是，首先从static KeyStroke.getKeyStroke方法中获得对一个KeyStroke对象的引用，然后，把这个键击传送给JMenuItem.setAccelerator方法。这个键击“x“键必须与Alt同时按下。</p>
+<p align="center" class="t1">JMenuBar、JMenu、JmenuItem类的主要方法　　</p>
+<p><a href="ch10/ch10ex20.java" target="_blank">【例10-20】一个简单的菜单程序举例</a>。　　</p>
+<p align="center">
+<img src="images/10/t10-26.jpg" width="510" height="428"></p>
+　　<br>
+　　<img src="images/STAR.GIF" width="18" height="20">程序中为了实现文本文件的打开、保存以及另存为菜单选项的功能，用到了JFileChooser文件选取器，JFileChooser类提供了一些方法，这些方法把已存在的文件添加到一个模式对话框中，并且显示这个对话框。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">文件选取器支持三种不同的显示方式，只显示文件、只显示目录以及显示文件及目录。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">文件选取器还支持单文件选取和多文件选取。JFileChooser类提供的主要三个方法是：showOpenDialog()、showSaveDialog()、和showDialog()，每个方法都设置对话框标题和在文件选取器的批准按钮上显示的文字，并返回一个整型量，指出是激活了批准按钮还是取消了对话框。在批准或取消后，通过JFileChooser.getSelectedFile()获得对在文件选取器中选取一个文件的引用。<br>
+　　<img src="images/STAR.GIF" width="18" height="20"> 如果需要在此基础上增加退出按钮的快捷键盘，只需在菜单选项加入菜单以前加上如下语句。<br>
+KeyStroke ks=KeyStroke.getKeyStroke(KeyEvent.VK_X,Event.ALT_MASK);<br>
+mFile4.setAccelerator(ks);//设置退出菜单选项加上快捷键<br>
+　　<a href="ch10/ch10ex21.java" target="_blank">【例10-21】在例10-20基础上，在编辑菜单对象中增加一个颜色的第二层下拉式子菜单</a>。　　
+<p align="center">
+<img src="images/10/t10-27.jpg" width="510" height="428"></p>
+　　<a href="ch10/ch10ex22.java" target="_blank">【例10-22】编程实现一个弹出式菜单</a>。<br>
+　　程序实现了一个鼠标监听者，它处理鼠标按下、点击和释放事件。通过调用ShowPopup方法来处理每个事件，ShowPopup方法又调用MouseEvent.isPopupTrigger()方法来检测弹出式触发器。如果触发器被“触发”，则显示弹出式菜单。程序运行后，如果鼠标在窗口内任意位置点击右键，则显示弹出式按钮。　　
+<p align="center">
+  <img src="images/10/t10-28.jpg" width="400" height="300">
+</p>
+<p align="center" class="t1">工具栏和边框设置　</p>
+<p>　　在Swing中，工具栏由JToolBar类来表示，该类本质上是一个具有水平或垂直方向的容器。Swing工具栏可以浮动，可以把它们拖动一个容器的北、南、东、西四个方位，或拖动到一个单独的窗口中。除了通过调用JToolBar的add和addSeparator方法把动作和分隔线添加到工具栏中外，还可以把任何类型的组件添加到工具栏中。与菜单栏不同，Swing中没有添加工具栏的特定方法，它需要布局管理器来定位工具栏的位置。<br>
+　　<a href="ch10/ch10ex23.java" target="_blank">【例10-23】编程实现一个工具栏，工具栏中包含6个按钮和2个组合框</a>。</p>
+　　
+<div align="center">
+  <img src="images/10/t10-29.jpg" width="380" height="300">　　
+</div>
+<p>
+  　　边框绘制在组件的周围，它有许多不同的种类：线边框、雕刻边框、不光滑边框等等，边框本身不是组件，所以，它们绘制在指定组件的边衬中。所有组件以及JComponent类和其派生类都可以有边框。<br>
+  　　边框设置类来自于javax.swing.border.*，其主要方法如下：<br>
+JComponent.setBorder(BorderObject);　</p>
+<p align="center">
+  这里JComponent表示任何组件对象，例如标签对象，文本框对象等等，而BorderObject的主要方法<br>
+<img src="images/10/104-9.jpg" width="578" height="266">　</p>
+<p>
+　　<a href="ch10/ch10ex24.java" target="_blank">【例10-24】编程实现各种边框的面板</a>。</p>　　
+<div align="center">
+  <img src="images/10/t10-30.jpg" width="380" height="300"> <br>
+</div>
+</body> 
+</html> 

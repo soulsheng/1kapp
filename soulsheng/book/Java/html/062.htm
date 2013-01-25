@@ -1,0 +1,413 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+<head> 
+<script language="JavaScript"> 
+  var prePage="end";
+  var nextPage="01.htm";
+  var testPage="end";
+  var labPage="end";
+  var libraryPage="end";
+  var studyPage="end";
+  var homePage="end";
+	function showwin(url,winname,properties){
+		window.open(url,winname,properties)
+	}
+</script> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+
+<title>6.2类</title> 
+<link href="images/css.css" rel="stylesheet" type="text/css"> 
+</head> 
+
+<body topmargin="0">
+<p align="center" class="t1"><br>
+  类</p>
+　　<img src="images/STAR.GIF" width="18" height="20">类描述了具有相同状态和相同行为的一组对象。它抽象出一组对象的共性部分。<br>
+　　例4：“人类”具有的一些共性特征包括状态以及行为。每个人都有身高、体重、年龄、血型等等一些属性。人会劳动、人都会直立行走、人都会用自己的头脑去创造工具等等这些方法。<br>
+　　人类只是一个抽象的概念，它仅仅是一个概念，它是不存在的实体。而所有具备人类这个群体属性与方法的对象称作为“人”，这个对象“人”是实际存在的实体。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">将人类中的属性和行为定义为程序代码：<br>
+class Human{<br>
+　　double height;double weigth;int age;char blood;<br>
+　　//这里是简化的例子，实际人类的思考可能包含外来的消息（参数）<br>
+　　//也可能返回结果（函数）<br>
+　　void work();void walk();void think();<br>
+}<br>
+<p align="center" class="t1">类的定义</p>
+　　类的定义有两部分组成：类的说明和类的定义实体<br>
+　　<img src="images/STAR.GIF" width="18" height="20">类的说明以关键字class开头，然后是类名，一般定义的类名使用大写字母开头的字符串；<br>
+　　<img src="images/STAR.GIF" width="18" height="20">类的定义实体包含属性（变量、数据等）和方法（过程和函数）。<br>
+　　类的定义格式：<br>
+class Name{<br>
+　　//private attributes（定义类的状态或属性）<br>
+　　//public constructor//（定义构造方法）<br>
+　　//public methods;（定义类的行为或方法）<br>
+}<br>
+<p align="center" class="t1">定义一个学生类</p>
+　　例4：定义学生类<br>
+class Student{<br>
+　　private String name;//学生姓名<br>
+　　private int age;//年龄<br>
+　　private int serialNumber;//学号<br>
+　　private double cores[]=new double[50];//课程考试分数<br>
+　　private String subjects[]=new String[50];//课程名称<br>
+　　private boolean status[]=new boolean[5];//true表示对应课程已修<br>
+　　private String subject;//专业<br>
+　　private int remove;//班级<br>
+　　private String faculty;//系<br>
+　　public Student(formalArgumentList){<br>
+　　　　　…<br>
+　　}<br>
+　　…//方法的定义<br>
+} <br>
+<p align="center" class="t1">构造方法</p>
+　　<img src="images/STAR.GIF" width="18" height="20">构造方法是类中一个特殊的方法，其方法名必须与类名保持一致，并且在定义构造方法时，前面没有返回类型定义符，即，既不使用void，也没有返回值。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">构造方法在创建对象的同时实现对象的自动初始化任务<br>
+例5：继续定义例4中的构造方法<br>
+public Student(String n,String s,String f,int se,int r,int a){<br>
+　　　　name=n; subject=s; faculty=f;<br>
+　　　　serialNumber=se; remove=r;age=a;<br>
+}<br>
+<p align="center" class="t1">定义类与外部联系</p>
+　　在定义类的时候，除了定义属性和构造方法之外，还要定义此类与外部联系的方法，即外部（其他类）通过它的方法与其进行协同工作。<br>
+　　例6：定义例4中的输出方法<br>
+class Student{<br>
+　　private String name;//学生姓名<br>
+　　private int age;//年龄<br>
+　　private int serialNumber;//学号<br>
+　　private double cores[]=new double[50];//课程考试分数<br>
+　　private String subjects[]=new String[50];//课程名称<br>
+　　private boolean status[]=new boolean[5];//true表示对应课程已修<br>
+　　private String subject;//专业<br>
+　　private int remove;//班级<br>
+　　private String faculty;//系<br>
+　　//根据实际情况，可增加其他属性<br>
+　　public Student(String n,String s,String f,int se,int r,int a){<br>
+　　　　name=n; subject=s; faculty=f;<br>
+　　　　serialNumber=se; remove=r;age=a;<br>
+　　}<br>
+　　public void display(){<br>
+　　　　System.out.println(“name: “+name);<br>
+　　　　System.out.println(“faculty: “+faculty);<br>
+　　　　System.out.println(“class: “+remove);<br>
+　　　　System.out.println(“age: “+age);<br>
+　　}<br>
+　　//根据实际情况，可增加其他的方法<br>
+}<br>
+<p align="center" class="t1">对象</p>
+　　<img src="images/STAR.GIF" width="18" height="20">创建对象的语法格式：<br>
+className varName=new constructorName（actualArgumentList）;<br>
+或<br>
+className varName；<br>
+varName=new constructorName（actualArgumentList）;<br>
+　　<img src="images/STAR.GIF" width="18" height="20">第一条语句仅指明varName是一个类的对象变量，其他什么工作也没有做，第二条语句中new完成如下三个方面工作：<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">首先在指定的类上创建一个对象<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">接着为该对象分配内存空间<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">最后执行由指定类所定义的构造方法<br>
+例7：利用例5中定义的Student创建一个学生对象s1<br>
+Student s1=new Student（“Richard”，“Computing”，“Information”，12，1，19）；<br>
+　　<img src="images/STAR.GIF" width="18" height="20">对象方法引用的格式：<br>
+varName. methodName(actualArgumentList);<br>
+　　<img src="images/STAR.GIF" width="18" height="20">类中的方法可以带有参数，也可以没有参数。构造方法作为一种特殊的方法也不例外，也可以带有参数或没有参数。<br>
+<a href="ch6/ch6ex1.java" target="_blank">【例6-1】编制一个测试程序</a>。<br>
+<p align="center" class="t1">对象</p>
+<a href="ch6/ch6ex2.java" target="_blank">【例6-2】编制一个队列类</a>。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">队列是一种先进先出（FIFO）的数据结构，这里除了定义一个100元素的数组作为队列外，还定义了两个指针，一个指向输出，一个指向输入。<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">输入操作，首先需要判断队列是否满<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">输出操作，首先需要判断队列是否空<br>
+　　<img src="images/STAR.GIF" width="18" height="20">程序中：a和b是两个独立的对象，针对对象a的操作不影响对象b，它们之间的惟一联系是同一类型的对象。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">同一类内的方法可以相互之间调用而不需使用“.”运算符。只有在对象方法被不属于该类的代码调用时，才须使用对象变量名和“.”运算符。<br>
+<p align="center" class="t1">类的属性作用域</p>
+　　<img src="images/STAR.GIF" width="18" height="20">类的属性位于类的内部和方法定义的外部，其作用域是整个类，同一类中的所有方法都可以对其进行直接访问。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">属性的定义还可以增加一些修饰符，已说明其访问的权限。<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">final：说明所修饰的变量是一个最终变量，该变量在程序的运行过程中不可改变，它一般用于定义常量。<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">static：说明所修饰的变量是一个静态变量，一个静态变量由所定义类的所有对象所共享。可以将静态变量理解为类变量，所有的对象的静态变量只有一个变量空间。<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">public：说明所修饰的变量既可以被类内方法所访问，也可被类外方法所访问。缺省为public类型<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">private：说明所修饰的变量只能被所定义类内部的方法所访问。<br>
+<p align="center" class="t1">类的属性作用域示范</p>
+<a href="ch6/ch6ex3.java" target="_blank">【例6-3】类的属性作用域示范</a>。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">dept是一个public类型的变量，所以在类的外部（类ch6ex3中的main方法）可以varName. 
+attributeName形式访问该变量，如程序中的e1.dept=&quot;Development&quot;和System.out.println(&quot;e1 
+Department: &quot;+e1.dept)。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">position变量是static类型，所以对象e1和e2共享一个内存空间，为此可以看到Employee 
+e2=new Employee(&quot;Stephen&quot;,&quot;Programmer&quot;)语句的&quot;Programmer&quot;覆盖了e1中的&quot;Project 
+Mangager&quot;。为此，Java语言允许static变量直接使用className. AttributeName进行访问。例如上面可以使用Employee.position进行访问。<br>
+<p align="center" class="t1">类的方法作用域</p>
+　　一个类对象可以有许多个方法，除了构造方法以外，其他类对象通过引用（调用）它的方法对消息进行响应，完成某一功能（有时可能返回某些消息）。类的方法还可以使用下列修饰符进行修饰。<br>
+　　<img src="images/STAR.GIF" width="18" height="20"><span class="t2">final：</span><br>
+　　说明所修饰的方法是一个最终方法，最终方法不能被重复定义或更改内容。<br>
+　　<img src="images/STAR.GIF" width="18" height="20"><span class="t2">static：</span><br>
+　　说明所修饰的方法是一个静态方法，一个静态方法由所定义类的所有对象所共享。如果静态方法定义为public类型，则在程序任何地方、不需要创建对象，使用类名就可进行操作访问。<br>
+　　<img src="images/STAR.GIF" width="18" height="20"><span class="t2">public：</span><br>
+　　说明所修饰的方法既可以被类内方法所访问，也可被类外方法所访问。缺省为public类型<br>
+　　<img src="images/STAR.GIF" width="18" height="20"><span class="t2">private：</span><br>
+　　说明所修饰的方法只能被所定义类内部的方法所访问。 <br>
+<p align="center" class="t1">类的方法作用域举例</p>
+<a href="ch6/ch6ex4.java" target="_blank">【例6-4】定义一个Student类</a>。<br>
+<a href="ch6/ch6ex5.java" target="_blank">【例6-5】static方法和属性的使用</a>。<br>
+　　Integer类由Java已经定义的内部类：toString(int x)方法、MAX_VALUE常量、MIN_VALUE常量均使用static定义，所以可以直接使用类名Integer进行访问，而无须先创建对象，然后使用对象变量进行访问。<br>
+<p align="center" class="t1">包装类</p>
+　　Java语言提供了许多已经定义的数值类。这些类提供了标准数值类型，称为包装类。这些类除了具有基本数据类型，如int、double、char，的特征、可以方便地与基本类型实现转换外，还具备许多类的方法，以方便编程工作<br>
+<table width="80%" height="525" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td width="16%"><div align="center">类</div></td>
+    <td width="36%"><div align="center"> 方法 </div></td>
+    <td width="48%"><div align="center">说明</div></td>
+  </tr>
+  <tr> 
+    <td rowspan="5"><div align="center">Integer</div></td>
+    <td> Integer(int v) </td>
+    <td>构造方法，形式参数为int</td>
+  </tr>
+  <tr> 
+    <td>int intValue() </td>
+    <td>Public方法，返回对象的当前值</td>
+  </tr>
+  <tr> 
+    <td>String toString() </td>
+    <td>Public static方法，将对象的当前值转换成字符串返回</td>
+  </tr>
+  <tr> 
+    <td>int parseInt(String s) </td>
+    <td>Public static方法，将字符串转换成int</td>
+  </tr>
+  <tr> 
+    <td>boolean equals(Integer x) </td>
+    <td>Public方法，比较两个对象的当前值，如相等返回true，反之false</td>
+  </tr>
+  <tr> 
+    <td rowspan="5"><div align="center">Double</div></td>
+    <td> Double(double v) </td>
+    <td>构造方法，形式参数为double</td>
+  </tr>
+  <tr> 
+    <td>double doubleValue() </td>
+    <td>Public方法，返回对象的当前值</td>
+  </tr>
+  <tr> 
+    <td>String toString() </td>
+    <td>Public方法，将对象的当前值转换成字符串返回</td>
+  </tr>
+  <tr> 
+    <td>double parseDouble(String s) </td>
+    <td>Public static方法，将字符串转换成double</td>
+  </tr>
+  <tr> 
+    <td>boolean equals(Double x) </td>
+    <td>Public方法，比较两个对象的当前值，如相等返回true，反之false</td>
+  </tr>
+  <tr> 
+    <td rowspan="10"><div align="center">Character</div></td>
+    <td> Character（char v）</td>
+    <td> 构造方法，形式参数为char</td>
+  </tr>
+  <tr> 
+    <td>char toUpperCase（char c） </td>
+    <td>Public static方法，将字符转换成大写字符返回</td>
+  </tr>
+  <tr> 
+    <td>char toLowerCase（char c） </td>
+    <td>Public static方法，将字符转换成小写字符返回</td>
+  </tr>
+  <tr> 
+    <td>boolean isUpperCase（char c） </td>
+    <td>Public static方法，如果字符是大写字符，返回true，反之false</td>
+  </tr>
+  <tr> 
+    <td>boolean isLowerCase（char c） </td>
+    <td>Public static方法，如果字符是小写字符，返回true，反之false</td>
+  </tr>
+  <tr> 
+    <td>boolean isWhitespace（char c） </td>
+    <td>Public static方法，如果字符是空白，返回true，反之false（这里的空白是指空格、’t’、’\n’</td>
+  </tr>
+  <tr> 
+    <td>boolean isLerrer（char c） </td>
+    <td>Public static方法，如果是字母，返回true，反之false</td>
+  </tr>
+  <tr> 
+    <td>boolean isDigit（char c） </td>
+    <td>Public static方法，如果是数字，返回true，反之false</td>
+  </tr>
+  <tr> 
+    <td>boolean equals(Character x) </td>
+    <td>Public方法，比较两个对象的当前值，如相等返回true，反之false</td>
+  </tr>
+  <tr> 
+    <td>char charValue()</td>
+    <td> Public方法，返回对象的当前值</td>
+  </tr>
+</table>
+<p align="center" class="t1"> <strong>包装类举例</strong> </p>
+<p><a href="ch6/ch6ex6.java" target="_blank">【例6-6】包装类的常用方法示范</a>。<br>
+程序输出：<br>
+42<br>
+12.21<br>
+w<br>
+45//这里输出的是“45”字符串<br>
+12.34//这里输出的是“12.34”字符串<br>
+n is not equal n1//n1的值是n的值加1;<br>
+d is equal d1<br>
+c is not equal c1//Java语言区分大小写字母<br>
+INTEGER MAXVALUE= 2147483647<br>
+INTEGER MINVALUE= -2147483648<br>
+DOUBLE MAXVALUE= 1.7976931348623157E308<br>
+DOUBLE MINVALUE= 4.9E-324<br>
+c2= W//这里输出的是字符‘W’<br>
+W is not a digitW is a letter<br>W is not a lower case<br>
+W is a upper case<br>
+c3=1<br>
+1 is a digit<br>
+1 is not a letter<br>
+1 is not a lower case<br>
+1 is not a upper case<br>
+1235<br>
+1235.23</p>
+<p align="center" class="t1"> <strong>类的设计</strong> </p>
+<p>　　设计类时，一般应遵循下列步骤：</p>
+<ol>
+  <li>定义类的属性以及这些属性的数据类型</li>
+  <li>编写构造方法</li>
+  <li>定义改变类中属性所必须的方法，这些方法通常定义为public方法</li>
+  <li>定义观察类中属性状态、具体信息的方法，同样，这些方法通常定义为public方法</li>
+</ol>
+　　统一建模语言（UML）可以辅助类的设计（或使用Microsoft visio等其他辅助工具）。
+<p align="center"><img src="images/06/061-2.jpg" width="106" height="99"><img src="images/06/061-3.jpg" width="188" height="120"></p>
+<p align="center" class="t1"> <strong>类的设计举例</strong> </p>
+<p><a href="ch6/ch6ex19.java" target="_blank"><img src="images/06/061-4.jpg" width="119" height="191" align="left"></a><a href="ch6/ch6ex7.java" target="_blank">【例6-7】设计一个Date类，用于表示公历中的日期。</a></p>
+<ul>
+  <li>　　<img src="images/STAR.GIF" width="18" height="20">日期使用年、月、日来表示，它们可以使用整型量表示。</li>
+  <li>　　<img src="images/STAR.GIF" width="18" height="20">构造方法用于初始化当前的年、月、日。</li>
+  <li>　　<img src="images/STAR.GIF" width="18" height="20">用于改变类中属性的方法至少应包含生成明天的方法。</li>
+  <li>　　<img src="images/STAR.GIF" width="18" height="20">用于观察类中属性的方法应包含获得当前的年、月、日、显示当前的日期以及比较两个日期的大小。</li>
+</ul>
+<p><br>
+  <br>
+  程序输出:<br>
+Date is equals<br>
+Date:22/11/2004<br>
+Date:21/11/2004<br>
+Days is not equals<br>
+Month is equals<br>
+Year is equals
+</p>
+<p align="center" class="t1"> <strong>模拟的学生选课系统</strong> </p>
+<p><a href="ch6/ch6ex8.java" target="_blank">【例6-8】设计一个模拟的学生选课系统，系统中包含两个类：学生和课程</a>。<br>
+  学生：学生的属性可以有：姓名、年龄、专业、班级、已选课程、已选课程代码、已选课程数、已选学分、可选总学分。学生的方法包含：构造方法输入姓名、年龄、专业、班级、可选总学分、初始已选学分和已选课程数为0；输入已选课程和课程代码；判断已选学分是否超过可选总学分；判断已选课程是否超过最大可选课程数；输出学生的选课情况。<br>
+class Student{<br>
+　　private String studentName;//姓名<br>
+　　private int age;//年龄<br>
+　　private String subject;//专业<br>
+　　private String remove;//班级<br>
+　　//假设一学期最多可选课程5门<br>
+　　private String course[]=new String[5];//已选课程<br>
+　　private String courseCode[]=new String[5];//已选课程代码<br>
+　　private int courseNum;//已选课程数<br>
+　　private int totalScores,topScores;//已选学分、可选总学分<br>
+　　//构造方法，初始化学生姓名等，同时初始化已选课程数和已选学分为0<br>
+　　public Student(String sn,int a,String su,String re,int top){<br>
+　　　　totalScores=0;courseNum=0;<br>
+　　　　studentName=sn;age=a;<br>
+　　　　subject=su;remove=re;topScores=top;<br>
+　　}<br>
+　　//记录已选课程、代码，调整已选课程数、已选学分数<br>
+　　public void putCourse(String c,String cc,int sc){<br>
+　　　　course[courseNum]=c;courseCode[courseNum]=cc;<br>
+　　　　courseNum++;totalScores=totalScores+sc;<br>
+　　}<br>
+　　//判断已选学分是否超过可选总学分<br>
+　　public boolean isGreateTotalScores(int sc){<br>
+　　　　if((totalScores+sc)&gt;topScores)<br>
+　　　　　　return true;<br>
+　　　　else<br>
+　　　　　　return false;<br>
+　　}<br>
+　　//判断已选课程是否超过最大可选课程数<br>
+　　public boolean isGreateCourseNum(){<br>
+　　　　if((courseNum+1)&gt;4)<br>
+　　　　　　return true;<br>
+　　　　else<br>
+　　　　　　return false;<br>
+　　}<br>
+　　public void display(){<br>
+　　　　System.out.println(studentName+&quot;&quot;+age+&quot;&quot;+subject+&quot;&quot;+remove);<br>
+　　　　for(int j=0;j&lt;courseNum;j++){<br>
+　　　　　　System.out.print(&quot;selected course: &quot;+course[j]+&quot;course code:&quot;+courseCode[j]);<br>
+　　　　　　System.out.println();<br>
+　　　　}<br>
+　　　　System.out.println(&quot;selected scores: &quot;+totalScores);<br>
+　　}<br>
+}<br>
+课程：课程的属性可以有：课程名称、周学时数、课程代码、教师名字、职称、可选总人数、已选人数。课程的方法包含：构造方法输入课程名称、周学时数、课程代码、教师名字、职称、可选总人数以及已选人数初始化为0；选课；输出选课情况。<br>
+class Course{<br>
+//每一数组同一下标表示一门课程名称以及对象代码、教师、教师职称<br>
+//可选总人数和已选人数<br>
+　　private String courseName[]=new String[8];//课程名称<br>
+　　private int hoursPerWeek[]=new int[8];//周学时,也等于学分<br>
+　　private String courseCode[]=new String[8];//课程代码<br>
+　　private String teacherName[]=new String[8];//教师名字<br>
+　　private String teacherTitle[]=new String[8];//职称<br>
+　　private int totalNum[]=new int[8];//可选总人数<br>
+　　private int numSelected[]=new int[8];//已选人数<br>
+　　//构造方法，初始化课程名称等，同时对已选人数初始化为0<br>
+　　public Course(String c[],int h[],String cc[],String tname[],String tt[],int tn[]){<br>
+　　　　for(int j=0;j&lt;courseName.length;j++){<br>
+　　　　　courseName[j]=c[j];hoursPerWeek[j]=h[j];<br>
+　　　　　courseCode[j]=cc[j];teacherName[j]=tname[j];<br>
+　　　　　teacherTitle[j]=tt[j];totalNum[j]=tn[j];<br>
+　　　　　numSelected[j]=0;<br>
+　　　　}<br>
+　　}<br>
+　　//获得指定下标课程名称<br>
+　　public String getCourseName(int index){<br>
+　　　　return courseName[index];<br>
+　　}</p>
+<p>　　//获得指定下标课程代码<br>
+　　public String getCourseCode(int index){<br>
+　　　　return courseCode[index];<br>
+　　}<br>
+　　//获得指定下标课程学时数，即学分数<br>
+　　public int getScoreNum(int t){<br>
+　　　　return hoursPerWeek[t];<br>
+　　}<br>
+　　//获得总的课程数目<br>
+　　public int getCourseNum(){<br>
+　　　　return courseName.length;<br>
+　　}<br>
+　　//已选课程人数加1<br>
+　　public void selectCourse(int index){<br>
+　　　　numSelected[index]++;<br>
+　　}<br>
+　　//获得已选课程人数<br>
+　　public int getNumSelected(int index){<br>
+　　　　return numSelected[index];<br>
+　　}</p>
+<p>　　//获得可选总人数<br>
+　　public int getTotalNum(int index){<br>
+　　　　return totalNum[index];<br>
+　　}<br>
+　　public void display(){<br>
+　　　　for(int j=0;j&lt;courseCode.length;j++){<br>
+　　　　　　System.out.print(courseName[j]+&quot;&quot;+courseCode[j]+&quot;&quot;);<br>
+　　　　　　System.out.print(teacherName[j]+&quot;&quot;+teacherTitle[j]+&quot;&quot;);<br>
+　　　　　　System.out.println(numSelected[j]+&quot;&quot;+hoursPerWeek[j]);<br>
+　　　　}<br>
+　　}<br>
+}
+<br>
+　　主方法中增加一个菜单静态程序，供用户进行输入和操作。Main方法首先初始化课程对象c1、学生对象s1和s2，然后利用switch语句以及菜单方法显示功能菜单，并根据返回的功能序号执行相应的代码。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">序号1：显示课程对象的内部信息，即调用课程类内部的display()方法。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">序号2：显示学生对象1和对象2的内部信息，即调用学生对象的display()方法，注意学生对象1和对象2是两个独立的对象，所以应分别调用对象1和对象2的display()方法。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">序号3：首先判断该学生对象已选的课程数是否已超过规定的数量，如果超出，则拒绝选课，反之调用课程的有关对象显示可以选择的课程、课程代码供用户选择。然后根据选择，判断所选课程的学分加上已选课程的学分是否已超出规定的学分，如是拒绝选课，反之，判断该课程已选人数是否超过规定值，如是拒绝选课，反之改变课程对象的已选人数和学生对象的已选课程、已选课程代码以及已选学分。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">序号4：与序号3一样，只需将对象1改成对象2。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">序号5：退出程序 </p>
+<p align="center" class="t1">  <strong>类文件和单独编译</strong> </p>
+<p>　　<img src="images/STAR.GIF" width="18" height="20">一个Java程序可以由多个类组成，类之间通过消息传递和方法调用来进行协同工作。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">Java允许将某一问题求解的所有类放在一个文件中，要求其中必须有一个public类，且文件名与该public类的类名一致。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">也可以考虑将类存放在不同的文件中且单独编译。
+<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20"> 编程时，将每个类单独编辑并独立存放到与该类同名的文件中，文件扩展名为.java。 <br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20"> 程序运行以前，分别单独编译每一个类（此时不要求该类为public，而只需要含有main方法的类为public），生成该类字节码并存放在同名，扩展名为.class文件中。<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20"> 每个程序必须具有包含main方法的类作为程序的开始。<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20"> 只要所有程序中使用到的类在同一文件夹（目录）下，用户不用担心找不到某一个类。 </p>
+</body> 
+</html> 

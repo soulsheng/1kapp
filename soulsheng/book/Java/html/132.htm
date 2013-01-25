@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+<head> 
+<script language="JavaScript"> 
+  var prePage="end";
+  var nextPage="01.htm";
+  var testPage="end";
+  var labPage="end";
+  var libraryPage="end";
+  var studyPage="end";
+  var homePage="end";
+	function showwin(url,winname,properties){
+		window.open(url,winname,properties)
+	}
+</script> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+
+<title>13.2 TCP Socket通信</title> 
+<link href="images/css.css" rel="stylesheet" type="text/css"> 
+</head> 
+
+<body topmargin="0">
+<p align="center" class="t1"><br>
+TCP Socket</p>
+
+　　<img src="images/STAR.GIF" width="18" height="20">套接字(Sockets)：由一个IP地址和一个端口号(Port)而成，它是两台机器进行通信的端点。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">TCP Sockets使用户能以自己的通信模式快速地开发“客户机/服务器”应用，它是应用程序通过网络与其他应用连接的一种工具。TCP 
+sockets使用TCP协议，它继承了传输协议的行为。一个TCP Sockets包括以下四部分：<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">本地系统的IP地址。<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">本地应用程序正在使用的TCP端口（port）号。<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">远程系统的IP地址。<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">远程系统应用程序相应的TCP端口号。<br>
+<p align="center" class="t1">Socket通信步骤　　</p>
+<p>　　<img src="images/STAR.GIF" width="18" height="20">Socket通信包含的四个基本步骤：<br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20">打开一个Socket；<br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20">打开连接到Socket的输入/输出流；<br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20">按照一定的协议对Socket流进行读/写操作；<br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20">关闭Socktet。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">一般来说，第1、2、4步程序几乎是一样的，因此，编写一个针对需要进行Socket通信的应用程序的主要编码工作是第3步。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">打开socket：java.net包中提供两个类分别用来表示客户端和服务端，即Socket类和ServerSocket类。构造方法如下：<br>
+  Socket (InetAddress address, int port);<br>
+  Socket(InetAddress address, int port, boolean str);<br>
+  Socket(String host, int port);<br>
+  Socket(String host, int port, boolean str);<br>
+  ServerSocket(int port);<br>
+  ServerSocket(int port, int count);<br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20">参数address、port和host分别表示要建立连接的另一方的IP地址、主机名和端口号；<br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20">布尔参数str给出了选择的是流式socket还是数据报socket；<br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20">count表示服务器端能接收的最大连接数。<br>
+  　　例4：在客户端打开一个socket。<br>
+  try{//打开socket时，会抛出异常，所以使用try-catch结构<br>
+  　　Socket skt=new Socket(“Mon”,3300);<br>
+  }catch(Exception e){<br>
+  　　System.out.println(“Exception:”+e.getMessage());<br>
+  }<br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20">在服务器端，通过生成一个ServerSocket对象打开socket后，调用accept( 
+  )方法准备接收客户端发来的连接请求，直到有一个客户启动并请求连接到相同的端口，然后accept()返回一个对应于该客户的socket。<br>
+  　　例5：基本代码。<br>
+  ServerSocket svr=null;<br>
+  try{<br>
+  　　svr=new ServerSocket(3300);<br>
+  }catch(Exception e){<br>
+  　　System.out.println(“Error:”+e);<br>
+  }<br>
+  Socket skt=null;<br>
+  try{<br>
+  　　//监听客户端的请求，即等待返回一个对应于该客户的socket<br>
+  　　skt=svr.accept( );<br>
+  }catch(Exception e){<br>
+  　　System.out.println(“Error:”+e);<br>
+  }<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">主机地址有两种表达方式：<br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20">一种是Internet域名，如www.sina.com.cn；<br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20">一种是IP地址，如202.108.35.210。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">Java.net包中的InetAddress类的对象中同时包含有Internet域名和IP地址，如www.sina.com.cn/202.108.35.210。可以通过调用该类静态方法InetAddress 
+  getByName(String s )获取以上形式表达的主机地址。另外还有几个重要的成员方法：<br>
+  　　public String getHostName( )；//获取InetAddress对象的域名<br>
+  　　public String getHostAddress()；//获取InetAddress对象的IP地址<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">打开输入/输出流：通过Socket类中提供的getInputStream( 
+  )和getOutputStream( )方法来获得与所在socket对象相应的输入/输出流。它们分别返回InputStream类和OutputStream类对象。通过这两个对象，可以对该socket的输入/输出流进行读/写操作。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">为了方便读写操作，可以在返回的输入/输出流上建立类似DataInputStream、DataOutputStream或PrintStream类对象（这里clt是一个socket对象）：<br>
+  BufferedReader in=new <br>
+  　　　　BufferedReader(new InputStreamReader(clt.getInputStream()));<br>
+  PrintWriter out=new PrintWriter(clt.getOutputStream());<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">关闭socket：关闭顺序是先关闭输入/输出流，再关闭socket。<br>
+  ostr.close( );// ostr为输出流对象<br>
+  istr.close( );// istr为输入流对象<br>
+  skt.close();//skt为socket对象<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">Socket通信实例<br>
+  　　【例13-2】我们通过一个简单的例子来演示Socket通信的全部过程。例子中，服务端程序建立一个socket，并等待客户连接。连接成功后，服务器接收由客户发送来的信息，并发送反馈信息给客户机。客户机通过一个socket与指定服务器进行通信，并接收由服务器发送来的反馈信息。<br>
+  服务器源程序（<a href="ch13/ExamServer.java" target="_blank">ExamServer.java</a>）<br>
+客户端源程序（<a href="ch13/ExamClient.java" target="_blank">ExamClient.java</a>）　　</p>
+<p align="center">
+  运行结果<br>
+  <img src="images/13/ch14-1a.jpg" width="200" height="165"><br>
+  <img src="images/13/ch14-1b.jpg" width="203" height="166"><br>
+</p>
+</body> 
+</html> 

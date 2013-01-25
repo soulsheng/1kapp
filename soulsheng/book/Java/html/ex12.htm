@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+
+<title>第12章练习</title> 
+<link href="images/css.css" rel="stylesheet" type="text/css"> 
+<style type="text/css">
+<!--
+a:link {
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+a:active {
+	text-decoration: none;
+}
+.style7 {font-size: 10px}
+.style8 {font-size: 9px}
+-->
+</style>
+</head> 
+
+<body topmargin="0">
+<p align="center" class="t1"><br>
+第12章练习
+</p>
+<ol>
+    <li>什么是队列？在Java中实现队列有哪两种方式？</li>
+    <li>Collection接口和Iterator接口的作用是什么？它们之间有何关系？</li>
+    <li>与数组相比，使用链表存放数据有何好处？它在Java中是如何实现的？</li>
+    <li>什么是哈希集？何时使用哈希集？</li>
+    <li>能否对List对象中的元素进行直接排序？为什么？</li>
+    <li>分析下列程序的运行结果。</li>
+      (1)<br>
+      import java.util.*;<br>
+      public class ListDemo2 {<br>
+      　　
+  static final int N = 50000;<br>
+  　　
+  static long timeList(List lst) {<br>
+  　　　　
+  long start = System.currentTimeMillis();<br>
+  　　　　
+  Object obj = new Object();<br>
+  　　　　
+  for (int i = 0; i &lt; N; i++) {<br>
+  　　　　　　
+  lst.add(0, obj);<br>
+  　　　　
+  }<br>
+  　　　　
+  return System.currentTimeMillis() - start;<br>
+  　　
+  }<br>
+  　　
+  public static void main(String args[]) {<br>
+  　　
+  　　System.out.println( &quot;time for ArrayList = &quot; +timeList(new ArrayList()));<br>
+  　　　　
+  System.out.println(&quot;time for LinkedList = &quot; +timeList(new LinkedList()));<br>
+  　　}<br>
+  }<br>
+  (2)<br>
+  import java.util.*;<br>
+  public class FindDups2 {<br>
+  　　
+  public static void main(String　args[]){<br>
+  　　　　
+  String　str[]={&quot;Monday&quot;,&quot;Tuesday&quot;,&quot;Wednesday&quot;,&quot;Thursday&quot;,&quot;Friday&quot;,&quot;Saturday&quot;,&quot;Sunday&quot;,&quot;Sunday&quot;};<br>
+  　　　　
+  Set uniques = new HashSet(); <br>
+  　　　　
+  Set dups = new HashSet(); <br>
+  　　　　
+  for (int i=0; i&lt;str.length; i++) <br>
+  　　　　　　
+  if (!uniques.add(str[i])) <br>
+  　　　　　　　　
+  dups.add(str[i]); <br>
+  　　　　
+  uniques.removeAll(dups); // Destructive set-difference <br>
+  　　　　
+  System.out.println(&quot;Unique words: &quot; + uniques); <br>
+  　　　　
+  System.out.println(&quot;Duplicate words: &quot; + dups);<br>
+  　　
+  } <br>
+  } <br>
+  (3)<br>
+  import java.util.*;
+  <br>
+  public class HalfSearch{
+  <br>　　
+  public static void main(String[] args){
+  <br>　　　　
+  List name=new LinkedList();
+  <br>　　　　
+  String[] stus={&quot;Jack&quot;,&quot;Tom&quot;,&quot;Mark&quot;,&quot;Anny&quot;,&quot;John&quot;};
+  <br>　　　　
+  for(int i=0;i&lt;stus.length;i++)
+  <br>　　　　　　
+  name.add(stus[i]);
+  <br>　　　　
+  String Key=&quot;Tom&quot;;
+  <br>　　　　
+  int dest=Collections.binarySearch(name,Key);
+  <br>　　　　
+  System.out.println(&quot;The position of Key is &quot;+dest);
+  <br>　　　　
+  Collections.sort(name);
+  <br>　　　　
+  dest=Collections.binarySearch(name,Key);
+  <br>　　　　
+  System.out.println(&quot;The position of Key is &quot;+dest);
+  <br>　　
+  }
+  <br>
+  }
+  
+    <li>写出用循环数组及链表实现队列的完整代码。</li>
+  
+    
+    <li>将下列学生姓名用一个ArrayList对象保存、排序并打印。<br>
+    “Zhang San”,“Li Ming”,“Wang hai”,“Zhao Bin”,“Xu Shong”</li>
+
+    
+    <li>从键盘输入一个字符串数组,编写程序判断这个字符串中的重复字符。</li>
+  <li>在一组学生姓名中，先按顺序查找后以折班查找的方式查找指定学生的姓名索引号（以习题8中的数据为例）。</li>
+
+<li>编写一个程序创建两个SortedSet 对象，用以存放Employee对象，一个Employee对象有三个属性：工号（eno）、姓名（ename）和工资（salary）。第一个以缺省排序方法按工号(eno)为关键进行排序；第二个是以工资（salary）为关键字、用自定义的比较器进行排序。</li>
+
+
+</ol>
+</body> 
+</html> 

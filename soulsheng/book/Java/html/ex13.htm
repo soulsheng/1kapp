@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+
+<title>第13章练习</title> 
+<link href="images/css.css" rel="stylesheet" type="text/css"> 
+<style type="text/css">
+<!--
+a:link {
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+a:active {
+	text-decoration: none;
+}
+.style7 {font-size: 10px}
+.style8 {font-size: 9px}
+-->
+</style>
+</head> 
+
+<body topmargin="0">
+<p align="center" class="t1"><br>
+第13章练习
+</p>
+<ol>
+    <li>什么是队列？在Java中实现队列有哪两种方式？</li>
+    <li>Collection接口和Iterator接口的作用是什么？它们之间有何关系？</li>
+    <li>与数组相比，使用链表存放数据有何好处？它在Java中是如何实现的？</li>
+    <li>什么是哈希集？何时使用哈希集？</li>
+    <li>能否对List对象中的元素进行直接排序？为什么？</li>
+    <li>分析下列程序的运行结果。</li>
+      (1)<br>
+      import java.util.*;<br>
+      public class ListDemo2 {<br>
+      　　
+  static final int N = 50000;<br>
+  　　
+  static long timeList(List lst) {<br>
+  　　　　
+  long start = System.currentTimeMillis();<br>
+  　　　　
+  Object obj = new Object();<br>
+  　　　　
+  for (int i = 0; i &lt; N; i++) {<br>
+  　　　　　　
+  lst.add(0, obj);<br>
+  　　　　
+  }<br>
+  　　　　
+  return System.currentTimeMillis() - start;<br>
+  　　
+  }<br>
+  　　
+  public static void 

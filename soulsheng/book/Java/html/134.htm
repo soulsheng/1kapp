@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+<head> 
+<script language="JavaScript"> 
+  var prePage="end";
+  var nextPage="01.htm";
+  var testPage="end";
+  var labPage="end";
+  var libraryPage="end";
+  var studyPage="end";
+  var homePage="end";
+	function showwin(url,winname,properties){
+		window.open(url,winname,properties)
+	}
+</script> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+
+<title>13.4 远程对象调用(RMI)</title> 
+<link href="images/css.css" rel="stylesheet" type="text/css"> 
+</head> 
+
+<body topmargin="0">
+<p align="center" class="t1"><br>
+  远程对象调用(RMI)</p>
+　　<img src="images/STAR.GIF" width="18" height="20">远程方法调用框架可用于创建透明的、分布式的服务和应用程序，RMI应用程序由Java对象构成，这些类对象可以相互调用而无需考虑对方的实际位置。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">一个Java对象可调用另一个虚拟机（含有JVM网络上某个计算机或结点）上某个Java对象的方法，整个过程和调用在同一个虚拟机上的某个Java对象的方法无异。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">为了实现不同虚拟机上对象之间的相互引用，可以使用RMI的查找服务，或者将对象引用作为方法调用的一个参数，或者将对象引用作为返回值来接收。<br>
+　　例10：要寻找学生的成绩可以查询服务器上的Grade对象（假设服务器上具有Grade对象，它包含getGrade()，入口参数是Studen类对象，返回类型是Grade类对象）。则首先调用远程方法getGrade()，这个方法有一个参数Studen类对象。然后getGrade()方法将返回成绩类的对象给客户方（打开ch14-3.gif）<br>
+　　<img src="images/STAR.GIF" width="18" height="20">在RMI中，调用远程方法的对象，称为客户机对象，而被远程调用的对象称为服务器对象，这种客户机／服务器关系完全可以通过方法的调用关系来交换角色。<br>
+<p align="center" class="t1">RMI过程</p>
+<p>　　为了便于理解，以学生查询成绩为例来说明如何实现远程方法调用。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">在服务器方，生成类Grade的一些对象。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">在客户机方通过运行程序进行查找和定位这些对象（注意，可以在从单台计算机上或一个计算网络上运行这个例子。这里，我们在单台机器上对例子进行了验证）。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">RMI运行的基本过程（打开ch14-4.gif）<br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20">当客户机代码要调用一个远程对象的远程方法时，它首先调用一个称为代码存根（Stub）的本地代用对象。代码存根驻留在客户机上，而不是在服务器上。它设备无关的编码方式把远程方法使用的参数包装成一个字节块，这个字节块包括待使用的对象的标识符、被调用的方法说明、调度的参数。打包结束后，代码存根把信息发送给服务器方。<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">在服务器方，接收的对象针对每次远程方法调用，都要执行如下动作：分析调用参数、定位被调用的对象、激活期望调用的方法、捕捉和调度返回值、或者抛出异常、发送包含被调度后的返回数据的程序包到客户机的代码存根。本例中，整个过程要用到的主要类：　　</p>
+<p align="center">
+  RMI实现的主要类及后缀<br>
+</p>
+<table width="61%" height="175" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td><div align="center">名称 </div></td>
+    <td><div align="center">举例</div></td>
+  </tr>
+  <tr> 
+    <td>远程接口 </td>
+    <td>如Grade</td>
+  </tr>
+  <tr> 
+    <td>实现远程接口的服务器类(后缀Impl) </td>
+    <td>如GradeImpl</td>
+  </tr>
+  <tr> 
+    <td>创建服务器对象的服务器程序(后缀Server) </td>
+    <td>如GradeServer</td>
+  </tr>
+  <tr> 
+    <td>调用远程方法的客户程序(后缀Client) </td>
+    <td>如GradeClient</td>
+  </tr>
+  <tr> 
+    <td>rmic程序自动生成的代码存根类(后缀_Stub) </td>
+    <td>如GradeImpl_Stub</td>
+  </tr>
+  <tr> 
+    <td>rmic程序自动生成的框架类（后缀_Skel） </td>
+    <td>如Grade_Skel</td>
+  </tr>
+</table>
+<p align="center" class="t1">接口和实现</p>
+　　<img src="images/STAR.GIF" width="18" height="20">在远程过程调用中，客户方要处理服务器对象，但客户方实际上没有这些服务器上对象副本。但是客户方程序必须知道这些对象如何工作的，为此，它们的功能在一个客户机和服务器共享的接口中体现，这个接口存在于两台计算机中。<br>
+interface Grade extends Remote{//定义接口<br>
+　　public String getGrade() throws RemoteException;<br>
+}<br>
+　　<img src="images/STAR.GIF" width="18" height="20">RMI规范要求，所有远程对象接口都必须继承java.rmi.Remote类。而且，每个支持远程调用的方法都必须抛出一个异常java.rmi.RemoteException。并且Java语言强迫客户程序捕捉每一个远程调用出现的RemoteException异常，并做出处理。<br>
+…<br>
+Grade g=…;//创建Grade对象<br>
+String d=g.getGrade();//调用远程getGrade()，返回值送到d<br>
+System.out.println（d）；//输出<br>
+…<br>
+　　<img src="images/STAR.GIF" width="18" height="20">在服务器程序中必须执行实现接口中声明的方法的类。<br>
+public class GradeImpl extends UnicastRemoteObject implement Grade{<br>
+　　public GradeImpl(String g) throws RemoteException {//构造方法<br>
+　　　　gd=g;<br>
+　　}<br>
+　　public String getGrade( ) throws RemoteException{//实现接口中声明的方法<br>
+　　　　return gd;<br>
+　　}<br>
+　　private String gd;//私有属性<br>
+}<br>
+　　<img src="images/STAR.GIF" width="18" height="20">这个类有一个可以在远程进行调用的方法getGrade（），它继承了UnicastRemoteObject类，是一个具体的Java平台类，它使远程对象调用成为可能。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">所有服务器类必须从java.rmi.server.RemoteServer类继承而来。RemoteServer类是一个抽象类，它只定义服务器对象和远程代码存根间进行通信的基本机制。UniCastRemoteObject类继承RemoteServer抽象类，而且是一个具体类（已经定义了方法实现体）。<br>
+<p align="center" class="t1">定位服务器对象</p>
+　　<img src="images/STAR.GIF" width="18" height="20">客户机在访问远程对象时，需要请求一个本地代码存根对象。一个简单的方法就是调用另一个服务器对象的远程方法，返回一个代码存根对象。这样出现了一个递归调用问题，为了解决该问题，SUN 
+的RMI程序库提供引导注册服务定位的第一个服务器对象。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">服务器程序以引导程序注册服务来注册对象。客户机检索这些对象的代码存根。将对象引用和名称传递给引导程序注册服务，这样可以注册一个服务器对象。其名称是一个具有惟一性的字符串。<br>
+…<br>
+GradeImpl g1=new GradeImpl(“ Zhang 90”);//创建一个GradeImpl对象<br>
+//注册，Naming是注册类保留字，其方法包括bind()、rebind()、unbind()、lookup()<br>
+//等等，其中bind的意思是绑定，即将对象引用和名称之间建立对应关系<br>
+Naming.bind(“Zhang”,g1); <br>
+…<br>
+//客户机代码得到一个代码存根对象，它通过指定服务和对象名称来访问服务器对象<br>
+Grade g=(Grade)Naming.lookup(“rmi://server.com/Zhang”);//查找远程对象<br>
+　　【例13-4】以学生程序(StudentClient)进行远程方法调用来获取学生成绩为（Grade）说明RMI的实现过程。<br>
+服务器程序（<a href="ch13/GradeServer.java" target="_blank">GradeServer.java</a>）<br>
+远程接口实现（<a href="ch13/GradeImpl.java" target="_blank">GradeImpl.java</a>）<br>
+共享程序接口（<a href="ch13/Grade.java" target="_blank">Grade.java</a>）（存在与两台计算机上）:<br>
+客户端口程序（<a href="ch13/GradeClient.java" target="_blank">GradeClient.java</a>）<br>
+<p align="center" class="t1">程序运行过程</p>
+　　<img src="images/STAR.GIF" width="18" height="20">启动服务器：在一个服务器程序能被客户调用之前，必须使用引导程序RMI进行服务注册。在Windows操作系统的DOS提示符（或Run对话框中）下执行以下语句来启动RMI注册服务：<br>
+start rmiregistry （在Unix下使用:rmiregistry &amp;）<br>
+　　<img src="images/STAR.GIF" width="18" height="20">启动服务器程序（当然，在启动服务器程序前，需要对源程序进行编译），在Windows下，使用命令：<br>
+start java GradeServer（在Unix下使用:java GradeServer &amp;）<br>
+　　<img src="images/STAR.GIF" width="18" height="20">运行客户方程序：由于要访问远程对象方法，所以在使用RMI的客户程序时应先安装安全管理程序控制器（GradeClient.java中的RMISecurityManager）来动态装入对代码存根的活动的控制：<br>
+System.setSecurityManager(new RMISecurityManager());<br>
+　　<img src="images/STAR.GIF" width="18" height="20">在缺省状态下，RMISecurityManager禁止程序中的任何编码访问网络。因此，在允许客户程序同RMI注册程序和服务器对象连接时，需要提供一个策略文件。下面是一个策略文件，它允许应用程序连接到端口号从1024-65535之间的端口，注意RMI的默认端口号为1099。<br>
+grant<br>
+{ permission java.net.SocketPermission<br>
+　　　＂*:1024-65535＂,＂connect＂；<br>
+｝；<br>
+　　<img src="images/STAR.GIF" width="18" height="20">在运行客户程序时，使用下面命令指定策略文件：<br>
+java –Djava.security.policy=grade.policy GradeClient<br>
+　　<img src="images/STAR.GIF" width="18" height="20">执行RMI的一个完整步骤：<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">第一步：编译源文件（接口、实现类、客户类和服务器类）<br>
+javac Grade*.java（*表示有关的类）<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">第二步：在实现类上运行rmic，自动生成存根类，运行完这一步，在与GradeImpl.class相同的目录下会自动产生一个存根类GradeImpl_stub类。<br>
+rmic –v1.2 GradeImpl<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">第三步：启动RMI注册程序<br>
+start rmiregistry<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">第四步：启动服务器<br>
+start java GradeServer<br>
+成功的运行结果显示：<br>
+Constructing server implementations...<br>
+Binding server implementations to registry...<br>
+waiting for invocatons from clients...<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">第五步：运行客户程序(这里策略文件grade.policy与客户方程序GradeClient.class在同一目录下，如果不是要给出grade.policy的文件路径)<br>
+java –Djava.security.policy=grade.policy GradeClient
+</body> 
+</html> 

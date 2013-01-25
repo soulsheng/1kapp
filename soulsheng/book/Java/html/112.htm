@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+<head> 
+<script language="JavaScript"> 
+  var prePage="end";
+  var nextPage="01.htm";
+  var testPage="end";
+  var labPage="end";
+  var libraryPage="end";
+  var studyPage="end";
+  var homePage="end";
+	function showwin(url,winname,properties){
+		window.open(url,winname,properties)
+	}
+</script> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+
+<title>11.2 线程组</title> 
+<link href="images/css.css" rel="stylesheet" type="text/css"> 
+</head> 
+
+<body topmargin="0">
+<p align="center" class="t1"><br>
+  线程组</p>
+　　<img src="images/STAR.GIF" width="18" height="20">线程组指的是线程的一个集合，在创建一个Thread对象时，可以指定它所在的线程组。如果在程序中没有指定，那么所创建的线程就是main线程组的成员。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">当线程加入某个线程组后，它将一直是该线程组的成员，而不能被移出该线程组。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">线程组把多个线程集成为一个对象，通过线程组可以同时对其中的多个线程进行操作，如启动或停止一个线程组中的所有线程等。<br>
+<p align="center" class="t1">线程组的定义</p>
+　　线程组的定义通过包java.lang的类ThreadGroup来实现，它可以用ThreadGroup类的构造方法来构造一个线程组：<br>
+…<br>
+String groupname=…;<br>
+ThreadGroup g=new ThreadGroup(groupname);<br>
+…<br>
+　　<img src="images/STAR.GIF" width="18" height="20">ThreadGroup（）构造方法中的字符串参数标识一个线程组，该字符串必须是惟一的。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">在定义一个线程组时，还可以指定它属于哪个线程组的子线程组。如：<br>
+…<br>
+ThreadGroup p=new ThreadGroup(“parent”);<br>
+ThreadGroup s=new ThreadGroup(p,“son”);//不同参数的构造方法<br>
+…<br>
+　　<img src="images/STAR.GIF" width="18" height="20">线程组s是线程组p的子线程组，反之，线程组p是线程组s的父线程组。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">如果在创建线程时没有显式地说明其父线程组，系统会将线程组main作为它的父线程组，而系统线程组system是main线程组的父线程组。<br>
+　　定义了一个线程组之后，可以用Thread类的构造方法在一个指定线程组中添加一个新的线程：<br>
+…<br>
+String threadGroup=…;<br>
+ThreadGroup g=new ThreadGroup(threadGroup);<br>
+//创建新线程,并指定线程的名称和所在的线程组<br>
+String threadName1=…;<br>
+Thread thread1=New Thread(g, threadName);<br>
+//创建新线程,并指定该线程的目标对象和所在的线程组<br>
+ThreadRunnable threadRunnable1=new ThreadRunnable (…);<br>
+//ThreadRunnable实现了Runnable接口<br>
+Thread thread2=new Thread(g, threadRunnable1);<br>
+//创建新线程,并指定该线程的名称、目标对象和所在的线程组<br>
+String threadName2=…;<br>
+ThreadRunnable threadRunnable2=new ThreadRunnable (…);<br>
+Thread thread3=new Thread(g, threadRunnable2,threadName2);<br>
+…<br>
+<p align="center" class="t1">线程组的管理</p>
+　　<p>线程组管理包括线程的数目、线程之间的关系、线程正在执行的操作、线程将要启动或终止的时间、以及线程组的嵌套情况等等。在类ThreadGroup中定义很多方法用来管理线程组。</p>
+<p align="center">
+  类ThreadGroup中的主要方法
+</p>
+<table width="71%" height="200" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td><div align="center">方法名 </div></td>
+    <td><div align="center">返回值 </div></td>
+    <td><div align="center">作用</div></td>
+  </tr>
+  <tr> 
+    <td>activeGroupCount( ) </td>
+    <td><div align="center">int </div></td>
+    <td>取得线程组中活动子线程组的数目</td>
+  </tr>
+  <tr> 
+    <td>getMaxPriority( )</td>
+    <td><div align="center"> int </div></td>
+    <td>取得线程组中线程的最大允许优先级</td>
+  </tr>
+  <tr> 
+    <td>getName( ) </td>
+    <td><div align="center">String </div></td>
+    <td>取得线程组的名称</td>
+  </tr>
+  <tr> 
+    <td>getParent( ) </td>
+    <td><div align="center">ThreadGroup </div></td>
+    <td>取得本线程组的父线程组</td>
+  </tr>
+  <tr> 
+    <td>isDaemon( ) </td>
+    <td><div align="center">boolean </div></td>
+    <td>判断本线程组是否是服务线程组</td>
+  </tr>
+</table>
+　　
+<p><a href="ch11/ExamActiveThreads.java" target="_blank">【例11-4】获取指定线程组中的所有活动线程，并打印出它们的名字。</a><br>
+  　　<img src="images/STAR.GIF" width="18" height="20">线程组g包含三个线程t1、t2、t3变量<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">numThreads和数组listOfThreads用来存放g中的线程数和复制线程组g中的线程。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">list()向标准设备输出线程组g的有关信息。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">只有当线程处于活动状态时，才可以进行复制，所以调用了t1、t2、t3的start()方法来激活线程。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">打印出所有线程的名字。</p>
+<p align="center">
+<img src="images/111/111-4.jpg" width="669" height="438"> 　　</p>
+<p class="t1">&nbsp;</p>
+</body> 
+</html> 

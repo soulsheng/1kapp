@@ -1,0 +1,352 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+<head> 
+<script language="JavaScript"> 
+  var prePage="end";
+  var nextPage="01.htm";
+  var testPage="end";
+  var labPage="end";
+  var libraryPage="end";
+  var studyPage="end";
+  var homePage="end";
+	function showwin(url,winname,properties){
+		window.open(url,winname,properties)
+	}
+</script> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+
+<title>2.2基本的数据类型与变量</title> 
+<link href="images/css.css" rel="stylesheet" type="text/css"> 
+</head> 
+
+<body topmargin="0">
+<p align="center" class="t1"><br>
+  基本的数据类型</p>
+　　<div align="center">在Java语言中，基本的数据类型包括整型、浮点型、字符型以及布尔型
+</div>
+　　<table width="79%" height="225" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td><div align="center">数据类型名 </div></td>
+    <td><div align="center">所占空间 </div></td>
+    <td><div align="center">表示范围 </div></td>
+    <td><div align="center">数值类型</div></td>
+  </tr>
+  <tr> 
+    <td><div align="center">long </div></td>
+    <td><div align="center">8字节</div></td>
+    <td><div align="center">-9223372036854775808～9223372036854775807</div></td>
+    <td><div align="center">整型</div></td>
+  </tr>
+  <tr> 
+    <td><div align="center">int</div></td>
+    <td><div align="center">4字节</div></td>
+    <td><div align="center"> -2147483648～2147483647 </div></td>
+    <td><div align="center">整型</div></td>
+  </tr>
+  <tr> 
+    <td><div align="center">short</div></td>
+    <td><div align="center">2字节</div></td>
+    <td><div align="center"> -32768～32767 </div></td>
+    <td><div align="center">整型</div></td>
+  </tr>
+  <tr> 
+    <td><div align="center">byte </div></td>
+    <td><div align="center">1字节</div></td>
+    <td><div align="center"> -128～127</div></td>
+    <td><div align="center">整型</div></td>
+  </tr>
+  <tr> 
+    <td><div align="center">char</div></td>
+    <td><div align="center"> 2字节</div></td>
+    <td><div align="center"> Unicode字符 </div></td>
+    <td><div align="center">单字符（Unicode）</div></td>
+  </tr>
+  <tr> 
+    <td><div align="center">boolean</div></td>
+    <td><div align="center">1比特 </div></td>
+    <td><div align="center"> </div></td>
+    <td><div align="center">true或false</div></td>
+  </tr>
+  <tr> 
+    <td><div align="center">float</div></td>
+    <td><div align="center"> 4字节 </div></td>
+    <td><div align="center">±3.40282347E38～±1.40239846E-45 </div></td>
+    <td><div align="center">浮点数</div></td>
+  </tr>
+  <tr> 
+    <td><div align="center">double</div></td>
+    <td><div align="center"> 8字节</div></td>
+    <td><div align="center"> ±1.76769313486231570E308～±4.94065645841246544E-324 
+      </div></td>
+    <td><div align="center">浮点数</div></td>
+  </tr>
+</table>
+<p align="center" class="t1">标识符</p>
+　　<img src="images/STAR.GIF" width="18" height="20">标识符是命名一个名字的专业术语，标识符可以是Java语言中的变量名、类名和对象名等等，一个标识符一般由字母、数字以及下划线等组成且必须以字母开头。同时在Java语言中，大写和小写字母表示不同的含义。<br>
+例7：mystudents、Mystudents、myStudents、MyStudents<br>
+　　<img src="images/STAR.GIF" width="18" height="20">标识符通常具有具体意义的名称。<br>
+例8：count表示该名字用于计数；numberOfStudents表示该名字用于表示学生的数量。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">如果名字需要两个或两个以上的单词进行描述，常用的命名方式有两种：<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">使用下划线（“_”）连接各个单词，例如number_of_students<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">所有单词直接连接，除第1个单词使用小写字母开头外，后续单词都使用大小字母开头，例如numberOfStudents<br>
+<p align="center" class="t1">保留字</p>
+　　在Java语言中有许多保留字(reserved word)，这些保留字本身具有预先定义的特殊含义，它们不能用于作为定义变量名、类名、对象名的标识符以及其他扩展的意义。<br>
+例9：<br>
+abstract，break，byte，boolean，catch，case，class，char，continue，default，double，do，else，extends，false，final，float，for，finally，if，import，implements，int，interface，instanceof，long，length，native，new，null，package，private，protected，public，return，switch，synchronized，short，static，super，try，true，this，throw，throws，threadsafe，transient，void，while 
+。<br>
+<p align="center" class="t1">变量</p>
+　　变量是在程序运行过程中其值可以被改变的量，变量包含两层意思，其一是变量的名称；其二是赋给变量的值。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">变量名称是用户自己为变量定义的标识符<br>
+　　<img src="images/STAR.GIF" width="18" height="20">变量的值则是存储在计算机内存中，以变量标识符标记的存储位置。 
+为了使用一个变量存储一个数值，首先必须声明（定义）它的类型和名字。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">语法格式：<br>
+类型名 变量名；<br>
+或<br>
+类型名 变量名1，变量名2，变量名3，…；<br>
+例9： <br>
+int x；<br>
+int length，width；<br>
+double salary；<br>
+double weight；<br>
+　　<img src="images/STAR.GIF" width="18" height="20">变量首先经过声明，然后就可以对变量进行赋值和使用，如果没有对变量进行声明就赋值和使用，程序就会出现语法错误。<br>
+<p align="center" class="t1">赋值语句</p>
+　　当声明了变量的类型和名字后，就可以使用赋值语句对变量进行赋值。<br>
+　　<img src="images/STAR.GIF" width="18" height="20"><span class="t2">语法格式： 
+</span><br>
+　　变量名=表达式；<br>
+　　语义：等号左侧的变量名必须先声明，等号右侧的表达式先计算其值，然后赋值给等号左侧的变量，等号右侧的值必须与左侧变量的类型相一致。<br>
+<p align="center" class="t1">举例</p>
+<p>　　<img src="images/STAR.GIF" width="18" height="20">例10：<br>
+  int x；<br>
+  int length，width；<br>
+  double salary；<br>
+  x=7*8+3-2；<br>
+  length=80；<br>
+  width=24；<br>
+  salary=2500.47；<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">例11: 
+  <br>
+  int x；<br>
+  int y；<br>
+  x=5；<br>
+  y=5+x*3；<br>
+  x=x+y；<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">问题：上述语句执行完成后，x和y的值分别是20和25，为什么？<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">一个设计规则，在赋值语句中出现变量名时，该变量应该已经被赋值。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">例12：<br>
+  int x；<br>
+  x=12.2；<br>
+  　　这个赋值语句在编译时，将出现语法错误，这是因为12.2不是一个整型量，它违反了类型兼容性的规则。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">例13：<br>
+  double k；<br>
+  int x；<br>
+  x=5；<br>
+  k=6.5+x；<br>
+  　　表达式6.5+x计算得11.5，其数值与k兼容，所以k=6.5+x语句是语法正确的。<br>
+  　　在Java语言中，通常某一类型的变量不能赋值不同类型的数值或变量（已赋初值），但也有特例。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">例14：<br>
+  float x；<br>
+  double y；<br>
+  int z；<br>
+  z=12；<br>
+  x=z；<br>
+  y=1280；<br>
+  　　整型量12（z）通过赋值语句赋值给浮点类型float变量x，而浮点类型double变量y则赋值初试值1280。归纳起来，可以按照下列次序进行不同类型变量的赋值：<br>
+  　　byte→short→int→long→float→double<br>
+  　　整型、实型、字符型数据可以混合运算。运算中，不同类型的数据先转化为同一类型，然后进行运算，转换规则是从低级到高级，这种方式被称为自动类型转换。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">例15：假设表达式中有两个操作数：<br>
+  操作数1类型为byte、short、char，操作数2类型为int，则自动类型转换后的数据类型为int；<br>
+  操作数1类型为byte、short、char、int，操作数2类型为long，则自动类型转换后的数据类型为long；<br>
+  操作数1类型为byte、short、char、int、long，操作数2类型为float，则自动类型转换后的数据类型为float；<br>
+  操作数1类型为byte、short、char、int、long、float，操作数2类型为double，则自动转换后的数据类型为double；<br>
+  <br>
+  　　<a href="ch2/ch2ex4.java" target="_blank">【例2-4】考虑下列程序段</a>。<br>
+  思考：为什么输出的是<br>
+  2147483647<br>
+  -2147483648<br>
+  而不是<br>
+  2147483647<br>
+  2147483648<br>
+  　　<a href="ch2/ch2ex5.java" target="_blank">【例2-5】解决例2-4中逻辑错误的方法</a>。<br>
+  说明：long类型的整形量可表达的范围不会产生溢出的现象，所以程序产生正确的结果。 <br>
+  　　<img src="images/STAR.GIF" width="18" height="20">程序中对于float 
+  y所赋常数后面的f不能缺少(也可使用大写字母F)，否则将出现语法错误<br>
+　　<img src="images/STAR.GIF" width="18" height="20">所赋常数后面的d(或D)可缺省。即浮点数的缺省值为double类型。</p>
+<p align="center" class="t1">声明变量的同时进行赋初始值</p>
+　　<img src="images/STAR.GIF" width="18" height="20"><span class="t2">语法格式： 
+</span><br>
+　　类型名 变量名=初值；<br>
+　　或<br>
+　　类型名 变量名1=初值1，变量名2=初值2，变量名3=初值3，…；<br>
+　　<img src="images/STAR.GIF" width="18" height="20">赋值运算符除了使用“=”以为，还可以使用其扩展赋值运算符，例如如+=，-=，*=，/=。<br>
+　　例16：x=3; x+=3；//等价于 x=x+3<br>
+　　同理，x-=3等价于x=x-3，x*=3等价于x=x*3，x/=3等价于x=x/3<br>
+<p align="center" class="t1">数值常量</p>
+　　常量指的是在程序运行过程中其值恒定不变，例如一个世纪是100，pi是3.141592，。<br>
+　　<img src="images/STAR.GIF" width="18" height="20"><span class="t2">命名常量的语法格式：</span><br>
+　　static final type name=value；<br>
+例17：static final double pi=3.141592;<br>
+　　　static final int century=100;<br>
+　　<img src="images/STAR.GIF" width="18" height="20"><span class="t2">整数的表示可以有三种形式：</span><br>
+　　十进制、八进制以及十六进制。八进制以数字0开头，其中每一位数的范围为0～7；十六进制以0x开头（其中0为数字），其中每一位数的范围是0～9，A～F。<br>
+　　<img src="images/STAR.GIF" width="18" height="20"><span class="t2">浮点数的表示方式可以有两种：</span><br>
+　　小数点形式和指数形式<br>
+　　例18：3.141592、2.5E4(表示2.5×104)、2.5E+4（同2.5E4）、2.5E-4(表示2.5×10-4)。<br>
+　　<img src="images/STAR.GIF" width="18" height="20"><span class="t2">使用浮点数数据时候，缺省类型为double，如要指定float，则必须在常数后面加f或F。</span><br>
+　　<a href="ch2/ch2ex7.java" target="_blank">【例2-7】常量命名必须在main以前</a>。<br>
+<p align="center" class="t1">注释</p>
+　　注释是程序中的说明性文字，是程序的非执行部分，它用于为程序添加说明，例如说明变量的意思、某代码段的目的以及构建某一特殊代码段的思路等，以增加程序的易读性。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">“//”符号，表示从“//”符号开始到此行结束都作为注释部分<br>
+　　<img src="images/STAR.GIF" width="18" height="20">“/*”注释“*/”，表示从“/*”开始，到下一个“*/”结束都作为注释部分<br>
+　　<a href="ch2/ch2ex8.java" target="_blank">【例2-8】如果一个教授，目前工资是4000元，现学校将其工资增加33%，写一个程序，计算新的工资</a>。<br>
+<p align="center" class="t1">算术运算符</p>
+　　算术表达式是指使用算术运算浮“+”、“-”、“*”、“/”等将变量、数值、常量连接起来表达某种运算或含义的式子。<br>
+<br>
+<table width="62%" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr align="center"> 
+    <td width="10%"> 
+      <div align="center">运算符</div></td>
+    <td width="10%"> 
+      <div align="center">运算</div></td>
+    <td width="11%"> 
+      <div align="center">范例</div></td>
+    <td width="8%"> 
+      <div align="center">结果</div></td>
+    <td width="9%"> 
+      <div align="center">运算符</div></td>
+    <td width="14%"> 
+      <div align="center">运算</div></td>
+    <td width="19%"> 
+      <div align="center">范例</div></td>
+    <td width="19%"> 
+      <div align="center">结果</div></td>
+  </tr>
+  <tr align="center"> 
+    <td> 
+      <div align="center">+</div></td>
+    <td> 
+      <div align="center">正号</div></td>
+    <td> 
+      <div align="center">+6</div></td>
+    <td> 
+      <div align="center">6 </div></td>
+    <td> 
+      <div align="center"> % </div></td>
+    <td> 
+      <div align="center">余数</div></td>
+    <td> 
+      <div align="center">12/5</div></td>
+    <td> 
+      <div align="center">2</div></td>
+  </tr>
+  <tr align="center"> 
+    <td> 
+      <div align="center">_</div></td>
+    <td> 
+      <div align="center">负号</div></td>
+    <td> 
+      <div align="center">x=5；-x</div></td>
+    <td> 
+      <div align="center">-5 </div></td>
+    <td> 
+      <div align="center">++</div></td>
+    <td> 
+      <div align="center">前递增 </div></td>
+    <td> 
+      <div align="center">x=7；y=++x</div></td>
+    <td> 
+      <div align="center">x=8；y=8</div></td>
+  </tr>
+  <tr align="center"> 
+    <td> 
+      <div align="center">+</div></td>
+    <td> 
+      <div align="center">加</div></td>
+    <td> 
+      <div align="center">2+2</div></td>
+    <td> 
+      <div align="center">4</div></td>
+    <td> 
+      <div align="center">++</div></td>
+    <td> 
+      <div align="center">后递增</div></td>
+    <td> 
+      <div align="center">x=7；y=x++</div></td>
+    <td> 
+      <div align="center">x=8；y=7</div></td>
+  </tr>
+  <tr align="center"> 
+    <td> 
+      <div align="center">_</div></td>
+    <td> 
+      <div align="center">减</div></td>
+    <td> 
+      <div align="center">7-3</div></td>
+    <td> 
+      <div align="center">4</div></td>
+    <td> 
+      <div align="center">--</div></td>
+    <td> 
+      <div align="center">前递减</div></td>
+    <td> 
+      <div align="center">x=7；y=--x</div></td>
+    <td> 
+      <div align="center">x=6；y=6</div></td>
+  </tr>
+  <tr align="center"> 
+    <td> 
+      <div align="center">*</div></td>
+    <td> 
+      <div align="center">乘</div></td>
+    <td> 
+      <div align="center">3×6</div></td>
+    <td> 
+      <div align="center">18</div></td>
+    <td> 
+      <div align="center">--</div></td>
+    <td> 
+      <div align="center">后递减</div></td>
+    <td> 
+      <div align="center">x=7；y=x--</div></td>
+    <td> 
+      <div align="center">x=6；y=7</div></td>
+  </tr>
+  <tr align="center"> 
+    <td> 
+      <div align="center">/</div></td>
+    <td> 
+      <div align="center">除</div></td>
+    <td> 
+      <div align="center">12/4</div></td>
+    <td> 
+      <div align="center">3</div></td>
+    <td> 
+      <div align="center">+</div></td>
+    <td> 
+      <div align="center">字符串串联</div></td>
+    <td> 
+      <div align="center">“Ja”+“va”</div></td>
+    <td> 
+      <div align="center">“Java”</div></td>
+  </tr>
+</table>
+　　<img src="images/STAR.GIF" width="18" height="20">算术运算符分为三个优先权：<br>
+　　1. 单目运算符：+、-、++、--（其中+、-为正号和负号）<br>
+　　2. 二目运算符：*、/、%<br>
+　　3. 二目运算符：+、-<br>
+　　<img src="images/STAR.GIF" width="18" height="20">表达式中，高优先权的运算符先运算，同一优先权的运算符则按照排列次序从右到左依次运算。<br>
+　　例19：oldSalary+oldSalary*perIncrease；<br>
+　　<img src="images/STAR.GIF" width="18" height="20">除了依据优先权和排列次序进行运算外，我们还可以使用括弧改变运算的次序。<br>
+　　例20：（newSalary+bonus）*perTax；<br>
+<p align="center" class="t1">作用域规则与代码块</p>
+　　<img src="images/STAR.GIF" width="18" height="20">作用域是标识符（如变量）在程序中有效的范围，标识符的引用与声明有关。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">一个代码块由一系列声明和语句组成，括弧“{”表示代码块的开始，括号“}”则表示代码块的结束，当程序中出现多个代码块，甚至代码块之间出现嵌套，就引出了标识符的作用域问题，即不同代码块中声明的变量和不同代码块之间的引用问题。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">原则1：变量能在一个代码块中任何地方声明，而声明的顺序决定了引用的顺序，即，变量必须在引用前声明。<br>
+　　<a href="ch2/ch2ex9.java" target="_blank">【例2-9】下列程序中，由于变量y在声明以前引用，程序将在编译时出现一个“不能解析符号”的语法错误</a>。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">原则2：所有在一个代码块中声明的变量是一个局部变量，局部变量不能被所声明代码块之外的语句所引用，否则同样在编译时出现语法错误。<br>
+　　<a href="ch2/ch2ex10.java" target="_blank">【例2-10】原则2示例</a>。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">原则3：代码块中声明的变量可以被代码快的内部嵌套代码块所引用，但嵌套块中不能对该变量重新声明。<br>
+　　<a href="ch2/ch2ex11.java" target="_blank">【例2-11】程序中变量x在main（）块中声明，所以可以在第二个嵌套块中引用，而变量y由于处于两个并列的代码块中，所以可以重新声明</a>。 
+<br>
+</body> 
+</html> 

@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+<head> 
+<script language="JavaScript"> 
+  var prePage="end";
+  var nextPage="01.htm";
+  var testPage="end";
+  var labPage="end";
+  var libraryPage="end";
+  var studyPage="end";
+  var homePage="end";
+	function showwin(url,winname,properties){
+		window.open(url,winname,properties)
+	}
+</script> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+
+<title>9.1类复用</title> 
+<link href="images/css.css" rel="stylesheet" type="text/css"> 
+</head> 
+
+<body topmargin="0">
+<p align="center" class="t1"><br>
+  类复用</p>
+<p>　　在面向对象程序设计中，通常类之间具有两种不同类型的关系：Has-a和IS-a。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">Has-a关系表示一个类作为另一个类的属性或定义作为另一个类的一个集合<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">IS-a关系表示的是一个类是另一个类的子类，这一特征构成了面向对象程序设计的继承机制。继承是指子类可以继承父类的特性（属性、方法等），同时可以有自己的特性。<br>
+　　例1：模拟教学管理系统中，类“人”是类“学生”与类“教师”的一般性对象，即类“人”是父类，而类“学生”和“教师”是它的两个子类。其表示形式：</p>
+　　<p align="center">
+  <img src="images/09/091-1.jpg" width="234" height="136"><br>
+图9-1 类的继承关系示例</p>
+<p>
+　　<img src="images/STAR.GIF" width="18" height="20">继承具有传递性,一个子类不但可以从它的直接父类继承属性和方法，也可以通过其父类继承祖先类的属性与方法。</p>
+<p align="center" class="t1">组合</p>
+　　组合表示现实世界中对象的部分/整体关系，它也称为Has-a关系。在组合关系中，代表整体事物的组合类对象负责创建和删除代表部分事物的对象类，代表部分事物的对象只属于一个组合对象，而且与组合对象同时存在，同时消失，一旦删除了组合对象，也就随即删除了相应的代表部分事物的对象。<br>
+<a href="ch9/ch9ex1.java" target="_blank">【例9-1】编程，示范类之间的组合关系</a>。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">程序中定义两个类“肥皂（Soap）”和“洗澡（Bath）”，这里肥皂与洗澡是部分与整体关系。<br>
+<p align="center" class="t1">继承</p>
+　　继承的最主要优点是支持递增式开发，它允许增加新的代码而不引起存在代码的错误（bugs）。在Java语言中，继承（IS-a关系）定义的格式：<br>
+class childName extends parentName{<br>
+…<br>
+}<br>
+例2：<br>
+class Person{<br>
+…<br>
+}<br>
+class Student extend Person{<br>
+…<br>
+}<br>
+class Teacher extend Person{<br>
+…<br>
+}<br>
+　　<a href="ch9/ch9ex2.java" target="_blank">【例9-2】定义父类Counter，再定义子类ExhibitionMonitor，父类是一个基本的计数对象类，子类除了继承计算对象类的属性和方法外，还增加了总量控制属性以及参观人员进与出的方法</a>。<br>
+<p align="center" class="t1">继承机制说明</p>
+　　<img src="images/STAR.GIF" width="18" height="20">子类可看作为这样一种组合关系，其成员包括父类的属性和方法加上自己定义的属性和方法。例如cap.enter()，开始寻找子类ExhibitionMonitor中的方法，然后寻找父类Counter中的方法，如果在子类中没有定义该方法，系统自动寻找父类中的该方法。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">方法重载：子类中可以定义和父类方法名和参数相同的方法，说明子类中该同名、同参数的方法重载并替换父类的方法并实现。如果子类需要访问父类中已被重载的方法，则加上前缀super。例如：super.display()。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">super()方法用于调用父类的构造方法。构造方法的调用次序是先父类，后子类。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">可视度：父类中private定义的属性和方法对子类是不可见，如需访问。则需要通过父类的public方法间接访问。另外，父类中public方法在子类中不能以private重载。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">继承层次：Java语言不允许多重继承，即子类只能具有一个父类。但一个子类不但可以从它的直接父类继承属性和方法，也可以通过其父类继承祖先类（父类的父类）的属性与方法。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">保护：protected 
+关键字的意思指的是它所定义的属性和方法只能被类自己、它的子类以及与该类在同一包(package)中的类所访问。<br>
+<p align="center" class="t1">继承机制举例　</p>
+<p>　　<a href="ch9/ch9ex3.java" target="_blank">【例9-3】可视度举例</a>。<br>
+  　　如果将public int get(){return super.get();}修改为private，则产生如下错误：<br>
+  　　ch9ex3.java:13: Inheritance中的get() 不能覆盖Base中的get(); 试图指定更弱的访问权限; 是public<br>
+  　　private int get(){return super.get();}<br>
+  　　<a href="ch9/ch9ex4.java" target="_blank">【例9-4】继承层次举例</a>。<br>
+　　涉及不同子类的类层次结构能从单根（single root）类开始构建，例如考虑例1，将学生分为全日制和非全日制，教师分为行政人员、全职教师、兼职教师。</p>
+<p align="center">
+  <img src="images/09/091-2.jpg" width="545" height="209"> 
+</p>
+<p align="center" class="t1">final关键字</p>
+　　鉴于安全方面的考虑，防止其他人员将属于系统重要信息的类通过继承机制来创建其子类，保证程序的安全有效的运行，可以设置不允许继承的类定义。例如Integer、String类是不允许继承的。具体方法就是在类的定义前加上final关键字，以达到终止继承的目的。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">如在上述程序的Person类前加上final，即final 
+class Person<br>
+则系统编译时产生如下错误信息：<br>
+ch9ex4.java:19: 不能从终态（final）Person 继承<br>
+class Teacher extends Person{<br>
+ch9ex4.java:30: 不能从终态（final）Person 继承<br>
+class Student extends Person{<br>
+　　<img src="images/STAR.GIF" width="18" height="20">如在Student类前加上final，即final 
+class Student extends Person<br>
+则系统编译时产生如下错误信息：<br>
+ch9ex4.java:42: 不能从终态（final）Student 继承<br>
+class PartTimeStudent extends Student{<br>
+ch9ex4.java:55: 不能从终态（final）Student 继承<br>
+class FullTimeStudent extends Student{<br>
+　　<img src="images/STAR.GIF" width="18" height="20">如果使用final修饰类中的方法，则说明该方法在继承过程中不能被重载。<br>
+<p align="center" class="t1">扩展Exception 和向上引用</p>
+　　<img src="images/STAR.GIF" width="18" height="20">除了Java系统已经提供的异常类来处理，也可以自己定义异常类来处理。格式为：<br>
+class newExceptionName extends Exception{<br>
+…<br>
+}<br>
+　　<a href="ch9/ch9ex5.java" target="_blank">【例9-5】重新修改例9-2</a>。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">向上引用：继承的最重要方面不在于提供创建新类(子类)的方法,而是表达子类与父类之间的关系，这种关系可以概述为子类是已存在类的类型。<br>
+　　<a href="ch9/ch9ex6.java" target="_blank">【例9-6】考虑一个父类（基类）器具表示音乐器具，子类风琴是器具的一个继承类</a>。<br>
+　　因为继承意味着所有父类中的方法在子类中有效，任何送往父类的消息也能送往子类。如果器具（Instrument） 类有一个方法play()，则风琴（Wind） 
+也有同样的方法。这就意味Wind对象也是Instrument类型。<br>
+　　tune()方法的形式参数接收Instrument对象，在main()方法中Instrument.tune(flute)语句的实际参数是一个Wind对象。即Wind对象也是一个Instrument对象。即向上引用的机制允许程序中父类的对象变量指向任何子类对象。
+</body> 
+</html> 

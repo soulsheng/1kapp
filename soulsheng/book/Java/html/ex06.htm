@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+
+<title>第6章练习</title> 
+<link href="images/css.css" rel="stylesheet" type="text/css"> 
+<style type="text/css">
+<!--
+a:link {
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+a:active {
+	text-decoration: none;
+}
+.style7 {font-size: 10px}
+.style8 {font-size: 9px}
+-->
+</style>
+</head> 
+
+<body topmargin="0">
+<p align="center" class="t1"><br>
+第6章练习　　</p>
+<ol>
+  <li>什么是对象？什么是类？</li>
+  <li>如何定义一个类？类中包含哪几部分？</li>
+  <li>如何创建对象？如何对对象进行初始化？</li>
+  <li>对象中的构造方法有哪些特点？如果在类中没有定义构造方法情况又如何？</li>
+  <li>向量类与对象数组相比较，主要的优点是什么？</li>
+  <li>类中类主要有哪几种形式，它们的主要区别是什么？</li>
+  <li>请说明当比较两个对象时，使用==比较两个对象变量和使用方法比较对象中有关属性的区别？</li>
+  <li>上机编辑和调试下列两段程序，分析和掌握类变量和方法内变量在没有初始化情况下的区别。<br>
+  class VarInit{ <br>
+　  public static void main(String args[]){ <br>　　　
+int p; //方法内变量<br>　　　
+int j = 10; <br>　　　
+j=p; //p没有初始化<br>　
+} <br>
+}<br>
+class VarInit{ <br>　
+static int p; //类变量<br>　
+public static void main(String args[]){<br>　　　
+int j = 10; <br>　　　
+j=p; //p没有初始化<br>　　　
+System.out.println(j); <br>　
+} <br>
+}</li>
+  <li>当编译下列程序段时，将会发生什么情况？<br>
+  class VarField{<br>　
+  int i=99;<br>　
+  void amethod(){<br>　　　
+  int i;<br>
+  　　　
+  System.out.println(i);<br>　
+  }<br>
+  }<br>
+  public class VarInit{<br>　
+  public static void main(String args[]){<br>　　　
+  VarField m = new VarField();<br>　　　
+  m.amethod();<br>　
+  }<br>
+  }<br>
+  A.输出99 B.输出0 C.编译时出错 D.执行时出错</li>
+  <li>当编译下列程序段时，将会发生什么情况？<br>
+  class VarField{<br>
+ 　 String s;<br>　
+ void amethod(){<br>　　　
+ System.out.println(s);<br>　
+ }<br>
+ }<br>
+ public class VarInit{<br>　
+ public static void main(String args[]){<br>　　　
+ VarField m = new VarField();<br>　　　
+ m.amethod();<br>　
+ }<br>
+ }<br>
+ A.编译时出错 B.输出空格 C.执行时出错 D.输出null</li>
+  <li>编译并执行下列程序段时，将会发生什么情况？<br>
+  class VarField{<br>
+　  private int i=10;<br>　
+public VarField(){}<br>　
+public void putI(int n){i=n;}<br>　
+public int getI(){return i;}<br>
+}<br>
+class Methods{<br>　
+public void amethod(){<br>　　　
+int i=99;<br>　　　
+VarField obj2=new VarField();<br>　　　
+obj2.putI(30);<br>　　　
+another(obj2,i);<br>　　　
+System.out.println(obj2.getI());<br>　
+}<br>
+　
+public void another(VarField v,int i){<br>　　　
+i=0;<br>　　　
+v.putI(20);<br>　　　
+VarField obj3=new VarField();<br>　　　
+v=obj3;<br>　　　
+System.out.print(v.getI()+&quot; &quot;+i+&quot; &quot;);<br>　
+}<br>
+}<br>
+public class VarInit{<br>　
+public static void main(String args[]){<br>　　　
+Methods obj1=new Methods();<br>　　　
+obj1.amethod();<br>　
+}<br>
+}<br>
+A.10 0 20 B.10 0 30 C.20 99 30 D.20 0 30</li>
+  <li>对于下列定义的类，如何修改使得它既符合类的封装性，又能操作类中属性？<br>
+  class Staff{<br>
+ 　　 int salary;<br>
+ }<br>
+ A.将属性salary定义为private。<br>
+ B.将属性salary定义为public。<br>
+ C.将属性salary定义为private，并且定义public的get和put方法访问属性salary。<br>
+ D.将属性salary定义为public，并且定义public的get和put方法访问属性salary。</li>
+  <li>下面那句话较好地体现了面向对象技术中的封装性？<br>
+  A.类中的方法全部是私有的，以避免意外地破坏属性。<br>
+  B.类中的属性都是公共的，以便其他用户方便地访问。<br>
+  C.类中的所有属性都是私有的，以防止意外地破坏属性。<br>
+  D.一般情况下类的属性是私有的，方法是公共的，通过公共的方法访问私有的属性。</li>
+  <li>给出下列类定义的代码段，请选择哪个方法的定义可以放在代码段中指定的位置？<br>
+  class Overriding{<br>　　
+  public void f(int i,String s){}<br>
+  //放置位置<br>
+  }<br>
+  A.public void f(String s, int i){}<br>
+  B.public int f(int i, String s){}<br>
+  C.public void f(int i, String mystring){}<br>
+  D.public void f(int i, String s) {}</li>
+  <li>创建一个Timer类，属性包括小时、分、秒，然后编制含有main方法的类创建一个Timer对象进行测试。</li>
+  <li>修改题15，创建两个Timer对象和一个Timer变量，修改其中一个对象的属性，观察另一个对象的属性是否变化；将一个对象赋值给Timer变量，观察赋值的效果（地址赋值）。</li>
+  <li>修改题15，在main方法中定义一个show方法，显示对象的小时、分、秒，其形式参数是Timer对象。</li>
+  <li>修改题15，定义三个构造方法：无参数构造方法，功能初始化小时、分、秒为0；形式参数为小时、分、秒，功能根据参数初始化小时、分、秒；形式参数仅给出秒，功能将秒转换为小时、分、秒并进行初始化（例如3700，小时为1；分为1，秒为40）。</li>
+  <li>定义一个类Shop，属性包括书名、出版社、单价、出版年份、作者，一个构造方法初始化这些属性，一个显示方法显示Shop属性。然后编制含有main方法的类测试效果。</li>
+  <li>修改题19，将出版年份改为出版日期，并使用类中类定义日期。</li>
+  <li>编程：建立一个对象数组，存放10个学生的学号、姓名、成绩，统计这10个学生的平均成绩，搜索最高成绩和最低成绩学生的姓名和学号。</li>
+  <li>编程：使用分别使用对象数组和向量按递增次序存放你同学的姓名和老师的姓名，功能包括插入、删除、查询、显示，并讨论使用对象数组的缺点。</li>
+  <li>编程：使用字符串（String）创建一个StringBuffer，同时完成如下功能：<br>
+  A.将字符串中的所有字符c替换为字符*。<br>
+  B.输出StringBuffer的容量和其中字符串的长度。</li>
+  <li> 编程：使用字符串（String）创建一个StringBuffer，并统计缓冲区中的单词Java出现的次数。</li>
+  <li>定义一个类Counter，创建Counter的对象进行统计，属性为count，方法包括：设置count为0；count增1；count减1；count增n；count减n；条件必须使得count大于等于0。（增1和增n，减1和减n使用方法重载）。</li>
+  <li>编程：使用StringBuffer从键盘读取字符串，假设字符串以空格作为分隔符，分离字符串中单词并输出。</li>
+  <li>编程：定义一个坐标类Pointer，属性包括x和y；方法有：putX、putY、getX、getY、display以及构造方法。创建两个Pointer对象并计算两点坐标的中点。</li>
+  <li>编程：创建一个随机数（整型量，INTEGER类对象）的向量，统计奇数出现的次数，计算所有随机数的和以及平均值。</li>
+  <li>编程：修改例6-22中的getDate()方法，使其产生并返回的日满足实际日期的要求。</li>
+  <li>编程：管理一个杂货店的商品库存，程序应提供一个菜单允许用户进行常规的日常管理工作：销售商品、更新库存、检查库存。</li>
+  <li>编程：实现一个学生学习成绩评定系统。要求：<br>
+    (1)
+  定义一个学生类，属性包括姓名、平时成绩、实验成绩、期中考试成绩、期末考试成绩、总评成绩；方法包括：显示学生属性，比较姓名（入口参数有两种：学生类对象和学生姓名字符串），构造方法（初始化属性），设置平时成绩，设置实验成绩，设置期中考试成绩，设置期末考试成绩，返回姓名，返回平时成绩，返回实验成绩，返回期中考试成绩，返回期末考试成绩。<br>
+  (2)
+  利用向量类创建一个班级类，属性为一个向量类存放所有班级学生类对象，方法包括：构造方法具体创建一个类向量，增加新的人员（不能出现同名记录），搜索学生记录，删除学生记录，显示所有学生记录，输入学生的平时成绩、实验成绩、期中考试成绩、期末考试成绩（它们可以在增加新的人员时同时输入，也可单独输入）。<br>
+  (3)
+  编制一个菜单类，显示菜单并接收用户选择，菜单选项至少包括：增加新的学生记录，删除学生记录，显示所有学生记录，根据姓名查询某一个学生记录，根据姓名输入学生的平时成绩，根据姓名输入学生的实验成绩，根据姓名输入学生的期中考试成绩，根据姓名输入学生的期末考试成绩，评定学生的总评成绩（实验20%，平时20%，期中考试20%，期末考试40%），分析班级分数分布情况并输出各段成绩的百分比（总评成绩大于等于90分为A，大于等于80分小于90分为B，大于等于70分小于80分为C，大于等于60分小于70分为D，小于60分为E）。<br>
+  (3)
+  编制main方法的类，调用菜单方法，利用switch语句分别调用班级类的各种方法，同时对于增加新的学生记录，建议使用一个静态方法从键盘读取有关信息。
+</li>
+</ol>
+</body> 
+</html> 

@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+<head> 
+<script language="JavaScript"> 
+  var prePage="end";
+  var nextPage="01.htm";
+  var testPage="end";
+  var labPage="end";
+  var libraryPage="end";
+  var studyPage="end";
+  var homePage="end";
+	function showwin(url,winname,properties){
+		window.open(url,winname,properties)
+	}
+</script> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+
+<title>5.1过程</title> 
+<link href="images/css.css" rel="stylesheet" type="text/css"> 
+</head> 
+
+<body topmargin="0">
+<p align="center" class="t1"><br>
+静态方法</p>
+　　假设程序的功能描述：<br>
+{<br>
+　　//输入学生的姓名、数学以及Java程序设计的成绩<br>
+　　//输入需要查询的学生姓名<br>
+　　//检索数组，显示查找的结果<br>
+}<br>
+　　这种轮廓描述可以方便用户进行程序的编码，并能使程序结构清晰。但也存在其局限性：<br>
+　　<img src="images/STAR.GIF" width="18" height="20">程序中每个任务只能通过注释来说明<br>
+　　<img src="images/STAR.GIF" width="18" height="20">对于较大的程序，要在一个main中包含所有的内容，其结构性较差<br>
+　　<img src="images/STAR.GIF" width="18" height="20">如果程序中需要重复多次完成某一功能，则程序中需要重复多次编写同样的代码<br>
+　　为了便于规划、组织、编程和调试，一般的做法是将一个大的程序分解成若干个程序模块，每一个模块实现一部分功能。Java中提供两种方法实现模块化：过程（procedure）和函数（function）。<br>
+<p align="center" class="t1">过程的定义与调用</p>
+　　<img src="images/STAR.GIF" width="18" height="20">过程定义的语法格式：<br>
+static void procName{<br>
+　　//codes for procedure body<br>
+}<br>
+例1：一个显示一行50个’*’的过程<br>
+static void drawStars(){<br>
+　　for(int j=0;j&lt;50;j++)<br>
+　　　　System.out.print(‘*’);<br>
+　　System.out.println();<br>
+}<br>
+　　<img src="images/STAR.GIF" width="18" height="20">过程的调用的语法格式：procName（）；<br>
+<a href="ch5/ch5ex1.java" target="_blank">【例5-1】编程输出5行’*’，每行50个’*’</a>。<br>
+<a href="ch5/ch5ex2.java" target="_blank">【例5-2】编程：过程sum计算1～1000的累加和</a>。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">静态方法的定义可以在class内，main（）方法外的任何地方。<br>
+<p align="center" class="t1">参数的传递</p>
+　　<img src="images/STAR.GIF" width="18" height="20">带有参数的过程定义语法格式：<br>
+static void procName(formalParameterList){<br>
+　　//codes for procedure body<br>
+}<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">其中formalParameterList称为形式参数(简称形参)，其格式为：<br>
+　　　　type var1，type var2，…type varn<br>
+例2:<br>
+static void proc2(int n，char ch，String str，double d，int x){<br>
+　　//codes for procedure body<br>
+}<br>
+　　<img src="images/STAR.GIF" width="18" height="20">调用一个带有形式参数的过程时，必须为过程提供实参，即参数传递，然后用实际参数执行所调用过程的代码体。其语法格式为：<br>
+procName（actualParameterList）；<br>
+其中actualParameterList称为实际参数，格式为：<br>
+var1，var2，…varn<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">实参可以是常量、变量或表达式<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">相邻的两个实参之间用逗号分隔<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">实参的个数、顺序、类型与形参要一一对应<br>
+<a href="ch5/ch5ex3.java" target="_blank">【例5-3】修改例5-2，使得过程能计算1～n的累加和</a>。<br>
+<a href="ch5/ch5ex4.java" target="_blank">【例5-4】编程，过程swap实现两个数据的交换</a>。<br>
+</body> 
+</html> 

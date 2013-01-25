@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+
+<title>15.1 JSP(Java Server Pages) </title> 
+<link href="images/css.css" rel="stylesheet" type="text/css"> 
+</head> 
+
+<body topmargin="0">
+<p align="center" class="t1"><br>
+  <strong>JSP简介</strong>　　　　　</p>
+<p>　　<img src="images/star.gif" width="18" height="20">JSP(Java Server Pages)是一种动态网页技术标准。该技术为创建显示动态生成内容的Web页面提供了一个简捷而快速的方法。 <br>
+  　　<img src="images/star.gif" width="18" height="20">JSP技术的设计目的是使得构造基于Web的应用程序更加容易和快捷，而这些应用程序能够与各种Web服务器、应用服务器、浏览器共同工作。<br>
+  　　<img src="images/star.gif" width="18" height="20">在传统的网页HTML文件中加入Java程序片段(Scriptlet)和JSP标签(tag)，就构成了JSP网页(*.jsp)。<br>
+　　<img src="images/star.gif" width="18" height="20">Web服务器在遇到访问JSP网页的请求时，首先执行其中的程序片段，然后将执行结果以HTML格式返回给客户端。所有程序操作都在服务器端执行，网络上传送给客户端的仅是得到的结果。</p>
+　　　　　　<p align="center"><br>
+  <img src="images/15-1.gif" width="417" height="307"></p>
+<p align="center"><br>
+  <span class="t1"> <strong>运行环境</strong> </span></p>
+<p><br>
+  　　<img src="images/STAR.GIF" width="18" height="20">Sun 公司的 JSP 主页在 <a href="http://www.javasoft.com/products/jsp/index.html" target="_blank">http://www.javasoft.com/products/jsp/index.html</a> ，从这里还可以下载 JSP 规范，这些规范定义了供应商在创建 JSP 引擎时所必须遵从的一些规则。 <br>
+  　　<img src="images/STAR.GIF" width="18" height="20">执行JSP代码需要在服务器上安装JSP引擎。例如 Sun 的JSWDK 。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">下载地址：<a href="http://java.sun.com/products/jsp/archive.html" target="_blank">http://java.sun.com/products/jsp/archive.html</a>  <br>
+　　<img src="images/STAR.GIF" width="18" height="20">把下载的压缩软件解压到希望安装的目录下，例如jswdk-1.0.1文件放入D:\ jswdk-1.0.1。</p>
+<p align="center"><span class="t1"> <strong>配置服务器</strong></span></p>
+<p>　　<img src="images/STAR.GIF" width="18" height="20">在桌面上选中“我的电脑”，点击右键。<br> 
+  　　<img src="images/STAR.GIF" width="18" height="20">点击“属性”进入“系统属性”对话框。</p>
+<p align="center"><img src="images/15-jswdk-1.jpg" width="210" height="248"></p>
+<p align="left">　　<img src="images/STAR.GIF" width="18" height="20">选择“高级”/“环境变量”，进入“环境变量”对话框。</p>
+<p align="center"><img src="images/15-jswdk-2.jpg" width="230" height="258"> </p>
+<p>　　<img src="images/STAR.GIF" width="18" height="20">点击“环境变量”对话框中的“系统变量”下的“新建”按钮，进入“编辑系统变量”对话框。</p>
+<p align="center"><img src="images/15-jswdk-3.jpg" width="243" height="98"></p>
+<p>　　<img src="images/STAR.GIF" width="18" height="20">在“变量名（N）”方框中输入“path”；在“变量值（V）”方框中输入“d:\jdk1.4.2\bin”，点击“确定”键确认。另外一种方式是先定义JAVA_HOME变量的变量值为“d:\jdk1.4.2”，然后定义“path”的变量值为“%JAVA_HOME%\bin”。（如果已经安装并设置j2sdk，可跳过这一步）。 <br>
+　　<img src="images/STAR.GIF" width="18" height="20">点击“系统变量”下面的“新建”按钮。在“变量名（N）”中输“classpath”；在“变量值（V）”中输入“.;d:\jdk1.4.2\lib\tools.jar；d:\jswdk-1.0.1\lib\servlet.jar；d:\jswdk-1.0.1\webserver.jar” 或者输入“.;%JAVA_HOME%\lib\tools.jar；d:\jswdk-1.0.1\lib\servlet.jar；d:\jswdk-1.0.1\webserver.jar”（如果已经安装并设置j2sdk，则选择“classpath”，点击“编辑”键，在原来基础上增加d:\jswdk-1.0.1\lib\servlet.jar；d:\jswdk-1.0.1\webserver.jar）。</p>
+<p align="center"><img src="images/15-jswdk-4.jpg" width="243" height="98">  </p>
+<p>　　<img src="images/STAR.GIF" width="18" height="20"> 测试：进入jswdk-1.0.1文件夹。<br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20"> 双击“startserver”批处理文件，启动服务器。如果希望停止服务器，则只需双击“stopserver” 批处理文件即可。 <br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20"> 在IE浏览器地址栏中输入http://localhost:8080/，按回车键后，如果能出现图示界面，则证明配置的服务器已经成功，并处于运行状态。</p>
+<p align="center"><img src="images/15-jswdk-5.jpg" width="316" height="269"> </p>
+<p align="center"><span class="t1"> <strong>JSP 页面示例</strong> </span></p>
+<p>　　<img src="images/STAR.GIF" width="18" height="20">JSP 页面文件名可以任意，但扩展名必须为 .jsp。 <br>
+  　　<img src="images/STAR.GIF" width="18" height="20">JSP 页面除了比普通 HTML 页面多一些 Java 代码外，两者具有基本相同的结构。 <br>
+  　　<img src="images/STAR.GIF" width="18" height="20">Java 代码是通过 &lt; % 和 %&gt; 符号加入到 HTML 代码中间的，程序的主要功能是生成并显示一个从0到9的字符串。在这个字符串的前面和后面都是一些通过 HTML 代码输出的文本。 <br>
+【例15-1】编写一个JSP程序，在&nbsp;Web页面上打印出0～9之间的整数。<br>
+<a href="ch15/javabookjswdk/ch15ex1.jsp" target="_blank">ch15ex1.jsp</a></p>
+<p align="center"><img src="images/15-2.jpg" width="373" height="287"></p>
+<p><br>
+  　　<img src="images/STAR.GIF" width="18" height="20">运行JSP文件：把JSP文件放入“D:\jswdk-1.0.1\webpages”文件夹中（也可以放置在D:\jswdk-1.0.1\的其他目录下，例如，可以在examples目录下创建自己的目录，然后放置jsp文件）。 <br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20">如果在“D:\jswdk-1.0.1\webpages”目录下放置ch15ex1.jsp文件，在地址栏中输入http://localhost:8080/ch15ex1.jsp，按回车键就可以运行ch15ex1.jsp这个文件。 <br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20">如果在“D:\jswdk-1.0.1\examples”下创建javabook子目录，并在此子目录中放置ch15ex1.jsp文件,在地址拦输入http://localhost:8080/examples/javabook/ch15ex1.jsp，按回车键就可以。   <br>
+  　　<img src="images/STAR.GIF" width="18" height="20">分析这个JSP页面： <br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20">JSP指令：描述的是页面的基本信息，如所使用的语言、是否维持会话状态、是否使用缓冲等。JSP指令由&lt;%@开始，%&gt;结束。 <br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20">JSP声明：可以看成是定义类这一层次的属性（变量）和方法的地方。JSP 声明由&lt;%!开始，%&gt;结束。 <br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20">位于&lt;%和%&gt;之间的代码块是描述JSP页面处理逻辑的Java代码。 <br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20">位于&lt;%=和%&gt;之间的代码称为 JSP表达式。JSP 表达式提供了一种将 JSP 生成的数值嵌入 HTML 页面的简单方法。 <br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20">最后一个JSP元素是嵌入式注释。&lt;%--开始，--%&gt;结束。 </p>
+</body> 
+</html> 

@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+<head> 
+<script language="JavaScript"> 
+  var prePage="end";
+  var nextPage="01.htm";
+  var testPage="end";
+  var labPage="end";
+  var libraryPage="end";
+  var studyPage="end";
+  var homePage="end";
+	function showwin(url,winname,properties){
+		window.open(url,winname,properties)
+	}
+</script> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+
+<title>4.1数组</title> 
+<link href="images/css.css" rel="stylesheet" type="text/css"> 
+</head> 
+
+<body topmargin="0">
+<p align="center" class="t1"><br>
+  数组的定义</p>
+　　数组是同类型数据的集合，用同一个统一的名字表示数据集合，用序号或下标来区分各个数据。<br>
+　　定义一个数组，必须定义数组名、数组数据类型以及数组中的变量数（数组的长度），语法格式为：<br>
+　　type name[]=new type[size]；或type[] name=new type[size]；<br>
+　　这里type定义数组数据类型，name为数组名，size是数组中的变量数。<br>
+例1：<br>
+int a[]=new int[100]；<br>
+double scores[]=new double[50]；<br>
+　　<img src="images/STAR.GIF" width="18" height="20">数组的变量数必须是正整数，并且在程序执行过程中固定不变<br>
+　　<img src="images/STAR.GIF" width="18" height="20">数组的变量数可由name.length获得 
+<p align="center" class="t1">数组的引用与赋值</p>
+　　<img src="images/STAR.GIF" width="18" height="20">数组必须先定义，然后使用。 
+<br>
+　　<img src="images/STAR.GIF" width="18" height="20">数组元素的值只能逐个引用而不能一次引用整个数组中的全部元素。 
+<br>
+数组元素的表示形式： name[index] <br>
+其中index称为下标，它可以是整型常量或整型表达式，数组的最低下标从0开始。 <br>
+例2： <br>
+a[0]=90； <br>
+a[1]=68； <br>
+a[2]=30+56； <br>
+a[3]=a[1]+a[2]； <br>
+a[4]=10+a[2]； <br>
+a[2+3]=a[2]+a[2*2]； 
+<p align="center" class="t1">数组的初始化</p>
+　　<img src="images/STAR.GIF" width="18" height="20">在定义数组时分别对数组元素赋初值：<br>
+　　type name[]={用逗号分隔的一系列数据}；//数组的长度就等于数据的数目。<br>
+例3：<br>
+int a[]={2，6，7，9，10}；//数组长度为5，下标范围0～4<br>
+　　<img src="images/STAR.GIF" width="18" height="20">利用循环语句进行赋值<br>
+例4：利用循环语句从键盘读取一系列数据<br>
+double scores[]=new double[50]；<br>
+for（int j=0；j&lt;scores.length；j++）<br>
+　　scores[j]=Keyboard.readDouble()；<br>
+例5：利用循环语句和随机数函数进行赋值<br>
+int a[]=new int[100]；<br>
+for（int j=0；j&lt;a.length；j++）<br>
+　　a[j]=（int）(Math.Random（）*1000000)%k；<br>
+<p align="center" class="t1">举例</p>
+<a href="ch4/ch4ex1.java" target="_blank">【例4-1】编程读取20个正整数，然后按照相反的次序输出</a>。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">按照相反次序输出，也就是表示从数组的末尾（a[a.length-1]）开始输出，直至数组的开始a[0]。<br>
+<a href="ch4/ch4ex2.java" target="_blank">【例4-2】编程利用随机数函数生成1000个0～49之间的正整数，统计其中数值为6的个数并计算所占百分比</a>。<br>
+<a href="ch4/ch4ex3.java" target="_blank">【例4-3】编程，用数据2，3，8，4，5，6，9，7，11，32，23，56，45，47，78，1初始化一个数组，然后使用冒泡法对其进行递增排序（按由小到大顺序）</a>。<br>
+　　冒泡法的思路是（以递增为例）：将相邻两个数比较，将小的数调到前面。若数字序列为7，6，11，2，8，第1次比较第1和第2个数（7和6）的大小，如果第1个数大于第2个数，就把两个数位置交换，第2次将第2和第3个数（7和11，第1次7已经和6交换位置）进行比较，依次类推，如此共进行4次。<br>
+第一轮交换<br>
+<table width="36%" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td><div align="center">7</div></td>
+    <td><div align="center">6</div></td>
+    <td><div align="center">11</div></td>
+    <td><div align="center">2</div></td>
+    <td><div align="center">8</div></td>
+  </tr>
+  <tr> 
+    <td><div align="center">6</div></td>
+    <td><div align="center">7</div></td>
+    <td><div align="center">11</div></td>
+    <td><div align="center">2</div></td>
+    <td><div align="center">8</div></td>
+  </tr>
+  <tr> 
+    <td><div align="center">6</div></td>
+    <td><div align="center">7</div></td>
+    <td><div align="center">11</div></td>
+    <td><div align="center">2</div></td>
+    <td><div align="center">8</div></td>
+  </tr>
+  <tr> 
+    <td><div align="center">6</div></td>
+    <td><div align="center">7</div></td>
+    <td><div align="center">2</div></td>
+    <td><div align="center">11</div></td>
+    <td><div align="center">8</div></td>
+  </tr>
+  <tr> 
+    <td><div align="center">6</div></td>
+    <td><div align="center">7</div></td>
+    <td><div align="center">2</div></td>
+    <td><div align="center">8</div></td>
+    <td><div align="center">11</div></td>
+  </tr>
+</table>
+<br>
+程序段如下：<br>
+for(int j=0;j&lt;a.length-i-1;j++)<br>
+　　if(a[j]&gt;a[j+1]){<br>
+　　　　　t=a[j];a[j]=a[j+1];a[j+1]=t;<br>
+　　}<br>
+　　其中j&lt;a.length-i-1表示第1轮比较i=0（全部数据），第2轮比较i=1（最后数据不需要再比较）。<br>
+表4-2 第二轮交换<br>
+<table width="30%" height="100" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td><div align="center">6</div></td>
+    <td><div align="center">7</div></td>
+    <td><div align="center">2</div></td>
+    <td><div align="center">8</div></td>
+  </tr>
+  <tr> 
+    <td><div align="center">6</div></td>
+    <td><div align="center">7</div></td>
+    <td><div align="center">2</div></td>
+    <td><div align="center">8</div></td>
+  </tr>
+  <tr> 
+    <td><div align="center">6</div></td>
+    <td><div align="center">2</div></td>
+    <td><div align="center">7</div></td>
+    <td><div align="center">8</div></td>
+  </tr>
+  <tr> 
+    <td><div align="center">6</div></td>
+    <td><div align="center">2</div></td>
+    <td><div align="center">7</div></td>
+    <td><div align="center">8</div></td>
+  </tr>
+</table>
+</body> 
+</html> 

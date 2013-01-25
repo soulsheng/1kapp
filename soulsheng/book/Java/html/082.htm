@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+<head> 
+<script language="JavaScript"> 
+  var prePage="end";
+  var nextPage="01.htm";
+  var testPage="end";
+  var labPage="end";
+  var libraryPage="end";
+  var studyPage="end";
+  var homePage="end";
+	function showwin(url,winname,properties){
+		window.open(url,winname,properties)
+	}
+</script> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+
+<title>8.2标准输入与输出</title> 
+<link href="images/css.css" rel="stylesheet" type="text/css"> 
+</head> 
+
+<body topmargin="0">
+<p align="center" class="t1"><br>
+  标准输入与输出</p>
+　　 java.io包中预先定义了三个流对象System.out、System.in和System.err，它们分别表示标准的输出设备（显示器）、标准的输入设备（键盘）和标准的错误输出设备（一般也为显示器）。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">System.out属于PrintStream类对象，用于输出字节数据流到显示器<br>
+　　<img src="images/STAR.GIF" width="18" height="20">System.in属于InputStream类对象，用于从键盘输入字节数据流<br>
+　　<img src="images/STAR.GIF" width="18" height="20">System.err也属于PrintStream类对象，用于将系统的错误信息输出到显示器<br>
+<p align="center" class="t1">标准输入　</p>
+<p>　　<img src="images/STAR.GIF" width="18" height="20">需要从键盘读取数据时，可以使用InputStream类的有关方法，最主要的方法就是read()，它从键盘输入字符序列中的当前位置读取一个字节，并以int类型返回（如以字符形式存放，需要使用强制类型转换）。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">由于键盘输入具有缓冲功能（操作系统的特点而非Java语言特点），即可以一次输入多个字符，暂存在输入缓冲区中，为此read()方法可以一次一个字节地读取，而缓冲区中可读取的字节数可使用available()获得。<br>
+  　　<a href="ch8/ch8ex13.java" target="_blank">【例8-13】利用read()方法，按字节读取键盘输入的内容（字符串）</a>。<br>
+　　运行结果图</p>
+<p align="center">
+<img src="images/08/082-1.jpg" width="669" height="438"></p>
+<p>
+  　　<img src="images/STAR.GIF" width="18" height="20">还可以利用BufferedReader类的readline()方法从键盘输入字符串，该方法一次读入一行字符串，即按回车键前面输入的所有字符。创建对象格式：<br>
+  BufferedReader bIn=new BufferedReader(new InputStreamReader(System.in))；<br>
+  或<br>
+  InputStreamReader iIn=new InputStreamReader(System.in);<br>
+BufferedReader bIn=new BufferedReader(iIn);</p>
+<p align="center" class="t1">readline()方法举例　</p>
+<p><a href="ch8/ch8ex15.java" target="_blank">【例8-14】编程利用readline()方法读取字符串，并分别将其转换为其他类型</a>。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">BufferedReader类的readline()方法读入的是字符串，可以通过转换方法将字符串转换成其他类型数据。同时，readline()方法需要使用try-catch结构。</p>
+　　<table width="96%" height="127" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td width="42%" height="25"> <div align="center">方法 </div></td>
+    <td width="58%"><div align="center">说明</div></td>
+  </tr>
+  <tr> 
+    <td height="25">Boolean(String s).booleanValue(); </td>
+    <td>将字符串转换为布尔值，字符串“true”转换为true，其他均为false</td>
+  </tr>
+  <tr> 
+    <td height="25">Integer.parseInt(String s); </td>
+    <td>将字符串转换为整型量，如字符串不合法（例如含义字母），则抛出异常</td>
+  </tr>
+  <tr> 
+    <td height="25">Long.parseLong(String s); </td>
+    <td>将字符串转换为长整型量，同上抛出异常</td>
+  </tr>
+  <tr> 
+    <td height="12">Float.parseFloat(String s); </td>
+    <td>将字符串转换为单精度浮点数，同上抛出异常</td>
+  </tr>
+  <tr> 
+    <td height="13">Double.parseDouble(String s); </td>
+    <td>将字符串转换为双精度浮点数，同上抛出异常</td>
+  </tr>
+</table>
+　
+<p><a href="ch8/ch8ex15.java" target="_blank">【例8-15】编程消除输入缓冲区中的字符串前部空格、尾部空格或定界符等</a>。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">第一个while循环用于跳过所有前部的空格，flag为true表示已经找到一个非空格的字符，反之说明位置超过buffer长度时还没有找到非空格字符，buffer.length()&gt;0条件是为了buffer.charAt(p)方法的使用，如果用户不输入任何字符直接回车，buffer.length()为0，这是如果使用buffer.charAt(p)方法，则p是一个非法的下标。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">第二个循环用于找到第一个非字符的位置，以便定位字符串的开始和结束。即，如果输入12 
+34（12和34中有空格），实际所取的字符串是12。</p>
+<p align="center" class="t1">标准输出和标准错误</p>
+　　<img src="images/STAR.GIF" width="18" height="20">Java的标准输出用System.out表示，可以利用PrintStream类的print()和println()方法输出各种类型的数据，并且它们利用了方法重载的方法，即使用同一方法名，根据实际参数的不同调用各自方法。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">System.err方法用于将各种错误信息输出到标准错误设备，该设备一般为显示器，所以其使用与System.out相似。即利用PrintStream类的print()和println()方法输出各种错误信息。 
+</body> 
+</html> 

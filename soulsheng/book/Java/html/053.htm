@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+<head> 
+<script language="JavaScript"> 
+  var prePage="end";
+  var nextPage="01.htm";
+  var testPage="end";
+  var labPage="end";
+  var libraryPage="end";
+  var studyPage="end";
+  var homePage="end";
+	function showwin(url,winname,properties){
+		window.open(url,winname,properties)
+	}
+</script> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+
+<title>5.3表处理</title> 
+<link href="images/css.css" rel="stylesheet" type="text/css"> 
+</head> 
+
+<body topmargin="0">
+<p align="center" class="t1"><br>
+表处理</p>
+　　<img src="images/STAR.GIF" width="18" height="20">二维数组定义：二维数组同时使用行数和列数进行定义：<br>
+type name[][]=new type[rows][columns]；或者<br>
+type[][] name=new type[rows][columns]；<br>
+例6：<br>
+double a[][]=new double[5][6]；<br>
+定义a为5×6（5行6列）的double类型数组。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">二维数组的引用：数组中各元素通过两个下标（行和列）来区分，每个下标的最小值为0，最大值分别比行号和列号少1。<br>
+例7：<br>
+a[0][0]，a[0][1]，…，a[0][5]<br>
+a[1][0]，a[1][1]，…，a[1][5]<br>
+a[2][0]，a[2][1]，…，a[2][5]<br>
+a[3][0]，a[3][1]，…，a[3][5]<br>
+a[4][0]，a[4][1]，…，a[4][5]<br>
+　　<img src="images/STAR.GIF" width="18" height="20">数组元素可以使用赋值语句进行赋值。<br>
+例8：<br>
+a[0][0]=12.0<br>
+a[0][3]=34.56<br>
+a[4][2]=678.12<br>
+a[3][5]=90.23<br>
+　　<img src="images/STAR.GIF" width="18" height="20">可以使用属性length获得行数和列数。列数name[0].length，行数name.length。<br>
+例9：<br>
+a.length表示行数，结果为5。<br>
+a[0].length表示列数，结果为6。
+<p align="center" class="t1">二维数组的初始化　</p>
+<p>　　<img src="images/STAR.GIF" width="18" height="20">二维数组除了可以通过赋值语句或输入语句进行初始化以外，也可以在定义的同时进行二维数组的初始化：<br>
+  type name[][]={{init list1},{init list2} ,…，{init listn}}；<br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20">每个init list用逗号分隔，init list的个数表示数组的行数，初值表中的数据个数表示数组的列数。<br>
+例10：int grade[][]={{76,87,90,56},{67,60,99,77},{87,92,65,72},{23,68,79,85}}</p>
+　　<table width="77%" height="123" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td width="26%"><div align="center">grade[0][0] 76</div></td>
+    <td width="24%"><div align="center">grade[0][1] 87</div></td>
+    <td width="23%"><div align="center"> grade[0][2]90 </div></td>
+    <td width="27%"><div align="center">grade[0][3] 56</div></td>
+  </tr>
+  <tr> 
+    <td><div align="center">grade[1][0] 67</div></td>
+    <td><div align="center">grade[1][1] 60</div></td>
+    <td><div align="center">grade[1][2] 99</div></td>
+    <td><div align="center">grade[1][3] 77</div></td>
+  </tr>
+  <tr> 
+    <td><div align="center">grade[2][0] 87</div></td>
+    <td><div align="center">grade[2][1] 92</div></td>
+    <td><div align="center">grade[2][2] 66 </div></td>
+    <td><div align="center">grade[2][3] 72</div></td>
+  </tr>
+  <tr> 
+    <td><div align="center">grade[3][0] 23</div></td>
+    <td><div align="center">grade[3][1] 68</div></td>
+    <td><div align="center">grade[3][2] 79</div></td>
+    <td><div align="center">grade[3][3] 85</div></td>
+  </tr>
+</table>
+<br>
+<a href="ch5/ch5ex12.java" target="_blank">【例5-12】编程初始化一个二维数组为1～n，并进行输出</a>。<br>
+<p align="center" class="t1">举例</p>
+　　<a href="ch5/ch5ex13.java" target="_blank">【例5-13】编程定义一个11×11的二维int数组，利用随机函数初始化其中10×10单元，其值范围0～99，分别计算每行、每列的和存放到二维数组的最后一行、最后一列</a>。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">初始化程序使用两重循环语句。<br>
+for(int j=0;j&lt;a[0].length-1;j++)<br>
+　　for(int i=0;i&lt;a.length-1;i++)<br>
+　　　　a[i][j]=(int)(Math.random()*1000000)%100;<br>
+for(int i=0;i&lt;a.length;i++)<br>
+　　a[i][10]=0;<br>
+for(int j=1;j&lt;a[0].length;j++)<br>
+　　a[10][j]=0;<br>
+　　<img src="images/STAR.GIF" width="18" height="20">二维数组中只有前面10×10单元需要初始化，所以两重循环中i和j的终止条件分别为a.length-1和a[0].length-1，数组的最后一行/列存放累加和，初始化0。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">计算每行的和，即将每列0～9行的内容相加并存放到对应列的最后一行。外循环控制列的变换，外循环变换一次，表示移动一个列。内循环控制行的变换，即将对应列的0～9行内容相加，存放到最后一行。<br>
+for(int j=0;j&lt;a[0].length-1;j++)<br>
+　　for(int i=0;i&lt;a.length-1;i++)<br>
+　　　　a[10][j]=a[10][j]+a[i][j];<br>
+　　<img src="images/STAR.GIF" width="18" height="20">计算每列的和的方法与计算每行和的方法基本相似，惟一区别在于，将最后一列（已经计算行的和）也计算在内。<br>
+for(int i=0;i&lt;a.length;i++)<br>
+　　for(int j=0;j&lt;a[0].length-1;j++)<br>
+　　　　a[i][10]=a[i][10]+a[i][j];<br>
+<a href="ch5/ch5ex14.java" target="_blank">【例5-14】编程实现矩阵的加、减、乘法运算</a>。<br>
+矩阵可以使用二维数组表示：matrix1[row1][col1]和matrix2[row2][col2]：<br>
+　　<img src="images/STAR.GIF" width="18" height="20">针对加、减法，矩阵的行数和列数必须完全相同，即row1= 
+row2，col1= col2<br>
+　　<img src="images/STAR.GIF" width="18" height="20">针对乘法，第一个矩阵的列数必须等于第二个矩阵的行数，即col1= 
+row2<br>
+　　<img src="images/STAR.GIF" width="18" height="20">加法和减法：两个数组中相同位置元素进行加与减。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">矩阵的乘法：相应行元素与列元素相乘，假设有两个3×3矩阵：<br>
+a[3][3]=a11 a12 a13 b[3][3]=b11 b12 b13<br>
+　　　　 a21 a22 a23 　　　　b21 b22 b23<br>
+　　　　 a31 a32 a22 　　　　b31 b32 b33<br>
+计算<br>
+c[3][]3]=c11 c12 c13<br>
+　　　　　c21 c22 c23<br>
+　　　　　c31 c32 c33<br>
+则：c11=a11*b11+a12*b21+a13*b31; c12=a11*b12+a12*b22+a13*b32<br>
+　　c13=a11*b13+a12*b23+a13*b33;<br>
+　　c21=a21*b11+a22*b21+a23*b31; c22=a21*b12+a22*b22+a23*b32<br>
+　　c13=a21*b13+a22*b23+a23*b33;<br>
+　　c31=a31*b11+a32*b21+a33*b31; c32=a31*b12+a32*b22+a33*b32<br>
+　　c33=a31*b13+a32*b23+a33*b33;<br>
+int sum=0;<br>
+for(int j=0;j&lt;m2.length;j++)<br>
+　　sum=sum+m1[r1][j]*m2[j][c1];<br>
+　　<img src="images/STAR.GIF" width="18" height="20">r1表示第一个矩阵的某一行，c1表示第二个矩阵的某一列。sum是结果矩阵的第r1和第c1元素。<br>
+</body> 
+</html> 

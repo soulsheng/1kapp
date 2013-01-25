@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+
+<title>15.4 使用JSP和JavaBeans开发动态网页实例</title> 
+<link href="images/css.css" rel="stylesheet" type="text/css"> 
+</head> 
+
+<body topmargin="0">
+<p align="center" class="t1"> <br> <strong>使用JSP和JavaBeans开发动态网页实例</strong></p>
+<p> 　　
+
+
+在13章小型零售商店管理系统的应用程序的基础上，进一步说明如何利用JSP+JavaBeans来开发基于Web的零售商店管理系统，数据库（Retail）的结构与13章相同。有关数据库的操作都封在sqlBean.class中，它是一个JavaBean。其他的jsp文件通知调用这个Bean来访问数据库。
+
+　　<br>
+  　　<img src="images/STAR.GIF" width="18" height="20"><a href="ch15/webRetail/src/webretail/sqlBean.java" target="_blank">sqlBean.java</a>的代码。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20"><a href="ch15/webRetail/defaultroot/index.htm" target="_blank">index.htm</a>是整个应用程序的主界面。 <br>
+</p>
+<div align="center">
+  <p><img src="images/g15-3.gif" width="413" height="235">
+</p>
+ 
+</div>
+<p>  <br>
+　　<img src="images/STAR.GIF" width="18" height="20">进货管理：包括进货“浏览进货信息”、“商品进货查询”、“增加进货数据”三个功能。其中浏览进货管理的Web页面是调用<a href="ch15/webRetail/defaultroot/browsing_stocking.jsp" target="_blank">browsing_stocking.jsp</a>文件动态生成。</p>
+<p align="center">
+  <img src="images/g15-4.gif" width="433" height="232">　</p>
+<p>　　　　<img src="images/STAR1.GIF" width="15" height="20">商品进货查询先调用<a href="ch15/webRetail/defaultroot/input_stocking.htm" target="_blank">input_stocking.htm</a>生成可以让用户填入商品代码的界面。</p>
+<div align="center"><img src="images/g15-5a.gif" width="425" height="244">
+</div>
+<p><br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">填入商品代码后，单击“马上查询”后，就调用<a href="ch15/webRetail/defaultroot/query_stocking.jsp" target="_blank">query_stocking.jsp</a>进行查询，并将查询结果返回给客户。</p>
+<p align="center">
+  <img src="images/g15-5b.gif" width="423" height="250"></p>
+<p>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20">在index.htm中单击“增加进货数据”在这个页面中，可以输入相关的进货数据：<br>
+  <a href="ch15/webRetail/defaultroot/stocking_item.htm" target="_parent">stocking_item.htm</a>  
+</p>
+<p align="center"><img src="images/g15-6a.gif" width="431" height="261">  </p>
+<p><br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20">响应上述页面中表单动作的是<a href="ch15/webRetail/defaultroot/insert_stocking.jsp" target="_blank">insert_stocking.jsp</a>。<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">如果增加数据成功：</p>
+<p align="center"><img src="images/g15-6b.gif" width="443" height="299"></p>
+<p>　　<img src="images/STAR.GIF" width="18" height="20">库存管理：库存管理也包括“浏览库存信息”、“商品库存查询”、“增加库存数据”三个功能。其中浏览库存信息的Web页面是调用<a href="ch15/webRetail/defaultroot/browsing_storage.jsp" target="_blank">browsing_storage.jsp</a>文件动态生成。</p>
+<p align="center">
+  <img src="images/g15-7.gif" width="438" height="271"></p>
+<p>  
+　　　　<img src="images/STAR1.GIF" width="15" height="20"> 商品库存查询先调用<a href="ch15/webRetail/defaultroot/input_storage.htm" target="_blank">input_storage.htm</a>生成可以让用户填入商品代码查询的页面。</p>
+<p align="center"> 
+  <img src="images/g15-8a.gif" width="427" height="275"></p>
+<p>  
+　　　　<img src="images/STAR1.GIF" width="15" height="20"> 填入商品代码后，单击“马上查询”后，就调用<a href="ch15/webRetail/defaultroot/query_storage.jsp" target="_blank">query_storage.jsp</a>进行查询，并将查询结果返回给客户。</p>
+<p align="center"> 
+  <img src="images/g15-8b.gif" width="427" height="281">  </p>
+<p>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20"> 在index.htm中单击“增加库存数据”就会进行所示的页面。在这个页面中，可以输入你想要增加的库存数据：<br>
+  <a href="ch15/webRetail/defaultroot/storage_item.htm" target="_blank">storage_item.htm</a>  <br>
+ 
+</p>
+<div align="center"><img src="images/g15-9.gif" width="421" height="269">
+</div>
+<p>  
+  　　<img src="images/STAR.GIF" width="18" height="20">销售管理：提供了“浏览销售信息”、“商品销售查询”、“增加销售数据”三个功能。其中浏览销售信息的Web页面是调用<a href="ch15/webRetail/defaultroot/browsing_sales.jsp" target="_blank">browsing_sale.jsp</a>文件动态生成。<br>
+</p>
+<div align="center"><img src="images/g15-10.gif" width="438" height="271">
+</div>
+<p>  
+  　　　　<img src="images/STAR1.GIF" width="15" height="20">商品销售情况查询先调用<a href="ch15/webRetail/defaultroot/input_sales.htm" target="_blank">input_sales.htm</a>生成可以让用户填入商品代码查询的页面。</p>
+<p align="center"><img src="images/g15-11a.gif" width="406" height="254">  </p>
+<p>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20">填入商品代码后，单击“马上查询”后，就调用<a href="ch15/webRetail/defaultroot/query_sales.jsp" target="_blank">query_sales.jsp</a>进行查询，并将查询结果返回给客户。</p>
+<p align="center"><img src="images/g15-11b.gif" width="423" height="260">  </p>
+<p>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20">在index.htm中单击“增加销售数据”就会进行到如下页面。在这个页面中，可以输入你想要增加的库存数据。<br>
+  <a href="ch15/webRetail/defaultroot/sales_item.htm" target="_blank">sales_item.htm</a>  <br>
+</p>
+<div align="center"><img src="images/g15-12.gif" width="435" height="281">
+</div>
+</body> 
+</html> 

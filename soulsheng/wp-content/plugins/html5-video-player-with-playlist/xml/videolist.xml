@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<playlist>
+<video-list>
+
+<video>
+<name><![CDATA[Big Buck Bunny]]></name>
+<artist><![CDATA[testing]]></artist>
+<url><![CDATA[http://apps.scriptrr.com/videoplayer/videos/file/Big_Buck_Bunny_Trailer.m4v]]></url>
+<image><![CDATA[http://apps.scriptrr.com/videoplayer/videos/img/Big_Buck_Bunny2.jpg]]></image>
+<download>1</download>
+</video>
+
+
+<video>
+<name><![CDATA[Finding Nemo]]></name>
+<artist><![CDATA[testing]]></artist>
+<url><![CDATA[http://apps.scriptrr.com/videoplayer/videos/file/Finding_Nemo.m4v]]></url>
+<image><![CDATA[http://apps.scriptrr.com/videoplayer/videos/img/FindingNemo2.jpg]]></image>
+<download>1</download>
+</video>
+
+
+<video>
+<name><![CDATA[Matagascar]]></name>
+<artist><![CDATA[testing]]></artist>
+<url><![CDATA[http://localhost:78/videoplayer/videos/file/Matagascar.mp4]]></url>
+<image><![CDATA[http://apps.scriptrr.com/videoplayer/videos/img/Matagascar.jpg]]></image>
+<download>1</download>
+</video>
+
+</video-list>
+</playlist>

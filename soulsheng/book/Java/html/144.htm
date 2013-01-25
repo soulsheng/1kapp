@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+
+<title>14.4 动画</title> 
+<link href="images/css.css" rel="stylesheet" type="text/css"> 
+</head> 
+
+<body topmargin="0">
+<p align="center" class="t1"><br>
+　　
+
+
+
+
+
+
+
+
+
+
+
+<strong>动画</strong>　　　</p>
+<p> 　　  <img src="images/star.gif" width="18" height="20"> 使用线程：为了每秒中多次更新屏幕，必须创建一个线程来实现动画的循环。这个循环要跟踪当前帧并实现周期性地屏幕更新。 <br>
+…<br>
+public&nbsp;class&nbsp;Animator1&nbsp;extends&nbsp;java.applet.Applet&nbsp;implements&nbsp;Runnable&nbsp;{&nbsp;<br>
+　　…<br>
+　　Thread&nbsp;anithread;&nbsp;<br>
+　　…<br>
+　　public&nbsp;vois&nbsp;start(){&nbsp;<br>
+　　anithread&nbsp;=&nbsp;new&nbsp;Thread(this);&nbsp;<br>
+　　anithread.start();&nbsp;<br>
+　　}&nbsp;<br>
+　　public&nbsp;void&nbsp;run(){&nbsp;<br>
+　　　　while&nbsp;(Thread.currentThread()&nbsp;==&nbsp;animator){&nbsp;<br>
+　　　　　repaint();&nbsp;<br>
+　　　　　try&nbsp;{&nbsp;<br>
+　　　　　　　Thread.sleep(delay);&nbsp;<br>
+　　　　　}catch&nbsp;(InterruptedException&nbsp;e){&nbsp;<br>
+　　　　　　　break;&nbsp;<br>
+　　　　　}&nbsp;<br>
+　　　　　frame++;&nbsp;<br>
+　　　　}<br>
+　　}&nbsp;<br>
+　　public&nbsp;void&nbsp;stop()&nbsp;{&nbsp;<br>
+　　　　anithread =&nbsp;null;&nbsp;<br>
+　　}&nbsp;<br>
+　　…<br>
+}&nbsp;
+<br>
+  　　 <img src="images/star.gif" width="18" height="20"> 控制帧的显示频率：显示动画时，通常每秒显示10-20帧图像，在编写程序时，除了设定一个缺省值之外，还可让用户指定图像显示频率。确定显示频率后，就可以得到延迟时间的长短。实现延迟的方法一般是通过调用线程的方法sleep()来实现的。如果每两帧之间休眠一个固定的时间，有时会延迟时间过长，这时因为我们采用了多线程来实现动画。  <br>
+  public&nbsp;void&nbsp;run(){<br>
+  　　long&nbsp;tm&nbsp;=&nbsp;System.currentTimeMillis();<br>
+  　　while&nbsp;(Thread.currentThread()&nbsp;==&nbsp;animator){&nbsp;<br>
+  　　　　repaint();<br>
+  　　　　try{&nbsp;<br>
+  　　　　　　tm&nbsp;+=&nbsp;delay;&nbsp;<br>
+  　　　　　　Thread.sleep(Math.max(0,tm-System.currentTimeMillis()));&nbsp;<br>
+  　　　　　　catch&nbsp;(InterruptedException&nbsp;e){&nbsp;<br>
+  　　　　　　　　break;&nbsp;<br>
+  　　　　　　}<br>
+  　　　　　　frame++;&nbsp;<br>
+  　　　　}&nbsp;<br>
+  　　}&nbsp;
+  <br>
+  }
+  <br>
+  　　 <img src="images/star.gif" width="18" height="20">避免闪烁：<br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20"> 重写方法update()，将以前在paint()中的绘图代码包含在update()中，从而避免每次重绘时将整个区域清除。 <br>
+  public&nbsp;void&nbsp;paint(Graphics&nbsp;g){<br>
+  　　update(g);<br>
+  }<br>
+  public&nbsp;void&nbsp;update(Graphics&nbsp;g){<br>
+  　　Color&nbsp;bg=getBackground();<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;Dimension&nbsp;d=size();<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;h=d.height/2;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(int&nbsp;x=0;x&lt;d.width;x++){<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;y1=(int)((1.0+Math.sin((x-frame)*0.05))*h);<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;y2=(int)((1.0+Math.sin((x+frame)*0.05))*h);&nbsp;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(y1&gt;y2){<br>
+  　　　　　　int t=y1;y1=y2;y2=t;<br>
+  　　　　}<br>
+  　　　　g.setColor(bg);g.drawLine(x,&nbsp;0,&nbsp;x,&nbsp;y1);<br>
+  　　　　g.drawLine(x,&nbsp;y2,&nbsp;x,&nbsp;d.height);<br>
+  　　　　g.setColor(Color.black);g.drawLine(x,&nbsp;y1,&nbsp;x,&nbsp;y2);<br>
+  　　}<br>
+  }
+  <br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20"> 采用双缓冲技术生成一幅后台图像，然后把后台图像通过调用drawImage()一次显示。当你使用双缓冲技术时,应重载update()。 <br>
+  Dimension&nbsp;offDimension;<br>
+  Image&nbsp;offImage;<br>
+  Graphics&nbsp;offGraphics;<br>
+  public&nbsp;void&nbsp;update(Graphics&nbsp;g){<br>
+  　　Dimension&nbsp;d=size();<br>
+  　　if&nbsp;((offGraphics==null)||(d.width&nbsp;!=offDimension.width)||(d.height&nbsp;!=offDimension.height)){&nbsp;<br>
+  　　　　offDimension=d;&nbsp;<br>
+  　　　　offImage=createImage(d.width,d.height);<br>
+  　　　　offGraphics&nbsp;=&nbsp;offImage.getGraphics();&nbsp;<br>
+  　　}&nbsp;<br>
+  　　offGraphics.setColor(getBackground());<br>
+  　　offGraphics.fillRect(0,0,d.width,d.height);<br>
+  　　offGraphics.setColor(Color.Black);<br>
+  　　paintFrame(offGraphics);<br>
+  　　g.drawImage(offImage,0,0,null);<br>
+  }<br>
+  public&nbsp;void&nbsp;paint(Graphics&nbsp;g){<br>
+  　　if&nbsp;(offImage&nbsp;!=null){<br>
+  　　　g.drawImage(offImage,0,0,null);<br>
+  　　}<br>
+  }<br>
+  public&nbsp;void&nbsp;paintFrame(Graphics&nbsp;g){<br>
+  Dimension&nbsp;d=size();<br>
+  int&nbsp;h=d.height/2;</p>
+<p>　　for&nbsp;(int&nbsp;x=0;x&lt;d.width;x++){<br>
+　　　　int&nbsp;y1=(int)((1.0+Math.sin((x-frame)*0.05))+h);<br>
+　　　　int&nbsp;y2=(int)((1.0+Math.sin((x+frame)*0.05))+h);&nbsp;<br>
+　　　　g.drawLine(x,y1,x,y2);<br>
+　　}<br>
+  }</p>
+<p align="center" class="t1">
+  　<strong>动画举例</strong> </p>
+<p>【例14-8】在Applet中实现动画。<br>
+  <a href="ch14/AnimatorAppletModel.java" target="_blank">AnimatorAppletModel.java</a><br>
+【例14-9】与【例14-8】类似，我们将同样的动画在Application中进行实现。通过观察程序，我们可以将Applet的方法修改为Application中相应方法即可。<br>
+<a href="ch14/AnimatorApplicationModel.java" target="_blank">AnimatorApplicationModel.java</a></p>
+</body> 
+</html> 

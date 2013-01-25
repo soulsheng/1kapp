@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+
+<title>第7章练习</title> 
+<link href="images/css.css" rel="stylesheet" type="text/css"> 
+<style type="text/css">
+<!--
+a:link {
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+a:active {
+	text-decoration: none;
+}
+.style7 {font-size: 10px}
+.style8 {font-size: 9px}
+-->
+</style>
+</head> 
+
+<body topmargin="0">
+<p align="center" class="t1"><br>
+第7章练习　　</p>
+
+<ol>
+  <li>什么是语法错误？什么是逻辑错误？什么是异常？为什么要处理异常？</li>
+  <li>什么是抛出异常，Java语言中有几种抛出异常的方法？</li>
+  <li>编程：读取一个字符串，字符串中单词以空格分割，分离单词并将其转换为整型量，如果单词中出现非0～9的字符，则抛出异常，然后继续处理后续单词。</li>
+  <li>如果在一个方法内出现一个异常并抛出异常，方法内又没有异常处理代码块，将会发生什么情况？</li>
+  <li>请在下面程序段中的合适位置加上throws抛出异常从句：<br>
+  public static void procedure(int n){<br>　
+  if(n&lt;0)<br>　　　
+  throw new Exception(“negative number”);<br>
+  }</li>
+  <li>判断下列程序段的输出是什么？<br>
+  public class test{ <br>　
+  public static void main(String args[]){<br>　　　
+  int flag=90;<br>　　　
+  try{<br>　　　　　
+  System.out.println(&quot;try-catch entered&quot;);<br>　　　　　
+  if(flag&gt;=90)<br>　　　　　　　
+  throw new Exception(&quot;The garde is A&quot;);<br>
+  　　　　　 System.out.println(&quot;leaving try-catch block&quot;);<br>
+  　　　
+  }catch(Exception e){<br>　　　　　
+  System.out.println(&quot;Exception is :&quot;+e.getMessage());<br>　　　
+  }finally{<br>　　　　　
+  System.out.println(&quot;after catch-block&quot;);<br>　　　
+  }<br>　
+  }<br>
+  }<br>
+  如果修改flag为80，则结果又是什么？</li>
+  <li>判断下列程序编译或执行的结果？<br>
+  public class ExceptionDemo{<br>　
+  public static void main(String[] args){ <br>　　　
+  try{<br>　　　　　
+  return;<br>　　　
+  }finally{System.out.println(&quot;Finally&quot;);}<br>　
+  } <br>
+  }<br>
+  A．程序正常运行，但不输出任何结果。<br>
+  B．程序正常运行，并输出 &quot;Finally&quot;。<br>
+  C．编译能通过，但运行时会出现一个异常。<br>
+  D．因为没有catch语句块，所以不能通过编译。</li>
+  <li>设定义三个方法：first、second、third，first调用second，second调用third，third没有定义异常处理，它只是在方法上定义抛出异常，请判断应在哪里捕获third中的异常？是first、second？还是调用first的main方法？通过上机验证你的判断。</li>
+  <li>请判断下列程序段的输出？<br>
+  class ExceptionDemo{<br>
+  　
+  public void f() throws Exception{<br>　　　
+  System.out.println(&quot;f() method in class ExceptionDemo&quot;);<br>　　　
+  throw new Exception(&quot;by f() method in class ExceptionDemo&quot;);<br>　
+  }<br>
+  }<br>
+  class test{ <br>　
+  public static void main(String args[]){<br>　　　
+  ExceptionDemo obj=new ExceptionDemo();<br>　　　
+  try{<br>　　　　　
+  System.out.println(&quot;try-catch entered&quot;);<br>　　　　　
+  obj.f();<br>　　　　　
+  System.out.println(&quot;leaving try-catch block&quot;);<br>
+  　　　
+  }catch(Exception e){<br>　　　　　
+  System.out.println(&quot;Exception is :&quot;+e.getMessage());<br>　　　
+  }finally{<br>　　　　　
+  System.out.println(&quot;after catch-block&quot;);<br>　　　
+  }<br>　
+  }<br>
+  }</li>
+  <li>编程：定义一个方法，形式参数是字符串，方法中判断字符串的长度是否为8，字符串是否是仅由英文字符和数字组成，如不是抛出异常，而异常的捕获工作有调用者负责。</li>
+  <li>编程：输入一个时间（24小时），将其转换为时间（12小时），例如23:12，转换为11:12 PM。如果输入的时间非法，则抛出一个异常。</li>
+  <li>对本章中的ch7ex8进行修改，增加消费积分和转帐功能，其中转帐功能需要注意，在实际转帐以前，必须确认源帐户卡号应该存在且余额足够，同时目的帐户也应该存在。<br>
+  修改第6章习题31，在需要的地方加上异常处理机制。</li>
+</ol>
+</body> 
+</html> 

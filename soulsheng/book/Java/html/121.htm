@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+<head> 
+<script language="JavaScript"> 
+  var prePage="end";
+  var nextPage="01.htm";
+  var testPage="end";
+  var labPage="end";
+  var libraryPage="end";
+  var studyPage="end";
+  var homePage="end";
+	function showwin(url,winname,properties){
+		window.open(url,winname,properties)
+	}
+</script> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+
+<title>12.1 数据结构接口</title> 
+<link href="images/css.css" rel="stylesheet" type="text/css"> 
+</head> 
+
+<body topmargin="0">
+<p align="center" class="t1"><br>
+  数据结构接口及其实现　</p>
+<p>　　<img src="images/STAR.GIF" width="18" height="20">在Java数据结构设计中，利用了接口与实现(Implementation)分离的良好特征。以队列为例，来讨论这种良好特征（在Java2类库中没有提供这种数据结构）。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">队列的最大特征是用先进先出的方式进行检索。基于这个特征，可规定队列接口为：可在队尾插入元素（Add），从队首（头）删除元素(Remove)，并可查看队列长度(Size)。这样队列接口可定义为：　
+</p>
+<p align="center">
+<img src="images/12/g12-1.jpg" width="344" height="41"></p>
+　　<p>
+  interface Queue{ //接口中的方法为抽象方法<br>
+  　　void Add(Object obj);<br>
+  　　Object Remove( );<br>
+  　　int getSize( );<br>
+  }<br>
+　　<img src="images/STAR.GIF" width="18" height="20">Queue只是一个接口并没有说明是如何实现的。可以用两种方式来实现这个接口：循环数组和链表。</p>
+　　<p align="center">
+  <img src="images/12/g12-2a.jpg" width="176" height="113"><br>
+<img src="images/12/g12-2b.jpg" width="473" height="154"></p>
+<p align="center" class="t1">用循环数组来实现队列接口</p>
+　　class QueueByCircularArray implements Queue{<br>
+　　　　QueueByCircularArray (int capacity){…}//构造方法<br>
+　　　　public void Add(Object obj){…}//重载接口的方法<br>
+　　　　public Object Remove( ){…}<br>
+　　　　public int getSize( ){…}<br>
+　　　　private Object[] elements;//定义自己的属性<br>
+　　　　private int head;//队头<br>
+　　　　private int tail;//队尾<br>
+　　}<br>
+<p align="center" class="t1">用链表来实现队列接口</p>
+　　class QueueByLinkedList implements Queue{<br>
+　　　　QueueByLinkedList( ){…}<br>
+　　　　public void Add(Object obj){…}<br>
+　　　　public Object Remove( ){…}<br>
+　　　　public int getSize( ){…}<br>
+　　　　private Link head;//Link为的链表“指针”<br>
+　　　　private Link tail;<br>
+　　}<br>
+　　因为QueueByCircularArray类和QueueByLinkedList类都实现了Queue接口，因此，在使用这种数据结构时，不需要知道它是用何种结构实现，只需在创建一个数据结构对象时使用具体类。可以通过接口Queue的引用来访问具体类的对象<br>
+　　Queue yourQueue=new QueueByCircularArray(50); <br>
+　　yourQueue.Add(new Request(“Tom”));<br>
+　　或者：<br>
+　　Queue yourQueue=new QueueByLinkedList( );<br>
+　　yourQueue.Add(new Request(“Tom”));<br>
+<p align="center" class="t1">Collection接口　　</p>
+<p>　　一个Collection代表一组Object（元素）。所有实现Collection接口的类都必须提供两个标准的构造方法：<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">无参数的构造方法用于创建一个空的Collection<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">有一个Collection参数的构造方法用于创建一个新的Collection，这个新的Collection与传入的Collection（形参所代表的Collection）有相同的元素。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">Java 
+  SDK不提供直接实现Collection的类，它所提供的类都是实现Collection的“子接口”：常见的有List和Set。<br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20">List：必须按照特点的顺序保持这些元素<br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20">Set：不能有重复的元素<br>
+　　<img src="images/STAR.GIF" width="18" height="20">所有Collection都支持一个iterator()的方法，该方法返回一个迭代器(Iterator)，使用该迭代器即可逐一访问Collection中每一个元素。</p>
+<p align="center"><br>
+  Collection接口中的主要方法<br>
+</p>
+<table width="80%" height="300" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td width="31%"><div align="center">名称 </div></td>
+    <td width="12%"><div align="center">返回值类型 </div></td>
+    <td width="57%"><div align="center">功能</div></td>
+  </tr>
+  <tr> 
+    <td>add(Object o)</td>
+    <td> boolean </td>
+    <td>向当前collection中增加新元素</td>
+  </tr>
+  <tr> 
+    <td>addAll(Collection c) </td>
+    <td>boolean </td>
+    <td>向当前collection中增加另一个当前collection的所有元素</td>
+  </tr>
+  <tr> 
+    <td>clear()</td>
+    <td>void</td>
+    <td> 清除当前collection中所有对象</td>
+  </tr>
+  <tr> 
+    <td>contains(Object o)</td>
+    <td>boolean</td>
+    <td> 判断当前collection中是否包含某个指定对象o</td>
+  </tr>
+  <tr> 
+    <td>containsAll(Collection c)</td>
+    <td>boolean</td>
+    <td> 判断当前collection是否包含c中所有对象</td>
+  </tr>
+  <tr> 
+    <td>isEmpty()</td>
+    <td>boolean</td>
+    <td> 判断当前collection是否为空</td>
+  </tr>
+  <tr> 
+    <td>iterator() </td>
+    <td>Iterator </td>
+    <td>生成当前collection的迭代器</td>
+  </tr>
+  <tr> 
+    <td>remove(Object o) </td>
+    <td>boolean </td>
+    <td>删除当前collection中的指定对象o</td>
+  </tr>
+  <tr> 
+    <td>size()</td>
+    <td>int</td>
+    <td> 取得当前collection的大小（包含多少个对象）</td>
+  </tr>
+  <tr> 
+    <td>retainAll(Collection c)</td>
+    <td>boolean </td>
+    <td> 只保留当前collection与c相同的对象</td>
+  </tr>
+  <tr> 
+    <td>removeAll(Collection c)</td>
+    <td>boolean </td>
+    <td> 删除当前collection中与c相同的所有对象</td>
+  </tr>
+</table>
+<p align="center" class="t1">Iterator接口</p>
+　　<img src="images/STAR.GIF" width="18" height="20">Iterator接口有三个基本方法：<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">Object next()；//返回迭代器的下一个元素<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">boolean hasNext()；//判断迭代器中是(true)否(false)还有元素<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">void remove()；//删除最后一次调用next()返回的元素<br>
+　　<img src="images/STAR.GIF" width="18" height="20">next()方法可依次访问数据结构的元素，并在访问到数据结构尾部时，抛出异常NoSuchElementException。在调用next()方法之前应判断是否还有元素存在，即调用hasNext()方法。<br>
+　　例1：<br>
+Iterator it = collection.iterator(); // 获得一个迭代子<br>
+while(it.hasNext()) {//判断是否还有元素？<br>
+　　Object obj = it.next(); // 得到下一个元素<br>
+}<br>
+　　<img src="images/STAR.GIF" width="18" height="20">通过接口Collection和Iterator，可以编写任何数据结构操作的实用方法。<br>
+　　例2，可以通过下例代码实现对数据结构中所有元素的打印。<br>
+public static void printAll (Collection c){<br>
+　　System.out.println(“The Elements in C are:“);<br>
+　　Iterator it=c.iterator();<br>
+　　while(it.hasNext())<br>
+　　　　System.out.println(it.next());<br>
+}<br>
+　　例3：也可以通过下列方法把一个数据结构的所有元素装入到另一个数据结构中。<br>
+public static boolean LoadAll(Collection dest, Collection obj){<br>
+　　Iterator it=obj.iterator();<br>
+　　boolean change=false;<br>
+　　while(it.hasNext())<br>
+　　　　if (dest.add(it.next())) <br>
+　　　　　　change=true;<br>
+　　reture change;<br>
+}
+</body> 
+</html> 

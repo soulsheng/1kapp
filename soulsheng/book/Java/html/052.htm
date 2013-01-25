@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+<head> 
+<script language="JavaScript"> 
+  var prePage="end";
+  var nextPage="01.htm";
+  var testPage="end";
+  var labPage="end";
+  var libraryPage="end";
+  var studyPage="end";
+  var homePage="end";
+	function showwin(url,winname,properties){
+		window.open(url,winname,properties)
+	}
+</script> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+
+<title>5.2函数</title> 
+<link href="images/css.css" rel="stylesheet" type="text/css"> 
+</head> 
+
+<body topmargin="0">
+<p align="center" class="t1"><br>
+  函数的定义</p>
+　　函数与过程的区别在于函数的代码体对某一算法或问题进行计算并返回一个结果到调用该函数的位置，程序中函数名被用作为表达式的一部分且函数调用的返回值替换函数名。<br>
+　　例3：表达式<br>
+　　4*6+Math.Sqrt（16）;//计算结果为24+4.0=28.0，即用Math.Sqrt（16）的计算结果4.0替换函数名的位置。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">函数定义的语法格式：<br>
+static type funcName(formalParameterList){<br>
+　　//codes for function body<br>
+　　return（expression）;<br>
+}<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">其中return（expression）语句计算括号中的表达式、终止函数的执行并返回计算结果到函数调用处。<br>
+例4：计算两个浮点数的和<br>
+static double sumDouble（double x，double y）{<br>
+　　return（x+y）；<br>
+}<br>
+<p align="center" class="t1">函数的调用</p>
+　　<img src="images/STAR.GIF" width="18" height="20">函数调用的语法格式：作为表达式或表达式的一部分来调用：<br>
+funcName（actualParameterList）<br>
+<a href="ch5/ch5ex5.java" target="_blank">【例5-5】编程，函数计算一个数的立方</a>。<br>
+<a href="ch5/ch5ex6.java" target="_blank">【例5-6】编程，计算抛硬币10000次中出现正面和反面的次数</a>。<br>
+使用函数来实现抛硬币的动作，具体可以使用随机函数模拟抛硬币，约束随机函数只能为0和1两种结果，1表示正面，0表示反面：（int）（Math.Random（）*10000000）%2<br>
+函数：<br>
+static int flipCoin(){<br>
+　　return((int)(Math.random()*10000000)%2);<br>
+}<br>
+<br>
+<a href="ch5/ch5ex7.java" target="_blank">【例5-7】编程，计算3个字符串中最大的字符串</a>。<br>
+<p align="center" class="t1">数组参数的传递</p>
+　　数组参数使用type name[]进行定义。<br>
+例5：一个打印数组值的过程<br>
+static void printArray(int a[]){<br>
+　　for(int j=0;j&lt;a.length;j++)<br>
+　　　　System.out.print(a[j]);<br>
+}<br>
+　　<img src="images/STAR.GIF" width="18" height="20">形式参数中，数组名后的方括号不能省略，但不需要给出数组元素的个数。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">实际参数中，数组名后不需要括号，如例5-8中的printArray(ar)<br>
+　　<img src="images/STAR.GIF" width="18" height="20">数组名作为实际参数时，传递的是地址，而不是值。即形式参数和实际参数具有相同的存储单元<br>
+<a href="ch5/ch5ex8.java" target="_blank">【例5-8】在例5的基础上，编制调用程序</a>。<br>
+<a href="ch5/ch5ex9.java" target="_blank">【例5-9】修改例5-8，过程printArray改为initArray，即对数组进行初试化</a>。<br>
+<a href="ch5/ch5ex10.java" target="_blank">【例5-10】修改例5-9，使用printArray和initArray两个过程</a>。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">一个类中可以同时有多个方法（过程或函数）存在，这些方法除了能被main中的语句调用外，方法之间也可以实现相互调用。<br>
+<p align="center" class="t1">举例</p>
+<a href="ch5/ch5ex11.java" target="_blank">【例5-11】编程实现两个字符数组内容的交换，要求使用三个过程：交换过程、数组初试化过程以及输出过程</a>。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">交换过程涉及两个数组参数，并且两个数组的长度必须一致：<br>
+static void swapArray(char c1[],char c2[]){<br>
+　　char ch;<br>
+　　//由于两个数组长度一致，这里也可以使用j&lt;c2.length<br>
+　　for(int j=0;j&lt;c1.length;j++){<br>
+　　　　ch=c1[j];c1[j]=c2[j];c2[j]=ch;<br>
+　　}<br>
+}<br>
+　　<img src="images/STAR.GIF" width="18" height="20">ASCII码表中32～126为可打印字符,即94个字符，可以使用随机函数产生0～93正整数，然后加上32，通过强制类型转换，初始化字符数组。<br>
+a=(int)(Math.random()*10000000)%94+32;<br>
+ch=(char)a;<br>
+　　<img src="images/STAR.GIF" width="18" height="20">数组初试化过程为：<br>
+<img src="images/05/052-1.jpg" width="342" height="227">
+</body> 
+</html> 

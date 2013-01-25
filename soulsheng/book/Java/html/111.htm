@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+<head> 
+<script language="JavaScript"> 
+  var prePage="end";
+  var nextPage="01.htm";
+  var testPage="end";
+  var labPage="end";
+  var libraryPage="end";
+  var studyPage="end";
+  var homePage="end";
+	function showwin(url,winname,properties){
+		window.open(url,winname,properties)
+	}
+</script> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+
+<title>11.1 线程</title> 
+<link href="images/css.css" rel="stylesheet" type="text/css"> 
+</head> 
+
+<body topmargin="0">
+<p align="center" class="t1"><br>
+  线程的概念</p>
+　　<img src="images/STAR.GIF" width="18" height="20">进程是程序的一次执行过程，在多任务操作系统中，可以同时启动多个应用程序，让它们并发执行，每个应用程序的执行过程就是一个进程。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">线程是程序中一个顺序执行序列，同样也可以在程序中同时运行多个线程。具体地讲，一个线程是一个程序内部的顺序控制流，通过引入线程，可以在一个程序中，并发地执行多种任务。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">二者区别：<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">进程是一个内核级的实体，每个进程都有自己的专有结构，并且不能被用户程序直接访问，只能通过系统调用来访问进程结构中的数据。线程是一个用户级的实体，其结构驻留在用户空间中，用户可以直接访问。<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">从程序执行角度来看，一个进程是程序的一次执行过程。在操作系统中同时运行多个进程意味着同进启动了多个程序，每个进程拥有不同的代码和数据空间。而线程不能够单独执行，它必须在处于活动状态的程序进程中运行。多线程意味着一个程序的多行语句在同时执行，并不表示多次启动同一程序，操作系统也不把每个线程当作独立的进程来对待。<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">一个多线程程序中创建的多个线程属于同一个进程，并共享该进程的状态。它们驻留在完全相同的内存空间中，它们共享数据空间，同时每个线程都有自己的执行堆栈和程序计数器作为其执行环境。<br>
+<p align="center" class="t1">线程的创建</p>
+　　Java语言中创建线程的方法有两种方式：<br>
+　　<img src="images/STAR.GIF" width="18" height="20">继承线程类Thread<br>
+　　<img src="images/STAR.GIF" width="18" height="20">实现Runnable接口<br>
+　　<img src="images/STAR.GIF" width="18" height="20">Thread类和Runnable接口都包含在Java语言的java.lang包中<br>
+　　1. 继承Thread类创建线程<br>
+　　<img src="images/STAR.GIF" width="18" height="20">首先定义一个继承Thread类的子类，然后创建该类的一个对象，完成创建一个线程的工作。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">子类中应该重载Thread类的run()方法，以便定义自己所需要的行为<br>
+　　<img src="images/STAR.GIF" width="18" height="20">run()方法被称作为线程体，是Java运行系统为了启动线程而调用的第一个用户定义的方法<br>
+　　<img src="images/STAR.GIF" width="18" height="20">创建线程后，该线程将处于空闲状态，可以调用线程的start()方法来启动线程，start()方法将自动调用run()方法来执行线程体中的操作<br>
+public class YourThread extends Thread{<br>
+　　…<br>
+　　public void run(){…}<br>
+　　…<br>
+}<br>
+…<br>
+YourThread newthread=new YourThread();<br>
+newthread.start();//Thread类中已定义的方法，功能是启动线程<br>
+…<br>
+　　2. 多线程对象实现Runnable接口<br>
+class ThreadTarget implements Runnable{<br>
+　　　…<br>
+　　　public void run(){…}<br>
+}<br>
+…<br>
+ThreadTarget target=new ThreadTarget();<br>
+Thread yourThread=new Thread(target);// Thread构造方法，形参为对象<br>
+yourThread.start();//Thread类中已定义的方法，功能是启动线程<br>
+…<br>
+或写成由对象执行自身线程的形式：<br>
+class Target implements Runnable{<br>
+　　Thread yourThread;<br>
+　　public Target(){<br>
+　　　　yourThread=new Thread(this);//对象参数<br>
+　　　　yourthread.start();//Thread类中已定义的方法，功能是启动线程<br>
+　　}<br>
+　　public void run( ){…}<br>
+　　…<br>
+}<br>
+<p align="center" class="t1">举例　</p>
+<p><a href="ch11/ExamThread1.java" target="_blank">【例11-1】用继承Thread类的方法创建一个线程类ExamThread1，并通过对该类的实例化（创建对象）创建三个线程。在每个线程创建、启动和消亡时均在屏幕输出一个字符串信息，用以显示程序的执行过程</a>。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">线程体run()中，先输出该线程的名字，然后休眠sleep(1000)（其中1000的单位是毫秒），最后输出线程结束信息。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">main方法中定义了三个线程Thread1、Thread2和Thread3，都是类ExamThread1的实例，并调用start()方法将它们全部启动。　</p>
+<p align="center">
+  <img src="images/111/111-1.jpg" width="669" height="438">　 </p>
+<p><br>
+  <a href="ch11/ExamThread2.java" target="_blank">【例11-2】用实现接口Runnable的方法创建一个线程类ExamThread2，并通过对该类的实例化（创建对象）创建三个线程。在每个线程创建、启动和消亡时均在屏幕输出一个字符串信息，用以显示程序的执行过程</a>。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">类ExamThread2对Runnable 
+    接口进行了实现，线程体run()与类ExamThread1是相同的。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">main方法说明将类ExamThread2的实例target1、target2 
+    和target3看作线程类Thread的实例first、second和third的目标，并通过first 、second 和third启动对应的线程。</p>
+<p align="center" class="t1">线程的状态</p>
+<p>　　按照线程体在计算机系统内存中的状态不同，可以将线程分为创建、就绪、睡眠、挂起和死亡等类型。　
+</p>
+<p align="center"><br>
+<img src="images/111/111-2.jpg" width="638" height="308">　　</p>
+<p><br>
+  　　<img src="images/STAR.GIF" width="18" height="20">创建状态：当利用new关键字创建线程对象后，它仅仅作为一个对象存在，JVM没有为其分配CPU时间片等线程运行资源,有时也称为新生态。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">就绪状态：线程已经得到除CPU时间之外的其他系统资源，等待JVM的线程调度器按照线程的优先级对该线程进行调度，使该线程拥有能够获得CPU时间片的机会。有时，就绪状态也称为可运行态。可运行态分为两个子状态：运行态和等待状态。当处于运行态时，线程就取得CPU时间并进入实际运行；当线程处于等待状态时，它在线程队列中等待，并争取使用CPU。线程自身也可以通过调用yield()方法让出CPU，使线程从运行态转化为等状态。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20"> 睡眠状态：线程在不释放占用资源的情况下停止运行指定的睡眠时间。时间到达后，线程重新由JVM线程调度器进行调度和管理。<br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20"> 可将一个线程从就绪状态转化为睡眠状态的事件：线程自身通过调用sleep()方法睡眠一定时间、在临界区内调用wait()方法使调用线程处于挂起状态、发生I/O阻塞。<br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20"> 使线程从睡眠状态返回到就绪状态的事件：sleep（）中设置的时间到，也即睡眠时间到、在临界区内调用notify()或notifyAll()方法、I/O操作完成，阻塞消除。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">挂起状态：线程将释放占用的所有资源，由JVM调度转入临时存储空间，直至应用程序调用resume()方法恢复线程运行。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">死亡状态：当线程体运行结束或者调用线程对象的stop()方法后线程将终止运行，由JVM收回线程占用的资源。</p>
+<p align="center" class="t1"> <strong>线程优先级及线程调度</strong>　　</p>
+<p>　　<img src="images/STAR.GIF" width="18" height="20">可运行态的两个子状态的转换是通过系统的线程调度器进行调度<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">线程调度器按照线程优先级来决定线程执行的先后顺序，高优先级的线程优于低优先级的线程得到执行。同时线程的调度是抢先式的，如果在当前线程的执行过程中，一个具有更高优先级的线程进入就绪状态，则这个高优先级的线程立即被调度执行。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">对优先级相同的线程来说，调度将采用时间片轮流法。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">线程的优先级用数字表示，范围从1到10，即Thread.MIN_PRIORITY到Thread.MAX_PRORITY。一个线程的缺省优先级是5，即Thread.NORM_PRORITY。<br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20">getPriority()方法得到线程的优先级<br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20">setPriority()方法改变线程的优先级<br>
+  <a href="ch11/ExamThread3.java" target="_blank">【例11-3】编写一个类Animal，它继承了Thread类。生成Animal三个不同实例，并将其设置成不同的优先级，试观察它们的执行顺序</a>。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">main()方法中生成了三个Animal的实例cat 
+  、dog和mouse，并将它们的优级分别设置为MIN_PRIORITY、MAX_PRIORITY和NORM_PRIORITY，即1、10和5。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">虽然线程启动顺序按cat.start()、dog.start()和mouse.start()，但在线程执行时是按优先级的大小顺序执行的。</p>
+<p align="center">
+  <img src="images/111/111-3.jpg" width="669" height="438"> 
+</p>
+</body> 
+</html> 

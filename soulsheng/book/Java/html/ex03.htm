@@ -1,0 +1,261 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+
+<title>第3章练习</title> 
+<link href="images/css.css" rel="stylesheet" type="text/css"> 
+<style type="text/css">
+<!--
+a:link {
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+a:active {
+	text-decoration: none;
+}
+.style7 {font-size: 10px}
+.style8 {font-size: 9px}
+-->
+</style>
+</head> 
+
+<body topmargin="0">
+<p align="center" class="t1"><br>
+第3章练习　　</p>
+<ol>
+  <li>Java中有哪些运算符？这些运算符的优先关系是怎样的？</li>
+  <li>Java 中有哪些流程控制语句？你了解每一种流程控制语句的语法规则吗？</li>
+  <li>请配对关系运算符==、&lt;=、&gt;=、!=、&gt;、&lt;逻辑反的运算符。</li>
+  <li>下列表达式中哪些条件是真？<br>
+    (1)
+  2*5==10<br>
+  (2)
+  4*12-8!=44<br>
+  (3) (36+6)/7&gt;=5%4+7<br>
+  (4) 7&gt;0&amp;&amp;6&lt;7||8=9&amp;&amp;13&lt;14<br>
+  (5) 12+5&gt;3||12-5&lt;7<br>
+  (6)
+  !false&amp;&amp;!(4%2—4==4)&amp;&amp;7*4-5&gt;20<br>
+  (7)
+  !(3&gt;2&amp;&amp;4&lt;3)<br>
+  (8)
+  !(45&gt;23&amp;&amp;69%3==0)</li>
+  <li>写出下列陈述的布尔表达式<br>
+    (1)
+  x是一个正的偶数。<br>
+  (2)
+  x是一个能被3整除的正数。<br>
+  (3)
+  x是一个不能被2整除的负数。<br>
+  (4)
+  x是一个在范围1～100之间，能被7整除的偶数。<br>
+  (5)
+  m不是一个合法的月份。<br>
+  (6)
+  y不是一个闰年的。<br>
+  (7)
+  任意三个数，满足其中两个相等但不等于第三个数。</li>
+  <li>编译和运行下列程序会出现什么结果？<br>
+  public class MyIf{<br>　
+  public static void main(String args[]){<br>　　　
+  boolean b=false;<br>　　　
+  if(b=false)<br>　　　　　
+  System.out.println(&quot;The value of b is &quot;+b);<br>　
+  }<br>
+  }<br>
+  (1) 运行错误，因为一个布尔量不能在System.out.println语句中使用“+”。<br>
+  (2)
+  编译错误，因为if语句的表达式不能使用“=”。<br>
+  (3)
+  编译运行后输出“The value of b is false”。<br>
+  (4)
+  编译运行后没有输出。</li>
+
+<p>public class MySwitch{<br>
+  　
+public static void main(String args[]){<br>
+　　
+　　char k=10; <br>
+　　　　
+switch(k){ <br>
+　　　　　　
+default: <br>
+　　　　　　　　
+System.out.println(&quot;This is the default output&quot;); <br>
+　　　　　　　
+　break; <br>
+　　　　　　
+case 10: <br>
+　　　　　　　　
+System.out.println(&quot;ten&quot;);<br>
+　　　　　　　　
+break;<br>
+　　　　　　
+case 20: <br>
+　　　　　　　　
+System.out.println(&quot;twenty&quot;); <br>
+　　　　　　　　
+break; <br>
+　
+　　}<br>
+　　
+}<br>
+}</p>
+<p>(1) 没有执行switch中任何语句。<br>
+(2) 编译错误，switch的目标必须是整型量。<br>
+(3) 编译和运行后输出“This is the default output”。　　　<br>
+(4)
+编译和运行后输出“ten”。</p>
+<p>public class MySwitch{<br>
+  　　
+public static void main(String args[]){<br>
+　　　　
+int k=10; <br>
+　　　　
+switch(k){ <br>
+　　　　　　
+default: <br>
+　　　　　　　　
+System.out.println(&quot;This is the default output&quot;); <br>
+　　　　　　　　
+break; <br>
+　　　　　　
+case 10:<br>
+　　　　　　　　
+System.out.println(&quot;ten&quot;);<br>
+　　　　　　
+case 20: <br>
+　　　　　　　　
+System.out.println(&quot;twenty&quot;); <br>
+　　　　　　　　
+break;<br>
+　　　　
+}<br>
+　　
+}<br>
+}</p>
+<p>(1) 编译错误，switch的目标必须是整型量。<br>
+  (2)
+编译和运行后输出“This is the default output”。<br>
+(3) 编译和运行后输出“ten”。<br>
+(4)
+编译和运行后输出“ten”和twenty。</p>
+<p>  public class MyFor{<br>
+  　
+public static void main(String args[]){<br>
+　　　
+for(int i=0;i&lt;5;){<br>
+　　　　　
+System.out.println(i);<br>
+　　　　　
+i++;<br>
+　　　　　
+Continue;<br>
+　　　　　
+}<br>
+　
+}<br>
+
+}</p>
+<p> (1) 编译错误，for语句格式错误。<br>
+(2) 编译错误，for循环中不能使用continue运行错误，程序没有执行continue语句。<br>
+(3)
+编译运行后输出0到4。</p>
+<p>  public class MyFor{<br>
+  　
+public static void main(String args[]){<br>
+　　　
+outer:<br>
+　　　
+for(int i=0;i&lt;2;i++){<br>
+　　　　　
+for(int j=0;j&lt;2;j++){<br>
+　　　　　　　
+System.out.println(&quot;i=&quot;+i + &quot; j= &quot;+j);<br>
+　　　　　　　
+if(i &gt;0) break outer;<br>
+　　　　　　　
+}<br>
+　　　　}<br>
+　　　　System.out.println(&quot;Continuing with i set to =&quot;+i);<br>
+　
+}<br>
+}</p>
+<p> (1) 编译错误。<br>
+(2) 编译运行后输出：<br>
+　　i=0 j= 0<br>
+　　i=0 j= 1<br>
+　　i=1 j= 0<br>
+(3) 编译运行后输出：<br>
+　　i=0 j= 0<br>
+　　i=0 j= 1<br>
+　　i=1 j= 0<br>
+　　i=2 j= 0<br>
+(4)
+编译运行后输出：<br>
+　　i=0 j= 0<br>
+　　i=0 j= 1</p>
+<p> public class MyWhile{<br>
+  　
+public static void main(String args[]){<br>　　　
+int i=0;<br>
+　　　
+while(i&gt;0){<br>　　　　　
+System.out.println(&quot;Value of i: &quot;+i);<br>
+　　　
+}<br>
+　　　
+do{<br>
+　　　　　
+System.out.println(i);<br>
+　　　
+} while (i &lt;2);<br>
+　
+}<br>
+
+}</p>
+<p>注意问题中没有按照实际输出格式<br>
+  (1)
+输出Value of i: 0后再输出0 1 2。<br>
+(2)
+输出0 1 2。<br>
+(3) 输出Value of i: 0后，连续输出0。<br>
+(4) 连续输出0。</p>
+
+  <li>下列哪个能作为switch的参数？<br>
+    (1)
+  byte b=1;<br>
+  (2)
+  int i=1;<br>
+  (3)
+  boolean b=false;<br>
+  (4)
+  char c='c';</li>
+  <li>编程：输入20个整型数，输出其中是3的倍数的整型数以及它们的数量。</li>
+  <li>编程：输入一组大于0的浮点数，输入以-1.0表示结束，计算这些数的平均值、最大值以及最小值并输出。</li>
+  <li>编程：输入一个整型数，判断其大于、小于还是等于0，并输出相关信息。</li>
+  <li>编程：输入一个三角形的三条边长，判断这三条边是否能构成一个三角形并输出相关信息。</li>
+  <li>编程：输入三个整型数，进行排序，按照从小到大的次序输出。</li>
+  <li>编程：输入任意年的年份，判断是否是闰年。</li>
+  <li>编程：输入时间的小时，判断是上午、下午、午夜还是中午。</li>
+  <li>编程：输出1～100之间的所有偶数以及所有能被3整除的数。</li>
+  <li>编程：假设银行存款按照复利记息方法，存款额10000元，利率4.5%，存款期限20年，计算20年中每年年底当年的利息、累计的利息、当前新的存款额（利息加本金）。</li>
+  <li>编程：输入一组整型数，以-1表示输入结束，统计这组数中3和5相邻（输入过程中3后面是5）出现的次数。</li>
+  <li>编程：计算1!+2!+…+10!。</li>
+  <li>编程：按5分制输入学生的成绩，利用switch语句判断并输出学生的成绩范围（5：90～100；4：80～90；3：70～80；2：60～70；1：fail）。</li>
+  <li>编程：输入四个整型数，按照从大到小的次序输出。</li>
+  <li>设函数如下，编程输入x，求y并输出。<br>
+  <img src="images/ex02-6.jpg" width="174" height="66">  </li>
+  <li>编程：输入两个正整数m和n，求它们的最大公约数和最小公倍数。</li>
+  <li>用迭代法计算y=sqrt(x)，求平方根的迭代公式为：<img src="images/ex02-7.jpg" width="118" height="19" align="top">，要求前后两次求出的y的差的绝对值小于<img src="images/ex02-8.jpg" width="31" height="17">。</li>
+  <li>编程：输入一组正整数，以-1表示输入结束，去掉连续相同的数（仅保留一个）进行输出，例如1，5，5，5，3，4，5，6，6，6，3，-1。输出为1，5，3，4，5，6，3。</li>
+</ol>
+<p>&nbsp;</p>
+</body> 
+</html> 

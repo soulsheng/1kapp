@@ -1,0 +1,457 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Themolio\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-07-20 21:24-0600\n"
+"PO-Revision-Date: 2012-07-20 21:25-0600\n"
+"Last-Translator: \n"
+"Language-Team: Nischal Maniar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: 404.php:10
+msgid "Error! Page not found"
+msgstr ""
+
+#: 404.php:12
+#: archive.php:25
+#: fullwidth-template.php:19
+#: image.php:67
+#: index.php:34
+#: page.php:23
+msgid "No posts were found. Try using the search form below"
+msgstr ""
+
+#: archive.php:23
+#: fullwidth-template.php:17
+#: image.php:65
+#: index.php:32
+#: page.php:21
+msgid "Missing!"
+msgstr ""
+
+#: comments.php:9
+msgid "This post is password protected. Enter the password to view any comments."
+msgstr ""
+
+#: comments.php:17
+msgid "One comment"
+msgstr ""
+
+#: comments.php:22
+msgid "Toggle Comments"
+msgstr ""
+
+#: comments.php:29
+msgid "Older Comments"
+msgstr ""
+
+#: comments.php:30
+msgid "Newer Comments"
+msgstr ""
+
+#: comments.php:38
+msgid "Comments are closed."
+msgstr ""
+
+#: content-gallery.php:13
+#: content-grid-left-right.php:39
+#: content-grid-top-bottom.php:32
+#: content-page.php:14
+#: content-single.php:13
+#: content.php:13
+#: functions.php:510
+#: image.php:23
+msgid "Reply"
+msgstr ""
+
+#: content-gallery.php:13
+#: content-grid-left-right.php:39
+#: content-grid-top-bottom.php:32
+#: content-page.php:14
+#: content-single.php:13
+#: content.php:13
+#: image.php:23
+msgid "1 Comment"
+msgstr ""
+
+#: content-gallery.php:13
+#: content-grid-left-right.php:39
+#: content-grid-top-bottom.php:32
+#: content-page.php:14
+#: content-single.php:13
+#: content.php:13
+#: image.php:23
+msgid "% Comments"
+msgstr ""
+
+#: content-gallery.php:24
+#: content-page.php:20
+#: content-single.php:18
+#: content.php:28
+#: functions.php:235
+msgid "Continue reading"
+msgstr ""
+
+#: content-gallery.php:36
+#, php-format
+msgid "This gallery contains <a %1$s>%2$s photo</a>."
+msgstr ""
+
+#: content-gallery.php:40
+#: content-page.php:21
+#: content-single.php:19
+#: content.php:29
+#: image.php:52
+msgid "Pages:"
+msgstr ""
+
+#: footer.php:24
+msgid "Copyright &copy;"
+msgstr ""
+
+#: functions.php:61
+msgid "Primary Menu"
+msgstr ""
+
+#: functions.php:192
+msgid "Main Sidebar"
+msgstr ""
+
+#: functions.php:208
+#, php-format
+msgid "<span class=\"entry-date\">Posted on <a href=\"%1$s\" title=\"%2$s\" rel=\"bookmark\">%3$s</a> </span><span class=\"entry-author\">By <a href=\"%4$s\" title=\"%5$s\" rel=\"author\">%6$s</a><a href=\"%7$s\">, Edit</a></span>"
+msgstr ""
+
+#: functions.php:213
+#, php-format
+msgid "View all posts by %s"
+msgstr ""
+
+#: functions.php:278
+msgid "First"
+msgstr ""
+
+#: functions.php:313
+msgid "Last"
+msgstr ""
+
+#: functions.php:324
+msgid "Home"
+msgstr ""
+
+#: functions.php:339
+msgid "Archive by category"
+msgstr ""
+
+#: functions.php:380
+msgid "Search results for"
+msgstr ""
+
+#: functions.php:382
+msgid "Posts tagged"
+msgstr ""
+
+#: functions.php:386
+msgid "Articles posted by"
+msgstr ""
+
+#: functions.php:388
+msgid "Error 404"
+msgstr ""
+
+#: functions.php:392
+msgid "Page"
+msgstr ""
+
+#: functions.php:412
+#, php-format
+msgid "About %s"
+msgstr ""
+
+#: functions.php:415
+#, php-format
+msgid "View all posts by %s <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: functions.php:429
+#: functions.php:430
+msgid ", "
+msgstr ""
+
+#: functions.php:432
+msgid "Posted under: "
+msgstr ""
+
+#: functions.php:434
+msgid "Tagged as: "
+msgstr ""
+
+#: functions.php:449
+msgid "Select page"
+msgstr ""
+
+#: functions.php:496
+msgid "Pingback:"
+msgstr ""
+
+#: functions.php:496
+#: functions.php:511
+msgid "Edit"
+msgstr ""
+
+#: functions.php:509
+#, php-format
+msgid "<strong>%1$s</strong> on %2$s <span class=\"says\">said:</span>"
+msgstr ""
+
+#: functions.php:509
+#, php-format
+msgid "%1$s at %2$s"
+msgstr ""
+
+#: functions.php:513
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: header.php:32
+#, php-format
+msgid "Page %s"
+msgstr ""
+
+#: image.php:58
+msgid "Previous"
+msgstr ""
+
+#: image.php:59
+msgid "Next"
+msgstr ""
+
+#: searchform.php:8
+msgid "Search"
+msgstr ""
+
+#: sidebar.php:9
+msgid "Archives"
+msgstr ""
+
+#: admin/theme-options.php:40
+msgid "Themolio Settings"
+msgstr ""
+
+#: admin/theme-options.php:49
+msgid "Fonts & Colors"
+msgstr ""
+
+#: admin/theme-options.php:50
+msgid "Logo & Favicon"
+msgstr ""
+
+#: admin/theme-options.php:51
+msgid "Layout"
+msgstr ""
+
+#: admin/theme-options.php:52
+msgid "Blog"
+msgstr ""
+
+#: admin/theme-options.php:53
+msgid "Social"
+msgstr ""
+
+#: admin/theme-options.php:60
+msgid "Helvetica, Arial"
+msgstr ""
+
+#: admin/theme-options.php:61
+msgid "Georgia"
+msgstr ""
+
+#: admin/theme-options.php:62
+msgid "Verdana"
+msgstr ""
+
+#: admin/theme-options.php:69
+msgid "Two"
+msgstr ""
+
+#: admin/theme-options.php:70
+msgid "Three"
+msgstr ""
+
+#: admin/theme-options.php:71
+msgid "Four"
+msgstr ""
+
+#: admin/theme-options.php:78
+msgid "Top to Bottom"
+msgstr ""
+
+#: admin/theme-options.php:79
+msgid "Left to Right"
+msgstr ""
+
+#: admin/theme-options.php:86
+msgid "Standard"
+msgstr ""
+
+#: admin/theme-options.php:87
+msgid "Grid"
+msgstr ""
+
+#: admin/theme-options.php:121
+msgid "Default settings restored"
+msgstr ""
+
+#: admin/theme-options.php:127
+msgid "%s Theme Options"
+msgstr ""
+
+#: admin/theme-options.php:149
+msgid "Content Font"
+msgstr ""
+
+#: admin/theme-options.php:157
+msgid "Content Font Size"
+msgstr ""
+
+#: admin/theme-options.php:163
+msgid "Font color"
+msgstr ""
+
+#: admin/theme-options.php:167
+msgid "Link color"
+msgstr ""
+
+#: admin/theme-options.php:171
+msgid "Button color"
+msgstr ""
+
+#: admin/theme-options.php:177
+msgid "Custom Logo"
+msgstr ""
+
+#: admin/theme-options.php:179
+msgid "Upload Logo"
+msgstr ""
+
+#: admin/theme-options.php:182
+msgid "Custom Favicon"
+msgstr ""
+
+#: admin/theme-options.php:184
+msgid "Upload Favicon Image"
+msgstr ""
+
+#: admin/theme-options.php:189
+msgid "Layout Style"
+msgstr ""
+
+#: admin/theme-options.php:197
+msgid "Number of columns for Grid"
+msgstr ""
+
+#: admin/theme-options.php:205
+msgid "Layout for grid"
+msgstr ""
+
+#: admin/theme-options.php:211
+msgid "<strong>Top to bottom</strong>: Posts in the grid will be arranged starting from top moving downwards. <strong>Left to right</strong>: Posts in the grid will be arranged from left to right"
+msgstr ""
+
+#: admin/theme-options.php:214
+msgid "Sidebar for Grid page"
+msgstr ""
+
+#: admin/theme-options.php:216
+msgid "Show sidebar on the grid page ?"
+msgstr ""
+
+#: admin/theme-options.php:221
+msgid "Front page excerpts"
+msgstr ""
+
+#: admin/theme-options.php:223
+msgid "Display excerpts on front page for standard layout blog ?"
+msgstr ""
+
+#: admin/theme-options.php:226
+msgid "Featured Image"
+msgstr ""
+
+#: admin/theme-options.php:228
+msgid "Display featured images on front page (for both grid and standard layout) ?"
+msgstr ""
+
+#: admin/theme-options.php:231
+msgid "Default Search Box"
+msgstr ""
+
+#: admin/theme-options.php:233
+msgid "Display default search box in header"
+msgstr ""
+
+#: admin/theme-options.php:236
+msgid "Categories and Tags"
+msgstr ""
+
+#: admin/theme-options.php:238
+msgid "Show tags and categories for single entries"
+msgstr ""
+
+#: admin/theme-options.php:241
+msgid "Page Meta"
+msgstr ""
+
+#: admin/theme-options.php:243
+msgid "Show meta information for pages"
+msgstr ""
+
+#: admin/theme-options.php:248
+msgid "Facebook"
+msgstr ""
+
+#: admin/theme-options.php:250
+msgid "Enter your facebook user id"
+msgstr ""
+
+#: admin/theme-options.php:253
+msgid "Twitter"
+msgstr ""
+
+#: admin/theme-options.php:255
+msgid "Enter your twitter user id"
+msgstr ""
+
+#: admin/theme-options.php:258
+msgid "RSS"
+msgstr ""
+
+#: admin/theme-options.php:260
+msgid "Show RSS icon"
+msgstr ""
+
+#: admin/theme-options.php:267
+msgid "Reset Settings"
+msgstr ""
+
+#: admin/theme-options.php:277
+msgid "Theme designed and developed by <a href=\"http://www.nischalmaniar.com\">Nischal Maniar</a>"
+msgstr ""
+
+#: admin/theme-options.php:311
+msgid "Invalid logo image URL"
+msgstr ""
+
+#: admin/theme-options.php:321
+msgid "Favicon size cannot exceed 16 x 16 pixels"
+msgstr ""
+
+#: admin/theme-options.php:323
+msgid "Invalid favicon image URL"
+msgstr ""
+
+#: admin/theme-options.php:330
+msgid "Invalid font size. Font size should be in decimal format"
+msgstr ""

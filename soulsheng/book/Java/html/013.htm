@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+<head> 
+<script language="JavaScript"> 
+  var prePage="end";
+  var nextPage="01.htm";
+  var testPage="end";
+  var labPage="end";
+  var libraryPage="end";
+  var studyPage="end";
+  var homePage="end";
+	function showwin(url,winname,properties){
+		window.open(url,winname,properties)
+	}
+</script> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+
+<title>1.3程序设计语言的翻译与执行</title> 
+<link href="images/css.css" rel="stylesheet" type="text/css"> 
+</head> 
+
+<body topmargin="0">
+<p align="center" class="t1"><br>
+  程序设计语言的翻译与执行</p>
+　　程序设计语言是一种编写计算机程序的形式语言，它具有一定数量的保留字（reserved words），这些保留字用于构造语言中的语句或指令，每一条语句需要有清晰定义的语法和语义，这里，语法描述如何书写语句，语义描述语句的行为。<br>
+　　<img src="images/STAR.GIF" width="18" height="20"><span class="t2">低级语言</span><br>
+　　机器语言和汇编语言。<br>
+　　<img src="images/STAR.GIF" width="18" height="20"><span class="t2">高级语言</span><br>
+　　是一种与计算机硬件无关、表达形式更接近与被描述的问题的程序设计语言，程序员只要使用简单的英文单词、熟悉的数学表达式以及规定的语句格式，就可以方便地编写程序。使用高级语言编写的程序称为源程序，它必须经过程序设计语言翻译系统的处理后才能执行。<br>
+<p align="center" class="t1">程序设计语言翻译系统</p>
+　　<img src="images/STAR.GIF" width="18" height="20"><span class="t2">汇编语言翻译系统</span><br>
+　　将汇编语言所编写的程序翻译成二进制码的0和1表示的等价机器语言，形成计算机可以执行的机器指令代码。　<br>
+　　<img src="images/STAR.GIF" width="18" height="20"><span class="t2">高级语言编译系统</span><br>
+　　将高级语言编写的源程序翻译成等价的机器语言程序或汇编语言程序的处理系统，也称为编译程序。它一般包括：词法分析程序、语法分析程序、中间代码生成程序、优化程序以及目标代码生成程序。 
+<br>
+　　<img src="images/STAR.GIF" width="18" height="20"><span class="t2">高级语言解释系统</span><br>
+　　按照源程序中的语句动态顺序逐条翻译并立即执行相应功能的处理系统。解释程序在翻译过程中并不把源程序翻译成一个完整的目标程序形式，而是直接将源程序中的语句逐句转换成机器可执行的动作，并获得结果。<br>
+<p align="center" class="t1">Java语言</p>
+　　<img src="images/STAR.GIF" width="18" height="20">Java语言是纯面向对象的程序设计语言，它集安全性、简单性、易用性以及平台无关性于一身，并能适合于网络环境下的编程使用。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">平台无关性指的是程序不受操作平台的影响，可以应用在各种平台上。Java源程序经过编译后生成字节码（Bytecode）文件（.class文件），它是一种具有可移植性的程序代码，即字节码文件与具体的计算机无关。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">在不同平台的计算机接收到字节码后，便可通过一种与各平台有关的运行环境（Java 
+Runtime Environment，简记为JRE）中的Java虚拟机（Java Virtual Machine，简记为JVM），以及JRE提供的运行时所需类库，将其转换成本地码（本地机器指令）并执行。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">Java程序结合了编译和解释系统，首先Java源程序（文件的扩展名为.java）通过编译产生字节码（与平台无关的中间代码，文件的扩展名.class），然后通过特定计算机的虚拟机解释字节码生成可执行的机器码（文件的扩展名为.exe）。<br>
+<p align="center" class="t1">Java平台</p>
+　　<p>Java提供了许多工具：编译器、解释器、文档生成器和文件打包工具等等。同时Java还是一个程序发布平台，有两种主要的“发布环境”。　　<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">Java运行时环境（JRE）包含了完整的类文件包<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">许多主要的浏览器都提供了Java解释器和运行时环境<br>
+  　　目前Sun公司把Java平台划分成J2EE、J2SE、J2ME三个平台。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">J2EE是Java2 
+    Enterprise Edition，主要目的是为企业计算提供一个应用服务器的运行和开发平台。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">J2SE是Java2 
+    Standard Edition，主要目的是为台式机和工作站提供一个开发和运行的平台（本书所使用的平台，又称JDK、J2SDK）。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">J2ME是Java2 
+Micro Edition，主要是面向消费电子产品。为消费电子产品提供一个Java的运行平台，使得java程序能够在手机、机顶盒、PDA等产品上运行。</p>
+　　<p align="center">
+  <img src="images/011/011-5.jpg" width="450" height="239">
+</p>
+<p align="center" class="t1">一个计算机程序</p>
+　　每一个程序必须以filename.java形式进行保存，例如<a href="ch1/ch1ex2.java" target="_blank">ch1ex2.java</a>。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">public 
+class ch1ex2表示建立一个类，类名为ch1ex2，class是用于定义类的关键字（一个程序可以包括若干个类），public则表示该类是公共类，公共类说明它可以被所有类访问，Java程序规定一个程序文件可以有多个类，但只能有一个类为公共类，并且公共类的类名必须与文件名相同。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">public 
+static void main(String[]args)是一个名为main的方法，一个Java程序可以有许多方法，但只能有一个main方法，它表示程序的开始点。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">程序从System.out.print(&quot;programming 
+is cool&quot;)语句开始并按照顺序依次执行。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">System是Java类库中的一个类，利用该类可以获得Java运行环境的有关信息和输入、输出信息。out是System的一个对象，而print与println都是out的方法，其作用是向标准的输出设备（例如显示器）输出括号中的内容，这两种方法的区别仅在于前者输出信息后没有回车，后者在输出的同时具备回车的功能。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">Java程序是大小写敏感，例如程序中语句System.out.print中“S”必须大写（小写与大写其结果是表示不同的含义）。<br>
+Java程序的标准模板：<br>
+public class Name{<br>
+　　public static void main(String[]args){<br>
+　　　　程序代码部分<br>
+　　}<br>
+}
+</body> 
+</html> 

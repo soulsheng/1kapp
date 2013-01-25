@@ -1,0 +1,291 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+<head> 
+<script language="JavaScript"> 
+  var prePage="end";
+  var nextPage="01.htm";
+  var testPage="end";
+  var labPage="end";
+  var libraryPage="end";
+  var studyPage="end";
+  var homePage="end";
+	function showwin(url,winname,properties){
+		window.open(url,winname,properties)
+	}
+</script> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+
+<title>10.3 事件处理</title> 
+<link href="images/css.css" rel="stylesheet" type="text/css"> 
+</head> 
+
+<body topmargin="0">
+<p align="center" class="t1"><br>
+  事件处理</p>
+　　Java语言的事件处理采用了授权事件模式。所谓的授权事件模式，是指事件的处理，由事件源对象可以把在其自身所有可能发生的事件分别授权给不同的事件监听者来处理。<br>
+这里事件监听者可视为一种处理事件的对象。授权事件模式把事件的处理委托给外部的处理实体进行处理，实现了将事件源和监听者分开的机制。<br>
+　　事件监听者通常是一个类，该类如果要能够处理某种类型的事件，就必须实现与该事件类型相对应的接口。在事件处理的过程中，主要涉及三类对象：<br>
+　　1. 事件（Event）：用户对界面操作在java语言上的描述，以类的形式出现，例如键盘操作对应的事件类是KeyEvent。<br>
+　　2. 事件源（Event Source）：事件发生的场所，通常就是各个组件，例如文本框（TextField）。<br>
+　　3. 事件处理者（Event handler），接收事件对象并对其进行处理的对象。<br>
+　　例如，如果用户在文本框中敲击键盘，则该文本框就是事件源，而java运行时系统会生成KeyEvent类的对象KeyEvent e，e对象中描述了该单击事件发生时的一些信息，然后，事件处理者对象将接收由java运行时系统传递过来的事件对象KeyEvent 
+e并进行相应的处理。<br>
+<p align="center" class="t1">事件处理举例</p>
+　　如例10-8中的程序段：<br>
+//注册监听者进行授权，该方法的参数是事件处理者对象，要处理的事件类型可以从方<br>
+//法名中看出，例如本方法要授权处理的是KeyEvent，因为方法名是addKeyListener。<br>
+t1.addKeyListener(new keyListenerT1());//将键盘监听者加入文本框t1<br>
+t2.addKeyListener(new keyListenerT2());//将键盘监听者加入文本框t2<br>
+…<br>
+class keyListenerT1 implements KeyListener{<br>
+//实现接口KeyListener才能做事件KeyEvent的处理者<br>
+　　//系统产生的ActionEvent事件对象被当作参数传递给该方法，本接口有三个方法，<br>
+　　//因此事件发生时，系统会自动调用相应方法<br>
+　　public void keyPressed(KeyEvent e){} <br>
+　　public void keyReleased(KeyEvent e){}<br>
+　　public void keyTyped(KeyEvent e){ <br>
+　　//根据传递过来的事件对象进行相应的处理<br>
+　　　　char c=e.getKeyChar();<br>
+　　　　if(!Character.isLetter(c)) <br>
+　　　　　　e.setKeyChar('\0'); <br>
+　　}<br>
+}<br>
+　　使用授权事件模式进行事件处理的一般方法可归纳如下：<br>
+　　<img src="images/STAR.GIF" width="18" height="20">对于某种类型的事件XXXEvent, 
+要想接收并处理这类事件，必须定义相应的事件监听者类，该类需要实现与该事件相对应的接口XXXListener。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">事件源实例化以后，必须进行授权，注册该类事件的监听者，使用addXXXListener(XXXListener 
+) 方法来注册监听者。<br>
+<p align="center" class="t1">事件类</p>
+<p>　　　在java.awt.event包中定义了各种事件类、事件监听者（接口）以及事件转换器。事件类共有10个，可以归为两大类，低级事件和高级事件：<br>
+　　<img src="images/STAR.GIF" width="18" height="20">低级事件是指基于组件和容器的事件，当一个组件上发生事件，如：鼠标的进入，点击，拖放等，触发了组件事件。<br>
+</p>
+　　<table width="75%" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td width="54%"><div align="center">事件 </div></td>
+    <td width="46%"><div align="center">说明</div></td>
+  </tr>
+  <tr> 
+    <td>ComponentEvent </td>
+    <td>组件事件：组件尺寸的变化，移动</td>
+  </tr>
+  <tr> 
+    <td>ContainerEvent </td>
+    <td>容器事件：组件增加，移动 </td>
+  </tr>
+  <tr> 
+    <td>WindowEvent </td>
+    <td>窗口事件：关闭窗口，窗口闭合，图标化</td>
+  </tr>
+  <tr> 
+    <td>FocusEvent </td>
+    <td>焦点事件：焦点的获得和丢失</td>
+  </tr>
+  <tr> 
+    <td> KeyEvent</td>
+    <td> 键盘事件：键按下、释放、敲击</td>
+  </tr>
+  <tr> 
+    <td>MouseEvent </td>
+    <td>鼠标事件：鼠标单击，移动</td>
+  </tr>
+</table>
+　　
+<p>　　<img src="images/STAR.GIF" width="18" height="20">高级事件是基于语义的事件，它可以不和特定的动作相关联，而依赖于触发此事件的类，如在文本框TextField中按Enter键会触发ActionEvent事件,滑动滚动条会触发AdjustmentEvent事件，或是选中项目列表的某一条就会触发ItemEvent事件等。<br>
+</p>
+<table width="72%" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td><div align="center">事件 </div></td>
+    <td><div align="center">说明</div></td>
+  </tr>
+  <tr> 
+    <td>ActionEvent </td>
+    <td>动作事件：按钮按下，TextField中按Enter键</td>
+  </tr>
+  <tr> 
+    <td>AdjustmentEvent </td>
+    <td>调节事件：在滚动条上移动滑块以调节数值</td>
+  </tr>
+  <tr> 
+    <td>ItemEvent</td>
+    <td> 项目事件：选择项目，不选择“项目改变”</td>
+  </tr>
+  <tr> 
+    <td>TextEvent </td>
+    <td>文本事件，文本对象改变</td>
+  </tr>
+</table>
+<p align="center" class="t1">事件监听者</p>
+　　每类事件都有对应的事件监听者，监听者是接口，根据动作来定义方法。<br>
+　　例如，与键盘事件KeyEvent相对应的接口是：<br>
+public interface KeyListener extends EventListener {<br>
+　　public void keyPressed(KeyEvent ev);<br>
+　　public void keyReleased(KeyEvent ev);<br>
+　　public void keyTyped(KeyEvent ev); 　　<br>
+}<br>
+　　又例如窗口事件接口： <br>
+public interface WindowListener extends EventListener{<br>
+　　 public void windowClosing(WindowEvent e);//把退出窗口的语句写在本方法中<br>
+　　 public void windowOpened(WindowEvent e);//窗口打开时调用<br>
+　　 public void windowIconified(WindowEvent e);//窗口图标化时调用<br>
+　　 public void windowDeiconified(WindowEvent e);//窗口非图标化时调用<br>
+　　 public void windowClosed(WindowEvent e);//窗口关闭时调用<br>
+　　 public void windowActivated(WindowEvent e);//窗口激活时调用<br>
+　　 public void windowDeactivated(WindowEvent e);//窗口非激活时调用<br>
+}<br>
+AWT的组件类库中提供注册和注销监听者的方法：<br>
+1. 注册监听者：public void add&lt;ListenerType&gt; (&lt;ListenerType&gt;listener);<br>
+2. 注销监听者：public void remove&lt;ListenerType&gt; (&lt;ListenerType&gt;listener);<br>
+例如：前面例子中用到的语句就是注册监听者<br>
+t1.addKeyListener(new keyListenerT1());//将键盘监听者加入文本框t1<br>
+同样也可以使用下列语句注销监听者<br>
+t1.removeKeyListener(new keyListenerT1());<br>
+<p align="center" class="t1">事件及其监听者接口和方法</p>
+<table width="100%" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td width="23%"><div align="center">事件类别 </div></td>
+    <td width="22%"><div align="center">描述信息 </div></td>
+    <td width="18%"><div align="center">接口名 </div></td>
+    <td width="37%"><div align="center">方法</div></td>
+  </tr>
+  <tr> 
+    <td>ActionEvent </td>
+    <td>激活组件</td>
+    <td>ActionListener、</td>
+    <td>actionPerformed(ActionEvent)</td>
+  </tr>
+  <tr> 
+    <td>ItemEvent </td>
+    <td>选择了某些项目 </td>
+    <td>ItemListener</td>
+    <td>itemStateChanged(ItemEvent)</td>
+  </tr>
+  <tr> 
+    <td rowspan="2">MouseEvent</td>
+    <td>鼠标移动</td>
+    <td>MouseMotionListener</td>
+    <td>mouseDragged(MouseEvent)<br>
+      mouseMoved(MouseEvent)</td>
+  </tr>
+  <tr> 
+    <td>鼠标点击等</td>
+    <td>MouseListener</td>
+    <td>mousePressed(MouseEvent)<br>
+      mouseReleased(MouseEvent)<br>
+      mouseEntered(MouseEvent)<br>
+      mouseExited(MouseEvent) <br>
+      mouseClicked(MouseEvent)</td>
+  </tr>
+  <tr> 
+    <td>KeyEvent </td>
+    <td>键盘输入 </td>
+    <td>KeyListener</td>
+    <td>keyPressed(KeyEvent)<br>
+      keyReleased(KeyEvent)<br>
+      keyTyped(KeyEvent)</td>
+  </tr>
+  <tr> 
+    <td height="48">FocusEvent </td>
+    <td>组件收到或失去焦点 </td>
+    <td>FocusListener</td>
+    <td>focusGained(FocusEvent)<br>
+      focusLost(FocusEvent)</td>
+  </tr>
+  <tr> 
+    <td>AdjustmentEvent </td>
+    <td>移动了滚动条等组件</td>
+    <td>AdjustmentListener</td>
+    <td>adjustmentValueChanged(AdjustmentEvent)</td>
+  </tr>
+  <tr> 
+    <td>ComponentEvent </td>
+    <td>对象移动缩放显示隐藏等 </td>
+    <td>ComponentListener</td>
+    <td>omponentMoved(ComponentEvent)<br>
+      componentHidden(ComponentEvent)<br>
+      componentResized(ComponentEvent)<br>
+      componentShown(ComponentEvent)</td>
+  </tr>
+  <tr> 
+    <td>WindowEvent </td>
+    <td>窗口收到窗口级事件 </td>
+    <td>WindowListener</td>
+    <td>windowClosing(WindowEvent)<br>
+      windowOpened(WindowEvent)<br>
+      windowIconified(WindowEvent)<br>
+      windowDeiconified(WindowEvent)<br>
+      windowClosed(WindowEvent)<br>
+      windowActivated(WindowEvent)<br>
+      windowDeactivated(WindowEvent)</td>
+  </tr>
+  <tr> 
+    <td>ContainerEvent </td>
+    <td>容器中增加删除了组件 </td>
+    <td>ContainerListener</td>
+    <td>componentAdded(ContainerEvent)<br>
+      componentRemoved(ContainerEvent)</td>
+  </tr>
+  <tr> 
+    <td>TextEvent </td>
+    <td>文本字段或文本区发生改变</td>
+    <td>TextListener</td>
+    <td>textValueChanged(TextEvent)</td>
+  </tr>
+</table>
+<p align="center" class="t1">事件转换器</p>
+　　Java语言为一些Listener接口提供了转换器(Adapter)类。可以通过继承事件所对应的Adapter类，重写需要的方法，而无关方法不用实现（注意，接口需要重写所有的方法）。java.awt.event包中定义的事件转换器类<br>
+　<br>
+<table width="62%" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td width="44%"><div align="center">转换器 </div></td>
+    <td width="56%"><div align="center">说明</div></td>
+  </tr>
+  <tr> 
+    <td> ComponentAdapter</td>
+    <td>组件转换器</td>
+  </tr>
+  <tr> 
+    <td>ContainerAdapter </td>
+    <td>容器转换器</td>
+  </tr>
+  <tr> 
+    <td>FocusAdapter </td>
+    <td>焦点转换器</td>
+  </tr>
+  <tr> 
+    <td>KeyAdapter </td>
+    <td>键盘转换器</td>
+  </tr>
+  <tr> 
+    <td>MouseAdapter </td>
+    <td>鼠标转换器</td>
+  </tr>
+  <tr> 
+    <td>MouseMotionAdapter </td>
+    <td>鼠标运动转换器</td>
+  </tr>
+  <tr> 
+    <td>WindowAdapter </td>
+    <td>窗口转换器</td>
+  </tr>
+</table>
+<p>例如下列程序段采用了鼠标转换器：它只实现需要的方法mouseClicked，而其他方法不需要实现（重写） 　　<br>
+  import java.awt.*;<br>
+  　　import java.awt.event.*;<br>
+  　　public class MouseClickHandler extends MouseAdaper{<br>
+  　　 　 public void mouseClicked(MouseEvent e){ <br>
+  　　　　…<br>
+  　　　　}<br>
+} </p>
+<p align="center" class="t1">匿名类</p>
+　　当一个内部类的类声明只是在创建此类对象时用了一次，而且要产生的新类需继承于一个已有的父类或实现一个接口，才能考虑用匿名类，由于匿名类本身无名，因此它也就不存在构造方法，它需要显示地调用一个无参的父类的构造方法，并且重写父类的方法。所谓的匿名就是该类连名字都没有，只是显示地调用一个无参的父类的构造方法。<br>
+　　<a href="ch10/ch10ex10.java" target="_blank">【例10-10】匿名类举例</a>。<br>
+　　程序中使用到了鼠标事件以及鼠标事件监听者的定义，鼠标事件具有两个接口：MouseMotionListener和MouseListener，它们分别对应有2个事件方法和5个事件方法，除此之外，MouseEvent类也由4个非常有用的方法：<br>
+　　<img src="images/STAR.GIF" width="18" height="20">int getX()：返回鼠标事件的X坐标<br>
+　　<img src="images/STAR.GIF" width="18" height="20">int getY()：返回鼠标事件的Y坐标<br>
+　　<img src="images/STAR.GIF" width="18" height="20">Point 
+getPoint()：返回鼠标事件的坐标点（Point是Java语言预定义的类，用于存放坐标点，包括X和Y。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">int getClickCount()：返回鼠标点击次数<br>
+　　<img src="images/STAR.GIF" width="18" height="20">void 
+translatePoint(int x,int y)：将整型量x和y转换为Point坐标<br>
+</body> 
+</html> 

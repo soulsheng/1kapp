@@ -1,0 +1,2 @@
+运行以前，需要将javabook目录以及所包含的文件移到
+d:\jswdk1.0.1\examples目录下。

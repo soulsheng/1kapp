@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+
+<title>14.2 文字与图形</title> 
+<link href="images/css.css" rel="stylesheet" type="text/css"> 
+</head> 
+
+<body topmargin="0">
+<p align="center" class="t1"><br>
+　　
+
+
+
+
+
+<strong>文字</strong>　　　</p>
+<p>　　<img src="images/star.gif" width="18" height="20">坐标系统：原点（0，0）位于组件区域的左上角，X坐标从左向右逐渐增加，Y坐标从上向下逐渐增加，单位为像素点（打开g13-2.gif）。坐标表示的范围是一个从（0，0）到（组件宽度-1，组件高度-1）的矩形区域。</p>
+<p align="center"><img src="images/g13-2.gif" width="338" height="224"></p>
+<p><br>
+  　　<img src="images/star.gif" width="18" height="20">文字的显示：AWT中可以进行文字输出的组件有Label、TextField及TextArea（或Swing中的JLabel、JTextField及JTextArea），它们自动按照设置好的字体和颜色来输出文字。设置字体和颜色也可以通过组件的方法setFont()、setBackground()和setForeground()实现。<br>
+　　<img src="images/star.gif" width="18" height="20">java.awt.Graphics类中定义的drawBytes()、drawChar()、drawString()方法也可显示文字。<br>
+例4：g.drawstring(“draw a string”,x,y);
+<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">(x,y)表示输出文字的基线（baseline）起始位置坐标。</p>
+<p align="center"><img src="images/g13-3.gif" width="470" height="534"></p>
+<p><br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20">ascent是基线与顶线(ascender line)之间的距离；descent给出基线与底线(descender line)之间的距离；leading指明一行字符的底线与下一行字符顶线之间的距离；高度height=ascent+descent+leading。单位都是像素。<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">Graphics类的getFontMetrics()方法获得当前字体的字模，然后可以通过类FontMetrics中定义的方法获取字体的各种信息。</p>
+<p align="center"> FontMetrics 类中的常用方法</p>
+<table border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="172" valign="top"><p align="center">名称</p></td>
+    <td width="56" valign="top"><p align="center">返回值类型</p></td>
+    <td width="333" valign="top"><p align="center">功能</p></td>
+  </tr>
+  <tr>
+    <td width="172" valign="top"><p>BytesWidth(byte data[],int offset, int length)</p></td>
+    <td width="56" valign="top"><p>int</p></td>
+    <td width="333" valign="top"><p>返回在给定的字节数组data[]中，从偏移量offse开始的length个字节数据的宽度</p></td>
+  </tr>
+  <tr>
+    <td width="172" valign="top"><p>CharWidth(int ch)</p></td>
+    <td width="56" valign="top"><p>int</p></td>
+    <td width="333" valign="top"><p>根据当前设定的字体，返回字符ch的宽度</p></td>
+  </tr>
+  <tr>
+    <td width="172" valign="top"><p>charsWidth(char[]&nbsp;data, int&nbsp;off, int&nbsp;len)</p></td>
+    <td width="56" valign="top"><p>int</p></td>
+    <td width="333" valign="top"><p>返回在给定的字符数组data[]中，从偏移量offse开始的length个字符数据的宽度</p></td>
+  </tr>
+  <tr>
+    <td width="172" valign="top"><p>stringWidth(String&nbsp;str)</p></td>
+    <td width="56" valign="top"><p>int</p></td>
+    <td width="333" valign="top"><p>返回指定字符串的宽度</p></td>
+  </tr>
+  <tr>
+    <td width="172" valign="top"><p>getAscent()</p></td>
+    <td width="56" valign="top"><p>int</p></td>
+    <td width="333" valign="top"><p>返回字体从基线到字体项线的距离</p></td>
+  </tr>
+  <tr>
+    <td width="172" valign="top"><p>getDescent()</p></td>
+    <td width="56" valign="top"><p>int</p></td>
+    <td width="333" valign="top"><p>返回字体从基线到字体底线的距离</p></td>
+  </tr>
+  <tr>
+    <td width="172" valign="top"><p>getHeight()</p></td>
+    <td width="56" valign="top"><p>int</p></td>
+    <td width="333" valign="top"><p>返回字体相邻两行基线之间距离</p></td>
+  </tr>
+  <tr>
+    <td width="172" valign="top"><p>getLeading</p></td>
+    <td width="56" valign="top"><p>int</p></td>
+    <td width="333" valign="top"><p>返回上一行字体底线到下一行字体顶线之间的距离</p></td>
+  </tr>
+  <tr>
+    <td width="172" valign="top"><p>getMaxAscent()</p></td>
+    <td width="56" valign="top"><p>int</p></td>
+    <td width="333" valign="top"><p>返回字体中任意字符底线也下一行字体项线之间的最大距离。</p></td>
+  </tr>
+  <tr>
+    <td width="172" valign="top"><p>getMaxDescent()</p></td>
+    <td width="56" valign="top"><p>int</p></td>
+    <td width="333" valign="top"><p>返回字体中任意字体从基线到字体底线的最大距离</p></td>
+  </tr>
+</table>
+<p align="center">&nbsp;</p>
+<p>
+【例14-2】自定义一个Frame类，要求在框架的中央显示“This is the Center”字样。<br>
+<a href="ch14/DemoFontMetrics.java" target="_blank">DemoFontMerics.java</a><br>　　<img src="images/star.gif" width="18" height="20"> 构造方法DemoFontMetrics（）设置窗体的初始大小和窗体退出功能。 <br>
+  　　<img src="images/star.gif" width="18" height="20"> paint()方法实现了指定字符串的显示。 　　　　  <br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20">调用Graphics类的getFontMetrics()获取当前字模。<br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20">调用Component 类的getSize()方法得到窗口的尺寸 。 <br>
+  　　　　<img src="images/STAR1.GIF" width="15" height="20">通过获取的窗口的宽度和高度，由FontMetrics类的stringWidth()方法及getAscent()、getDescent()方法得到的字模的尺寸信息来设定指定字符串的基线起始坐标。<br>
+　　<img src="images/star.gif" width="18" height="20">通过Graphics类的drawString()输出字符串。</p>
+<p align="center"><img src="images/g13-4.gif" width="212" height="212"></p>
+<p align="center" class="t1"><br>
+  <strong>图形</strong></p>
+<p> java.awt.Graphics类提供绘制图形的基本方法，如直线、矩形、椭圆形和多边形等。<br>
+　　<img src="images/star.gif" width="18" height="20"> 直线：public void drawLine(int x1,int y1,int x2, int y2); <br>
+　　<img src="images/star.gif" width="18" height="20"> 弧线：public void drawArc(int x, int y, int width, int height, int startAngle, int arcAngle); <br>
+　　<img src="images/star.gif" width="18" height="20"> 多边形：public void drawPolygon(int xPoints[], int yPoints[], int nPoints); <br>
+　　<img src="images/star.gif" width="18" height="20"> 矩形：public void drawRect(int x, int y, int width,int height); <br>
+　　<img src="images/star.gif" width="18" height="20"> 圆角矩形：public void drawRoundRect(int x, int y, int width, int height, int arcWidth, int arcHeight); <br>
+　　<img src="images/star.gif" width="18" height="20"> 填充的三维矩形：public void fill3DRect(int x, int y, int width, int height, Boolean raised); <br>
+　　<img src="images/star.gif" width="18" height="20"> 其他方法:填充矩形fillRect()、填充椭圆fillOval()、填充弧形fillArc()、填充多边形fillPolygon()等 。<br>
+【例14-3】　调用Graphics类中的方法来绘制不同形状的图形。<br>
+<a href="ch14/GraphicFrame.java" target="_blank">GraphicFrame.java</a></p>
+<p align="center"><img src="images/g13-5.gif" width="300" height="230"></p>
+</body> 
+</html> 

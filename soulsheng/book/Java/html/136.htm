@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+<head> 
+<script language="JavaScript"> 
+  var prePage="end";
+  var nextPage="01.htm";
+  var testPage="end";
+  var labPage="end";
+  var libraryPage="end";
+  var studyPage="end";
+  var homePage="end";
+	function showwin(url,winname,properties){
+		window.open(url,winname,properties)
+	}
+</script> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+
+<title>13.6 小应用程序(Applet)</title> 
+<link href="images/css.css" rel="stylesheet" type="text/css"> 
+</head> 
+
+<body topmargin="0">
+<p align="center" class="t1"><br>
+  Applet概念　　</p>
+<p>　　<img src="images/STAR.GIF" width="18" height="20">小应用程序(Applet)是一段位于网页中的Java程序，由基于Java的浏览器或专用查看器AppletViewer执行。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">与插件区别：插件要下载并手工安装，Applet可以自动由浏览器执行。当Applet到达网络客户端时，它能够提供多媒体的界面，使网页变得更加生动活泼。同时，由于Java对Applet所做的安全限制，用户下载Applet时，不必担心病毒的侵入或对数据完整性的破坏。<br>
+  　　【例13-6】一个简单的Java小应用程序。（<a href="ch13/FirstApplet.java" target="_blank">FirstApplet.java</a>）<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">FirstApplet类继承Applet（或包javax.swing中的JApplet）。实际上，任何一个小应用程序类都必须继承类Applet（或JApplet）。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">它与其他类之间的继承关系</p>
+<p align="center">
+<img src="ch13/g14-6.gif" width="246" height="205"></p>
+　　<br>
+　　<img src="images/STAR.GIF" width="18" height="20">Applet其他特点：不能独立运行的，必须嵌入在一个HTML文件中，由浏览器或appletviewer来解释执行；Applet是一种特殊的在网络上进行传输的应用程序，所以还有初始化(init)，开始执行（start）、停止(stop)和破坏(destroy)等过程。<br>
+　　例16：在HTML中嵌入小应用程序是通过标记&lt;APPLET&gt;来实现的，在一个&lt;APPLET&gt;单元中，必须指定三个属性：<br>
+　　<img src="images/STAR.GIF" width="18" height="20">CODE——指明实现Applet的字节码文件；<br>
+　　<img src="images/STAR.GIF" width="18" height="20">WIDTH——指在网页中的宽度；<br>
+　　<img src="images/STAR.GIF" width="18" height="20">HEIGHT——指在网面中的高度。<br>
+例如将FirstApplet嵌入到FirstApplet.htm中（<a href="ch13/FirstApplet.htm" target="_blank">FirstApplet.htm</a>）<br>
+　　<img src="images/STAR.GIF" width="18" height="20">FirstApplet.java编译完成后，打开FirstApplet.htm。如果使用浏览器，直接打开即可；如果用appletviewer，就需要在DOS环境下，使用如下方式的命令：<br>
+appletviewer FirstApplet.htm（注意需要设置path）。其运行结果：
+<p align="center">
+<img src="ch13/g14-7.gif" width="208" height="131"></p>
+<p>
+  　　<img src="images/STAR.GIF" width="18" height="20">其他属性：CODEBASE给出实现Applet的字节码文件所在的URL地址。如果不给定该属性，则浏览器将实现Applet的字节码文件与HTML文件处在同一目录下；NAME给出Applet的名称；ALIGN给出Applet在网页中的对齐方式，包括LEFT、RIGHT、TOP等方式；HSPACE和VSPACE，它们设置了Applet与周围文本的水平和竖直象素值。<br>
+  　　<img src="images/STAR.GIF" width="18" height="20">对于不支持Applet的浏览器来说，会忽略&lt;APPLET&gt;标记，这样，可以在APPLET单元中加一些解释性的文字，使得用户在不支持Java的浏览器中浏览时也可以获取到有关信息。当然，对于支持Applet浏览器，它忽略这些APPLET单元。<br>
+  　　例17：将FirstApplet.htm文件中的&lt;APPLET&gt;单元改写为：<br>
+  …<br>
+&lt;APPLET CODE=&quot;FirstApplet.class&quot; WIDTH=200 HEIGHT=40&gt;<br>
+&lt;p&gt; Your Browser Does not Support Java!&lt;/p&gt;<br>
+&lt;/APPLET&gt;<br>
+…<br>
+　　<img src="images/STAR.GIF" width="18" height="20">Applet也可以从外界获取参数，它是通过HTML的&lt;PARAM&gt;标记来实现的。PARAM单元的属性包括name和value两个，其中name给出参数名，value给出参数，语法如下：<br>
+&lt;PARAM name=pname value=pvalue&gt;<br>
+　　<img src="images/STAR.GIF" width="18" height="20">浏览器在传递属性值时，name的值与大小写无关，而对value的值则会区分大小写。PARAM单元包含在APPLET单元中，一个APPLET单元中可以包含多个PARAM单元。</p>
+<p align="center" class="t1">小应用程序生命周期　　</p>
+<p>　　<img src="images/STAR.GIF" width="18" height="20">Applet的生命周期分为四个阶段，各阶段分别由init（），start（），stop（）和destroy（）四种方法来具体体现</p>
+　　
+<p align="center"><img src="ch13/g14-8.gif" width="410" height="181"></p>
+　　<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">init()：第一次调用start()方法之前先调用它。它是Applet运行的起点。如果需要执行初始化任务，可以在Applet的子类中重载该方法，例如，在init()方法中创建线程，而在destroy()方法中收回它们。<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">start()：通知Applet开始执行，当调用init()方法或者在Web页中再次访问时被调用。在Applet的子类中重载该方法，将每次访问该WWW页时,需要执行的操作放入其中，例如，一个含有动画的Applet可以使用start()方法恢复动画。<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">stop()：此方法通知Applet停止执行，当含有该Applet的Web页被其他页代替时调用该方法，也正是在Applet被消灭之前。在Applet的子类中重载该方法，将每次Web页不再可见时需执行的操作放入其中。<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">destroy()：此方法通知Applet，它正在被收回，应该释放已分配给它的所有资源，stop()方法总是在该方法调用之前被调用。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">在Applet（ 
+    或JApplet）中，上述方法的实现都没有执行任何操作，用户在实现自己的Applet时，通常要重载它们。<br>
+　　【例13-7】下面的例子是小应用程序ShowLifeCycleApplet，演示了 init()，start()，stop()和destroy()四种方法的使用。<br>
+（<a href="ch13/ShowLifeCycleApplet.java" target="_blank">ShowLifeCycleApplet.java</a>）<br>
+（<a href="ch13/ShowLifeCycleApplet.htm" target="_blank">ShowLifeCycleApplet.htm</a>）<br>
+　　<img src="images/STAR.GIF" width="18" height="20">输入appletviewer 
+ShowLifeCycleApplet.htm，显示：
+<p align="center">
+<img src="ch13/g14-9a.gif" width="220" height="140">　　</p>
+<p>
+　　<img src="images/STAR.GIF" width="18" height="20">单击窗口左上角的“Applet”菜单项，在弹出的下拉菜单中，选择“停止”菜单条，之后，再选择“启动”菜单条，窗口的显示：</p>
+<p align="center">
+<img src="ch13/g14-9b.gif" width="288" height="171"></p>
+<p>
+　　<img src="images/STAR.GIF" width="18" height="20">再选择“停止”菜单条，随后选择“重新启动”菜单，窗口的显示：</p>
+<p align="center">
+  <img src="ch13/g14-9c.gif" width="288" height="166">
+</p>
+<p align="center" class="t1">Applet类中包含的方法</p>
+　　java.applet.Applet（或javax.swing.JApplet类）是java.awt.Panel的子类，即除了包含Panel具有的方法之外，还有一些专门的方法，构成了小应用程序特有的性质。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">与生命周期有关的主要方法：<br>
+public void init()；<br>
+public void start()；<br>
+public void stop()；<br>
+public void destroy()；<br>
+　　<img src="images/STAR.GIF" width="18" height="20">与HTML有关的方法：它指的是用于获得与HTML页面文件相关的信息，如得到HTML的URL地址、小应用程序从包含它的HTML文件传进参数等等：<br>
+URL getCodeBase()：返回该小应用程序主类文件所在的URL地址；<br>
+URL getDocumentBase()：返回包含该小应用程序的HTML文件的URL地址；<br>
+String getParameter(String paraName)：返回由包含该小应用程序的HTML 文件中的、在&lt;PARAM&gt;标志内部，与NAME=paraName相应的VALUE的值。如果指定的参数名paraName在相应的HTML中没有定义，则其返回值为null。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">与多媒体有关的方法：运用Applet类所提供的一些方法，可以十分方便地获得图像、声音的支持：<br>
+Image getImage(URL url)；<br>
+Image getImage(URL url, String name)；<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">两个方法都是返回指定的图像文件。但当前Applet类所支持的只有gif和jpg两种图像格式。<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">在加载图像的时候，Applet在调用了getImage()方法之后不管图像是否存在，立即返回，而图片真正为Applet所加载是要在程序第一次绘制该图像的时候。<br>
+AudioClip getAudioClip(URL url)；<br>
+AudioClip getAudionClip(URL url, String name)；<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">两个方法都是用来播放指定的声音文件。 
+</body> 
+</html> 

@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html> 
+<head> 
+<script language="JavaScript"> 
+  var prePage="end";
+  var nextPage="01.htm";
+  var testPage="end";
+  var labPage="end";
+  var libraryPage="end";
+  var studyPage="end";
+  var homePage="end";
+	function showwin(url,winname,properties){
+		window.open(url,winname,properties)
+	}
+</script> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+
+<title>5.4递归</title> 
+<link href="images/css.css" rel="stylesheet" type="text/css"> 
+</head> 
+
+<body topmargin="0">
+<p align="center" class="t1"><br>
+递归</p>
+　　<img src="images/STAR.GIF" width="18" height="20">递归就是利用自身结构来描述自身，例如：<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">自然数：1是一个自然数；一个自然数的后继者是一个自然数<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">阶乘运算：0！=1；如果 n&gt;0，那么n！=n*（n-1）！<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">斐波纳契数列：f0=1，f1=1；fn=fn-1+fn-2<br>
+例11：5！的定义<br>
+5！=5*（5-1）！=5*4！<br>
+　 =5*4*（4-1）！=5*4*3！<br>
+　 =5*4*3*（3-1）！=5*4*3*2！<br>
+　 =5*4*3*2*（2-1）！=5*4*3*2*1！<br>
+　 =5*4*3*2*1*（1-1）！=5*4*3*2*1*0！<br>
+　 =5*4*3*2*1*1<br>
+　 =120<br>
+　　<img src="images/STAR.GIF" width="18" height="20">Java语言中，不仅允许一个方法（过程或函数）在其定义的内部调用其他的方法，也允许一个方法在自身定义的内部调用自己，这样的方法称为递归。编写递归方法需要满足以下三个条件：<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">知道递归公式的描述<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">每次递归调用必须使得其进程逐步接近递归的终止<br>
+　　　　<img src="images/STAR1.GIF" width="15" height="20">方法内必须包含递归终止条件<br>
+<p align="center" class="t1">递归举例</p>
+<a href="ch5/ch5ex15.java" target="_blank">【例5-15】采用递归算法求n！，n&gt;0</a>。<br>
+递归公式：0！=1；如果 n&gt;0，那么n！=n*（n-1）！<br>
+static long fac(int n){<br>
+　　if(n==0) //终止条件<br>
+　　　　return 1; <br>
+　　else<br>
+　　　　//递归进程逐步接近递归的终止，其中fac(n-1)调用自己<br>
+　　　　return(n*fac(n-1)); <br>
+}<br>
+<p align="center" class="t1">例5-15说明</p>
+　　<img src="images/STAR.GIF" width="18" height="20">第一阶段：递推，即将求5！分解为求（5-1）！=4！的过程，而（5-1）！仍然不知道，还要递推到（5-2）！=3！，依次类推，直到求0！。<br>
+　　<img src="images/STAR.GIF" width="18" height="20">第二阶段：回推，从0！（其值为1），推算出1！，从1！（其值为1）推算出2！，依次类推，直到推算出5！<br>
+递推 执行操作　　 回推 执行操作<br>
+0 fac（5）　　　 5 返回1 fac（0）<br>
+1 fac（4）　　　 4 返回1 fac（1）<br>
+2 fac（3）　　　 3 返回2 fac（2）<br>
+3 fac（2） 　　　2 返回6 fac（3）<br>
+4 fac（1）　　　 1 返回24 fac（4）<br>
+0 fac（0）　　　 0 返回120 fac（5）<br>
+<p align="center" class="t1">斐波纳契数列</p>
+　<a href="ch5/ch5ex16.java" target="_blank">【例5-16】采用递归算法求斐波纳契数列：f0=1，f1=1；fn=fn-1+fn-2</a>。<br>
+例12：寻找第5个斐波纳契数的定义<br>
+f0=1，f1=1<br>
+f2= f1+ f0=1+1=2<br>
+f3= f2+ f1=2+1=3<br>
+f4= f3+ f2=3+2=5<br>
+f5= f4+ f3=5+3=8<br>
+根据斐波纳契数列的定义，可以得到下列方法：<br>
+static int fbnc(int n){<br>
+　　if(n==0||n==1)<br>
+　　　　return 1;<br>
+　　else<br>
+　　　　return(fbnc(n-1)+fbnc(n-2));<br>
+}<br>
+<p align="center" class="t1">梵塔题（Hanoi）</p>
+<a href="ch5/ch5ex17.java" target="_blank">【例5-17】采用递归算法来解梵塔题（Hanoi）</a>。<br>
+　　梵塔题描述：有n个圆盘，半径各不相同，依半径从大到小自下而上套在A柱上，另还有B、C两根空柱，现要求将A柱上的n个圆盘全部搬到C柱上去且每次只许搬动一个盘子，还必须始终保持每根柱子上是小盘在上，大盘在下。编程打印出移动结果和次数。<br>
+　　假设n=3 ，进行分析：<br>
+　　<img src="images/STAR.GIF" width="18" height="20">将A柱上的上面2个圆盘借助C柱移动到B柱<br>
+　　<img src="images/STAR.GIF" width="18" height="20">将A柱上剩下的一个圆盘移动到C柱<br>
+　　<img src="images/STAR.GIF" width="18" height="20">将B柱上两个圆盘借助A柱由B柱移动到C柱<br>
+　　而针对任意n个圆盘，其描述与n=3相似<br>
+　　<img src="images/STAR.GIF" width="18" height="20">将A柱上的上面n-1个圆盘借助C柱移动到B柱<br>
+　　<img src="images/STAR.GIF" width="18" height="20">将A柱上剩下的一个圆盘移动到C柱<br>
+　　<img src="images/STAR.GIF" width="18" height="20">将B柱上n-1个圆盘借助A柱由B柱移动到C柱<br>
+<p align="center" class="t1">梵塔题（Hanoi）程序运行结果 </p>
+程序运行时，当输入4，运行结果如下：<br>
+From A to B<br>
+From A to C<br>
+From B to C<br>
+From A to B<br>
+From C to A<br>
+From C to B<br>
+From A to B<br>
+From A to C<br>
+From B to C<br>
+From B to A<br>
+From C to A<br>
+From B to C<br>
+From A to B<br>
+From A to C<br>
+From B to C 
+</body> 
+</html> 
