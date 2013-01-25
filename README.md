@@ -7,23 +7,23 @@
 =====
 
 
-			主题				媒体				插件	
+	条目		主题				媒体				插件	
 
 			                                
-总站			2012			0				C1 E1 O4 + V1 E2 P3 P7 I2
+	总站		2012			0				C1 E1 O4 + V1 E2 P3 P7 I2
 
 
-demo		Themolio		0				C1 E1 O4 + A1 I1 V1 A2 P1 V2 A3 P2 O1 E2 P3 O2 P4 O3 I2
+	demo	Themolio		0				C1 E1 O4 + A1 I1 V1 A2 P1 V2 A3 P2 O1 E2 P3 O2 P4 O3 I2
 
-dj			Themolio 		3				C1 E1 O4 + A1 V1 P1 A3 P3 P4
+	dj		Themolio 		3				C1 E1 O4 + A1 V1 P1 A3 P3 P4
 
-mov			2011			0				C1 E1 O4 + P4 I3 I1 V1 P1 P7 P4
+	mov		2011			0				C1 E1 O4 + P4 I3 I1 V1 P1 P7 P4
 
-ka			Pinboard 		0				C1 E1 O4 + P1 P3
+	ka		Pinboard 		0				C1 E1 O4 + P1 P3
 
-it			Themolio 		0				C1 E1 O4 + V1 P1 E2 P3 E3 I2
+	it		Themolio 		0				C1 E1 O4 + V1 P1 E2 P3 E3 I2
 
-pic			Pinboard 		26				C1 E1 O4 + I4 E2 I2
+	pic		Pinboard 		26				C1 E1 O4 + I4 E2 I2
 
 
 插件清单：
