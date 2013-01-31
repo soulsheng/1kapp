@@ -48,4 +48,126 @@
 				s.wp_fullscreen_is_enabled = true;
 				s.wp_fullscreen_editor_id = ed.id;
 				s.theme_advanced_resizing = false;
-				s.theme_a
+				s.theme_advanced_statusbar_location = 'none';
+				s.content_css = s.content_css ? s.content_css + ',' + s.wp_fullscreen_content_css : s.wp_fullscreen_content_css;
+				s.height = tinymce.isIE ? b.scrollHeight : b.offsetHeight;
+
+				tinymce.each(ed.getParam('wp_fullscreen_settings'), function(v, k) {
+					s[k] = v;
+				});
+
+				fsed = new tinymce.Editor('wp_mce_fullscreen', s);
+				fsed.onInit.add(function(edd) {
+					var DOM = tinymce.DOM, buttons = DOM.select('a.mceButton', DOM.get('wp-fullscreen-buttons'));
+
+					if ( !ed.isHidden() )
+						edd.setContent( ed.getContent() );
+					else
+						edd.setContent( switchEditors.wpautop( edd.getElement().value ) );
+
+					setTimeout(function(){ // add last
+						edd.onNodeChange.add(function(ed, cm, e){
+							tinymce.each(buttons, function(c) {
+								var btn, cls;
+
+								if ( btn = DOM.get( 'wp_mce_fullscreen_' + c.id.substr(6) ) ) {
+									cls = btn.className;
+
+									if ( cls )
+										c.className = cls;
+								}
+							});
+						});
+					}, 1000);
+
+					edd.dom.addClass(edd.getBody(), 'wp-fullscreen-editor');
+					edd.focus();
+				});
+
+				fsed.render();
+
+				if ( 'undefined' != fullscreen ) {
+					fsed.dom.bind( fsed.dom.doc, 'mousemove', function(e){
+						fullscreen.bounder( 'showToolbar', 'hideToolbar', 2000, e );
+					});
+				}
+			});
+
+			// Register buttons
+			if ( 'undefined' != fullscreen ) {
+				ed.addButton('wp_fullscreen', {
+					title : 'fullscreen.desc',
+					onclick : function(){ fullscreen.on(); }
+				});
+			}
+
+			// END fullscreen
+//----------------------------------------------------------------
+			// START autoresize
+
+			if ( ed.getParam('fullscreen_is_enabled') || !ed.getParam('wp_fullscreen_is_enabled') )
+				return;
+
+			/**
+			 * This method gets executed each time the editor needs to resize.
+			 */
+			function resize() {
+				var d = ed.getDoc(), DOM = tinymce.DOM, resizeHeight, myHeight;
+
+				// Get height differently depending on the browser used
+				if ( tinymce.isWebKit )
+					myHeight = d.body.offsetHeight;
+				else
+					myHeight = d.body.scrollHeight;
+
+				// Don't make it smaller than 300px
+				resizeHeight = (myHeight > 300) ? myHeight : 300;
+
+				// Resize content element
+				if ( oldHeight != resizeHeight ) {
+					DOM.setStyle(DOM.get(ed.id + '_ifr'), 'height', resizeHeight + 'px');
+					oldHeight = resizeHeight;
+					ed.getWin().scrollTo(0,0);
+				}
+			};
+
+			// Add appropriate listeners for resizing content area
+			ed.onInit.add(function(ed, l) {
+				ed.onChange.add(resize);
+				ed.onSetContent.add(resize);
+				ed.onPaste.add(resize);
+				ed.onKeyUp.add(resize);
+				ed.onPostRender.add(resize);
+
+				ed.getBody().style.overflowY = "hidden";
+			});
+
+			if (ed.getParam('autoresize_on_init', true)) {
+				ed.onLoadContent.add(function(ed, l) {
+					// Because the content area resizes when its content CSS loads,
+					// and we can't easily add a listener to its onload event,
+					// we'll just trigger a resize after a short loading period
+					setTimeout(function() {
+						resize();
+					}, 1200);
+				});
+			}
+
+			// Register the command so that it can be invoked by using tinyMCE.activeEditor.execCommand('mceExample');
+			ed.addCommand('wpAutoResize', resize);
+		},
+
+		getInfo : function() {
+			return {
+				longname : 'WP Fullscreen',
+				author : 'WordPress',
+				authorurl : 'http://wordpress.org',
+				infourl : '',
+				version : '1.0'
+			};
+		}
+	});
+
+	// Register plugin
+	tinymce.PluginManager.add('wpfullscreen', tinymce.plugins.wpFullscreenPlugin);
+})();

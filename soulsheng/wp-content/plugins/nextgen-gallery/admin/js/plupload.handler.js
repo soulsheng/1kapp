@@ -127,3 +127,118 @@ function uploadError(fileObj, errorCode, message) {
 			error_name = fileObj.name + " : " + pluploadL10n.upload_failed;
 			break;
 		case plupload.FILE_EXTENSION_ERROR:
+			error_name = fileObj.name + " : " + pluploadL10n.invalid_filetype;
+			break;
+		case plupload.FILE_SIZE_ERROR:
+			error_name = fileObj.name + " : " + pluploadL10n.upload_limit_exceeded;
+			break;
+		case plupload.IMAGE_FORMAT_ERROR:
+			error_name = fileObj.name + " : " + pluploadL10n.not_an_image;
+			break;
+		case plupload.IMAGE_MEMORY_ERROR:
+			error_name = fileObj.name + " : " + pluploadL10n.image_memory_exceeded;
+			break;
+		case plupload.IMAGE_DIMENSIONS_ERROR:
+			error_name = fileObj.name + " : " + pluploadL10n.image_dimensions_exceeded;
+			break;
+		case plupload.GENERIC_ERROR:
+			error_name = pluploadL10n.upload_failed;
+			break;
+		case plupload.IO_ERROR:
+			error_name = pluploadL10n.io_error;
+			break;
+		case plupload.HTTP_ERROR:
+			error_name = pluploadL10n.http_error;
+			break;
+		case plupload.INIT_ERROR:
+            /* what should we do in this case ? */
+			//switchUploader(0);
+			//jQuery('.upload-html-bypass').hide();
+			break;
+		case plupload.SECURITY_ERROR:
+			error_name = pluploadL10n.security_error;
+			break;
+		case plupload.UPLOAD_ERROR.UPLOAD_STOPPED:
+		case plupload.UPLOAD_ERROR.FILE_CANCELLED:
+			break;
+		default:
+			FileError(fileObj, pluploadL10n.default_error);
+	}
+	nggProgressBar.addNote("<strong>ERROR " + error_name + " </strong>: " + message);
+	jQuery("#" + fileObj.id).hide("slow");
+	jQuery("#" + fileObj.id).remove();
+}
+
+// client side resize feature
+function setResize(arg) {
+	if ( arg ) {
+        debug('[enable resize]');
+		if ( uploader.features.jpgresize )
+			uploader.settings['resize'] = { width: resize_width, height: resize_height, quality: 100 };
+		else
+			uploader.settings.multipart_params.image_resize = true;
+	} else {
+        debug('[disable resize]');
+		delete(uploader.settings.resize);
+		delete(uploader.settings.multipart_params.image_resize);
+	}
+}
+
+function debug() {
+    if ( uploader.settings.debug ) {
+        plupload.each(arguments, function(message) {
+        	var exceptionMessage, exceptionValues = [];
+        
+        	// Check for an exception object and print it nicely
+        	if (typeof message === "object" && typeof message.name === "string" && typeof message.message === "string") {
+        		for (var key in message) {
+        			if (message.hasOwnProperty(key)) {
+        				exceptionValues.push(key + ": " + message[key]);
+        			}
+        		}
+        		exceptionMessage = exceptionValues.join("\n") || "";
+        		exceptionValues = exceptionMessage.split("\n");
+        		exceptionMessage = "EXCEPTION: " + exceptionValues.join("\nEXCEPTION: ");
+        		if (window.console)
+        			console.log(exceptionMessage);
+        		else	
+        			debugConsole(exceptionMessage);
+        	} else {
+        		if (window.console)
+        			console.log(message);
+        		else
+        			debugConsole(message);
+        	}
+        });
+    }
+};
+
+function debugConsole(message) {
+	var console, documentForm;
+
+	try {
+		console = document.getElementById("plupload_Console");
+
+		if (!console) {
+			documentForm = document.createElement("form");
+			document.getElementsByTagName("body")[0].appendChild(documentForm);
+
+			console = document.createElement("textarea");
+			console.id = "plupload_Console";
+			console.style.fontFamily = "monospace";
+			console.setAttribute("wrap", "off");
+			console.wrap = "off";
+			console.style.overflow = "auto";
+			console.style.width = "99%";
+			console.style.height = "350px";
+			console.style.margin = "5px";
+			documentForm.appendChild(console);
+		}
+
+		console.value += message + "\n";
+
+		console.scrollTop = console.scrollHeight - console.clientHeight;
+	} catch (ex) {
+		alert("Exception: " + ex.name + " Message: " + ex.message);
+	}
+};

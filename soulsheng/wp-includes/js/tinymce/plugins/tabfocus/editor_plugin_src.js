@@ -48,4 +48,75 @@
 					if (d > 0) {
 						for (i = x + 1; i < el.length; i++) {
 							if (canSelect(el[i]))
-								return e
+								return el[i];
+						}
+					} else {
+						for (i = x - 1; i >= 0; i--) {
+							if (canSelect(el[i]))
+								return el[i];
+						}
+					}
+
+					return null;
+				}
+
+				if (e.keyCode === 9) {
+					v = explode(ed.getParam('tab_focus', ed.getParam('tabfocus_elements', ':prev,:next')));
+
+					if (v.length == 1) {
+						v[1] = v[0];
+						v[0] = ':prev';
+					}
+
+					// Find element to focus
+					if (e.shiftKey) {
+						if (v[0] == ':prev')
+							el = find(-1);
+						else
+							el = DOM.get(v[0]);
+					} else {
+						if (v[1] == ':next')
+							el = find(1);
+						else
+							el = DOM.get(v[1]);
+					}
+
+					if (el) {
+						if (el.id && (ed = tinymce.get(el.id || el.name)))
+							ed.focus();
+						else
+							window.setTimeout(function() {
+								if (!tinymce.isWebKit)
+									window.focus();
+								el.focus();
+							}, 10);
+
+						return Event.cancel(e);
+					}
+				}
+			}
+
+			ed.onKeyUp.add(tabCancel);
+
+			if (tinymce.isGecko) {
+				ed.onKeyPress.add(tabHandler);
+				ed.onKeyDown.add(tabCancel);
+			} else
+				ed.onKeyDown.add(tabHandler);
+
+		},
+
+		getInfo : function() {
+			return {
+				longname : 'Tabfocus',
+				author : 'Moxiecode Systems AB',
+				authorurl : 'http://tinymce.moxiecode.com',
+				infourl : 'http://wiki.moxiecode.com/index.php/TinyMCE:Plugins/tabfocus',
+				version : tinymce.majorVersion + "." + tinymce.minorVersion
+			};
+		}
+	});
+
+	// Register plugin
+	tinymce.PluginManager.add('tabfocus', tinymce.plugins.TabFocusPlugin);
+})();

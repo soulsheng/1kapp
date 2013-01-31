@@ -51,4 +51,147 @@ msgstr "המספר של הדף."
 
 #: admin.php:46
 msgid "Text For Page"
-msgstr "מחרוזת עבור העמו�
+msgstr "מחרוזת עבור העמוד"
+
+#: admin.php:54
+msgid "Text For First Page"
+msgstr "מחרוזת עבור הדף הראשון"
+
+#: admin.php:62
+msgid "Text For Last Page"
+msgstr "מחרוזת עבור הדף האחרון"
+
+#: admin.php:70
+msgid "Text For Previous Page"
+msgstr "מחרוזת עבור הדף הקודם"
+
+#: admin.php:76
+msgid "Text For Next Page"
+msgstr "מחרוזת עבור הדף הבא"
+
+#: admin.php:82
+msgid "Text For Previous ..."
+msgstr "מחרוזת עבור הקודם"
+
+#: admin.php:88
+msgid "Text For Next ..."
+msgstr "מחרוזת עבור הבא"
+
+#: admin.php:95
+msgid "Page Navigation Text"
+msgstr "טקסטים עבור שורת הניווט בדף"
+
+#: admin.php:96
+msgid "Leaving a field blank will hide that part of the navigation."
+msgstr "השארת שדה מסוים ריק תגרום לאי הכללתו בשורת הניווט."
+
+#: admin.php:102
+msgid "Use pagenavi-css.css"
+msgstr "השתמש ב-pagenavi-css.css"
+
+#: admin.php:108
+msgid "Page Navigation Style"
+msgstr "סגנון שורת הניווט"
+
+#: admin.php:111
+msgid "Normal"
+msgstr "רגיל"
+
+#: admin.php:111
+msgid "Drop-down List"
+msgstr "רשימה נפתחת"
+
+#: admin.php:116
+msgid "Always Show Page Navigation"
+msgstr "הצג תמיד את שורת הניווט"
+
+#: admin.php:119
+msgid "Show navigation even if there's only one page."
+msgstr "מציג את שורת הניווט אפילו כשיש רק דף אחד."
+
+#: admin.php:123
+msgid "Number Of Pages To Show"
+msgstr "מספר הדפים להצגה"
+
+#: admin.php:130
+msgid "Number Of Larger Page Numbers To Show"
+msgstr "מספר העמודים העמוקים להצגה"
+
+#: admin.php:135
+msgid "Larger page numbers are in addition to the normal page numbers. They are useful when there are many pages of posts."
+msgstr "מספרי עמודים עמוקים הם תוספת למספור העמודים הרגיל. הם שימושיים כאשר יש מספר גדול מאוד של עמודים או פוסטים."
+
+#: admin.php:136
+msgid "For example, WP-PageNavi will display: Pages 1, 2, 3, 4, 5, 10, 20, 30, 40, 50."
+msgstr "לדוגמא, WP-PageNavi יציג 1, 2, 3, 4, 5, 10, 20, 30, 40, 50."
+
+#: admin.php:137
+msgid "Enter 0 to disable."
+msgstr "הזן 0 כדי להשבית."
+
+#: admin.php:141
+msgid "Show Larger Page Numbers In Multiples Of"
+msgstr "הצג מספרי עמודים עמוקים בכפולות של"
+
+#: admin.php:146
+msgid "For example, if mutiple is 5, it will show: 5, 10, 15, 20, 25"
+msgstr "לדוגמא, אם המכפלה היא 5, התצוגה תהיה: 5, 10, 15, 20, 25"
+
+#: admin.php:151
+msgid "Page Navigation Options"
+msgstr "אפשרויות שורת הניווט"
+
+#: scb/AdminPage.php:167
+msgid "Settings <strong>saved</strong>."
+msgstr "הגדרות <strong>נשמרו</strong>."
+
+#: scb/AdminPage.php:179
+#: scb/AdminPage.php:189
+msgid "Save Changes"
+msgstr "שמור שינויים"
+
+#: scb/AdminPage.php:371
+msgid "Settings"
+msgstr "הגדרות"
+
+#: wp-pagenavi.php:37
+msgid "Page %CURRENT_PAGE% of %TOTAL_PAGES%"
+msgstr "עמוד %CURRENT_PAGE% מתוך %TOTAL_PAGES%"
+
+#: wp-pagenavi.php:40
+msgid "&laquo; First"
+msgstr "&laquo; להתחלה"
+
+#: wp-pagenavi.php:41
+msgid "Last &raquo;"
+msgstr "לסוף &raquo;"
+
+#: wp-pagenavi.php:42
+msgid "&laquo;"
+msgstr "&laquo;"
+
+#: wp-pagenavi.php:43
+msgid "&raquo;"
+msgstr "&raquo;"
+
+#: wp-pagenavi.php:44
+#: wp-pagenavi.php:45
+msgid "..."
+msgstr "..."
+
+#. Plugin Name of the plugin/theme
+msgid "WP-PageNavi"
+msgstr "WP-PageNavi"
+
+#. Plugin URI of the plugin/theme
+msgid "http://wordpress.org/extend/plugins/wp-pagenavi/"
+msgstr "http://wordpress.org/extend/plugins/wp-pagenavi/"
+
+#. Description of the plugin/theme
+msgid "Adds a more advanced paging navigation to your WordPress blog"
+msgstr "הוסף תכונות ניווט מתקדמות יותר לאתר הוורדפרס שלך"
+
+#. Author of the plugin/theme
+msgid "Lester 'GaMerZ' Chan & scribu"
+msgstr "Lester 'GaMerZ' Chan & scribu"
+
