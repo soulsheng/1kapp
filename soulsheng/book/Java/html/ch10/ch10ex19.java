@@ -39,4 +39,70 @@ class HelpAboutDialog extends JFrame{
 		dialogcp.add(authorInfoPane,BorderLayout.NORTH);
 		
 		JPanel OKPane=new JPanel();
-		okButton=new JBut
+		okButton=new JButton("确定",new ImageIcon("animal.gif"));
+		okButton.setFont(ft1);
+		ImageIcon rollover = new ImageIcon("tom.gif");
+		ImageIcon general = new ImageIcon("animal.gif");
+		ImageIcon press = new ImageIcon("cat.gif");
+		okButton.setRolloverEnabled(true);
+		okButton.setIcon(general); 
+		okButton.setRolloverIcon(rollover); 
+		okButton.setPressedIcon(press);
+		okButton.addActionListener(new TimerAction());
+		OKPane.add(okButton);
+		dialogcp.add(OKPane,BorderLayout.SOUTH);
+		
+		JPanel sysInfoPane=new JPanel();
+		sysInfoPane.setLayout(new GridLayout(5,1));
+		sysInfoPane.setBorder(BorderFactory.createLoweredBevelBorder());
+		sysInfoPane.setBackground(Color.white);
+		JLabel userName=new JLabel("用户名："+System.getProperty("user.name"));
+		JLabel osName=new JLabel("操作系统："+System.getProperty("os.name"));
+		JLabel javaVersion=new JLabel("安装的Java SDK的版本号："+System.getProperty("java.version"));
+		JLabel totalMemory=new JLabel("Java虚拟机可能使用的总内存数："+Runtime.getRuntime().totalMemory()+"字节数" );
+		JLabel freeMemory=new JLabel("Java虚拟机所剩余的内存数"+Runtime.getRuntime().freeMemory()+"字节数" ); 
+		userName.setFont(ft1);
+		osName.setFont(ft1);
+		javaVersion.setFont(ft1);
+		totalMemory.setFont(ft1);
+		freeMemory.setFont(ft1);
+		sysInfoPane.add(userName);
+		sysInfoPane.add(osName);
+		sysInfoPane.add(javaVersion);
+		sysInfoPane.add(totalMemory);
+		sysInfoPane.add(freeMemory);
+		dialogcp.add(sysInfoPane,BorderLayout.CENTER);
+		
+		myTimer=new Timer(1000,new TimerAction());
+		myTimer.start();
+		addWindowListener(new WindowDestroyer());
+	}
+	class TimerAction implements ActionListener{
+		public void actionPerformed(ActionEvent e){
+			if(e.getSource()==okButton)
+				helpAbout.dispose();
+			else if(e.getSource()==myTimer){
+				Counter++;
+				helpAbout.setTitle("当前的定时器的值为:"+Counter+"秒");
+			}
+		}
+	}
+	class CalButton implements ActionListener{
+		public void actionPerformed(ActionEvent e){
+			helpAbout.setSize(400,300);
+			helpAbout.setLocation(100,100);
+			helpAbout.setVisible(true);
+		}
+	}
+}
+class WindowDestroyer extends WindowAdapter{
+	public void windowClosing(WindowEvent e){
+		System.exit(0);
+	}
+}
+public class ch10ex19{
+	public static void main(String args[]) {
+		HelpAboutDialog win=new HelpAboutDialog();
+		win.setVisible(true);
+	}
+}

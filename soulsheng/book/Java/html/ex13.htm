@@ -58,4 +58,83 @@ a:active {
   　　
   }<br>
   　　
-  public static void 
+  public static void main(String args[]) {<br>
+  　　
+  　　System.out.println( &quot;time for ArrayList = &quot; +timeList(new ArrayList()));<br>
+  　　　　
+  System.out.println(&quot;time for LinkedList = &quot; +timeList(new LinkedList()));<br>
+  　　}<br>
+  }<br>
+  (2)<br>
+  import java.util.*;<br>
+  public class FindDups2 {<br>
+  　　
+  public static void main(String　args[]){<br>
+  　　　　
+  String　str[]={&quot;Monday&quot;,&quot;Tuesday&quot;,&quot;Wednesday&quot;,&quot;Thursday&quot;,&quot;Friday&quot;,&quot;Saturday&quot;,&quot;Sunday&quot;,&quot;Sunday&quot;};<br>
+  　　　　
+  Set uniques = new HashSet(); <br>
+  　　　　
+  Set dups = new HashSet(); <br>
+  　　　　
+  for (int i=0; i&lt;str.length; i++) <br>
+  　　　　　　
+  if (!uniques.add(str[i])) <br>
+  　　　　　　　　
+  dups.add(str[i]); <br>
+  　　　　
+  uniques.removeAll(dups); // Destructive set-difference <br>
+  　　　　
+  System.out.println(&quot;Unique words: &quot; + uniques); <br>
+  　　　　
+  System.out.println(&quot;Duplicate words: &quot; + dups);<br>
+  　　
+  } <br>
+  } <br>
+  (3)<br>
+  import java.util.*;
+  <br>
+  public class HalfSearch{
+  <br>　　
+  public static void main(String[] args){
+  <br>　　　　
+  List name=new LinkedList();
+  <br>　　　　
+  String[] stus={&quot;Jack&quot;,&quot;Tom&quot;,&quot;Mark&quot;,&quot;Anny&quot;,&quot;John&quot;};
+  <br>　　　　
+  for(int i=0;i&lt;stus.length;i++)
+  <br>　　　　　　
+  name.add(stus[i]);
+  <br>　　　　
+  String Key=&quot;Tom&quot;;
+  <br>　　　　
+  int dest=Collections.binarySearch(name,Key);
+  <br>　　　　
+  System.out.println(&quot;The position of Key is &quot;+dest);
+  <br>　　　　
+  Collections.sort(name);
+  <br>　　　　
+  dest=Collections.binarySearch(name,Key);
+  <br>　　　　
+  System.out.println(&quot;The position of Key is &quot;+dest);
+  <br>　　
+  }
+  <br>
+  }
+  
+    <li>写出用循环数组及链表实现队列的完整代码。</li>
+  
+    
+    <li>将下列学生姓名用一个ArrayList对象保存、排序并打印。<br>
+    “Zhang San”,“Li Ming”,“Wang hai”,“Zhao Bin”,“Xu Shong”</li>
+
+    
+    <li>从键盘输入一个字符串数组,编写程序判断这个字符串中的重复字符。</li>
+  <li>在一组学生姓名中，先按顺序查找后以折班查找的方式查找指定学生的姓名索引号（以习题8中的数据为例）。</li>
+
+<li>编写一个程序创建两个SortedSet 对象，用以存放Employee对象，一个Employee对象有三个属性：工号（eno）、姓名（ename）和工资（salary）。第一个以缺省排序方法按工号(eno)为关键进行排序；第二个是以工资（salary）为关键字、用自定义的比较器进行排序。</li>
+
+
+</ol>
+</body> 
+</html> 
