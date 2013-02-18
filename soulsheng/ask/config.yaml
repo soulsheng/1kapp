@@ -1,7 +1,0 @@
-name: soulshengask
-version: 1
-handle:
-- rewrite: if (!is_file() && !is_dir() && path ~ "^.*$") goto "index.php?qa-rewrite=$0&%{QUERY_STRING}"
-- expire: if(path ~ "\.(js|css)$") time 864000
-- expire: if(path ~ "\.(jpg|gif|png)$") time 8640000
-- compress: if(out_header["Content-Length"] >= 10240) compress
