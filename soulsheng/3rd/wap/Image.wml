@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE wml PUBLIC "-//WAPFORUM//DTD WML 1.1//EN" "http://www.wapforum.org/DTD/wml_1.1.xml">
+<wml>
+ <card title="Image">
+  <p>
+This is an image wbmp for wap
+<img src="/image/logo.wbmp" alt="logo"/>
+in a paragraph
+</p>
+
+  <p>
+This is an image wbm for wap
+<img src="/image/logo.wbm" alt="logo"/>
+in a paragraph
+</p>
+
+ </card>
+</wml>
