@@ -1,6 +1,0 @@
-name: soulsheng
-version: 1
-version: 1
-handle:
-- rewrite: if(!is_file()) goto "/url/index.php"
-...
