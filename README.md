@@ -17,7 +17,7 @@
 
 	dj		Themolio 		3				C1 E1 O4 + A1 V1 P1 A3 P3 P4
 
-	mov		2011			0				C1 E1 O4 + P4 I3 I1 V1 P1 P7 P4
+	mov		2011			0				C1 E1 O4 + P5 V1 P1 P7 P4
 
 	ka		Pinboard 		0				C1 E1 O4 + P1 P3
 
