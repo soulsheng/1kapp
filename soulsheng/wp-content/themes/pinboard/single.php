@@ -1,7 +1,8 @@
 <?php get_header(); ?>
 	<div id="container">
 		<section id="content" <?php pinboard_content_class(); ?>>
-			<?php if( have_posts() ) : the_post(); ?>
+			<?php if( have_posts() ) : the_post(); ?>		
+			<?php if(function_exists('the_views')) { the_views(); } ?>
 				<article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
 					<div class="entry">
 						<header class="entry-header">
@@ -20,7 +21,7 @@
 						<footer class="entry-utility">
 							<?php wp_link_pages( array( 'before' => '<p class="post-pagination">' . __( 'Pages:', 'pinboard' ), 'after' => '</p>' ) ); ?>
 							<?php the_tags( '<div class="entry-tags">', ' ', '</div>' ); ?>
-							<?php pinboard_social_bookmarks(); ?>
+							
 							<?php pinboard_post_author(); ?>
 						</footer><!-- .entry-utility -->
 					</div><!-- .entry -->
