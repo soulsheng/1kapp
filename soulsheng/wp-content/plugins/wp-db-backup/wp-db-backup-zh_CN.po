@@ -1,0 +1,211 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: wp-db-backup 2.1.7\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2008-08-17 00:50+0800\n"
+"Last-Translator: paopao <wuxipaopao@gmail.com>\n"
+"Language-Team: WordPress 中文团队 - paopao (site: www.paopao.name, mail:wuxipaopao@gmail.com) <team@wp-cn.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _e;__\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Language: Chinese\n"
+"X-Poedit-Country: CHINA\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: wp-db-backup.php:181
+msgid "Backup Complete!"
+msgstr "备份成功！"
+
+#: wp-db-backup.php:211
+msgid "Progress"
+msgstr "备份中"
+
+#: wp-db-backup.php:213
+msgid "DO NOT DO THE FOLLOWING AS IT WILL CAUSE YOUR BACKUP TO FAIL:"
+msgstr "请不要进行以下操作，否则会导致备份失败："
+
+#: wp-db-backup.php:216
+msgid "Close this browser"
+msgstr "关闭这个页面"
+
+#: wp-db-backup.php:217
+msgid "Reload this page"
+msgstr "刷新这个页面"
+
+#: wp-db-backup.php:218
+msgid "Click the Stop or Back buttons in your browser"
+msgstr "点击浏览器的停止或者后退按钮"
+
+#: wp-db-backup.php:220
+msgid "Progress:"
+msgstr "备份进度："
+
+#: wp-db-backup.php:229
+msgid "Navigating away from this page will cause your backup to fail."
+msgstr "关闭本页面会导致数据库备份失败。"
+
+#: wp-db-backup.php:266
+#, php-format
+msgid "Backup complete, preparing <a href=\\\"%s\\\">backup</a> for download..."
+msgstr "备份成功，正在准备<a href=\\\"%s\\\">备份文件</a>以供下载……"
+
+#: wp-db-backup.php:273
+#, php-format
+msgid "Backup complete, sending <a href=\\\"%s\\\">backup</a> via email..."
+msgstr "备份成功，正在通过电子邮件发送<a href=\\\"%s\\\">备份文件</a>……"
+
+#: wp-db-backup.php:280
+#, php-format
+msgid "Backup complete, download <a href=\\\"%s\\\">here</a>."
+msgstr "备份成功，在<a href=\\\"%s\\\">此处</a>下载。"
+
+#: wp-db-backup.php:340
+msgid "Creating backup file..."
+msgstr "创建备份文件……"
+
+#: wp-db-backup.php:343
+#, php-format
+msgid "Finished backing up table \\\"%s\\\"."
+msgstr "数据表\\\"%s\\\"备份完成。"
+
+#: wp-db-backup.php:345
+#, php-format
+msgid "Backing up table \\\"%s\\\"..."
+msgstr "正在备份数据表\\\"%s\\\"……"
+
+#: wp-db-backup.php:352
+#: wp-db-backup.php:835
+msgid "Could not open the backup file for writing!"
+msgstr "无法以写方式打开备份文件！"
+
+#: wp-db-backup.php:353
+msgid "The backup file could not be saved.  Please check the permissions for writing to your backup directory and try again."
+msgstr "无法保存备份文件。请检查你的备份文件夹的写权限设置并重试。"
+
+#: wp-db-backup.php:358
+#: wp-db-backup.php:844
+msgid "WordPress MySQL database backup"
+msgstr "WordPress MySQL 数据库备份"
+
+#: wp-db-backup.php:360
+#: wp-db-backup.php:846
+#, php-format
+msgid "Generated: %s"
+msgstr "创建于：%s"
+
+#: wp-db-backup.php:361
+#: wp-db-backup.php:847
+#, php-format
+msgid "Hostname: %s"
+msgstr "主机名：%s"
+
+#: wp-db-backup.php:362
+#: wp-db-backup.php:848
+#, php-format
+msgid "Database: %s"
+msgstr "数据库：%s"
+
+#: wp-db-backup.php:370
+#: wp-db-backup.php:861
+#, php-format
+msgid "Table: %s"
+msgstr "数据表：%s"
+
+#: wp-db-backup.php:377
+msgid "The backup directory is not writeable!  Please check the permissions for writing to your backup directory and try again."
+msgstr "备份文件夹无法写入！请检查你的备份文件夹的写权限设置并重试。"
+
+#: wp-db-backup.php:434
+msgid "Click and hold down <code>[SHIFT]</code> to toggle multiple checkboxes"
+msgstr "按住 <code>[SHIFT]</code> 的同时点击可以选中多个复选框"
+
+#: wp-db-backup.php:474
+msgid "Change"
+msgstr "更改"
+
+#: wp-db-backup.php:483
+msgid "Save"
+msgstr "保存"
+
+#: wp-db-backup.php:566
+#: wp-db-backup.php:571
+#: wp-db-backup.php:1126
+msgid "Backup"
+msgstr "备份"
+
+#: wp-db-backup.php:646
+#: wp-db-backup.php:649
+msgid "There was an error writing a line to the backup script:"
+msgstr "在向备份脚本写入一行时发生错误："
+
+#: wp-db-backup.php:681
+msgid "Subsequent errors have been omitted from this log."
+msgstr "之后的错误已经被省略。"
+
+#: wp-db-backup.php:715
+msgid "Error getting table details"
+msgstr "无法获取数据表的详细信息"
+
+#: wp-db-backup.php:723
+#, php-format
+msgid "Delete any existing table %s"
+msgstr "删除任何存在的 %s 数据表"
+
+#: wp-db-backup.php:732
+#, php-format
+msgid "Table structure of table %s"
+msgstr " %s 数据表的结构"
+
+#: wp-db-backup.php:738
+#, php-format
+msgid "Error with SHOW CREATE TABLE for %s."
+msgstr "无法显示创建的 %s 数据表"
+
+#: wp-db-backup.php:745
+#, php-format
+msgid "Error getting table structure of %s"
+msgstr "无法获取 %s 的数据表结构"
+
+#: wp-db-backup.php:753
+#, php-format
+msgid "Data contents of table %s"
+msgstr " %s 数据表的内容"
+
+#: wp-db-backup.php:823
+#, php-format
+msgid "End of data contents of table %s"
+msgstr " %s 数据表的内容结束"
+
+#: wp-db-backup.php:839
+msgid "The backup directory is not writeable!"
+msgstr "无法写入备份文件夹！"
+
+#: wp-db-backup.php:974
+#, php-format
+msgid "File not found:%s"
+msgstr "无法找到文件：%s"
+
+#: wp-db-backup.php:974
+msgid "Return to Backup"
+msgstr "返回备份页面"
+
+#: wp-db-backup.php:983
+#, php-format
+msgid "File %s does not exist!"
+msgstr "文件 %s 不存在！"
+
+#: wp-db-backup.php:990
+#, php-format
+msgid ""
+"Attached to this email is\n"
+"   %1s\n"
+"   Size:%2s kilobytes\n"
+msgstr ""
+"该电子邮件的附件\n"
+"   %1s\n"
+"   大小：%2s KB\n"
+
+#: wp-db-backup.php:991
+msgid "Dat
