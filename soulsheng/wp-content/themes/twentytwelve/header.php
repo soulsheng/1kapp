@@ -19,6 +19,7 @@
 <html <?php language_attributes(); ?>>
 <!--<![endif]-->
 <head>
+<base target="_blank">
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
 <meta name="viewport" content="width=device-width" />
 <title><?php wp_title( '|', true, 'right' ); ?></title>
