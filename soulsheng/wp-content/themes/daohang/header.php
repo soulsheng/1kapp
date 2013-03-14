@@ -1,6 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" <?php language_attributes();?>>
 <head>
+<base target="_blank">
 <meta charset="<?php bloginfo('charset');?>" />
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 <title><?php echo trim(wp_title('',false)); ?><?php if(wp_title('', false)){echo '_'; } ?><?php bloginfo('name'); ?></title>

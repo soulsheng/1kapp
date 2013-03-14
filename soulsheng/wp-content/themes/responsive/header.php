@@ -25,7 +25,7 @@ if ( !defined('ABSPATH')) exit;
 <!--[if IE 9 ]>    <html class="no-js ie9" <?php language_attributes(); ?>> <![endif]-->
 <!--[if gt IE 9]><!--> <html class="no-js" <?php language_attributes(); ?>> <!--<![endif]-->
 <head>
-
+<base target="_blank">
 <meta charset="<?php bloginfo('charset'); ?>" />
 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
 
