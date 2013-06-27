@@ -51,8 +51,7 @@
 		</ul>
 
 		<div class="navigation">
-			<p class="nav-older"><?php next_posts_link( __( '&larr; Older posts', 'p2' ) ); ?></p>
-			<p class="nav-newer"><?php previous_posts_link( __( 'Newer posts &rarr;', 'p2' ) ); ?></p>
+			<?php wp_pagenavi(); ?>	
 		</div>
 
 	</div> <!-- main -->

@@ -24,6 +24,8 @@ get_header(); ?>
 				<?php /* Start the Loop */ ?>
 				<?php while ( have_posts() ) : the_post(); ?>
 
+				<?php if(function_exists('the_views')) { the_views(); } ?>
+				
 					<?php get_template_part( 'content', get_post_format() ); ?>
 
 				<?php endwhile; ?>

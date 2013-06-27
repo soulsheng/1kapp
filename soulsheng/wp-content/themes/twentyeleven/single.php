@@ -14,13 +14,21 @@ get_header(); ?>
 
 				<?php while ( have_posts() ) : the_post(); ?>
 
+				<?php if(function_exists('the_views')) { the_views(); } ?>
+
 					<nav id="nav-single">
 						<h3 class="assistive-text"><?php _e( 'Post navigation', 'twentyeleven' ); ?></h3>
-						<span class="nav-previous"><?php previous_post_link( '%link', __( '<span class="meta-nav">&larr;</span> Previous', 'twentyeleven' ) ); ?></span>
-						<span class="nav-next"><?php next_post_link( '%link', __( 'Next <span class="meta-nav">&rarr;</span>', 'twentyeleven' ) ); ?></span>
+						<span class="nav-previous"><?php previous_post_link( '%link', '<span class="meta-nav">' . _x( '<br>&larr;', 'Previous post link', 'twentyeleven' ) . '</span> 上一篇：%title' ); ?></span>
+					<span class="nav-next"><?php next_post_link( '%link', '<br>下一篇：%title <span class="meta-nav">' . _x( '&rarr;', 'Next post link', 'twentyeleven' ) . '</span>' ); ?></span>
+					</nav><!-- #nav-single -->
 					</nav><!-- #nav-single -->
 
 					<?php get_template_part( 'content-single', get_post_format() ); ?>
+
+<nav id="nav-single">
+						<h3 class="assistive-text"><?php _e( 'Post navigation', 'twentyeleven' ); ?></h3>
+						<span class="nav-previous"><?php previous_post_link( '%link', '<span class="meta-nav">' . _x( '<br>&larr;', 'Previous post link', 'twentyeleven' ) . '</span> 上一篇：%title' ); ?></span>
+					<span class="nav-next"><?php next_post_link( '%link', '<br>下一篇：%title <span class="meta-nav">' . _x( '&rarr;', 'Next post link', 'twentyeleven' ) . '</span>' ); ?></span>
 
 					<?php comments_template( '', true ); ?>
 

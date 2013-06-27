@@ -520,7 +520,7 @@ function wp_list_categories( $args = '' ) {
  */
 function wp_tag_cloud( $args = '' ) {
 	$defaults = array(
-		'smallest' => 8, 'largest' => 22, 'unit' => 'pt', 'number' => 45,
+		'smallest' => 8, 'largest' => 22, 'unit' => 'pt', 'number' => 80,
 		'format' => 'flat', 'separator' => "\n", 'orderby' => 'name', 'order' => 'ASC',
 		'exclude' => '', 'include' => '', 'link' => 'view', 'taxonomy' => 'post_tag', 'echo' => true
 	);

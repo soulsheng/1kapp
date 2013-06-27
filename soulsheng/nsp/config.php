@@ -15,14 +15,9 @@ $APPSECRET = "H7fQXg40ZdDZBrkVlJLDNszrDfc0ZNEM";
 //防盗链设置 如果不需要请勿填写
 //添加方法 $HTTP_HOST = array('www.baidu.com','www.123.com');
 //不要加上http:// 最好配置完整的域名地址 例如:bbs.baidu.com www.baidu
-$SECURITY_ARR = array('soulshenglife.sinaapp.com',
-'v.liushousheng.com',
-'soulshengit.sinaapp.com',
-'tastewordpress.sinaapp.com',
-'faithhopelove.sinaapp.com',
-'soulsheng.1kapp.com');
+$SECURITY_ARR = array('soulsheng.1kapp.com','soulshenglife.sinaapp.com');
 
 //指定跳转的url 如果不填默认 $SECURITY_ARR 的第一个URL
-$WEB_URL = '';
+$WEB_URL = 'soulsheng.1kapp.com';
 //防盗链的时候排除某些后缀的
 $FILE_OUT = array('jpg','gif','bmp','png');
