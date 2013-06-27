@@ -26,6 +26,7 @@
 	pic		Pinboard 		26				C1 E1 O4 + I4 E2 I2
 
 
+	canaan		p2 		26				C1 E1 O4 + P1 P3 P7 A3 O4 U1 U2 W1 W2
 插件清单：
 
 
@@ -55,11 +56,20 @@ P"post"7
 1"JiaThis分享工具";2"Post List";3"WordPress Related Posts";4"WP Category Post List Widget";5"Contextual Related Posts";6"Related Posts Thumbnails";7"WP-PageNavi分页导航";
 
 
+U"User"
+
+1"Force User Login Multisite";2"DRP Wordpress User Management";
+
+
 V"vedio"3
 
 1"FLV Embed";2"JW Player Plugin for WordPress";3"HTML5 Video Playlist Player";
 
 
+W"widget"2
+
+1"WP-PostViews";2"WP Category Post List Widget";
+
 O"other"3
 
-1"Theme Switcher";2"WP-Polls";3"WP Issuu";4"WP-Mail-SMTP";
+1"Theme Switcher";2"WP-Polls";3"WP Issuu";4"WP-Mail-SMTP";4"WordPress Database Backup";
